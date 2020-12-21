@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
  <%@include file="./../common/common.jsp" %>
 <!DOCTYPE html>
-<html>
-	<head>
+	<html>
+<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +12,16 @@
 		<meta name="author" content="">
 		<link rel="icon" href="favicon.ico">
 		<title>StudyCafe HTML</title>
+		<script type="text/javascript">
+		$(document).ready(function() {
+	
+		});
+	</script>
 		<!-- Bootstrap core CSS -->
-		<link href="./../css/bootstrap.min.css" rel="stylesheet">
+		<link href="${contextPath }/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
-		<link href="./../css/style.css" rel="stylesheet">
+		<link href="${contextPath }/css/style.css" rel="stylesheet">
 	</head>
 	<body id="page-top">
 		<section id="portfolio">
@@ -38,7 +43,7 @@
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<img src="./../images/demo/main01.jpg" alt="img02" class="img-responsive" />
+							<img src="${contextPath}/images/demo/main01.jpg" alt="img01" class="img-responsive" />
 							<figcaption>
 								<h2>입구 홀</h2>
 								<p>아일랜드 롱룸도서관 입구를 재현하여 엔틱한 공간 연출</p>
@@ -53,7 +58,7 @@
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<img src="./../images/demo/main02.jpg" alt="img02" class="img-responsive"  />
+							<img src="${contextPath}/images/demo/main02.jpg" alt="img02" class="img-responsive"  />
 							<figcaption>
 								<h2>스터디존</h2>
 								<p>백색소음이 흐르며 집중력을 높이는 환경에서 공부할 수 있는 공간</p>
@@ -62,16 +67,16 @@
 						</figure>
 					</div>
 				</div>
-				
+				</div>
 				<!-- end portfolio item -->
-			</div>
-			<br>
+			
+			
 			<div class="row row-0-gutter">
 				<!-- start portfolio item -->
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<img src="./../images/demo/main03.jpg" alt="img02" class="img-responsive"/>
+							<img src="${contextPath}/images/demo/main03.jpg" alt="img03" class="img-responsive"/>
 							<figcaption>
 								<h2>메타라운지</h2>
 								<p>잔잔한 음악소리와 함께 개방적인 환경에서 공부할 수 있는 공간</p>
@@ -86,7 +91,7 @@
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<img src="./../images/demo/main04.jpg" alt="img02" class="img-responsive" />
+							<img src="${contextPath}/images/demo/main04.jpg" alt="img04" class="img-responsive" />
 							<figcaption>
 								<h2>소굴방</h2>
 								<p>목과 허리를 인체공학적인 각도로 받쳐 주는 편안한 좌식 공간</p>
@@ -97,6 +102,7 @@
 				</div>
 				
 				<!-- end portfolio item -->
+			</div>
 			</div>
 		</section>
 		<br><hr>
@@ -168,28 +174,28 @@
 				<div class="row row-0-gutter">
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="./../images/demo/wifi.png" alt="img02"
+						<img src="${contextPath }/images/demo/wifi.png" alt="img02"
 						width="50px" height="50px"/>
 							<h3>Free Wifi</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="./../images/demo/comfort.png" alt="img02"
+						<img src="${contextPath }/images/demo/comfort.png" alt="img02"
 						width="50px" height="50px"/>
 							<h3>Comfortable</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="./../images/demo/coffee.png" alt="img02"
+						<img src="${contextPath }/images/demo/coffee.png" alt="img02"
 						width="50px" height="50px"/>
 							<h3>Free Beverage</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="./../images/demo/points.png" alt="img02"
+						<img src="${contextPath }/images/demo/points.png" alt="img02"
 						width="50px" height="50px"/>
 							<h3>Reasonable</h3>
 					</div>
@@ -217,7 +223,7 @@
 					<div class="col-md-4">
 						<div class="team-item">
 							<div class="team-image">
-								<img src="./../images/demo/branch01.png" class="img-responsive" alt="author">
+								<img src="${contextPath}/images/demo/branch01.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
 								<h3>서울 신림점</h3>
@@ -231,7 +237,7 @@
 					<div class="col-md-4">
 						<div class="team-item">
 							<div class="team-image">
-								<img src="./../images/demo/branch02.png" class="img-responsive" alt="author">
+								<img src="${contextPath}/images/demo/branch02.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
 								<h3>서울 방배점</h3>
@@ -245,7 +251,7 @@
 					<div class="col-md-4">
 						<div class="team-item">
 							<div class="team-image">
-								<img src="./../images/demo/branch03.png" class="img-responsive" alt="author">
+								<img src="${contextPath}/images/demo/branch03.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
 								<h3>부산 남천점</h3>
@@ -312,114 +318,7 @@
 		<br><br>
 								
 								
-		<p id="back-top">
-			<a href="#top"><i class="fa fa-angle-up"></i></a>
-		</p>
-		<footer>
-			<div class="container text-center">
-				<p>Designed by <a href="http://moozthemes.com"><span>MOOZ</span>Themes.com</a></p>
-			</div>
-		</footer>
-
-		<!-- Modal for portfolio item 1 -->
-		<div class="modal fade" id="Modal-1" tabindex="-1" role="dialog" aria-labelledby="Modal-label-1">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="Modal-label-1">Dean & Letter</h4>
-					</div>
-					<div class="modal-body">
-						<img src="images/demo/portfolio-1.jpg" alt="img01" class="img-responsive" />
-						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal for portfolio item 2 -->
-		<div class="modal fade" id="Modal-2" tabindex="-1" role="dialog" aria-labelledby="Modal-label-2">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="Modal-label-2">Startup Framework</h4>
-					</div>
-					<div class="modal-body">
-						<img src="images/demo/portfolio-2.jpg" alt="img01" class="img-responsive" />
-						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal for portfolio item 3 -->
-		<div class="modal fade" id="Modal-3" tabindex="-1" role="dialog" aria-labelledby="Modal-label-3">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="Modal-label-3">Lamp & Velvet</h4>
-					</div>
-					<div class="modal-body">
-						<img src="images/demo/portfolio-3.jpg" alt="img01" class="img-responsive" />
-						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal for portfolio item 4 -->
-		<div class="modal fade" id="Modal-4" tabindex="-1" role="dialog" aria-labelledby="Modal-label-4">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="Modal-label-4">Smart Name</h4>
-					</div>
-					<div class="modal-body">
-						<img src="images/demo/portfolio-4.jpg" alt="img01" class="img-responsive" />
-						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal for portfolio item 5 -->
-		<div class="modal fade" id="Modal-5" tabindex="-1" role="dialog" aria-labelledby="Modal-label-5">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="Modal-label-5">Fast People</h4>
-					</div>
-					<div class="modal-body">
-						<img src="images/demo/portfolio-5.jpg" alt="img01" class="img-responsive" />
-						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
-						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 
 		<!-- Bootstrap core JavaScript
 			================================================== -->
