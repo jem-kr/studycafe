@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@include file="./../common/common.jsp" %>
 <!DOCTYPE html>
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +30,7 @@
 						<p>시설업의 강자가 만든 초심은 편안히 머물 수 있는 공간을 제공해 지치지 않고 처음의 다짐, 열정을 그대로 유지해줍니다.</p>
 					</div>
 				</div>
+			</div>
 			</div>
 			<br><br>
 			<div class="row row-0-gutter">
