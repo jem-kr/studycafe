@@ -1,5 +1,5 @@
 ############1. main####################################
-#main=mypkg.common.MainController
+main=mypkg.common.MainController
 ############2.member##################################
 #meLogin=mypkg.member.MemberLoginController
 #meLogout=mypkg.member.MemberLogoutController
