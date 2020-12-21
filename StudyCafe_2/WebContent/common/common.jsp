@@ -52,11 +52,7 @@
 <c:set var="contextPath" value="<%=contextPath%>" scope="application"/> 
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-=======
 	<html>
->>>>>>> branch 'master' of https://github.com/seeyoufriyay/StudyCafe.git
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
