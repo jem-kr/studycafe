@@ -6,6 +6,27 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% int twelve = 12 ; %>
 <c:set var="twelve" value="12" />
+
+<!-- whologin 변수는 로그인 상태를 저장하고 있는 변수 정보이다.-->
+<c:set var="whologin" value="0" />
+
+<c:if test="${ empty sessionScope.loginfo}"><!-- 로그인 안함 -->
+	<!-- 어떤 사람도 로그인을 안했으면 0  -->
+	<c:set var="whologin" value="0" />
+</c:if>
+
+<c:if test="${ not empty sessionScope.loginfo}"><!-- 로그인 함 -->
+	<c:if test="${ sessionScope.loginfo.id == 'admin'}">
+		<!-- 관리자 : 2  -->
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.id != 'admin'}">
+		<!-- 사용자 : 1  -->
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
+
+
 <%!
 	String YesForm = null ;
 	String NoForm = null ;
@@ -78,6 +99,13 @@
   				
   			}
   		</style>
+  		<script type="text/javascript">
+	  		$(document).ready(function(){
+	  		  $("navbar-toggle").click(function(){
+	  		    $("ul.nav").toggle();
+	  		  });
+	  		});
+  		</script>
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -103,18 +131,32 @@
 							<a href="#page-top"></a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#about">소개</a>
+							<a class="page-scroll" href="<%=NoForm%>about">소개</a>
 						</li>
 						<li>
 							<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="#product"
 							data-toggle="dropdown">시설안내</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">상품 목록</a></li>
-								<li><a href="#">상품 매출</a></li>
-								<li><a href="#">이용 요금</a></li>
-								<li><a href="#">시설 소개</a></li>
-								<li><a href="#">상품 등록</a></li>
+								<li>
+									<a href="<%=NoForm%>prList">상품 목록</a>
+								</li>
+								<li>
+									<c:if test="${whologin == 2}">
+										<a href="<%=NoForm%>prPrice">상품 매출</a>
+									</c:if>	
+								</li>
+								<li>
+									<a href="<%=NoForm%>prFee">이용 요금</a>
+								</li>
+								<li>
+									<a href="<%=NoForm%>prFac">시설 소개</a>
+								</li>
+								<li>
+									<c:if test="${whologin == 2}">
+										<a href="<%=NoForm%>prInsert">상품 등록</a>
+									</c:if>	
+								</li>
 							</ul>
 						</li>
 						<li>
@@ -122,43 +164,95 @@
 							<a class="dropdown-toggle page-scroll" href="#notice"
 							data-toggle="dropdown">공지사항</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">공지사항 등록</a></li>
-								<li><a href="#">공지사항 목록</a></li>
+								<li>
+									<c:if test="${whologin == 2}">
+										<a href="<%=NoForm%>noInsert">공지사항 등록</a>
+									</c:if>	
+								</li>
+								<li>
+									<a href="<%=NoForm%>noList">공지사항 목록</a>
+								</li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="member_info"
 							data-toggle="dropdown">회원정보</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">로그인</a></li>
-								<li><a href="#">로그아웃</a></li>
-								<li><a href="#">회원가입</a></li>
-								<li><a href="#">회원정보수정</a></li>
-								<li><a href="#">회원탈퇴</a></li>
-								<li><a href="#">회원목록보기</a></li>
+								<li>
+									<c:if test="${whologin == 0}">
+										<a href="<%=NoForm%>meLogin">로그인</a>
+									</c:if>		
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meLogout">로그아웃</a>
+									</c:if>		
+								</li>
+								<li>
+									<c:if test="${whologin == 0}">
+										<a href="<%=NoForm%>meInsert">회원가입</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meUpdate&id=${sessionScope.loginfo.id}">회원정보수정</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meDelete&id=${sessionScope.loginfo.id}">회원탈퇴</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin == 2}">
+										<a href="<%=NoForm%>meList">회원목록보기</a>
+									</c:if>	
+								</li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="#booking"
 							data-toggle="dropdown">예약하기</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">예약하기</a></li>
-								<li><a href="#">예약내역보기</a></li>
+								<li>
+									<c:if test="${whologin == 1}">
+										<a href="<%=NoForm%>bkInsert">예약 하기</a>
+									</c:if>		
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>bkList">예약내역 보기</a>
+									</c:if>		
+								</li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="#cart" 
 							data-toggle="dropdown">장바구니</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">장바구니 목록</a></li>
-								<li><a href="#">구매내역</a></li>
+								<li>
+									<c:if test="${whologin == 1}">
+										<a href="<%=NoForm%>cartList">장바구니 목록</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin == 1}">
+										<a href="<%=NoForm%>bkList">구매 내역</a>
+									</c:if>	
+								</li>
 							</ul>
 						</li>
 						<li>
-							<c:if test=""></c:if>
-							<button type="button" class="btn btn-default btn-sm">
-			        		  <span class="glyphicon glyphicon-user"></span> 로그인 
-			     		   </button>
+							<c:if test="${whologin == 0}">
+								<button type="button" class="btn btn-default btn-sm">
+			        		 		 <span class="glyphicon glyphicon-user"></span> 로그인 
+			     		   		</button>
+			     		   </c:if>
+			     		   <c:if test="${whologin != 0}">
+								<button type="button" class="btn btn-default btn-sm">
+			        		 		 <span class="glyphicon glyphicon-user"></span> ${sessionScope.loginfo.name}님  
+			     		   		</button>
+			     		   </c:if>
 			        	</li>
 			        	
 					</ul>
