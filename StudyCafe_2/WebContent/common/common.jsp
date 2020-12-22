@@ -63,10 +63,13 @@
 		<link rel="icon" href="favicon.ico">
 		<title>StudyCafe HTML</title>
 		<!-- Bootstrap core CSS -->
-		<link href="${contextPath }/css/bootstrap.min.css" rel="stylesheet">
+		<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
-		<link href="${contextPath }/css/style.css" rel="stylesheet">
+		<link href="${contextPath}/css/style.css" rel="stylesheet">
+		<script type="text/javascript">
+			
+		</script>
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -75,13 +78,15 @@
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="#page-top"><img src="${contextPath }/images/9_logo.png"  alt="Treviso theme logo" ></a>
+					<a class="navbar-logo navbar-brand page-scroll" href="#page-top">
+						<img src="${contextPath}/images/9_logo.png"  alt="Treviso theme logo" >
+					</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
