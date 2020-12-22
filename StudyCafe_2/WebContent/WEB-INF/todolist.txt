@@ -1,5 +1,6 @@
 ############1. main####################################
 main=mypkg.common.MainController
+#about=mypkg.common.AboutController
 ############2.member##################################
 #meLogin=mypkg.member.MemberLoginController
 #meLogout=mypkg.member.MemberLogoutController
@@ -37,5 +38,7 @@ main=mypkg.common.MainController
 #prInsert=mypkg.product.ProductInsertController
 #prDelete=mypkg.product.ProductDeleteController
 #prUpdate=mypkg.product.ProductUpdateController
+#prFee=mypkg.product.ProductFeeController
+#prFac=mypkg.product.ProductFacController
 ############7. QnA########################################
 #QAsend=mypkg.qna.QnasendController
