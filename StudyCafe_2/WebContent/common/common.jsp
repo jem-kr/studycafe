@@ -67,9 +67,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="${contextPath}/css/style.css" rel="stylesheet">
-		<script type="text/javascript">
-			
-		</script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -109,8 +109,14 @@
 						<li>
 							<a class="page-scroll" href="#booking">예약하기</a>
 						</li>
-						<li>
-							<a class="page-scroll" href="#cart">장바구니</a>
+						<li class="dropdown">
+							<a class="dropdown-toggle page-scroll" href="#cart" 
+							data-toggle="dropdown">장바구니<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">장바구니 목록</a></li>
+								<li><a></a></li>
+								<li><a></a></li>
+							</ul>
 						</li>
 						
 					</ul>
