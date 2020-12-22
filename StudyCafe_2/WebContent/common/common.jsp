@@ -70,6 +70,14 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  		<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
+  		<style type="text/css">
+  			.btn{
+  				right:10px;
+  				align-items: flex-end;
+  				
+  			}
+  		</style>
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -98,30 +106,65 @@
 							<a class="page-scroll" href="#about">소개</a>
 						</li>
 						<li>
-							<a class="page-scroll" href="#facility">시설안내</a>
+							<li class="dropdown">
+							<a class="dropdown-toggle page-scroll" href="#product"
+							data-toggle="dropdown">시설안내</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">상품 목록</a></li>
+								<li><a href="#">상품 매출</a></li>
+								<li><a href="#">이용 요금</a></li>
+								<li><a href="#">시설 소개</a></li>
+								<li><a href="#">상품 등록</a></li>
+							</ul>
 						</li>
 						<li>
-							<a class="page-scroll" href="#notice">공지사항</a>
+							<li class="dropdown">
+							<a class="dropdown-toggle page-scroll" href="#notice"
+							data-toggle="dropdown">공지사항</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">공지사항 등록</a></li>
+								<li><a href="#">공지사항 목록</a></li>
+							</ul>
 						</li>
-						<li>
-							<a class="page-scroll" href="#member_info">회원정보</a>
+						<li class="dropdown">
+							<a class="dropdown-toggle page-scroll" href="member_info"
+							data-toggle="dropdown">회원정보</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">로그인</a></li>
+								<li><a href="#">로그아웃</a></li>
+								<li><a href="#">회원가입</a></li>
+								<li><a href="#">회원정보수정</a></li>
+								<li><a href="#">회원탈퇴</a></li>
+								<li><a href="#">회원목록보기</a></li>
+							</ul>
 						</li>
-						<li>
-							<a class="page-scroll" href="#booking">예약하기</a>
+						<li class="dropdown">
+							<a class="dropdown-toggle page-scroll" href="#booking"
+							data-toggle="dropdown">예약하기</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">예약하기</a></li>
+								<li><a href="#">예약내역보기</a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="#cart" 
-							data-toggle="dropdown">장바구니<b class="caret"></b></a>
+							data-toggle="dropdown">장바구니</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">장바구니 목록</a></li>
-								<li><a></a></li>
-								<li><a></a></li>
+								<li><a href="#">구매내역</a></li>
 							</ul>
 						</li>
-						
+						<li>
+							<c:if test=""></c:if>
+							<button type="button" class="btn btn-default btn-sm">
+			        		  <span class="glyphicon glyphicon-user"></span> 로그인 
+			     		   </button>
+			        	</li>
+			        	
 					</ul>
-				</div>
+					
 				<!-- /.navbar-collapse -->
+				</div>
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
