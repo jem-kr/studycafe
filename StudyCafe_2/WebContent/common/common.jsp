@@ -96,14 +96,12 @@
   			.btn{
   				right:10px;
   				align-items: flex-end;
-  				
   			}
+  			
+  			
   		</style>
   		<script type="text/javascript">
 	  		$(document).ready(function(){
-	  		  $("navbar-toggle").click(function(){
-	  		    $("ul.nav").toggle();
-	  		  });
 	  		});
   		</script>
 	</head>
@@ -121,7 +119,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-logo navbar-brand page-scroll" href="<%=NoForm%>main">
-						<img src="${contextPath}/images/9_logo.png"  alt="Treviso theme logo" >
+						<img src="${contextPath}/images/9_logo.png"  alt="thatstudy logo" >
 					</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -244,9 +242,11 @@
 						</li>
 						<li>
 							<c:if test="${whologin == 0}">
+								<a href="<%=NoForm%>melogin">
 								<button type="button" class="btn btn-default btn-sm">
 			        		 		 <span class="glyphicon glyphicon-user"></span> 로그인 
 			     		   		</button>
+			     		   		</a>
 			     		   </c:if>
 			     		   <c:if test="${whologin != 0}">
 								<button type="button" class="btn btn-default btn-sm">
@@ -254,16 +254,12 @@
 			     		   		</button>
 			     		   </c:if>
 			        	</li>
-			        	
 					</ul>
-					
 				<!-- /.navbar-collapse -->
 				</div>
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-		
-
 		<!-- Bootstrap core JavaScript
 			================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -272,6 +268,4 @@
 		<script src="js/SmoothScroll.js"></script>
 		<script src="js/theme-scripts.js"></script>
 	</body>
-	
-	
 </html>
