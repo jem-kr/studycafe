@@ -32,11 +32,11 @@
 						<br><br><br><br><br>
 					<div class="section-title">
 						<h2>For Study</h2>
-						<p>시설업의 강자가 만든 초심은 편안히 머물 수 있는 공간을 제공해 지치지 않고 처음의 다짐, 열정을 그대로 유지해줍니다.</p>
+						<p>시설업의 강자가 만든 그...스터디카페는 <br>편안히 머물 수 있는 공간을 제공해 지치지 않고 처음의 다짐, 열정을 그대로 유지해줍니다.</p>
 					</div>
 				</div>
 			</div>
-			<br><br>
+			<br>
 			<div class="row row-0-gutter">
 				<!-- start portfolio item -->
 				<div class="col-md-6 col-0-gutter">
@@ -114,21 +114,22 @@
 						</div>
 					</div>
 				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-6 text-center">
 						<div class="mz-about-container">
 						<br><br>
-							<p>독보적 인테리어, 다양한 좌석 구성, 넓은 책상, 공기정화 시스템</p>
-							<p>마일리지 적립 제도를 도입해 고객 간 선물까지 가능하게 하는 등 </p>
-							<p>다양한 시스템으로 이용자의 높은 만족도를 이끌어 내고 있습니다.</p>
-							<p>편안한 스터디카페 환경을 조성하기 위해 끊임없이 노력하겠습니다.</p>
+							<p>독보적 인테리어, 쾌적한 환경, 넓은 책상, 공기정화 시스템</p>
+							<p>몰입과 리프레시를 모두 할 수 있는 효율적인 공간 구성</p>
+							<p>다양한 시스템으로 높은 만족도를 이끌어 내고 있습니다.</p>
+							<p>편안한 환경을 조성하기 위해 끊임없이 노력하겠습니다.</p>
 						<br><br><br>
 						</div>
 					</div>
 					<div class="col-md-6 text-center">
 						<!-- skill bar item -->
 						<div class="skillbar-item">
-							<div class="skillbar"  data-percent="90%">
+							<div class="skillbar"  data-percent="80%">
 								<h3>Study Zone</h3>
 								<div class="skillbar-bar">
 									<div class="skillbar-percent" style="width: 90%;">
@@ -148,17 +149,17 @@
 						</div>
 						<!-- skill bar item -->
 						<div class="skillbar-item">
-							<div class="skillbar" data-percent="85%">
+							<div class="skillbar" data-percent="80%">
 								<h3>Hideout Room</h3>
 								<div class="skillbar-bar">
-									<div class="skillbar-percent" style="width: 85%;">
+									<div class="skillbar-percent" style="width: 70%;">
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- skill bar item -->
 						<div class="skillbar-item">
-							<div class="skillbar" data-percent="70%">
+							<div class="skillbar" data-percent="80%">
 								<h3>Cafe Zone</h3>
 								<br>
 								<div class="skillbar-bar">
@@ -210,8 +211,8 @@
 					<div class="col-lg-12 text-center">
 						<div class="section-title">
 							<h2>BRANCH</h2>
-							<p>가까운 초심 스터디카페를 확인해 보세요</p>
-							<br><br>
+							<p>가까운 그...스터디카페를 확인해 보세요.</p>
+							<br>
 						</div>
 					</div>
 				</div>
@@ -225,9 +226,9 @@
 								<img src="${contextPath}/images/demo/branch01.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
-								<h3>서울 신림점</h3>
+								<h3>인천 부평점</h3>
 								<span class="badge badge-secondary">best</span>
-								<p>서울시 관악구 신림로 366<br>(신림동 1425-17), 8F</p>
+								<p>부평구 부평로 366<br>(부평동 1425-17), 8F</p>
 							</div>
 						</div>
 					</div>
@@ -239,9 +240,9 @@
 								<img src="${contextPath}/images/demo/branch02.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
-								<h3>서울 방배점</h3>
-								<span class="badge badge-secondary">best</span>
-								<p>서초구 효령로31길 28<br>(방배동 910-5), 3F</p>
+								<h3>서울 신촌점</h3>
+								<span class="badge badge-secondary">new</span>
+								<p>마포구 백범로 23<br>(신수동 63-13), B1</p>
 							</div>
 						</div>
 					</div>
@@ -253,9 +254,9 @@
 								<img src="${contextPath}/images/demo/branch03.png" class="img-responsive" alt="author">
 							</div>
 							<div class="team-text">
-								<h3>부산 남천점</h3>
+								<h3>서울 당산점</h3>
 								<span class="badge badge-secondary">new</span>
-								<p>부산광역시 수영구 남천동로 11-1<br>(남천동 14-20), 3F</p>
+								<p>영등포구 당산로 11-1<br>(법정동 14-20), 3F</p>
 							</div>
 						</div>
 					</div>
@@ -270,11 +271,11 @@
 					<div class="col-lg-12 text-center">
 						<div class="section-title">
 							<h2>Contact Us</h2>
-							<p>문의사항이 있다면 언제든 메세지를 보내주세요<br></p>
+							<p>문의사항이 있다면 언제든 메세지를 보내주세요.<br></p>
 						</div>
 					</div>
 				</div>
-				<br><br>
+				<br>
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<form name="sentMessage" id="contactForm" novalidate="">
