@@ -3,7 +3,7 @@
 <%@include file="./../common/common.jsp" %>
  
  <%
-	int offset =1; //오프 셋 
+	int offset =3; //오프 셋 
 	int content = twelve - 2 * offset; //12 - 2 * 오프셋
 %>
 <!DOCTYPE html>
@@ -23,6 +23,10 @@
 	}
 </style>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>그... 스터디카페를 소개합니다.</title>
 </head>
