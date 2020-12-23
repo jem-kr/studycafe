@@ -242,7 +242,7 @@
 						</li>
 						<li>
 							<c:if test="${whologin == 0}">
-								<a href="<%=NoForm%>melogin">
+								<a href="<%=NoForm%>meLogin">
 								<button type="button" class="btn btn-default btn-sm">
 			        		 		 <span class="glyphicon glyphicon-user"></span> 로그인 
 			     		   		</button>
