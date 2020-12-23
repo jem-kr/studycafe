@@ -3,6 +3,11 @@
 <%@ include file="./../common/common.jsp"%>
 <!DOCTYPE html>
 	<html>
+	<script type="text/javascript">
+	$(document).ready(function({
+		
+	});
+</script>
 	<head>
 		<meta charset="UTF-8">
 		<title>StudyCafe HTML</title>
@@ -32,7 +37,7 @@
 			<h4>예약 및 사용</h4>
 			<ul>
 				<li><b>기본예약 시간단위는 2시간이며, 2시간 단위로 이용하실 수 있습니다.</b></li>
-				<li><img src="./../images/step_img.jpg"></li>
+				<li><img src="${contextPath}/images/step_img.png"></li>
 				<li>※ 이용당일 : 그...스터디카페 도착 > 출입구 비밀번호 입력 > 웰컴 본인확인 > 해당 좌석 또는 스터디룸 이용<br>
 					※ 24시간 무인 운영으로 출입시 이용자 비밀번호가 필요합니다.</li>
 			</ul>
@@ -104,10 +109,12 @@
 			<h4>회원종류</h4>
 			<ul>
 				<li><b>비회원</b></li>
-				<!-- 회원가입 경로 변경하기 -->
+				<!-----------------------
+				 회원가입 경로, 플러스친구 변경하기
+				 ------------------------>
 				<li>- 홈페이지에서 간편 회원가입 <a href="/member/Regist.Agreement.php" target="_blank"> [회원가입 바로가기]</a> </li>
 				<li><b>온라인 일반회원 (무료)</b></li>
-				<li>- 카톡 플러스친구 추가 시 혜택 제공 <a href="./../images/kakaopro.png">[그...스터디카페 바로가기]</a><br />
+				<li>- 카톡 플러스친구 추가 시 혜택 제공 <a href="${contextPath}/images/kakaopro.png">[그...스터디카페 바로가기]</a><br />
 				
 			<table width="100%" cellpadding="0" cellspacing="0">
 					<colgroup>
@@ -158,7 +165,9 @@
 			</ul>
 		</div>	
 		<div class="guideinfo" style="border-bottom:1px solid #eaeaea;overflow:hidden">
-		<!-- 예약및결제 페이지 이동 경로 변경하기 -->
+		<!-----------------------
+		예약및결제 페이지 이동 경로 변경하기 
+		------------------------>
 		<a href="/order/Order.Add.php" target="_blank"><div class="common_btn"> 실시간 예약하기 </div></a>
 
 	</div>

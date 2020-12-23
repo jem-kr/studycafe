@@ -17,6 +17,18 @@
 	
 		});
 	</script>
+	
+		<style type="text/css">
+		.blackbar{
+			padding-top: 10px;
+		}
+		
+		.blacktext{
+			color: white;
+		}
+		
+		</style>
+		
 		<!-- Bootstrap core CSS -->
 		<link href="${contextPath }/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -171,37 +183,37 @@
 					</div>
 				</div>
 				<br><br>
-				<div class="row row-0-gutter">
+				<div class="row row-0-gutter" >
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="${contextPath }/images/demo/wifi.png" alt="img02"
+						<img class="blackbar" src="${contextPath }/images/demo/wifi.png" alt="img02"
 						width="50px" height="50px"/>
-							<h3>Free Wifi</h3>
+							<h3 class="blacktext">Free Wifi</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="${contextPath }/images/demo/comfort.png" alt="img02"
+						<img class="blackbar" src="${contextPath }/images/demo/comfort.png" alt="img02"
 						width="50px" height="50px"/>
-							<h3>Comfortable</h3>
+							<h3 class="blacktext">Comfortable</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="${contextPath }/images/demo/coffee.png" alt="img02"
+						<img class="blackbar" src="${contextPath }/images/demo/coffee.png" alt="img02"
 						width="50px" height="50px"/>
-							<h3>Free Beverage</h3>
+							<h3 class="blacktext">Free Beverage</h3>
 					</div>
 					<!-- end about module -->
 					<!-- about module -->
 					<div class="col-md-3 col-0-gutter mz-about-default text-center">
-						<img src="${contextPath }/images/demo/points.png" alt="img02"
+						<img class="blackbar" src="${contextPath }/images/demo/check.png" alt="img02"
 						width="50px" height="50px"/>
-							<h3>Reasonable</h3>
+							<h3 class="blacktext">Reasonable</h3>
 					</div>
 					<!-- end about module -->
+					</div>
 				</div>
-			</div>
 			<!-- /.container -->
 		</section>
 		<br><hr>
