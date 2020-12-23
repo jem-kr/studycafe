@@ -63,10 +63,10 @@ public class FrontController extends HttpServlet {
 		if (controller != null) {
 			String method = request.getMethod().toLowerCase();
 			if (method.equals("get")) {
-				System.out.println(controller.toString() + "doGet방식");
+				System.out.println(controller.toString() + " doGet방식");
 				controller.doGet(request, response);
 			} else {
-				System.out.println(controller.toString() + "doPost방식");
+				System.out.println(controller.toString() + " doPost방식");
 				controller.doPost(request, response);
 			}
 			
