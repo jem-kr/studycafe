@@ -120,7 +120,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-logo navbar-brand page-scroll" href="#page-top">
+					<a class="navbar-logo navbar-brand page-scroll" href="<%=NoForm%>main">
 						<img src="${contextPath}/images/9_logo.png"  alt="Treviso theme logo" >
 					</a>
 				</div>
