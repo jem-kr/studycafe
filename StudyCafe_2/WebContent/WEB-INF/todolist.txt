@@ -1,8 +1,8 @@
 ############1. main####################################
 main=mypkg.common.MainController
-#about=mypkg.common.AboutController
+about=mypkg.common.AboutController
 ############2.member##################################
-#meLogin=mypkg.member.MemberLoginController
+meLogin=mypkg.member.MemberLoginController
 #meLogout=mypkg.member.MemberLogoutController
 #meInsert=mypkg.member.MemberInsertController
 #meIdCheck=mypkg.member.MemberIdCheckController

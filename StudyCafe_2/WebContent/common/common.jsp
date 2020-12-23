@@ -139,6 +139,9 @@
 							data-toggle="dropdown">시설안내</a>
 							<ul class="dropdown-menu">
 								<li>
+									<a href="<%=NoForm%>prFac">시설 소개</a>
+								</li>
+								<li>
 									<a href="<%=NoForm%>prList">상품 목록</a>
 								</li>
 								<li>
@@ -148,9 +151,6 @@
 								</li>
 								<li>
 									<a href="<%=NoForm%>prFee">이용 요금</a>
-								</li>
-								<li>
-									<a href="<%=NoForm%>prFac">시설 소개</a>
 								</li>
 								<li>
 									<c:if test="${whologin == 2}">
