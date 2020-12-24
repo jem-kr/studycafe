@@ -13,7 +13,7 @@
             width: 410px;
             position: absolute;
             left: 50%;
-            top: 80%;
+            top: 50%;
             transform: translate(-50%, -50%);
         }
         .login h2{
@@ -134,7 +134,7 @@
 	            </li>
 	            <li>
 	            	<span>${requestScope.err_message}</span>
-	            	<button type="submit" class="btn">로그인</button>
+	            	<button type="submit">로그인</button>
 	            </li>
 	        </ul>
 	        <div>
