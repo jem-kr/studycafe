@@ -11,10 +11,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>StudyCafe HTML</title>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 		<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link type="text/css" href="${contextPath }/css/pricecustom.css" rel="stylesheet" />
+		
 	</head>
 	<body>
 		

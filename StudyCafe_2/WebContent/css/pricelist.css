@@ -112,40 +112,6 @@ img{
 	border:none;
 }
 
-@font-face {
-  font-family: "Raleway", Sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  /* src부분 무슨 뜻인지 모르겠음 */
-  src: local('Nanum Barun Gothic Regular'), local('Nanum Barun Gothic-Regular'), local('NanumBarunGothic Regular');
-  src: url(../font/NanumBarunGothic.eot);
-  src: url(../font/NanumBarunGothic.eot?#iefix) format('embedded-opentype'),
-       url(../font/NanumBarunGothic.woff) format('woff'),
-       url(../font/NanumBarunGothic.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'Nanum Barun Gothic';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Nanum Barun Gothic Bold'), local('Nanum Barun Gothic-Bold'), local('NanumBarunGothic Bold');
-  src: url(../font/NanumBarunGothicBold.eot);
-  src: url(../font/NanumBarunGothicBold.eot?#iefix) format('embedded-opentype'),
-       url(../font/NanumBarunGothicBold.woff) format('woff'),
-       url(../font/NanumBarunGothicBold.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'Nanum Barun Gothic';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Nanum Barun Gothic Light'), local('Nanum Barun Gothic-Light'), local('NanumBarunGothic Light');
-  src: url(../font/NanumBarunGothicLight.eot);
-  src: url(../font/NanumBarunGothicLight.eot?#iefix) format('embedded-opentype'),
-       url(../font/NanumBarunGothicLight.woff) format('woff'),
-       url(../font/NanumBarunGothicLight.ttf) format('truetype');
-}
-
 
 
 /* layout */
@@ -335,26 +301,6 @@ img{
 .explan strong{font-size:23px;}
 .explan span{color:#ffb400;font-size:23px}
 .explan b{font-size:16px;color:#ffb400}
-
-
-.login{width:685px;margin:0 auto 100px auto;border-top:3px solid #f9b000}
-.login input[type="text"]{border:none;font-size:24px;height:100px;color:#6f6f6f;width:100%;font-weight:200}
-.login input[type="password"]{border:none;font-size:24px;height:100px;color:#6f6f6f;width:100%;font-weight:200}
-.login dt{border-bottom:3px solid #bdbdbd}
-.login .logbtn{cursor:pointer;height:65px;background:#f9b000;color:#fff;text-align:center;font-size:26px;font-weight:bold;padding:40px 0 0 0 }
-.login .naverbtn{cursor:pointer;clear:both;height:75px;background:#1ec800;color:#fff;text-align:center;font-size:26px;font-weight:bold;padding:30px 0 0 0 }
-.login .naverbtn img{vertical-align:middle}
-.login .kakaobtn{cursor:pointer;clear:both;height:75px;background:#fbe300;color:#3b1e1e;text-align:center;font-size:26px;font-weight:bold;padding:30px 0 0 0 }
-.login .kakaobtn img{vertical-align:middle}
-.login .join span{color:#c7c7c7}
-.login .join a{font-size:17px;color:#6f6f6f}
-.login .save{float:left;font-size:17px;margin:25px 0;color:#6f6f6f}
-.login .join{float:right;font-size:17px;margin:25px 0;color:#6f6f6f}
-
-.subtap2{width:1200px;margin:0 auto;}
-.subtap2 ul{margin:70px 0 30px 0;overflow:hidden}
-.subtap2 .on{padding:20px 0 0 0;border:2px solid #ffb400;text-align:center;color:#333;width:245px;height:40px;font-weight:bold}
-.subtap2 li{padding:20px 0 0 0;color:#999999;font-size:18px;float:left;border:2px solid #d6d6d6;text-align:center;;width:245px;height:40px}
 
 .btnlist{width:1200px;margin:30px auto 100px auto}
 .btnlist ul{text-align:center}
@@ -705,3 +651,116 @@ input::-webkit-input-placeholder {color: #999; font-size:15px;padding:0 0 0 4px}
 .btnlist3 .btn5{background:#ffb400;color:#333;text-align:center;font-weight:bold;cursor: pointer}
 .btnlist3 .btn6{background:#d1d1d1;color:#fff;text-align:center;cursor: pointer}	
 	
+	
+	
+.nav.active{
+	display: flex;
+}
+
+
+.navbar-logo{
+	padding-bottom: 50px;
+}
+
+.navbar-toggle{
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}
+
+.nav{
+	padding-top: 8px;
+}
+
+.navbar-default {
+	background-color: #F1F1F1;
+	border-color: transparent
+}
+
+.navbar-default .navbar-brand {
+	color: #fff;
+	padding: 10px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus,
+	.navbar-default .navbar-brand:active, .navbar-default .navbar-brand.active
+	{
+	color: #fec503
+}
+
+.navbar-default .navbar-collapse {
+	border-color: rgba(255, 255, 255, .02)
+}
+
+.navbar-default .navbar-toggle {
+	background-color: #fed136;
+	border-color: #fed136
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus
+	{
+	background-color: #fed136
+}
+
+.navbar-default .nav li a {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 2px;
+	color: #000;
+	border-bottom: 1px solid;
+	border-color: #000;
+	margin: 10px 15px;
+	padding: 0 0 2px 0;
+}
+
+.navbar-default .nav li a:hover, .navbar-default .nav li a:focus {
+	border-color: #991919;
+	outline: 0
+}
+
+.navbar-default .navbar-nav>.active>a {
+	border-radius: 0;
+	color: #fff;
+	background-color: #fed136;
+}
+
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus
+	{
+	color: #fff;
+	background-color: #fec503
+}
+
+@media ( min-width :768px) {
+	.navbar-default {
+		background-color: transparent;
+		padding: 40px 0 0px;
+		-webkit-transition: padding .3s;
+		-moz-transition: padding .3s;
+		transition: padding .3s;
+		border: 0
+	}
+	.navbar-default .navbar-brand {
+		font-size: 2em;
+		-webkit-transition: all .3s;
+		-moz-transition: all .3s;
+		transition: all .3s;
+		padding: 10px;
+	}
+	.navbar-default .navbar-nav>.active>a {
+		border-radius: 3px
+	}
+	.navbar-default.navbar-shrink {
+		background-color: #222;
+		padding: 10px 0
+	}
+	.navbar-nav>li>a {
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}	
+}
