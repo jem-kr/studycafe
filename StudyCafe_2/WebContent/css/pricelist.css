@@ -277,7 +277,7 @@ img{
 .guideinfo th.type01{text-align:left;padding:5px 0 5px 25px}
 .guideinfo th.type02{text-align:left;padding:5px 0 5px 25px;font-weight:normal;}
 
-.common_btn{cursor:pointer;clear:both;text-align:center;background:#ffb400;font-size:25px;font-weight:400;margin:50px auto 200px auto;width:600px;padding:35px 0;color:#fff}
+.common_btn{text-decoration: none;cursor:pointer;clear:both;text-align:center;background:#ffb400;font-size:25px;font-weight:400;margin:50px auto 200px auto;width:600px;padding:35px 0;color:#fff}
 .common_btn2{cursor:pointer;clear:both;text-align:center;background:#3d454b;font-size:18px;font-weight:400;margin:50px auto;width:220px;padding:15px 0;color:#fff}
 .common_btn3{cursor:pointer;clear:both;text-align:center;background:#eeeeee;font-size:18px;font-weight:400;margin:50px auto;width:220px;padding:15px 0;color:#3d454b}
 .common_btn4{cursor:pointer;clear:both;text-align:center;background:#ffb400;font-size:18px;font-weight:400;margin:50px auto;width:280px;padding:25px 0;color:#fff}

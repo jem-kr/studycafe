@@ -119,7 +119,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-logo navbar-brand page-scroll" href="<%=NoForm%>main">
-						<img src="${contextPath}/images/9_logo.png"  alt="thatstudy logo" >
+						<img src="${contextPath}/images/logo.png"  alt="thatstudy logo" >
 					</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -148,7 +148,7 @@
 									</c:if>	
 								</li>
 								<li>
-									<a href="<%=NoForm%>prFee">이용 요금</a>
+									<a href="<%=NoForm%>prFee">이용 안내</a>
 								</li>
 								<li>
 									<c:if test="${whologin == 2}">

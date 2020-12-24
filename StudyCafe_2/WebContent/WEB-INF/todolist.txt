@@ -32,10 +32,10 @@ meLogin=mypkg.member.MemberLoginController
 #cartDetail=mypkg.cart.CartDetailController
 #cartCalculate=mypkg.cart.CartCalculateController
 ############6. product####################################
-#prList=mypkg.product.ProductListController  
+prList=mypkg.product.ProductListController  
 #prDetail=mypkg.product.ProductDetailController
 #prPrice=mypkg.product.ProductPriceController  
-#prInsert=mypkg.product.ProductInsertController
+prInsert=mypkg.product.ProductInsertController
 #prDelete=mypkg.product.ProductDeleteController
 #prUpdate=mypkg.product.ProductUpdateController
 prFee=mypkg.product.ProductFeeController

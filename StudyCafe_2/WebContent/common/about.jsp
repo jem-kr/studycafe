@@ -21,6 +21,9 @@
 	.aboutimg{
 		max-height: 80%
 	}
+	.content{
+		padding-bottom: 100px;
+	}
 </style>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -31,6 +34,7 @@
 <title>그... 스터디카페를 소개합니다.</title>
 </head>
 <body>
+	<div class="content">
 	<div class="container-fluid col-sm-offset-<%=offset%>">
 		<div>
 			<img id="shoptitle" class="aboutimg" alt="about1.png" src="${contextPath }/images/demo/about1.png" >
@@ -39,6 +43,7 @@
 			<img id="shopintro" class="aboutimg" alt="about2.png" src="${contextPath }/images/demo/about2.png" >
 		</div>
 	</div>
-
+	</div>
+	<%@include file="./../common/footer.jsp" %>
 </body>
 </html>

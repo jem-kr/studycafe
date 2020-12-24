@@ -330,7 +330,7 @@
 		<br><br>
 								
 								
-		
+		<%@include file = "./../common/footer.jsp" %>
 
 		<!-- Bootstrap core JavaScript
 			================================================== -->

@@ -56,12 +56,10 @@
 					</colgroup>
 					
 					<tr>
-						<th>비회원</th>
 						<th>온라인 일반회원(무료)</th>
 					</tr>
 					<tr>
-						<td>2,200</td>
-						<td>2,000</td>
+						<td>1,500</td>
 					</tr>
 					
 				</table>
@@ -70,34 +68,26 @@
 				<h5>편의시설 이용안내</h5>
 				<table width="100%" cellpadding="0" cellspacing="0">
 				<colgroup>
-						<col width="22%">
-						<col width="38%">
-						<col width="38%">
+						<col width="30%">
+						<col width="70%">
 					<tr>
 						<th>품목</th>
-						<th>비회원</th>
 						<th>온라인 일반회원</th>
-						
 					</tr>
 					<tr>
 						<td class="type01">프린터 이용</td>
-						<td>흑백/칼라 200원 (양면 400원)</td>
 						<td>흑백/칼라 100원 (양면 200원)</td>
 					</tr>
 					<tr>
 						<td class="type01">대형모니터<br>※ 스터디룸</td>
 						<td>무료</td>
-						<td>좌동</td>
 					</tr>
 					<tr>
 						<td class="type01">노트북 대여</td>
 						<td>1시간 1,000원</td>
-						<td>좌동</td>
-
 					</tr>
 					<tr>
 						<td class="type01">사물함 이용</td>
-						<td>당일사용 무료<br>월 사용료 2만원</td>
 						<td>당일사용 무료<br>월 사용료 1만원</td>
 					</tr>
 				</table>
@@ -108,12 +98,9 @@
 		<div class="guideinfo">
 			<h4>회원종류</h4>
 			<ul>
-				<li><b>비회원</b></li>
-				<!-----------------------
-				 회원가입 경로, 플러스친구 변경하기
-				 ------------------------>
-				<li>- 홈페이지에서 간편 회원가입 <a href="/member/Regist.Agreement.php" target="_blank"> [회원가입 바로가기]</a> </li>
 				<li><b>온라인 일반회원 (무료)</b></li>
+				<li>- 홈페이지에서 간편 회원가입 <a href="/member/Regist.Agreement.php" target="_blank"> [회원가입 바로가기]</a> </li>
+				<!-- 플러스 친구 수정하기 -->
 				<li>- 카톡 플러스친구 추가 시 혜택 제공 <a href="${contextPath}/images/kakaopro.png">[그...스터디카페 바로가기]</a><br />
 				
 			<table width="100%" cellpadding="0" cellspacing="0">
@@ -142,16 +129,6 @@
 						<th class="type02">현장결제</th>
 					</tr>
 					<tr>
-						<td>비회원</td>
-						<td>무료</td>
-						<td>X</td>
-						<td>X</td>
-						<td>현장<br>수동조회</td>
-						<td>X</td>
-						<td>X</td>
-						<td>O</td>
-					</tr>
-					<tr>
 						<td>온라인<br>일반회원</td>
 						<td>무료</td>
 						<td>O</td>
@@ -168,25 +145,10 @@
 		<!-----------------------
 		예약및결제 페이지 이동 경로 변경하기 
 		------------------------>
-		<a href="/order/Order.Add.php" target="_blank"><div class="common_btn"> 실시간 예약하기 </div></a>
+		<a href="/order/Order.Add.php" target="_self"><div class="common_btn"> 실시간 예약하기 </div></a>
 
 	</div>
-
 	</div>
-
-
-<!-- google analytics 20170329 -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-96345945-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<!-- google analytics 20170329 Script End -->
 
 
 </body>
