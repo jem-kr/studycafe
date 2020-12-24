@@ -20,7 +20,7 @@ meLogin=mypkg.member.MemberLoginController
 #bkList=mypkg.booking.BookingListController
 #bkDetail=mypkg.booking.BookingDetailController
 ########4.notify#########################################
-#noList=mypkg.notify.NotifyListController
+noList=mypkg.notify.NotifyListController
 #noInsert=mypkg.notify.NotifyInsertController
 #noDetailView=mypkg.notify.NotifyDetailViewController
 #noDelete=mypkg.Notify.NotifyDeleteController
@@ -39,6 +39,6 @@ prInsert=mypkg.product.ProductInsertController
 #prDelete=mypkg.product.ProductDeleteController
 #prUpdate=mypkg.product.ProductUpdateController
 prFee=mypkg.product.ProductFeeController
-#prFac=mypkg.product.ProductFacController
+prFac=mypkg.product.ProductFacController
 ############7. QnA########################################
 #QAsend=mypkg.qna.QnasendController
