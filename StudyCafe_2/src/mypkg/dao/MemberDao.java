@@ -4,11 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import mypkg.bean.Member;
+import mypkg.member.MemberLoginController;
 
 public class MemberDao extends SuperDao {
 
-	public Member SelectByPk(String id , String password) {
+	public Member SelectByPk(String id, String password) {
 		// id와 password 로 DB에 있는 해당하는 한사람의 정보를 찾는다.
 		Member bean = null;
 
@@ -25,9 +29,9 @@ public class MemberDao extends SuperDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// 1건 발견 
+				// 1건 발견
 				bean = new Member();
-				
+
 				bean.setAgreement(rs.getString("agreement"));
 				bean.setBirth(rs.getString("birth"));
 				bean.setEmail01(rs.getString("email01"));
@@ -41,9 +45,14 @@ public class MemberDao extends SuperDao {
 				bean.setPwquestion(rs.getString("pwquestion"));
 				bean.setRemark(rs.getString("remark"));
 				bean.setVisit(rs.getString("visit"));
+
 			}
 
-			System.out.println("DB 발견!");
+			if (bean == null) {
+				System.out.println("데이터 베이스에서 해당하는 id, pw를 찾을 수 없습니다.");
+			} else {
+				System.out.println("데이터 베이스에서 해당하는 id, pw를 찾았습니다.");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -55,7 +64,7 @@ public class MemberDao extends SuperDao {
 					e.printStackTrace();
 				}
 			}
-			if (rs!=null) {
+			if (rs != null) {
 				try {
 					rs.close();
 				} catch (SQLException e) {

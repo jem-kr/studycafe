@@ -38,8 +38,13 @@ public class MemberLoginController extends SuperClass {
 
 		if (this.validate(request) == false) {
 			// 유효성 검사 통과 못함.
+
+			request.setAttribute("id", id);
+			request.setAttribute("password", password);
+
 			gotopage = "member/meLoginForm.jsp";
 			super.GotoPage(gotopage);
+
 		} else {
 			// 유효성 검사 통과
 			// 데이터 베이스에서 해당 id 와 비밀번호가 일치하는지 찾음
@@ -55,9 +60,11 @@ public class MemberLoginController extends SuperClass {
 
 			} else {
 				// 해당 id와 pw 를 찾을 수 없음
-				request.setAttribute("id", id);
-				request.setAttribute("password", password);
-
+				
+				String err_message = "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.";
+				
+				request.setAttribute("err_message", err_message);
+				
 				gotopage = "member/meLoginForm.jsp";
 				super.GotoPage(gotopage);
 
