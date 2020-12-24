@@ -20,7 +20,7 @@ meLogin=mypkg.member.MemberLoginController
 #bkList=mypkg.booking.BookingListController
 #bkDetail=mypkg.booking.BookingDetailController
 ########4.notify#########################################
-#noList=mypkg.notify.NotifyListController
+noList=mypkg.notify.NotifyListController
 #noInsert=mypkg.notify.NotifyInsertController
 #noDetailView=mypkg.notify.NotifyDetailViewController
 #noDelete=mypkg.Notify.NotifyDeleteController
