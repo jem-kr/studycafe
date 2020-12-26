@@ -3,7 +3,7 @@ main=mypkg.common.MainController
 about=mypkg.common.AboutController
 ############2.member##################################
 meLogin=mypkg.member.MemberLoginController
-#meLogout=mypkg.member.MemberLogoutController
+meLogout=mypkg.member.MemberLogoutController
 #meInsert=mypkg.member.MemberInsertController
 #meIdCheck=mypkg.member.MemberIdCheckController
 #meList=mypkg.member.MemberListController

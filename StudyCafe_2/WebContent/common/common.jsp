@@ -98,6 +98,15 @@
   				align-items: flex-end;
   			}
   			
+  			i{
+  				color: white;
+  				font: "맑은 고딕","돋움",arial;
+  			}
+  			
+  			i:hover{
+  				color : #ffb400;
+  			}
+  			
   			
   		</style>
   		<script type="text/javascript">
@@ -243,16 +252,29 @@
 						<li>
 							<c:if test="${whologin == 0}">
 								<a href="<%=NoForm%>meLogin">
-								<button type="button" class="btn btn-default btn-sm">
-			        		 		 <span class="glyphicon glyphicon-user"></span> 로그인 
-			     		   		</button>
+									<i class="fas fa-sign-in-alt"> 
+										로그인
+									</i>
 			     		   		</a>
 			     		   </c:if>
+			     		</li>
+			     		<li>
 			     		   <c:if test="${whologin != 0}">
-								<button type="button" class="btn btn-default btn-sm">
-			        		 		 <span class="glyphicon glyphicon-user"></span> ${sessionScope.loginfo.name}님  
-			     		   		</button>
-			     		   </c:if>
+			     		   		<a href="<%=NoForm%>meDetailView">
+					     		   	<i class="fas fa-user"> 
+										${sessionScope.loginfo.name}님
+									</i>
+								</a>
+							</c:if>
+						</li>
+						<li>		
+							 <c:if test="${whologin != 0}">				
+								<a href="<%=NoForm%>meLogout">
+									<i class="fas fa-sign-out-alt"> 
+										로그아웃
+									</i>
+								</a>
+			     		  	 </c:if>
 			        	</li>
 					</ul>
 				<!-- /.navbar-collapse -->
