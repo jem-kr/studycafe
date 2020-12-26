@@ -70,11 +70,11 @@
         .login button{
             width: 100% ;
             height: 56px;
-            background-color: #fed136;
+            background-color: #ffb400;
             line-height: 56px;
             font-size: 18px;
             color: #ffffff;
-            border: #fed136;
+            border:#ffb400;
             font-weight: bold;
         }
         .login div{
