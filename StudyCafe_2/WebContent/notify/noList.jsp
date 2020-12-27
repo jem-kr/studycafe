@@ -14,6 +14,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+function gotoBack(){
+	location.href='<%=NoForm%>boList&${requestScope.parameters}';
+	//alert('${requestScope.parameter}') ;
+}
+</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -69,7 +75,7 @@
 					
 				</form>
 			</div> -->
-			<table class="table table-hover table-striped">
+			<table class="table table-dark table-hover ">
 				
 				<thead>
 				<tr>
@@ -87,8 +93,8 @@
 							<input type="text" class="form-control btn-xs" name="keyword"
 								id="keyword" placeholder="검색하실 단어를 입력하세요">
 						</div>
-						<button class="btn btn-default btn-info" type="submit" onclick="search();">검색</button>
-						<button class="btn btn-default btn-info" type="button" onclick="searchAll();">전체보기</button>
+						<button class="btn btn-outline-warning" type="submit" onclick="search();">검색</button>
+						<button class="btn btn-outline-warning" type="button" onclick="searchAll();">전체보기</button>
 						<button class="btn btn-default btn-primary" type="button" onclick="writeForm();">작성</button>
 						&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
 						<p class="form-control-static">${requestScope.pagingStatus }</p>
@@ -96,10 +102,9 @@
 					</td>		
 				</tr>
 				<tr class="tablehd">
-					<th width="5">no</th> 
 					<th width="55%">제목</th>
 					<th width="10%">작성자</th>
-					<th width="5%">조회수</th>
+					<th width="10%">조회수</th>
 					<th width="15%">작성일자</th>
 					<!-- <th width="5%">수정</th>
 					<th width="5%">삭제</th> -->
@@ -110,12 +115,11 @@
 				
 				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
-						<td>${bean.num }</td>
 						<td>
 						<c:forEach var="cnt" begin="1" end="${bean.depth }">
 							<span class="badge re">└></span>
 						</c:forEach>
-						<a href="<%=NoForm%>noDetailView&num${bean.num}&${requestScope.parameters }">
+						<a href="<%=NoForm%>noDetailView&num=${bean.num}&${requestScope.parameters }">
 							${bean.title }
 						</a>
 						</td>
