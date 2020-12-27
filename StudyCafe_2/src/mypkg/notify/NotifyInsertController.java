@@ -36,26 +36,28 @@ public class NotifyInsertController extends SuperClass{
 		if(multi.getParameter("readhit")!=null && multi.getParameter("readhit")!="") {
 			bean.setReadhit(Integer.parseInt(multi.getParameter("readhit")));
 		}
-//		if( multi.getParameter("depth") != null && multi.getParameter("depth") != "" ){
-//			bean.setDepth( Integer.parseInt(multi.getParameter("depth") ));	
-//		}
-//		if( multi.getParameter("groupno") != null && multi.getParameter("groupno") != "" ){
-//			bean.setGroupno( Integer.parseInt(multi.getParameter("groupno") ));	
-//		}
-//		if( multi.getParameter("orderno") != null && multi.getParameter("orderno") != "" ){
-//			bean.setOrderno( Integer.parseInt(multi.getParameter("orderno") ));	
-//		}
+		if( multi.getParameter("depth") != null && multi.getParameter("depth") != "" ){
+			bean.setDepth( Integer.parseInt(multi.getParameter("depth") ));	
+		}
+		if( multi.getParameter("groupno") != null && multi.getParameter("groupno") != "" ){
+			bean.setGroupno( Integer.parseInt(multi.getParameter("groupno") ));	
+		}
+		if( multi.getParameter("orderno") != null && multi.getParameter("orderno") != "" ){
+			bean.setOrderno( Integer.parseInt(multi.getParameter("orderno") ));	
+		}
 		
 		String gotopage = "";
 		if (this.validate(request)==true) {
 			NotifyDao ndao = new NotifyDao();
 			int cnt = -999999;
 			cnt = ndao.InsertData(bean);
+			super.session.setAttribute("message", "공지사항을 작성했습니다.");
 			new NotifyListController().doGet(request, response);
 		}else {
 			request.setAttribute("bean", bean);
-			super.doPost(request, response);
+			
 			gotopage="/notify/noInsertForm.jsp";
+			super.doPost(request, response);
 			super.GotoPage(gotopage);
 		}
 	}
