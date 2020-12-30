@@ -1,3 +1,4 @@
+<%@page import ="mypkg.utility.Paging" %>
 <%@page import="mypkg.dao.NotifyDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,7 +17,7 @@
 <head>
 <script type="text/javascript">
 function gotoBack(){
-	location.href='<%=NoForm%>boList&${requestScope.parameters}';
+	location.href='<%=NoForm%>NoList&${requestScope.parameters}';
 	//alert('${requestScope.parameter}') ;
 }
 </script>
@@ -95,7 +96,9 @@ function gotoBack(){
 						</div>
 						<button class="btn btn-outline-warning" type="submit" onclick="search();">검색</button>
 						<button class="btn btn-outline-warning" type="button" onclick="searchAll();">전체보기</button>
+						<c:if test="${whologin==2 }">
 						<button class="btn btn-default btn-primary" type="button" onclick="writeForm();">작성</button>
+						</c:if>
 						&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
 						<p class="form-control-static">${requestScope.pagingStatus }</p>
 					</form>
@@ -106,9 +109,10 @@ function gotoBack(){
 					<th width="10%">작성자</th>
 					<th width="10%">조회수</th>
 					<th width="15%">작성일자</th>
-					<!-- <th width="5%">수정</th>
+					<th width="5%">수정</th>
+					<!-- 
 					<th width="5%">삭제</th> -->
-					<th width="5%">답글</th>
+					<!-- <th width="5%">답글</th -->
 					<!-- <th width="5%">비고</th> -->
 				</tr>
 				</thead>
@@ -147,14 +151,17 @@ function gotoBack(){
 							</c:if>
 						</td> --%>
 						<td>
-							<c:if test="${bean.depth <3 }">
+							<c:if test="${sessionScope.loginfo.id == 'admin' }">
+								<a href = "<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}">수정</a>
+							</c:if>
+							<%-- <c:if test="${bean.depth <3 }">
 								<a href="<%=NoForm%>noReply&num=${bean.num}&${requestScope.parameters}&groupno=${bean.groupno}&orderno=${bean.orderno}&depth=${bean.depth}">
 									답글 
 								</a>
 							</c:if>
 							<c:if test="${bean.depth >= 3 }">
 								답글
-							</c:if>
+							</c:if> --%>
 						</td>
 						<%-- <td>
 							${bean.remark }

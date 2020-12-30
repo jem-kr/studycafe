@@ -129,6 +129,7 @@ public class NotifyDao extends SuperDao {
 		int cnt =-999999;
 		try {
 			conn = super.getConnection();
+			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bean.getWriter());
@@ -250,6 +251,51 @@ public class NotifyDao extends SuperDao {
 		}
 		return cnt;
 		
+	}
+
+	public int UpdateData(Notice bean) {
+		System.out.println( bean.toString() ); 
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "update notices set " ;
+		sql += " title = ?, content = ?, image = ?, regdate = ?, remark= ? ";
+		sql += " where num = ? " ;
+
+		int cnt = -999999 ;
+		try {
+			conn = super.getConnection() ;
+			conn.setAutoCommit( false );
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getTitle());
+			pstmt.setString(2, bean.getContent());
+			pstmt.setString(3, bean.getImage());
+			pstmt.setString(4, bean.getRegdate());
+			pstmt.setString(5, bean.getRemark());
+			pstmt.setInt(6, bean.getNum());
+			
+			cnt = pstmt.executeUpdate() ; 
+			conn.commit(); 
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;			
+			cnt = - err.getErrorCode() ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if( pstmt != null ){ pstmt.close(); }
+				if(conn != null){conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt ;
 	}
 
 }

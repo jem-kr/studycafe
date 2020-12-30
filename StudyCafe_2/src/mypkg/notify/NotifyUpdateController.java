@@ -13,58 +13,54 @@ import mypkg.bean.Notice;
 import mypkg.common.SuperClass;
 import mypkg.dao.NotifyDao;
 
-public class NotifyInsertController extends SuperClass{
+public class NotifyUpdateController extends SuperClass{
 	private Notice bean = null;
-	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		NotifyDao ndao = new NotifyDao();
+		bean = ndao.SelectDataByPk(num);
+		
+		
+		request.setAttribute("bean", bean);
 		super.doGet(request, response);
-		String gotopage ="/notify/noInsertForm.jsp";
+		String gotopage = "notify/noUpdateForm.jsp";
+		
 		super.GotoPage(gotopage);
+		
 	}
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		MultipartRequest multi = (MultipartRequest) request.getAttribute("multi");
+		MultipartRequest mr =  (MultipartRequest) request.getAttribute("multi");
 		
 		bean = new Notice();
+		bean.setNum(Integer.parseInt(mr.getParameter("num")));
+		bean.setContent(mr.getParameter("content"));
+		bean.setRegdate(mr.getParameter("regdate"));
+		bean.setRemark(mr.getParameter("remark"));
+		bean.setTitle(mr.getParameter("title"));
+		bean.setWriter(mr.getParameter("writer"));
+		bean.setImage(mr.getFilesystemName("image"));
 		
-		bean.setContent(multi.getParameter("content"));
-		bean.setRegdate(multi.getParameter("regdate"));
-		bean.setRemark(multi.getParameter("remark"));
-		bean.setTitle(multi.getParameter("title"));
-		bean.setWriter(multi.getParameter("writer"));
-		bean.setImage(multi.getFilesystemName("image"));
-		
-//		if(multi.getParameter("readhit")!=null && multi.getParameter("readhit")!="") {
-//			bean.setReadhit(Integer.parseInt(multi.getParameter("readhit")));
-//		}
-//		if(multi.getParameter("groupno")!=null && multi.getParameter("groupno")!="") {
-//			bean.setReadhit(Integer.parseInt(multi.getParameter("groupno")));
-//		}
-//		if(multi.getParameter("orderno")!=null && multi.getParameter("orderno")!="") {
-//			bean.setReadhit(Integer.parseInt(multi.getParameter("orderno")));
-//		}
-//		if(multi.getParameter("depth")!=null && multi.getParameter("depth")!="") {
-//			bean.setReadhit(Integer.parseInt(multi.getParameter("depth")));
-//		}
-		
+		System.out.println(bean);
 		String gotopage="";
 		
-		if (this.validate(request)==false) {
+		if (this.validate(request)==false) { // 유효성 검사 실패
 			request.setAttribute("bean", bean);
+			gotopage="notify/noUpdateForm.jsp";
 			super.doPost(request, response);
-			gotopage="notify/noInsertForm.jsp";
 			super.GotoPage(gotopage);
-		}else {
+		}else {	//유효성 검사 통과
 			NotifyDao ndao = new NotifyDao();
 			int cnt = -9999999;
-			cnt = ndao.InsertData(bean);
+			cnt = ndao.UpdateData(bean);
 			new NotifyListController().doGet(request, response);
 		}
 	}
+	
 	@Override
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck=true;
@@ -89,6 +85,7 @@ public class NotifyInsertController extends SuperClass{
 			isCheck = false  ;
 		}
 		return isCheck ;
-		
 	}
+	
+	
 }

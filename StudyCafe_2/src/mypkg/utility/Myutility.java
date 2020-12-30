@@ -1,10 +1,16 @@
 package mypkg.utility;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import mypkg.common.SuperController;
 
@@ -58,4 +64,19 @@ public class Myutility {
 		return mapdata;
 	
 		}
+
+	public static MultipartRequest getMultiPartRequest(HttpServletRequest request, String uploadedPath) {
+				String encType = "UTF-8"; //문자열 인코딩
+				int sizeLimit = 20 * 1024 * 1024; //업로드 허용 최대 사이즈
+				MultipartRequest multi = null ; //파일 업로드 객체		
+				try {
+					multi = new MultipartRequest(request, uploadedPath, sizeLimit,
+							encType, new DefaultFileRenamePolicy());			
+				} catch (IOException e) {
+					multi = null;
+					e.printStackTrace();
+				}		
+				return multi ;
+	}
+
 	}

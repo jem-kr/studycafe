@@ -10,6 +10,11 @@
   		<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function updateForm(){
+	location.href='<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}';
+}
+</script>
 <style type="text/css">
 	table{
 		width: 90%;
@@ -19,7 +24,7 @@
 	}
 	.tcontent{
 		min-height: 100px;
-		border-bottom: 1px solid grey;
+		
 	}
 	.panel{
 	}
@@ -34,6 +39,12 @@
 	}
 	.notice h6{
 		padding-bottom: 20px;
+	}
+	#disqus_thread{
+		padding-top: 30px;
+		max-width: 80%;
+		padding-left: 20%;
+		color: black;
 	}
 </style>
 </head>
@@ -60,44 +71,79 @@
 					
 						<tr>
 							<td colspan="2" class="tcontent">						
-								${bean.content }</td>
+								<div style="white-space: pre;"> ${bean.content } </div></td>
 						</tr>
-					
-					</table>
-				</div>
-				<div class="col-sm-<%=leftside%> col-sm-<%=leftside%>">
-					<table>
-						<tr>
-							<td>
+					<tr>
+							<c:if test ="${applicationScope.debugMode == true }">
+									디버그 모드가 true이면 보입니다.<br>
+									${applicationScope.uploadedPath}/${bean.image}
+								</c:if>
 								<c:if test="${not empty bean.image}">
-									<img src="${applicationScope.uploadedPath}/${bean.image}"
+								<td>
+									<img src="${contextPath}/upload/${bean.image}"
 										class="img-thumbnail" width="200" height="200"
-										alt="${bean.image}">
+										alt="image">
+								</td>
 								</c:if>
 								<c:if test="${empty bean.image}">
-									<span></span>
+									<td>
+									<input type="hidden">
+									</td>
 								</c:if>
-								<c:if test="${bean.image}='image'">
-									<span></span>
+								<c:if test="${bean.image == ''}">
+									<td>
+									<input type="hidden">
+									</td>
 								</c:if>
-							</td>
+							
 						</tr>
 					</table>
 				</div>
-				
+				<div>
 				<hr>
-				<div class="col-sm-offset-5 col-sm-4">
-					<button class="btn btn-primary" onclick="history.back();">
-						돌아 가기</button>
+				</div>
+				<div class="row">
+				<div class="col-sm-12 text-center" >
+					<!-- <button  type="button" class="btn btn-primary" onclick="history.back();">
+						목록보기</button>  -->
+					<a href="<%=NoForm%>noList&${requestScope.parameters}" class="btn btn-primary" role="button">목록보기</a>	
+						
+						&nbsp;&nbsp;
+						<c:if test="${whologin==2 }">
+						<a href="<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}" class="btn btn-primary" role="button">수정하기</a>
+						</c:if>
+				</div>
 				</div>
 			</div>
 			<!-- end panel-body -->
 		</div>
 	</div>
+	
+	<div id="disqus_thread" align="center"></div>
+	<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://studycafe.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+	</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	
 	<script>
 		$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 		});
 	</script>
+	
 </body>
 </html>

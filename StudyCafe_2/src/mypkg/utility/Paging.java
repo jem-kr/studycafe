@@ -58,7 +58,7 @@ public class Paging {
 		this.pagingHtml = this.getPagingHtml(url);
 		this.pagingStatus = "총 " +totalCount+"건["+this.pageNumber
 				+"/"+this.totalPage+"]";
-		this.DisplayInformation(); 
+//		this.DisplayInformation(); 
 	}
 
 	private String getPagingHtml(String url) {
@@ -124,21 +124,21 @@ public class Paging {
 	}
 
 	
-	private void DisplayInformation() {
-		System.out.println("총 레코드 건수 : " + totalCount + "\n");
-		System.out.println("전체 페이지 수 : " + totalPage + "\n");
-		System.out.println("보여줄 페이지 넘버 : " + pageNumber + "\n");
-		System.out.println("한 페이지에 보여줄 건수 : " + pageSize + "\n");
-		System.out.println("현재 페이지의 시작 행 : " + beginRow + "\n");
-		System.out.println("현재 페이지의 끝 행 : " + endRow + "\n");
-		System.out.println("보여줄 페이지 링크 수 : " + pageCount + "\n");
-		System.out.println("페이징 처리 시작 페이지 번호 : " + beginPage + "\n");
-		System.out.println("페이징 처리 끝 페이지 번호 : " + endPage + "\n");
-		System.out.println("요청 URL : " + url + "\n");
-		//System.out.println("하단의 숫자 페이지 링크 : " + pagingHtml + "\n");
-		System.out.println("상단 우측의 현재 페이지 위치 표시 : " + pagingStatus + "\n");	
-		System.out.println("검색 모드 : " + mode + "\n");
-		System.out.println("검색 키워드 : " + keyword + "\n");
-	}
+//	private void DisplayInformation() {
+//		System.out.println("총 레코드 건수 : " + totalCount + "\n");
+//		System.out.println("전체 페이지 수 : " + totalPage + "\n");
+//		System.out.println("보여줄 페이지 넘버 : " + pageNumber + "\n");
+//		System.out.println("한 페이지에 보여줄 건수 : " + pageSize + "\n");
+//		System.out.println("현재 페이지의 시작 행 : " + beginRow + "\n");
+//		System.out.println("현재 페이지의 끝 행 : " + endRow + "\n");
+//		System.out.println("보여줄 페이지 링크 수 : " + pageCount + "\n");
+//		System.out.println("페이징 처리 시작 페이지 번호 : " + beginPage + "\n");
+//		System.out.println("페이징 처리 끝 페이지 번호 : " + endPage + "\n");
+//		System.out.println("요청 URL : " + url + "\n");
+//		//System.out.println("하단의 숫자 페이지 링크 : " + pagingHtml + "\n");
+//		System.out.println("상단 우측의 현재 페이지 위치 표시 : " + pagingStatus + "\n");	
+//		System.out.println("검색 모드 : " + mode + "\n");
+//		System.out.println("검색 키워드 : " + keyword + "\n");
+//	}
 	
 }

@@ -23,8 +23,8 @@ meInsert=mypkg.member.MemberInsertController
 noList=mypkg.notify.NotifyListController
 noInsert=mypkg.notify.NotifyInsertController
 noDetailView=mypkg.notify.NotifyDetailViewController
-#noDelete=mypkg.Notify.NotifyDeleteController
-#noUpdate=mypkg.Notify.NotifyUpdateController
+#noDelete=mypkg.notify.NotifyDeleteController
+noUpdate=mypkg.notify.NotifyUpdateController
 ##########5.cart#########################################
 #cartInsert=mypkg.cart.CartInsertController
 #cartList=mypkg.cart.CartListController

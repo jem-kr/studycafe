@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypkg.bean.Member;
 import mypkg.bean.Notice;
 import mypkg.common.SuperClass;
 import mypkg.dao.NotifyDao;
@@ -25,10 +26,17 @@ public class NotifyDetailViewController extends SuperClass {
 				request.getParameter("mode"),
 				request.getParameter("keyword"));
 		
+		System.out.println(this.getClass() + " : " + parameters.toString());
+		
 		super.doGet(request, response);
 		
 		if(bean!=null) {
-			if(!bean.getWriter().equals("관리자")) {
+			Member login = (Member) super.session.getAttribute("loginfo");
+			if(session.getAttribute("loginfo")==null) {
+				ndao.UpdateReadhit(num);
+			}else if(!bean.getWriter().equals(login.getId())) {
+				ndao.UpdateReadhit(num);
+			}else if(!bean.getWriter().equals(login.getName())) {
 				ndao.UpdateReadhit(num);
 			}
 			request.setAttribute("bean", bean);
@@ -38,7 +46,6 @@ public class NotifyDetailViewController extends SuperClass {
 			super.GotoPage(gotopage);
 		}else {
 			new NotifyListController().doGet(request, response);
-			
 		}
 	}
 	

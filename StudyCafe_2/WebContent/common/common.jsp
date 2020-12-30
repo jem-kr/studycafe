@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@page import="java.util.*" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -93,6 +93,11 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   		<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
   		<style type="text/css">
+  			.err{
+			font-size : 10pt;
+			color:red;
+			font-weight: bolder;
+		}
   			.btn{
   				right:10px;
   				align-items: flex-end;
