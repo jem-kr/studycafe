@@ -69,6 +69,7 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String command = request.getParameter("command");	
+		System.out.println("커맨드 파라미터 : " + command);
 		
 		if (command == null) {
 			System.out.println("파일 업로드를 수행합니다.");
@@ -99,10 +100,10 @@ public class FrontController extends HttpServlet {
 		if (controller != null) {
 			String method = request.getMethod().toLowerCase();
 			if (method.equals("get")) {
-				System.out.println(controller.toString() + " doGet방식");
+				System.out.println(controller.toString() + " Get방식");
 				controller.doGet(request, response);
 			} else {
-				System.out.println(controller.toString() + " doPost방식");
+				System.out.println(controller.toString() + " Post방식");
 				controller.doPost(request, response);
 			}
 			
