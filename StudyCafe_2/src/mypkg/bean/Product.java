@@ -29,6 +29,7 @@ public class Product {
 	public int getPnum() {
 		return pnum;
 	}
+
 	public void setPnum(int pnum) {
 		this.pnum = pnum;
 	}
@@ -74,13 +75,7 @@ public class Product {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 }

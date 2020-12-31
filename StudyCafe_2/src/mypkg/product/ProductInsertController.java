@@ -46,7 +46,7 @@ public class ProductInsertController  extends SuperClass{
 		}
 		
 		if( bean.getCategory().length() < 1 || bean.getCategory().length() > 10 ){
-			request.setAttribute( super.PREFIX + "ptype", "카테고리는 최소 1자리 이상 10자리 이하");
+			request.setAttribute( super.PREFIX + "category", "카테고리는 최소 1자리 이상 10자리 이하");
 			isCheck = false  ;
 		}
 		
@@ -102,7 +102,6 @@ public class ProductInsertController  extends SuperClass{
 			//목록보기로 리다이렉션
 			new ProductListController().doGet(request, response);
 			
-
 		} else {
 			request.setAttribute("bean", bean);
 			super.doPost(request, response);
@@ -110,9 +109,5 @@ public class ProductInsertController  extends SuperClass{
 			super.GotoPage(gotopage);
 			
 		}
-		
-		
-		
 	}
-
 }

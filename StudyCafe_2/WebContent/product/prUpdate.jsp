@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./../common/common.jsp"%>
+<%@ include file="./../common/common.jsp"%>  
+<%@page import="java.io.File"%> 
 <%
 	int myoffset = 3;
 	int mywidth = twelve - 2*myoffset;
 	int formleft = 2 ;
 	int formright = twelve - formleft ; 
-%>
+%>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>상품 등록</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -51,55 +50,30 @@
 	}	
 	
 </style>
+<meta charset="UTF-8">
+<title>상품 정보 수정</title>
 </head>
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="article_title">
-			<h3>상품 등록</h3>
-			<p>관리자 상품 등록 페이지입니다.</p>
+			<h3>상품 정보 수정</h3>
+			<p>관리자 상품 정보 수정 페이지입니다.</p>
 		</div>
 	<div class="panel panel-default">
 
 		<div class="panel-body">
+		
 			<form class="form-horizontal" role="form" action="<%=YesForm%>" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="command" value="prInsert">
+				<input type="hidden" name="command" value="prUpdate">
+					<input type="hidden" name="command" value="prUpdate">
+					<input type="hidden" name="pnum" id="pnum" value="${bean.pnum}">			
+				
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="writer">작성자</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="text" class="form-control" name="fakewriter" id="fakewriter"
 						placeholder="작성자" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})" disabled="disabled">
 					<input type="hidden" name="writer" id="writer" value="${sessionScope.loginfo.id}">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="ptype" class="col-xs-<%=formleft%> col-lg-<%=formleft%> control-label">회원유형</label>
-				<div class="col-xs-<%=formright%> col-lg-<%=formright%>">
-					<select class="form-control" name="ptype" id="ptype">
-						<option value="-" selected="selected">
-						----선택하세요----
-						<c:if test="${bean.ptype == 'onemonth'}">
-							<option value="onemonth" selected="selected">onemonth
-						</c:if>
-						<c:if test="${bean.ptype != 'onemonth'}">
-							<option value="onemonth">onemonth
-						</c:if>
-						<c:if test="${bean.ptype == 'oneday'}">
-							<option value="oneday" selected="selected">oneday
-						</c:if>
-						<c:if test="${bean.ptype != 'oneday'}">
-							<option value="oneday">oneday
-						</c:if>																						
-					</select>
-					<span class="err form-control-static">${errptype}</span>
-				</div>
-			</div>				
-				
-			<div class="form-group">
-				<label class="control-label col-sm-<%=formleft%>" for="item">상품명</label>
-				<div class="col-sm-<%=formright%>">
-					<input type="text" class="form-control" name="item" id="item" 
-					placeholder="상품명을 입력해 주세요.(ex. 다인실, 1인석)" value="${bean.item}">
-						<span class="err form-control-static">${erritem}</span>
 				</div>
 			</div>
 								
@@ -110,7 +84,24 @@
 					placeholder="카테고리를 입력해 주세요.(ex. ROOM, DESK)" value="${bean.category}">
 						<span class="err form-control-static">${errcategory}</span>
 				</div>
-			</div>	
+			</div>				
+			
+			<div class="form-group">
+				<label class="control-label col-sm-<%=formleft%>" for="ptype">좌석유형</label>
+				<div class="col-sm-<%=formright%>">
+					<input type="text" class="form-control" name="ptype" id="ptype" 
+					placeholder="좌석유형을 입력해 주세요.(ex. oneday, onemonth)" value="${bean.ptype}">
+						<span class="err form-control-static">${errptype}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-<%=formleft%>" for="item">상품명</label>
+				<div class="col-sm-<%=formright%>">
+					<input type="text" class="form-control" name="item" id="item" 
+					placeholder="상품명을 입력해 주세요.(ex. 다인실, 1인석)" value="${bean.item}">
+						<span class="err form-control-static">${erritem}</span>
+				</div>
+			</div>
 			
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="seatnum">좌석이름</label>
@@ -140,25 +131,31 @@
 			</div>	
 			
 			<div class="form-group">
+				<c:if test="${applicationScope.debugMode == true }">
+					이전 이미지 이름 : <br>
+					${bean.pic} 
+				</c:if>
+				<input name="pic" type="text" value="${bean.pic}">
+				
 				<label class="control-label col-sm-<%=formleft%>" for="pic">상품사진</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="file" class="form-control" name="pic" id="pic" 
-					placeholder="상품사진을 첨부해 주세요." value="${bean.pic}">
-						<span class="err form-control-static">${errpic}</span>
+					<input type="file" class="form-control" name="pic"
+						id="pic" placeholder="상품사진을 첨부해 주세요.">
+					<span class="err">${errpic}</span>								
 				</div>
 			</div>
-			<div class="form-group">
+				<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
-					<button class="btn btn-default" type="submit">등록하기</button>
+					<button class="btn btn-default" type="submit">수정하기</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="btn btn-default" onclick="history.back();">
-						취소</button>					
+						취소</button>	
 				</div>
-			</div>	
+			</div>				
 			</form>													
 		</div>
 		</div>
-
+	
 	</div>
 </body>
 </html>

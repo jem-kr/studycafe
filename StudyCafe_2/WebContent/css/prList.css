@@ -1,0 +1,242 @@
+@import
+	url(http://fonts.googleapis.com/css?family=Roboto:400|Raleway:200,300,400,500,700,900);
+	
+	body{ 
+	padding: 0; 
+	margin: 0; 
+	font-family: "Raleway", Sans-serif;
+	font-size: 13px; 
+	color: #333;
+	}
+	
+	.btn {
+	cursor:pointer;
+	background:#ffb400;
+	color:#fff;
+	cursor:pointer;
+	font-size:13px;
+	font-weight:400;	
+	}
+	
+	
+	.panel {
+		font-size: 13px;
+	}
+	.title h3{
+		padding-top:100px;
+		font-size: 32px;
+        color: #111111;
+        text-align: center;
+        line-height: 100%;
+        padding-bottom: 20px;
+	}
+	.title p{
+	font-size:16px;
+	color:#6f6f6f;
+	line-height:23px;
+	text-align:center;
+	margin:20px 0 40px 0;
+	}
+	
+	.table{
+	border-collapse: collapse;
+	}
+
+	.table th{
+	align:center;
+	text-align: center;	
+	border-collapse: collapse;
+	
+	}
+	
+	.table td{
+	align:center;
+	text-align: center;
+	border-collapse: collapse;
+	
+	}
+		
+	.btn {
+	cursor:pointer;
+	background:#ffb400;
+	color:#fff;
+	cursor:pointer;
+	font-size:13px;
+	font-weight:400;	
+	}
+	.footer{
+		text-align: center;
+	}
+	.table td img{
+	max-width:100%;
+	max-height:100%;
+
+	}
+	
+	.table sbtn{
+	list-style:none;
+	position:absolute;
+	right:40px;
+	top:35px
+	}	
+	/* 버튼1 상세보기 */
+	.r_btn1{
+	height:32px;
+	width:80px;
+	font-family: "Raleway", Sans-serif;
+	clear:both;
+	background:#ffb400;
+	color:#000;
+	font-size:13px;
+	text-align:center;
+	border-radius:6px;
+	padding:8px 14px 8px 14px;
+	margin:0 0 5px 400px
+	}
+	.r_btn1 a:link { 
+	color: black; 
+	text-decoration: none;
+	}
+ 	.r_btn1 a:visited { 
+ 	color: black; 
+ 	text-decoration: none;
+ 	}
+	.r_btn1 a:hover {
+	color: white; 
+	text-decoration: none;
+	}
+	.r_btn1:hover {
+	cursor:pointer;
+	background:#ff9600; 	
+	}
+		
+	/* 버튼2 이용안내 */
+	.r_btn2{
+	height:32px;
+	width:80px;
+	font-family: "Raleway", Sans-serif;
+	background:#696969;
+	color:#fff;
+	font-size:13px;
+	text-align:center;
+	border-radius:6px;
+	padding:8px 14px 8px 14px;
+	margin:0 0 5px 400px
+	}
+	.r_btn2 a:link{
+	color: white; 
+	text-decoration: none;
+	}
+	.r_btn2 a:visited{
+	color: white; 
+	text-decoration: none;
+	}
+	.r_btn2 a:hover{
+	color: black; 
+	text-decoration: none;
+	cursor:pointer;
+	background:#5a5a5a;
+	}
+	.r_btn2:hover{
+	cursor:pointer;
+	background:#5a5a5a;
+	}	
+	
+	.article_title{
+	font-family: "Raleway", Sans-serif;
+	margin:200px 0 0 0
+	}
+	.article_title h3{
+	font-size:35px;
+	font-weight:400;
+	text-align:center;
+	background:url(../images/line.jpg) no-repeat center bottom;
+	padding:0 0 20px 0
+	}
+	
+	.article_title p{
+	font-family: "Raleway", Sans-serif;
+	font-size:16px;
+	color:#6f6f6f;
+	line-height:23px;
+	text-align:center;
+	margin:20px 0 40px 0;
+	}
+	
+	.room{background:url(./../images/room02.png) no-repeat; width:1200px;height:915px;margin:0px auto 50px auto}
+	
+	
+	/*이미지 파일 위 검정타이틀*/
+	.room_info{
+	background:rgba(13,13,13,0.8); /*rgba(적색, 녹색, 청색, 투명도)*/
+	padding:15px 20px;
+	width:1200px;
+	height:205px; /*두께*/
+	position:relative
+	}
+	.room_info ul{
+	font-family: "Raleway", Sans-serif;
+	float:left;
+	color:#fff;
+	font-size:25px;
+	}
+	
+	.room_info .scd{
+	margin:0 0 0 90px
+	}
+	
+	.room_info .sbtn{
+	list-style:none;
+	position:absolute;
+	right:40px;
+	top:35px}
+	
+	.room_info .scd li{
+	float:left;
+	width:160px
+	}
+	.room_info span{
+	color:#fff
+	}
+	
+	.etc{width:1200px;margin:0 auto;overflow:hidden}
+	.etc h4{font-size:22px;margin:80px 0 10px 0}
+	.etc h4 span{font-weight:200;font-size:22px;}
+	.etc ul{width:382px;height:324px;position:relative;float:left;margin:0 25px 0 0}
+	.etc ul:last-child{margin:0}
+	.etc li{padding:4% 8%;font-size:18px;background:rgba(13,13,13,0.8);color:#fff;position:absolute;bottom:0px;width:84%;line-height:25px;height:50px}
+	 a:hover {text-decoration: none;}
+	
+	/* 상품번호 */
+	.admin_num{
+	font-family: "Raleway", Sans-serif;
+	list-style:none;
+	}
+	
+	/* 아이콘 */
+	.r_icon1{
+	font-family: "Raleway", Sans-serif;
+	list-style:none;
+	text-align:left;
+	color:#ffb400;
+	font-size:60px;
+	padding:25px 0 0 20px;
+	}
+	
+	.r_icon2{
+	list-style:none;
+	padding:50px 0 0 75px;
+	height:60px;
+	font-size:24px;
+	color:#fff
+	}
+	
+	
+/*
+
+		padding-top:100px;
+        border-bottom: 2px solid #111111;
+        line-height: 100%;
+        padding-bottom: 20px;
+
+*/
