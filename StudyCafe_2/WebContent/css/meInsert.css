@@ -5,6 +5,14 @@ body{
     padding: 0px;
 }
 
+select{
+	text-align: center;
+}
+
+option{
+	text-align: center;
+}
+
 .member{
     display: flex;
     flex-direction: column;
@@ -13,6 +21,7 @@ body{
     padding-bottom: 100px;
     font-size: 15px;
    }
+   
 .member h2{
     font-size: 32px;
     color: #111111;
@@ -30,6 +39,7 @@ body{
     padding-bottom: 8px;
     line-height: 100%;
     border-bottom: 0.5px solid #d9d9d9;
+    font-weight: bold;
 }
 
 .member > ul{
@@ -55,6 +65,7 @@ body{
     height: 40px;
     text-indent: 12px;
 }
+
 
 .member li.idCheck{
     padding-top: 10px;
@@ -160,8 +171,8 @@ body{
     padding-right: 89px;
 }
 
-.member li.email{
-    padding-bottom: 20px;
+.member li.email {
+    padding-bottom: 0px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -192,6 +203,7 @@ body{
     margin-left: 5px;
 }
 
+
 .member button#insert{
     width: 100% ;
     height: 56px;
@@ -210,12 +222,12 @@ body{
 
 
 .member div ul li:first-child{
-    padding : 0px;
+    padding : 0px 0px 0px 0px;
 }
 
 .member div ul li:first-child select{
     width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     height: 40px;
     text-indent: 12px;
 }
@@ -236,7 +248,7 @@ body{
 }
 
 .member div ul li:nth-child(3) input[type="checkbox"]{
-    margin: 0px;
+    margin: 0px 0px 3px 0px;
     padding: 0px;
     width: 100px;
     box-sizing: border-box;
@@ -251,7 +263,7 @@ body{
 }
 
 .member div + li{
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -259,12 +271,22 @@ body{
     width: 100%;
 }
 
-.member div + li input[type="checkbox"]{
-    margin: 0px;
+.member div + li input[type="checkbox"] {
+    margin: 0px 0px 7px 0px;
     padding: 0px;
     width: 37px;
     box-sizing: border-box;
     height: 16px;
+}
+
+.member li.insert{
+	padding : 0px;
+}
+
+.member span{
+	color: red;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 

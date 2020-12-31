@@ -1,5 +1,7 @@
 package mypkg.bean;
 
+import java.util.Arrays;
+
 public class Member {
 	private String id;// 아이디
 	private String password;// 패스워드
@@ -11,7 +13,10 @@ public class Member {
 	private String phone; // 휴대폰 번호
 	private String email01; // 이메일 앞 주소
 	private String email02; // 이메일 뒷 주소
-	private String visit; // 방문 목적
+
+	// 방문 목적 : 파라미터값이 3가지 항목으로 구성되어 있으므로 배열로 접근
+	private String[] visit;
+
 	private String agreement; // 개인정보 동의
 	private String remark; // 비고
 
@@ -100,10 +105,23 @@ public class Member {
 	}
 
 	public String getVisit() {
-		return visit;
+		
+		String _visit = "";
+		
+		if (this.visit != null) {
+			for (int i = 0; i < visit.length; i++) {
+				if (i < visit.length - 1) {
+					_visit += visit[i] + ",";
+				} else {
+					_visit += visit[i];
+				}
+			}
+		}
+
+		return _visit;
 	}
 
-	public void setVisit(String visit) {
+	public void setVisit(String[] visit) {
 		this.visit = visit;
 	}
 
@@ -127,8 +145,17 @@ public class Member {
 	public String toString() {
 		return "Member [id=" + id + ", password=" + password + ", pwquestion=" + pwquestion + ", pwanswer=" + pwanswer
 				+ ", name=" + name + ", birth=" + birth + ", gender=" + gender + ", phone=" + phone + ", email01="
-				+ email01 + ", email02=" + email02 + ", visit=" + visit + ", agreement=" + agreement + ", remark="
-				+ remark + "]";
+				+ email01 + ", email02=" + email02 + ", visit=" + Arrays.toString(visit) + ", agreement=" + agreement
+				+ ", remark=" + remark + ", getId()=" + getId() + ", getPassword()=" + getPassword()
+				+ ", getPwquestion()=" + getPwquestion() + ", getPwanswer()=" + getPwanswer() + ", getName()="
+				+ getName() + ", getBirth()=" + getBirth() + ", getGender()=" + getGender() + ", getPhone()="
+				+ getPhone() + ", getEmail01()=" + getEmail01() + ", getEmail02()=" + getEmail02() + ", getVisit()="
+				+ getVisit() + ", getAgreement()=" + getAgreement() + ", getRemark()=" + getRemark() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
+	
+
+	
 
 }

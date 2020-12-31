@@ -14,6 +14,15 @@
 function updateForm(){
 	location.href='<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}';
 }
+
+function delconfirm(){
+	if(confirm("공지사항을 삭제하겠습니까?")==true){
+		location.href='<%=NoForm%>noDelete&num=${bean.num}&${requestScope.parameters}';
+	}else{
+		return;		
+	}
+	
+}
 </script>
 <style type="text/css">
 	table{
@@ -111,6 +120,11 @@ function updateForm(){
 						&nbsp;&nbsp;
 						<c:if test="${whologin==2 }">
 						<a href="<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}" class="btn btn-primary" role="button">수정하기</a>
+						</c:if>
+						
+						&nbsp;&nbsp;
+						<c:if test="${whologin==2 }">
+						<button class="btn btn-default btn-danger" type="button" onclick="delconfirm();">삭제하기</button>
 						</c:if>
 				</div>
 				</div>

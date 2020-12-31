@@ -106,14 +106,3 @@ public class MemberLoginController extends SuperClass {
 	}
 }
 
-//회원가입 시 사용 할 것
-//// id : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자 , 끝날 때 영문 대문자 또는 소문자 또는 숫자
-//String regex = " /^[A-Za-z0-9]{4,15}$/g";
-//boolean id_result = Pattern.matches(regex, this.id);
-//if (id_result == false) {
-//	request.setAttribute(super.PREFIX + "id", "4 ~ 15자 영문 대 소문자, 숫자를 사용하세요.");
-//	isCheck = false;
-//}
-
-//회원가입 시 사용 할 것
-//pw : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자 , 끝날 때 영문 대문자 또는 소문자 또는 숫자
