@@ -140,8 +140,8 @@
 	        <div>
 	            <ul>
 	                <li><a href="<%=NoForm%>meInsert">회원가입</a></li>
-	                <li><a href="#">아이디 찾기</a></li>
-	                <li><a href="#">비밀번호 찾기</a></li>
+	                <li><a href="<%=NoForm%>meIdSearch">아이디 찾기</a></li>
+	                <li><a href="<%=NoForm%>mePwSearch">비밀번호 찾기</a></li>
 	            </ul>
 	        </div>
 	    </form>

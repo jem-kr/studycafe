@@ -20,10 +20,16 @@
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
 	<script type="text/javascript">	
-			function writeForm(){
-				location.href='<%=NoForm%>prInsert';
-			}
-	</script>
+		function writeForm(){
+			location.href='<%=NoForm%>prInsert';
+		}
+
+		function del(){
+			if(confirm("정말 삭제하시겠습니까?"))
+				list_ok.submit();
+		}
+</script>
+
 <style type="text/css">
 
 	.body{

@@ -97,7 +97,7 @@
 			font-size : 10pt;
 			color:red;
 			font-weight: bolder;
-		}
+			}
   			.btn{
   				right:10px;
   				align-items: flex-end;
@@ -257,7 +257,7 @@
 						<li>
 							<c:if test="${whologin == 0}">
 								<a href="<%=NoForm%>meLogin">
-									<i class="fas fa-sign-in-alt"> 
+									<i class="fas fa-sign-in-alt commom"> 
 										로그인
 									</i>
 			     		   		</a>
@@ -266,7 +266,7 @@
 			     		<li>
 			     		   <c:if test="${whologin != 0}">
 			     		   		<a href="<%=NoForm%>meDetailView">
-					     		   	<i class="fas fa-user"> 
+					     		   	<i class="fas fa-user commom"> 
 										${sessionScope.loginfo.name}님
 									</i>
 								</a>
@@ -275,7 +275,7 @@
 						<li>		
 							 <c:if test="${whologin != 0}">				
 								<a href="<%=NoForm%>meLogout">
-									<i class="fas fa-sign-out-alt"> 
+									<i class="fas fa-sign-out-alt commom"> 
 										로그아웃
 									</i>
 								</a>
@@ -305,6 +305,6 @@
 				alert('${sessionScope.message}') ;	 
 			</script>
 			<% session.removeAttribute("message") ; %>
-		</c:if>		
+		</c:if>			
 	</body>
 </html>

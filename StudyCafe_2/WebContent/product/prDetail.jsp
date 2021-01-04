@@ -157,26 +157,21 @@ function change () {
 							<td width="40%" align="center">좌석번호</td>
 							<td width="60%" align="left">${bean.seatnum}</td>
 						</tr>
-						
-						
-						<form name="form" method="get">
 						<tr>
 							<td width="40%" align="center">시간</td>
 							<td width="60%" align="left">
-							<input type=hidden name="sell_price" value="1500">
+							<input type=hidden name="sell_price" value="${bean.price}">
+							
 							<input type="text" name="amount" value="1" size="3" onchange="change();">
-							<input type="button" value=" + " onclick="add();">
-							<input type="button" value=" - " onclick="del();">
+							<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();">
 						</tr>
 						<tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">				
 							<input type="text" name="sum" size="11" readonly>원
-							<button type="submit" class="btn btn-xs btn-default">예약담기</button>
-							
+							<button type="submit" class="btn btn-xs btn-default">예약하기</button>
 							</td>
 						</tr>
-						</form>										
 				</table>
 				</div>
 			</div>
