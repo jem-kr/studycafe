@@ -19,11 +19,11 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
-<script type="text/javascript">	
-		function writeForm(){
-			location.href='<%=NoForm%>prInsert';
-		}
-</script>
+	<script type="text/javascript">	
+			function writeForm(){
+				location.href='<%=NoForm%>prInsert';
+			}
+	</script>
 <style type="text/css">
 
 	.body{
@@ -229,19 +229,17 @@
 				</a>			
 				</li>
 				<li class="r_btn2">
-				<a href="<%=NoForm%>prDelete&pnum=${bean.pnum}&${requestScope.parameters}">
+				<a href="<%=NoForm%>prDelete&pnum=${bean.pnum}&${requestScope.parameters}"
+				onclick="del();">
 					삭제
 				</a>			
 				</li>
 			</ul>
 			</div>	
-			
-			</c:if>
-										
+			</c:if>					
 		</td>
 		</tr>			
-		</c:forEach>	
-			
+		</c:forEach>
 		</table>
 	</div>
 	</div>

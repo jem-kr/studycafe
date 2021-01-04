@@ -82,12 +82,12 @@ public class ProductInsertController  extends SuperClass{
 		}
 		if(multi.getParameter("price") != null
 				&& multi.getParameter("price").equals("") == false) {
-			bean.setHours(Integer.parseInt(multi.getParameter("price")));
+			bean.setPrice(Integer.parseInt(multi.getParameter("price")));
 		}
 		
 		bean.setCategory(multi.getParameter("category"));
 		bean.setItem(multi.getParameter("item"));
-		bean.setPic(multi.getParameter("pic"));
+		bean.setPic(multi.getFilesystemName("pic"));
 		bean.setPtype(multi.getParameter("ptype"));
 		bean.setSeatnum(multi.getParameter("seatnum"));
 		
@@ -101,13 +101,14 @@ public class ProductInsertController  extends SuperClass{
 			cnt = pdao.InsertData(bean);
 			//목록보기로 리다이렉션
 			new ProductListController().doGet(request, response);
-			
+			System.out.println("이미지 파일 업로드");
 		} else {
 			request.setAttribute("bean", bean);
 			super.doPost(request, response);
 			gotopage = "product/prInsert.jsp";
 			super.GotoPage(gotopage);
-			
+			System.out.println("else이미지 파일 업로드");
+
 		}
 	}
 }

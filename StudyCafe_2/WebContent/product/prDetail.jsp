@@ -165,7 +165,8 @@ function change () {
 							<td width="60%" align="left">
 							<input type=hidden name="sell_price" value="1500">
 							<input type="text" name="amount" value="1" size="3" onchange="change();">
-							<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();">
+							<input type="button" value=" + " onclick="add();">
+							<input type="button" value=" - " onclick="del();">
 						</tr>
 						<tr>
 							<td width="40%" align="center">가격</td>

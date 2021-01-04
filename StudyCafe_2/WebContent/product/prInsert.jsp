@@ -158,7 +158,11 @@
 			</form>													
 		</div>
 		</div>
-
 	</div>
+	<script>
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+	</script>	
 </body>
 </html>

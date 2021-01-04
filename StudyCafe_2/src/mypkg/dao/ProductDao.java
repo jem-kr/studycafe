@@ -12,35 +12,23 @@ import mypkg.bean.Product;
 public class ProductDao extends SuperDao {
 	
 	public int DeleteData(int pnum) {
+		String sql = " delete products where pnum = ? ";
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int cnt = -999999;
 		
 		try {
 			conn = super.getConnection();
-			String sql = " update bookinglists set remark = ? ";
-			sql += " where pnum = ? ";
 			pstmt = conn.prepareStatement(sql);
-			Product bean = this.SelectDataByPk(pnum);
-			String imsi = "상품 " + bean.getItem() + "이(가) 삭제되었습니다.";
-			
-			pstmt.setString(1, imsi);
-			pstmt.setInt(2,  pnum);
-			cnt = pstmt.executeUpdate();
-			pstmt.close();
-			
-			sql = " delete from products ";
-			sql += " where pnum = ?";
-			
-			pstmt = conn.prepareStatement(sql);
+						
 			pstmt.setInt(1, pnum);
 			cnt = pstmt.executeUpdate();
-			
 			conn.commit();
 			
 		} catch (Exception e) {
-			SQLException err = (SQLException)e ;			
-			cnt = - err.getErrorCode() ;			
+			SQLException err = (SQLException)e;
+			cnt = - err.getErrorCode();
 			e.printStackTrace();
 			try {
 				conn.rollback(); 
@@ -66,15 +54,14 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 
 		String sql = " update products set " ;
-		sql += " item= ? , category= ?, seatnum= ?, ptype= ?, hours= ?, " ;
-		sql += " price= ?, pic= ? " ;
-		sql += " where pnum = ? " ;
-
-		int cnt = -999999 ;
+		sql += " item= ? , category= ?, seatnum= ?, ptype= ?, hours= ?, price= ?, pic= ? " ;
+		sql += " where pnum = ? ";
+		
+		int cnt = -999999;
 		try {
-			conn = super.getConnection() ;
+			conn = super.getConnection();
 			conn.setAutoCommit(false);
-			pstmt = conn.prepareStatement(sql) ;
+			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bean.getItem());
 			pstmt.setString(2, bean.getCategory());
@@ -83,6 +70,7 @@ public class ProductDao extends SuperDao {
 			pstmt.setInt(5, bean.getHours());
 			pstmt.setInt(6, bean.getPrice());
 			pstmt.setString(7, bean.getPic());
+			pstmt.setInt(8, bean.getPnum());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -112,7 +100,7 @@ public class ProductDao extends SuperDao {
 	public int InsertData(Product bean) {
 		System.out.println(this.getClass() + " : 상품을 등록합니다.");
 		String sql = " insert into products(pnum, item, category, seatnum, ptype, hours, price, pic)";
-		sql += " valuse(proseq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
+		sql += " values (proseq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;

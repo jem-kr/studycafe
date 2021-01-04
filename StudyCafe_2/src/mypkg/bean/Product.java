@@ -19,13 +19,22 @@ public class Product {
 	}
 	
 	//toString
+
+
+	
+	//getter & setter
+
+
+
 	@Override
 	public String toString() {
 		return "Product [pnum=" + pnum + ", item=" + item + ", seatnum=" + seatnum + ", ptype=" + ptype + ", price="
 				+ price + ", hours=" + hours + ", category=" + category + ", pic=" + pic + "]";
 	}
+
+
 	
-	//getter & setter
+	
 	public int getPnum() {
 		return pnum;
 	}

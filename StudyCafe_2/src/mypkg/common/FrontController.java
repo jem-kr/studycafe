@@ -19,8 +19,8 @@ import com.oreilly.servlet.MultipartRequest;
 import mypkg.utility.Myutility;
 
 @WebServlet(urlPatterns = { "/studycafe" }, initParams = {
-		@WebInitParam(name = "configFile", value = "/WEB-INF/todolist.txt", description = "todolist"),
-		@WebInitParam(name = "debugMode", value = "false") })
+@WebInitParam(name = "configFile", value = "/WEB-INF/todolist.txt", description = "todolist"),
+@WebInitParam(name = "debugMode", value = "false") })
 public class FrontController extends HttpServlet {
 	private Map<String, SuperController> todolist 
 		= new HashMap<String, SuperController>();

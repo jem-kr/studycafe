@@ -49,17 +49,13 @@ public class NotifyListController extends SuperClass{
 				parameters.getKeyword()+"%"	);
 		
 		request.setAttribute("lists", lists);
-		
 		request.setAttribute("pagingHtml", pageinfo.getPagingHtml());
 		request.setAttribute("pagingStatus", pageinfo.getPagingStatus());
-		
 		request.setAttribute("mode", parameters.getMode());
 		request.setAttribute("keyword", parameters.getKeyword());
 		request.setAttribute("parameters", parameters.toString());
 		
-		
 		super.doGet(request, response);
-		
 		String gotopage="notify/noList.jsp";
 		super.GotoPage(gotopage);
 				
