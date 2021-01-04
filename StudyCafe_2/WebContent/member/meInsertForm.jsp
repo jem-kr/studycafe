@@ -12,6 +12,9 @@
 	<title>회원가입</title>
 	<link type="text/css" href="${contextPath}/css/meInsert.css" rel="stylesheet"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 	function check_Id(  ){
 		var id = $('#id').val();

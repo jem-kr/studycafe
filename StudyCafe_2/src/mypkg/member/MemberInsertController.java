@@ -124,7 +124,7 @@ public class MemberInsertController extends SuperClass {
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true; // 기본값 true
 
-		// id : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자 , 끝날 때 영문 대문자 또는 소문자 또는 숫자
+		// id : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자 
 		String regex = "^[a-zA-Z0-9]{4,15}$";
 		boolean id_result = Pattern.matches(regex, bean.getId());
 		if (id_result == false) {
