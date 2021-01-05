@@ -89,7 +89,9 @@
 						<div align="center" class="col-sm-offset-3 col-sm-6">
 							<button class="btn btn-default" type="submit">등록하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-default" type="reset">취소</button>
+							<button class="btn btn-default" type="reset">초기화</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="<%=NoForm%>noList&${requestScope.parameters}" class="btn btn-primary" role="button">목록보기</a>	
 						</div>
 					</div>
 				</form>

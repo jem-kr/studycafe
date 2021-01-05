@@ -57,9 +57,9 @@ public class NotifyDao extends SuperDao {
 		ResultSet rs = null;
 		
 		int cnt = -999999;
-		String sql= " select writer, num, title, content, image, readhit, regdate, remark, groupno, orderno, depth ";
+		String sql= " select writer, num, title, content, image, readhit, regdate, remark ";
 		sql+= " from ( ";
-		sql+= " select writer, num, title, content, image, readhit, regdate, remark, groupno, orderno, depth, ";
+		sql+= " select writer, num, title, content, image, readhit, regdate, remark, ";
 		sql+= " rank()over (order by num desc) as ranking";
 		sql+= " from notices ";
 		if (mode.equalsIgnoreCase("all")==false) {
@@ -81,11 +81,8 @@ public class NotifyDao extends SuperDao {
 				Notice bean = new Notice();
 				
 				bean.setContent(rs.getString("content"));
-				bean.setDepth(rs.getInt("depth"));
-				bean.setGroupno(rs.getInt("groupno"));
 				bean.setImage(rs.getString("image"));
 				bean.setNum(rs.getInt("num"));
-				bean.setOrderno(rs.getInt("orderno"));
 				bean.setReadhit(rs.getInt("readhit"));
 				bean.setRegdate(String.valueOf(rs.getDate("regdate")));
 				bean.setRemark(rs.getString("remark"));
@@ -120,8 +117,8 @@ public class NotifyDao extends SuperDao {
 
 	public int InsertData(Notice bean) {
 		System.out.println("공지사항을 등록합니다.");
-		String sql =" insert into notices (writer, num, title, content, image, readhit, regdate, remark,  groupno, orderno, depth ) ";
-			sql+= "values ( ?, notiseq.nextval, ?, ?, ?, default, to_date(?, 'yyyy/MM/dd'), ?, notiseq.currval, default, default ) ";
+		String sql =" insert into notices (writer, num, title, content, image, readhit, regdate, remark ) ";
+			sql+= "values ( ?, notiseq.nextval, ?, ?, ?, default, to_date(?, 'yyyy/MM/dd'), ? ) ";
 		
 		Connection conn =null;
 		PreparedStatement pstmt = null;
@@ -180,11 +177,8 @@ public class NotifyDao extends SuperDao {
 			while(rs.next()) {
 				bean = new Notice();
 				bean.setContent(rs.getString("content"));
-				bean.setDepth(rs.getInt("depth"));
-				bean.setGroupno(rs.getInt("groupno"));
 				bean.setImage(rs.getString("image"));
 				bean.setNum(rs.getInt("num"));
-				bean.setOrderno(rs.getInt("orderno"));
 				bean.setReadhit(rs.getInt("readhit"));
 				bean.setRegdate(String.valueOf(rs.getDate("regdate")));
 				bean.setRemark(rs.getString("remark"));

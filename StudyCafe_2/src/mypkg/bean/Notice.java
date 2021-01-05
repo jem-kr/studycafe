@@ -8,9 +8,6 @@ public class Notice {
 	private String image;	//첨부파일
 	private int readhit;	//조회수
 	private String regdate;	//작성일자
-	private int groupno;	//답글 그룹
-	private int orderno;	//답글 순서
-	private int depth;		//답글 깊이
 	private String remark;	//비고
 	public String getWriter() {
 		return writer;
@@ -54,24 +51,6 @@ public class Notice {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public int getGroupno() {
-		return groupno;
-	}
-	public void setGroupno(int groupno) {
-		this.groupno = groupno;
-	}
-	public int getOrderno() {
-		return orderno;
-	}
-	public void setOrderno(int orderno) {
-		this.orderno = orderno;
-	}
-	public int getDepth() {
-		return depth;
-	}
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
 	public String getRemark() {
 		return remark;
 	}
@@ -81,8 +60,7 @@ public class Notice {
 	@Override
 	public String toString() {
 		return "Notice [writer=" + writer + ", num=" + num + ", title=" + title + ", content=" + content + ", image="
-				+ image + ", readhit=" + readhit + ", regdate=" + regdate + ", groupno=" + groupno + ", orderno="
-				+ orderno + ", depth=" + depth + ", remark=" + remark + "]";
+				+ image + ", readhit=" + readhit + ", regdate=" + regdate + ", remark=" + remark + "]";
 	}
 
 	public Notice() {

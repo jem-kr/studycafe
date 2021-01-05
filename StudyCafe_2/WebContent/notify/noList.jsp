@@ -120,9 +120,9 @@ function gotoBack(){
 				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>
-						<c:forEach var="cnt" begin="1" end="${bean.depth }">
+						<%-- <c:forEach var="cnt" begin="1" end="${bean.depth }">
 							<span class="badge re">└></span>
-						</c:forEach>
+						</c:forEach> --%>
 						<a href="<%=NoForm%>noDetailView&num=${bean.num}&${requestScope.parameters }">
 							${bean.title }
 						</a>
@@ -154,14 +154,7 @@ function gotoBack(){
 							<c:if test="${sessionScope.loginfo.id == 'admin' }">
 								<a href = "<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}">수정</a>
 							</c:if>
-							<%-- <c:if test="${bean.depth <3 }">
-								<a href="<%=NoForm%>noReply&num=${bean.num}&${requestScope.parameters}&groupno=${bean.groupno}&orderno=${bean.orderno}&depth=${bean.depth}">
-									답글 
-								</a>
-							</c:if>
-							<c:if test="${bean.depth >= 3 }">
-								답글
-							</c:if> --%>
+							
 						</td>
 						<%-- <td>
 							${bean.remark }
