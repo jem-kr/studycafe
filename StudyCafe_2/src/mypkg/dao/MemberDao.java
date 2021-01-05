@@ -1,16 +1,10 @@
 package mypkg.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import mypkg.bean.Member;
-import mypkg.member.MemberLoginController;
 
 public class MemberDao extends SuperDao {
 
