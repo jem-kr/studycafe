@@ -9,6 +9,17 @@ public class Notice {
 	private int readhit;	//조회수
 	private String regdate;	//작성일자
 	private String remark;	//비고
+	
+	private int fix;
+	
+	
+	
+	public int getFix() {
+		return fix;
+	}
+	public void setFix(int fix) {
+		this.fix = fix;
+	}
 	public String getWriter() {
 		return writer;
 	}
@@ -57,12 +68,12 @@ public class Notice {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
 	@Override
 	public String toString() {
 		return "Notice [writer=" + writer + ", num=" + num + ", title=" + title + ", content=" + content + ", image="
-				+ image + ", readhit=" + readhit + ", regdate=" + regdate + ", remark=" + remark + "]";
+				+ image + ", readhit=" + readhit + ", regdate=" + regdate + ", remark=" + remark + ", fix=" + fix + "]";
 	}
-
 	public Notice() {
 	}
 

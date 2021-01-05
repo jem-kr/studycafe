@@ -57,10 +57,10 @@ public class NotifyDao extends SuperDao {
 		ResultSet rs = null;
 		
 		int cnt = -999999;
-		String sql= " select writer, num, title, content, image, readhit, regdate, remark ";
+		String sql= " select writer, num, title, content, image, readhit, regdate, remark, fix ";
 		sql+= " from ( ";
-		sql+= " select writer, num, title, content, image, readhit, regdate, remark, ";
-		sql+= " rank()over (order by num desc) as ranking";
+		sql+= " select writer, num, title, content, image, readhit, regdate, remark, fix, ";
+		sql+= " rank()over (order by fix desc, num desc) as ranking ";
 		sql+= " from notices ";
 		if (mode.equalsIgnoreCase("all")==false) {
 			sql+= " where " + mode + " like '" + keyword +"' ";
@@ -88,6 +88,7 @@ public class NotifyDao extends SuperDao {
 				bean.setRemark(rs.getString("remark"));
 				bean.setTitle(rs.getString("title"));
 				bean.setWriter(rs.getString("writer"));
+				bean.setFix(rs.getInt("fix"));
 				lists.add(bean);
 			}
 			
@@ -117,8 +118,8 @@ public class NotifyDao extends SuperDao {
 
 	public int InsertData(Notice bean) {
 		System.out.println("공지사항을 등록합니다.");
-		String sql =" insert into notices (writer, num, title, content, image, readhit, regdate, remark ) ";
-			sql+= "values ( ?, notiseq.nextval, ?, ?, ?, default, to_date(?, 'yyyy/MM/dd'), ? ) ";
+		String sql =" insert into notices (writer, num, title, content, image, readhit, regdate, remark, fix) ";
+			sql+= "values ( ?, notiseq.nextval, ?, ?, ?, default, to_date(?, 'yyyy/MM/dd'), ?, ? ) ";
 		
 		Connection conn =null;
 		PreparedStatement pstmt = null;
@@ -135,6 +136,7 @@ public class NotifyDao extends SuperDao {
 			pstmt.setString(4, bean.getImage());
 			pstmt.setString(5, bean.getRegdate());
 			pstmt.setString(6, bean.getRemark());
+			pstmt.setInt(7, bean.getFix());
 			
 			cnt= pstmt.executeUpdate();
 			conn.commit();
@@ -184,6 +186,7 @@ public class NotifyDao extends SuperDao {
 				bean.setRemark(rs.getString("remark"));
 				bean.setTitle(rs.getString("title"));
 				bean.setWriter(rs.getString("writer"));
+				bean.setFix(rs.getInt("fix"));
 			}
 			conn.commit();
 		} catch (Exception e) {

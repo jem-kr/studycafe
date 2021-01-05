@@ -37,10 +37,11 @@ public class NotifyInsertController extends SuperClass{
 		bean.setTitle(multi.getParameter("title"));
 		bean.setWriter(multi.getParameter("writer"));
 		bean.setImage(multi.getFilesystemName("image"));
+//		bean.setFix(multi.);
 		
-//		if(multi.getParameter("readhit")!=null && multi.getParameter("readhit")!="") {
-//			bean.setReadhit(Integer.parseInt(multi.getParameter("readhit")));
-//		}
+		if(multi.getParameter("fix")!=null && multi.getParameter("fix")!="") {
+			bean.setFix(Integer.parseInt(multi.getParameter("fix")));
+		}
 //		if(multi.getParameter("groupno")!=null && multi.getParameter("groupno")!="") {
 //			bean.setReadhit(Integer.parseInt(multi.getParameter("groupno")));
 //		}
@@ -88,6 +89,11 @@ public class NotifyInsertController extends SuperClass{
 			request.setAttribute(super.PREFIX + "regdate", "날짜는 yyyy/MM/dd 또는 yyyy-MM-dd 형식으로 입력해 주세요.");
 			isCheck = false  ;
 		}
+		if(bean.getFix() == 2) {
+			request.setAttribute(super.PREFIX + "fix", "중요여부를 선택해주세요.");
+			isCheck =false;
+		}
+		
 		return isCheck ;
 		
 	}

@@ -46,6 +46,9 @@ function gotoBack(){
 	.footer{
 		text-align: center;
 	}
+	.important{
+		color:red;
+	}
 </style>
 <script type="text/javascript">
 	function writeForm(){
@@ -124,7 +127,9 @@ function gotoBack(){
 							<span class="badge re">└></span>
 						</c:forEach> --%>
 						<a href="<%=NoForm%>noDetailView&num=${bean.num}&${requestScope.parameters }">
-							${bean.title }
+							<c:if test="${bean.fix==0 }">${bean.title }</c:if>
+							<c:if test="${bean.fix==1 }"><div class="important">${bean.title }</div></c:if>
+							
 						</a>
 						</td>
 						<td>${bean.writer }</td>

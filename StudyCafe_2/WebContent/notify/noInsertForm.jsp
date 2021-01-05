@@ -105,6 +105,18 @@ $(function() {
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="control-label col-sm-<%=formleft%>" for="fix">중요공지</label>
+						<div class="col-sm-<%=formright%>">
+							 <select name="fix" id="fix">
+							 	<option value="2" selected="selected">--</option>
+    							<option value="1">중요</option>
+							    <option value="0">일반</option>
+							  </select>
+							<span class="err">${errfix}</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
 						<div align="center" class="col-sm-offset-3 col-sm-6">
 							<button class="btn btn-default" type="submit">등록하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
