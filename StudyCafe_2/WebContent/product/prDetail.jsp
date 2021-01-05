@@ -8,7 +8,24 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+	<script type="text/javascript">
+	$(function() {
+	    $( "#testDatepicker" ).datepicker({
+	       dateFormat:  "yy/mm/dd", 
+	       changeMonth: true,
+	       dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	       minDate: 0, 
+	        maxDate: "+2w" 
+	       
+	    });
+	});
+</script>
 <meta charset="UTF-8">
 <title>BootStrap Sample</title>
 
@@ -30,7 +47,7 @@ function add () {
 	sum.value = parseInt(hm.value) * sell_price;
 }
 
-function del () {
+function del_hour () {
 	hm = document.form.amount;
 	sum = document.form.sum;
 	if (hm.value > 1) {
@@ -107,6 +124,47 @@ function change () {
 	int rightside = twelve - leftside; //판넬의 우측
 %>
 <body onload="init();">
+<script language="JavaScript">
+
+var sell_price;
+var amount;
+
+function init () {
+    sell_price = document.form.sell_price.value;
+    amount = document.form.amount.value;
+    document.form.sum.value = sell_price;
+    change();
+}
+
+function add () {
+    hm = document.form.amount;
+    sum = document.form.sum;
+    hm.value ++ ;
+
+    sum.value = parseInt(hm.value) * sell_price;
+}
+
+function del_hour () {
+    hm = document.form.amount;
+    sum = document.form.sum;
+        if (hm.value > 1) {
+            hm.value -- ;
+            sum.value = parseInt(hm.value) * sell_price;
+        }
+}
+
+function change () {
+    hm = document.form.amount;
+    sum = document.form.sum;
+
+        if (hm.value < 0) {
+            hm.value = 0;
+        }
+    sum.value = parseInt(hm.value) * sell_price;
+} 
+
+</script>
+
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="title">
 			<h3 align="center">상품 상세보기</h3>
@@ -114,7 +172,11 @@ function change () {
 		</div>	
 		<div class="panel">
 			<div class="panel-body">
+			
+				<form name="form" method="get">
+			
 				<div class="col-sm-<%=leftside%> col-sm-<%=leftside%>">
+							
 					<table class="table01" style="table-layout:fixed">
 						<tr>
 							<td>
@@ -122,7 +184,6 @@ function change () {
 									<img src="<%=uploadedFolder%>room02.png" class="img-thumbnail"
 										width="600" height="600" alt="no image">
 								</c:if>						
-								
 								<c:if test="${applicationScope.debugMode == true}">
 									디버그 모드가 true이면 보입니다.<br>
 									${applicationScope.uploadedPath}/${bean.p_pic}
@@ -137,55 +198,83 @@ function change () {
 						</tr>
 					</table>
 				</div>
-				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>">
-					<table class="table02 table-condensed ">
-						<tr class="table-light">
-							<td width="40%" align="center">좌석 유형</td>
-							<td width="60%" align="left">${bean.p_type}</td>
-						</tr>
 				
+				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>">
+					<table class="table02 table-condensed ">				
 						<tr>
 							<td width="40%" align="center">좌석 번호</td>
-							<td width="60%" align="left">${bean.p_seat}</td>
+							<td width="60%" align="left">
+							<select class="form-control" name="p_seat" id="p_seat">
+							<option value="-" selected="selected">
+							----선택하세요----
+							<option>${bean.p_seat}</option>										
+							</select>
+								<span class="err form-control-static">${errp_seat}</span>
+							</td>
 						</tr>
 						
 						<tr>
-							<td width="40%" align="center">시작 시간</td>
-							<td width="60%" align="left">${bean.p_stime}</td>
-						</tr>
-						
-						<tr>
-							<td width="40%" align="center">종료 시간</td>
-							<td width="60%" align="left">${bean.p_etime}</td>
+							<td width="40%" align="center">날짜</td>
+							<td width="60%" align="left">
+							<input type="text" id="testDatepicker" class="form-control" name="p_date" 
+							placeholder="날짜" value="${bean.p_date}">
+								<span class="err form-control-static">${errp_date}</span>
+							</td>
 						</tr>	
 						
 						<tr>
-							<td width="40%" align="center">이용 시간</td>
-							<td width="60%" align="left">${bean.p_hour}</td>
-						</tr>												
+							<td width="40%" align="center">시작 시간</td>
+							<td width="60%" align="left">
+							<select class="form-control" name="p_stime" id="p_stime">
+							<option value="-" selected="selected">
+							----선택하세요----
+							<option>${bean.p_stime}</option>
+							</select>
+								<span class="err form-control-static">${errp_stime}</span>
+							</td>
+						</tr>						
 						
 						<tr>
-							<td width="40%" align="center">시간</td>
+							<td width="40%" align="center">종료 시간</td>
+							<td width="60%" align="left">
+							<select class="form-control" name="p_etime" id="p_etime">
+							<option value="-" selected="selected">
+							----선택하세요----
+							<option>${bean.p_etime}</option>
+							</select>
+								<span class="err form-control-static">${errp_etime}</span>
+							</td>
+						</tr>		
+						
+						<tr>
+							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
 							<input type=hidden name="sell_price" value="${bean.p_price}">
-							
 							<input type="text" name="amount" value="1" size="3" onchange="change();">
 							<input type="button" value=" + " onclick="add();">
-							<input type="button" value=" - " onclick="del();">
+							<input type="button" value=" - " onclick="del_hour();">
 						</tr>
-						
 						<tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">				
 							<input type="text" name="sum" size="11" readonly>원
-							<button type="submit" class="btn btn-xs btn-default">예약하기</button>
+							
+							<c:if test="${whologin!=0 }">
+							<button type="submit" onclick="location.href='reInsert.jsp' " 
+							class="btn btn-xs btn-default">예약하기</button>
+							</c:if>
 							</td>
 						</tr>
+						
+						
 				</table>
+				
 				</div>
+			</form>
 			</div>
+			
 			<!-- end panel-body -->
-		<div class="col-sm-offset-5 col-sm-4">
+			<div class="col-sm-offset-5 col-sm-4">
 					<a href="<%=NoForm%>prList&${requestScope.parameters}" 
 					class="btn btn-default" role="button">목록보기</a>	
 					
@@ -194,22 +283,23 @@ function change () {
 						class="btn btn-default" role="button">수정</a>
 						
 						<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}&${requestScope.parameters}" 
-						onclick="delForm();"
+						onclick="del();"
 						class="btn btn-default" role="button">삭제</a>		
-				</c:if>									
+					</c:if>									
+		
+			</div>
+		
 		</div>
+		
 	</div>
 	<script>
 	$(document).ready(function() {
 		$('[data-toggle="popover"]').popover();
 	});	
 	
-	function delForm(){
-		if(confirm("정말 삭제하시겠습니까?")==true{
+	function del(){
+		if(confirm("정말 삭제하시겠습니까?")==true)
 			list_ok.submit();
-		} else {
-			list_ok.reset();
-		}
 	}
 	</script>
 </body>

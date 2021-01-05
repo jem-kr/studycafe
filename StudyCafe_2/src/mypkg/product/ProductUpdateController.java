@@ -32,21 +32,31 @@ public class ProductUpdateController extends SuperClass {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest multi = (MultipartRequest)request.getAttribute("multi") ;
 		
-		bean  = new Product();
-		bean.setP_type( multi.getParameter("p_type"));		
-		bean.setP_seat( multi.getParameter("p_seat"));
-		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
-		bean.setP_pic( multi.getFilesystemName("p_pic"));		
+		bean = new Product();
+
+		bean.setP_type(multi.getParameter("p_type"));
 		
-//		if( multi.getParameter("pnum") != null && multi.getParameter("pnum").equals("") == false){
-//			bean.setPnum( Integer.parseInt( multi.getParameter("pnum") ));	
-//		}
-//		if( multi.getParameter("hours") != null && multi.getParameter("hours").equals("") == false){
-//			bean.setHours( Integer.parseInt( multi.getParameter("hours") ));	
-//		}
-//		if( multi.getParameter("price") != null && multi.getParameter("price").equals("") == false){
-//			bean.setPrice( Integer.parseInt( multi.getParameter("price") ));	
-//		}
+		bean.setP_seat(multi.getParameter("p_seat"));
+		
+		if(multi.getParameter("p_price")!=null && multi.getParameter("p_price").equals("")==false) {
+		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
+		}		
+		
+		bean.setP_date(multi.getParameter("p_date"));
+		
+		if(multi.getParameter("p_stime")!=null && multi.getParameter("p_stime").equals("")==false) {
+		bean.setP_stime(Integer.parseInt(multi.getParameter("p_stime")));
+		}			
+		
+		if(multi.getParameter("p_etime")!=null && multi.getParameter("p_etime").equals("")==false) {
+		bean.setP_etime(Integer.parseInt(multi.getParameter("p_etime")));
+		}
+		
+		if(multi.getParameter("p_hour")!=null && multi.getParameter("p_hour").equals("")==false) {
+		bean.setP_hour(Integer.parseInt(multi.getParameter("p_hour")));
+		}		
+		
+		bean.setP_pic(multi.getFilesystemName("p_pic"));
 	
 		System.out.println( bean );		
 	 

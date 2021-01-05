@@ -54,7 +54,7 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 
 		String sql = " update products set " ;
-		sql += " p_type= ?, p_seat= ?, p_price= ?, p_pic= ? , remark= ? " ;
+		sql += " p_type= ?, p_seat= ?, p_price= ?, p_date= ?, p_stime= ?, p_etime= ?, p_hour=?, p_pic= ? , remark= ? " ;
 		sql += " where p_seat= ? ";
 		
 		int cnt = -999999;
@@ -66,9 +66,13 @@ public class ProductDao extends SuperDao {
 			pstmt.setString(1, bean.getP_type());
 			pstmt.setString(2, bean.getP_seat());
 			pstmt.setInt(3, bean.getP_price());
-			pstmt.setString(4, bean.getP_pic());
-			pstmt.setString(5, bean.getRemark());
-			pstmt.setString(6, bean.getP_seat());
+			pstmt.setString(4, bean.getP_date());
+			pstmt.setInt(5, bean.getP_stime());
+			pstmt.setInt(6, bean.getP_hour());
+			pstmt.setInt(7, bean.getP_price());
+			pstmt.setString(8, bean.getP_pic());
+			pstmt.setString(9, bean.getRemark());
+			pstmt.setString(10, bean.getP_seat());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -97,8 +101,8 @@ public class ProductDao extends SuperDao {
 	//해당 Bean객체를 사용해 상품 등록하기
 	public int InsertData(Product bean) {
 		System.out.println("상품을 등록합니다.");
-		String sql = " insert into products(p_type, p_seat, p_price, p_pic, remark)";
-		sql += " values (?, ?, ?, ?, ?) ";
+		String sql = " insert into products(p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark)";
+		sql += " values (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;
@@ -112,8 +116,12 @@ public class ProductDao extends SuperDao {
 			pstmt.setString(1, bean.getP_type());
 			pstmt.setString(2, bean.getP_seat());
 			pstmt.setInt(3, bean.getP_price());
-			pstmt.setString(4, bean.getP_pic());
-			pstmt.setString(5, bean.getRemark());
+			pstmt.setString(4, bean.getP_date());
+			pstmt.setInt(5, bean.getP_stime());
+			pstmt.setInt(6, bean.getP_hour());
+			pstmt.setInt(7, bean.getP_price());
+			pstmt.setString(8, bean.getP_pic());
+			pstmt.setString(9, bean.getRemark());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -147,10 +155,10 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select p_type, p_seat, p_price, p_pic, remark ";
+		String sql = " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark ";
 		sql += " from ";
 		sql += " ( ";
-		sql += " select p_type, p_seat, p_price, p_pic, remark, ";
+		sql += " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark, ";
 		sql += " rank() over(order by p_seat desc) as ranking ";
 		sql += " from products ";
 		
@@ -178,6 +186,10 @@ public class ProductDao extends SuperDao {
 				bean.setP_type(rs.getString("p_type"));
 				bean.setP_seat(rs.getString("p_seat"));
 				bean.setP_price(rs.getInt("p_price"));
+				bean.setP_date(rs.getString("p_date"));
+				bean.setP_stime(rs.getInt("p_stime"));
+				bean.setP_etime(rs.getInt("p_etime"));
+				bean.setP_hour(rs.getInt("p_hour"));
 				bean.setP_pic(rs.getString("p_pic"));
 				bean.setRemark(rs.getString("remark"));
 				
@@ -278,6 +290,10 @@ public class ProductDao extends SuperDao {
 				bean.setP_type(rs.getString("p_type"));
 				bean.setP_seat(rs.getString("p_seat"));
 				bean.setP_price(rs.getInt("p_price"));
+				bean.setP_date(rs.getString("p_date"));
+				bean.setP_stime(rs.getInt("p_stime"));
+				bean.setP_etime(rs.getInt("p_etime"));
+				bean.setP_hour(rs.getInt("p_hour"));
 				bean.setP_pic(rs.getString("p_pic"));
 				bean.setRemark(rs.getString("remark"));
 	

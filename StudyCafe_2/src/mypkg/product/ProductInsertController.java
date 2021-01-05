@@ -61,10 +61,27 @@ public class ProductInsertController  extends SuperClass{
 		bean = new Product();
 
 		bean.setP_type(multi.getParameter("p_type"));
+		
 		bean.setP_seat(multi.getParameter("p_seat"));
-		if(multi.getParameter("p_price")!=null && multi.getParameter("p_price")!="") {
+		
+		if(multi.getParameter("p_price")!=null && multi.getParameter("p_price").equals("")==false) {
 		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
 		}		
+		
+		bean.setP_date(multi.getParameter("p_date"));
+		
+		if(multi.getParameter("p_stime")!=null && multi.getParameter("p_stime").equals("")==false) {
+		bean.setP_stime(Integer.parseInt(multi.getParameter("p_stime")));
+		}			
+		
+		if(multi.getParameter("p_etime")!=null && multi.getParameter("p_etime").equals("")==false) {
+		bean.setP_etime(Integer.parseInt(multi.getParameter("p_etime")));
+		}
+		
+		if(multi.getParameter("p_hour")!=null && multi.getParameter("p_hour").equals("")==false) {
+		bean.setP_hour(Integer.parseInt(multi.getParameter("p_hour")));
+		}		
+		
 		bean.setP_pic(multi.getFilesystemName("p_pic"));
 
 		

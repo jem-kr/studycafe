@@ -16,6 +16,24 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+	<script type="text/javascript">
+	$(function() {
+    $( "#testDatepicker" ).datepicker({
+       dateFormat:  "yy/mm/dd", 
+       changeMonth: true,
+       dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+       minDate: 0, 
+        maxDate: "+2w"     
+    	});
+	});
+</script> 	
+  	
 <style type="text/css">
 	.form-group{ 
 	margin-bottom : 3px; 
@@ -64,7 +82,7 @@
 		
 			<form class="form-horizontal" role="form" action="<%=YesForm%>" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="command" value="prInsert">
-						
+			
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_type">좌석 유형</label>
 				<div class="col-sm-<%=formright%>">
@@ -84,11 +102,38 @@
 			</div>	
 
 			<div class="form-group">
-				<label class="control-label col-sm-<%=formleft%>" for="p_price">시작 시간</label>
+				<label class="control-label col-sm-<%=formleft%>" for="p_price">가격</label>
+				<div class="col-sm-<%=formright%>">
+					<input type="number" class="form-control" name="p_price" id="p_price" 
+					placeholder="가격을 입력해 주세요.(ex. 1500, 3000)" value="${bean.p_price}">
+						<span class="err form-control-static">${errp_price}</span>
+				</div>
+			</div>	
+			
+			<div class="form-group">
+				<label class="control-label col-sm-<%=formleft%>" for="p_date">날짜</label>
+				<div class="col-sm-<%=formright%>">
+					<input type="text" id="testDatepicker" class="form-control" name="p_date" 
+					placeholder="날짜" value="${bean.p_date}">
+						<span class="err form-control-static">${errp_date}</span>
+				</div>
+			</div>				
+
+			<div class="form-group">
+				<label class="control-label col-sm-<%=formleft%>" for="p_stime">시작 시간</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="number" class="form-control" name="p_stime" id="p_stime" 
 					placeholder="시작 시간을 입력해 주세요." value="${bean.p_stime}">
 						<span class="err form-control-static">${errp_stime}</span>
+				</div>
+			</div>	
+
+			<div class="form-group">
+				<label class="control-label col-sm-<%=formleft%>" for="p_etime">종료 시간</label>
+				<div class="col-sm-<%=formright%>">
+					<input type="number" class="form-control" name="p_etime" id="p_etime" 
+					placeholder="종료 시간을 입력해 주세요." value="${bean.p_etime}">
+						<span class="err form-control-static">${errp_etime}</span>
 				</div>
 			</div>	
 			
@@ -97,18 +142,9 @@
 				<div class="col-sm-<%=formright%>">
 					<input type="number" class="form-control" name="p_hour" id="p_hour" 
 					placeholder="이용 시간을 입력해 주세요." value="${bean.p_hour}">
-						<span class="err form-control-static">${errpp_hour}</span>
+						<span class="err form-control-static">${errp_hour}</span>
 				</div>
 			</div>							
-						
-			<div class="form-group">
-				<label class="control-label col-sm-<%=formleft%>" for="p_price">가격</label>
-				<div class="col-sm-<%=formright%>">
-					<input type="number" class="form-control" name="p_price" id="p_price" 
-					placeholder="가격을 입력해 주세요.(ex. 1500, 3000)" value="${bean.p_price}">
-						<span class="err form-control-static">${errp_price}</span>
-				</div>
-			</div>	
 
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_pic">좌석 사진</label>
@@ -133,6 +169,9 @@
 		$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
 		});
+		
+		
+		
 	</script>	
 </body>
 </html>
