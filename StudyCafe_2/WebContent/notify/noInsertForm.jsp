@@ -16,6 +16,25 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
+     
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<script type="text/javascript">
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    	dateFormat:  "yy/mm/dd", 
+    	changeMonth: true,
+    	dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+    	minDate: 0, 
+        maxDate: "+2w" 
+    	
+    });
+});
+</script>
 <style type="text/css">
 	.panel{
 		padding-top: 80px;
@@ -80,8 +99,8 @@
 						<label class="control-label col-sm-<%=formleft%>" for="regdate">작성
 							일자</label>
 						<div class="col-sm-<%=formright%>">
-							<input type="datetime" class="form-control" name="regdate"
-								id="regdate" placeholder="작성 일자" value="${bean.regdate}"> <span
+						<input type="text" id="testDatepicker" class="form-control" name="regdate" placeholder="작성 일자" value="${bean.regdate}">  
+							 <span
 								class="err">${errregdate}</span>
 						</div>
 					</div>

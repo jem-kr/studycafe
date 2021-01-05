@@ -46,7 +46,7 @@ public class NotifyListController extends SuperClass{
 				pageinfo.getBeginRow(),
 				pageinfo.getEndRow(),
 				parameters.getMode(),
-				parameters.getKeyword()+"%"	);
+				"%"+parameters.getKeyword()+"%"	);
 		
 		request.setAttribute("lists", lists);
 		request.setAttribute("pagingHtml", pageinfo.getPagingHtml());

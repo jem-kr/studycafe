@@ -18,7 +18,7 @@ public class NotifyDao extends SuperDao {
 		
 		String sql = " select count(*) as cnt from notices ";
 		if(mode.equalsIgnoreCase("all") == false) {
-			sql += " where " + mode + "like '" + keyword + "' ";
+			sql += " where " + mode + " like '" + keyword + "' ";
 		}
 		
 		int cnt =-9999999;
