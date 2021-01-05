@@ -15,10 +15,10 @@ import mypkg.dao.ProductDao;
 public class ProductUpdateController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pnum = Integer.parseInt(request.getParameter("pnum"));
+		String p_seat = request.getParameter("p_seat");
 		
 		ProductDao pdao = new ProductDao();
-		Product bean = pdao.SelectDataByPk(pnum);
+		Product bean = pdao.SelectDataByPk(p_seat);
 		
 		request.setAttribute("bean", bean);
 		String gotopage = null;
@@ -33,14 +33,10 @@ public class ProductUpdateController extends SuperClass {
 		MultipartRequest multi = (MultipartRequest)request.getAttribute("multi") ;
 		
 		bean  = new Product();
-		bean.setPnum(Integer.parseInt(multi.getParameter("pnum")));
-		bean.setCategory( multi.getParameter("category"));		
-		bean.setPtype( multi.getParameter("ptype"));
-		bean.setItem( multi.getParameter("item"));
-		bean.setSeatnum( multi.getParameter("seatnum"));		
-		bean.setHours(Integer.parseInt(multi.getParameter("hours")));
-		bean.setPrice(Integer.parseInt(multi.getParameter("price")));
-		bean.setPic( multi.getFilesystemName("pic") );
+		bean.setP_type( multi.getParameter("p_type"));		
+		bean.setP_seat( multi.getParameter("p_seat"));
+		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
+		bean.setP_pic( multi.getFilesystemName("p_pic"));		
 		
 //		if( multi.getParameter("pnum") != null && multi.getParameter("pnum").equals("") == false){
 //			bean.setPnum( Integer.parseInt( multi.getParameter("pnum") ));	
@@ -65,7 +61,7 @@ public class ProductUpdateController extends SuperClass {
 			ProductDao pdao = new ProductDao();			
 			int cnt = -999999 ; 			
 			cnt = pdao.UpdateData(bean) ;
-			new ProductListController().doGet(request, response);
+			new ProductUpdateController().doGet(request, response);
 		}
 	}
 	
@@ -73,41 +69,25 @@ public class ProductUpdateController extends SuperClass {
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true ; //기본 값으로 true
 		
-		if( bean.getItem().length() < 3 || bean.getItem().length() > 10 ){
-			request.setAttribute( super.PREFIX + "item", "상품 이름은 3글자 이상 10글자 이하");
+		if( bean.getP_type().length() < 1){
+			request.setAttribute( super.PREFIX + "p_type", "상품 이름은 최소 1글자 이상");
 			isCheck = false  ;
 		}
 		
-		if( bean.getCategory().length() < 1 || bean.getCategory().length() > 10 ){
-			request.setAttribute( super.PREFIX + "category", "상품 카테고리는 1글자 이상 10글자 이하");
+		if( bean.getP_seat().length() < 1){
+			request.setAttribute( super.PREFIX + "p_seat", "좌석 번호는 최소 1글자 이상");
 			isCheck = false  ;
 		}
 		
-		if( bean.getSeatnum().length() < 1 || bean.getSeatnum().length() > 8 ){
-			request.setAttribute( super.PREFIX + "seatnum", "좌석번호는 1글자 이상 8글자 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getPtype().length() < 1 || bean.getPtype().length() > 8 ){
-			request.setAttribute( super.PREFIX + "ptype", "좌석유형는 1글자 이상 8글자 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getHours() < 1 || bean.getHours() > 24 ){
-			request.setAttribute( super.PREFIX + "hours", "시간은 최소 1시간 이상, 24시간 이하");
-			isCheck = false  ;
-		}
-
-		
-		if( bean.getPrice() < 1500 || bean.getPrice() > 100000){
-			request.setAttribute( super.PREFIX + "price", "가격은 최소 1,500원 이상, 100,000원 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getPic() == null || bean.getPic() == "" ){
-			request.setAttribute( super.PREFIX + "pic", "이미지는 필수 입력 사항입니다.");
+		if( bean.getP_price() < 1500 || bean.getP_price() > 100000 ){
+			request.setAttribute( super.PREFIX + "p_price", "가격은 최소 1,500원 이상, 100,000원 이하");
 			isCheck = false  ;
 		}		
+
+		if( bean.getP_pic() == null || bean.getP_pic() == "" ){
+			request.setAttribute( super.PREFIX + "p_pic", "이미지는 필수 입력 사항입니다.");
+			isCheck = false  ;
+		}
 		
 		return isCheck ;
 		

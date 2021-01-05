@@ -11,8 +11,8 @@ import mypkg.bean.Product;
 
 public class ProductDao extends SuperDao {
 	
-	public int DeleteData(int pnum) {
-		String sql = " delete products where pnum = ? ";
+	public int DeleteData(String p_seat) {
+		String sql = " delete products where p_seat = ? ";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -22,7 +22,7 @@ public class ProductDao extends SuperDao {
 			conn = super.getConnection();
 			pstmt = conn.prepareStatement(sql);
 						
-			pstmt.setInt(1, pnum);
+			pstmt.setString(1, p_seat);
 			cnt = pstmt.executeUpdate();
 			conn.commit();
 			
@@ -54,8 +54,8 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 
 		String sql = " update products set " ;
-		sql += " item= ? , category= ?, seatnum= ?, ptype= ?, hours= ?, price= ?, pic= ? " ;
-		sql += " where pnum = ? ";
+		sql += " p_type= ?, p_seat= ?, p_price= ?, p_pic= ? , remark= ? " ;
+		sql += " where p_seat= ? ";
 		
 		int cnt = -999999;
 		try {
@@ -63,14 +63,12 @@ public class ProductDao extends SuperDao {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, bean.getItem());
-			pstmt.setString(2, bean.getCategory());
-			pstmt.setString(3, bean.getSeatnum());
-			pstmt.setString(4, bean.getPtype());
-			pstmt.setInt(5, bean.getHours());
-			pstmt.setInt(6, bean.getPrice());
-			pstmt.setString(7, bean.getPic());
-			pstmt.setInt(8, bean.getPnum());
+			pstmt.setString(1, bean.getP_type());
+			pstmt.setString(2, bean.getP_seat());
+			pstmt.setInt(3, bean.getP_price());
+			pstmt.setString(4, bean.getP_pic());
+			pstmt.setString(5, bean.getRemark());
+			pstmt.setString(6, bean.getP_seat());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -98,9 +96,9 @@ public class ProductDao extends SuperDao {
 	
 	//해당 Bean객체를 사용해 상품 등록하기
 	public int InsertData(Product bean) {
-		System.out.println(this.getClass() + " : 상품을 등록합니다.");
-		String sql = " insert into products(pnum, item, category, seatnum, ptype, hours, price, pic)";
-		sql += " values (proseq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
+		System.out.println("상품을 등록합니다.");
+		String sql = " insert into products(p_type, p_seat, p_price, p_pic, remark)";
+		sql += " values (?, ?, ?, ?, ?) ";
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;
@@ -111,13 +109,11 @@ public class ProductDao extends SuperDao {
 			conn.setAutoCommit( false );
 			pstmt = conn.prepareStatement(sql) ;
 			
-			pstmt.setString(1, bean.getItem());
-			pstmt.setString(2, bean.getCategory());		
-			pstmt.setString(3, bean.getSeatnum());
-			pstmt.setString(4, bean.getPtype());
-			pstmt.setInt(5, bean.getHours());
-			pstmt.setInt(6, bean.getPrice());
-			pstmt.setString(7, bean.getPic());
+			pstmt.setString(1, bean.getP_type());
+			pstmt.setString(2, bean.getP_seat());
+			pstmt.setInt(3, bean.getP_price());
+			pstmt.setString(4, bean.getP_pic());
+			pstmt.setString(5, bean.getRemark());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -143,18 +139,19 @@ public class ProductDao extends SuperDao {
 		return cnt ;
 	}
 	
-	
+
+
 	//페이징 처리와 필드 검색을 통한 상품 목록 구하기
 	public List<Product> SelectDataList(int beginRow, int endRow, String mode, String keyword) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select pnum, item, seatnum, ptype, price, hours, category, pic ";
+		String sql = " select p_type, p_seat, p_price, p_pic, remark ";
 		sql += " from ";
 		sql += " ( ";
-		sql += " select pnum, item, seatnum, ptype, price, hours, category, pic, ";
-		sql += " rank() over(order by pnum desc) as ranking ";
+		sql += " select p_type, p_seat, p_price, p_pic, remark, ";
+		sql += " rank() over(order by p_seat desc) as ranking ";
 		sql += " from products ";
 		
 		if(mode.equalsIgnoreCase("all") == false) {
@@ -178,15 +175,11 @@ public class ProductDao extends SuperDao {
 			while(rs.next()) {
 				Product bean = new Product();
 				
-				bean.setCategory(rs.getString("category"));
-				bean.setItem(rs.getString("item"));
-				bean.setPic(rs.getString("pic"));
-				bean.setPtype(rs.getString("ptype"));
-				bean.setSeatnum(rs.getString("seatnum"));
-				
-				bean.setPnum(rs.getInt("pnum"));
-				bean.setHours(rs.getInt("hours"));
-				bean.setPrice(rs.getInt("price"));
+				bean.setP_type(rs.getString("p_type"));
+				bean.setP_seat(rs.getString("p_seat"));
+				bean.setP_price(rs.getInt("p_price"));
+				bean.setP_pic(rs.getString("p_pic"));
+				bean.setRemark(rs.getString("remark"));
 				
 				lists.add(bean);
 			}
@@ -260,12 +253,12 @@ public class ProductDao extends SuperDao {
 		return cnt;
 	}
 	
-	public Product SelectDataByPk(int pnum) {
+	public Product SelectDataByPk(String p_seat) {
 		Product bean = null ;
 		
 		String sql = "select * " ;
 		sql += " from products " ; 
-		sql += " where pnum = ? " ;
+		sql += " where p_seat = ? " ;
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;
@@ -275,21 +268,18 @@ public class ProductDao extends SuperDao {
 			conn = super.getConnection() ;
 			pstmt = conn.prepareStatement(sql) ;
 
-			pstmt.setInt( 1, pnum   ); 
+			pstmt.setString( 1, p_seat   ); 
 						
 			rs = pstmt.executeQuery() ;
 			
 			while(rs.next()) {
 				bean = new Product() ;
 				
-				bean.setPnum(rs.getInt("pnum"));
-				bean.setItem(rs.getString("item"));
-				bean.setSeatnum(rs.getString("seatnum"));
-				bean.setPtype(rs.getString("ptype"));
-				bean.setPrice(rs.getInt("price"));
-				bean.setHours(rs.getInt("hours"));
-				bean.setCategory(rs.getString("category"));
-				bean.setPic(rs.getString("pic"));
+				bean.setP_type(rs.getString("p_type"));
+				bean.setP_seat(rs.getString("p_seat"));
+				bean.setP_price(rs.getInt("p_price"));
+				bean.setP_pic(rs.getString("p_pic"));
+				bean.setRemark(rs.getString("remark"));
 	
 			}
 			System.out.println("ok!!");

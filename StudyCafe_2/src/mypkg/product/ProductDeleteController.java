@@ -14,7 +14,7 @@ import mypkg.utility.FlowParameters;
 public class ProductDeleteController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pnum = Integer.parseInt(request.getParameter("pnum"));
+		String p_seat = request.getParameter("p_seat");
 
 		/*
 		 * FlowParameters parameters 
@@ -28,7 +28,7 @@ public class ProductDeleteController extends SuperClass{
 		ProductDao dao = new ProductDao();
 		
 		int cnt = -999999 ;
-		cnt = dao.DeleteData(pnum) ;
+		cnt = dao.DeleteData(p_seat) ;
 		
 		new ProductListController().doGet(request, response); 				
 	}	

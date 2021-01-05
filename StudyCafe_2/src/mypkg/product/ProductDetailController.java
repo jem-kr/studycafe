@@ -14,10 +14,10 @@ public class ProductDetailController extends SuperClass {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pnum = Integer.parseInt(request.getParameter("pnum"));
+		String p_seat = request.getParameter("p_seat");
 		ProductDao pdao = new ProductDao();
 		
-		Product bean = pdao.SelectDataByPk(pnum);
+		Product bean = pdao.SelectDataByPk(p_seat);
 		
 		String gotopage = "";
 		

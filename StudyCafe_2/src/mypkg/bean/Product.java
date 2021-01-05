@@ -4,87 +4,122 @@ package mypkg.bean;
 public class Product {
 	
 	//상품 변수 정의
-	private int pnum;
-	private String item;
-	private String seatnum;
-	private String ptype; 
-	private int price;
-	private int hours; 
-	private String category; 
-	private String pic;
-	
+	private String p_type;
+	private String p_seat;
+	private int p_price;
+	private String p_date;
+	private int p_stime;
+	private int p_etime;
+	private int p_hour;
+	private String p_pic;
+	private String remark;
+
+
 	//생성자
 	public Product() { 
 		
 	}
-	
+
 	//toString
-
-
-	
-	//getter & setter
-
-
-
 	@Override
 	public String toString() {
-		return "Product [pnum=" + pnum + ", item=" + item + ", seatnum=" + seatnum + ", ptype=" + ptype + ", price="
-				+ price + ", hours=" + hours + ", category=" + category + ", pic=" + pic + "]";
-	}
-
-
+		return "Product [p_type=" + p_type + ", p_seat=" + p_seat + ", p_price=" + p_price + ", p_date=" + p_date
+				+ ", p_stime=" + p_stime + ", p_etime=" + p_etime + ", p_hour=" + p_hour + ", p_pic=" + p_pic
+				+ ", remark=" + remark + "]";
+	}	
 	
-	
-	public int getPnum() {
-		return pnum;
+
+	public String getP_type() {
+		return p_type;
 	}
 
-	public void setPnum(int pnum) {
-		this.pnum = pnum;
-	}
-	public String getItem() {
-		return item;
-	}
-	public void setItem(String item) {
-		this.item = item;
-	}
-	public String getSeatnum() {
-		return seatnum;
-	}
-	public void setSeatnum(String seatnum) {
-		this.seatnum = seatnum;
-	}
-	public String getPtype() {
-		return ptype;
-	}
-	public void setPtype(String ptype) {
-		this.ptype = ptype;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getHours() {
-		return hours;
-	}
-	public void setHours(int hours) {
-		this.hours = hours;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getPic() {
-		return pic;
-	}
-	public void setPic(String pic) {
-		this.pic = pic;
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
 	}
 
 
-	
+	public String getP_seat() {
+		return p_seat;
+	}
+
+
+	public void setP_seat(String p_seat) {
+		this.p_seat = p_seat;
+	}
+
+
+	public int getP_price() {
+		return p_price;
+	}
+
+
+	public void setP_price(int p_price) {
+		this.p_price = p_price;
+	}
+
+
+	public String getP_date() {
+		return p_date;
+	}
+
+
+	public void setP_date(String p_date) {
+		this.p_date = p_date;
+	}
+
+
+	public int getP_stime() {
+		return p_stime;
+	}
+
+
+	public void setP_stime(int p_stime) {
+		this.p_stime = p_stime;
+	}
+
+
+	public int getP_etime() {
+		return p_etime;
+	}
+
+
+	public void setP_etime(int p_etime) {
+		this.p_etime = p_etime;
+	}
+
+
+	public int getP_hour() {
+		return p_hour;
+	}
+
+
+	public void setP_hour(int p_hour) {
+		this.p_hour = p_hour;
+	}
+
+
+	public String getP_pic() {
+		return p_pic;
+	}
+
+
+	public void setP_pic(String p_pic) {
+		this.p_pic = p_pic;
+	}
+
+
+	public String getRemark() {
+		return remark;
+	}
+
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+
+
+
 }
+
+

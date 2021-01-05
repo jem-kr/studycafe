@@ -27,17 +27,16 @@ function add () {
 	hm = document.form.amount;
 	sum = document.form.sum;
 	hm.value ++ ;
-
 	sum.value = parseInt(hm.value) * sell_price;
 }
 
 function del () {
 	hm = document.form.amount;
 	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * sell_price;
-		}
+	if (hm.value > 1) {
+		hm.value -- ;
+		sum.value = parseInt(hm.value) * sell_price;
+	}
 }
 
 function change () {
@@ -119,20 +118,20 @@ function change () {
 					<table class="table01" style="table-layout:fixed">
 						<tr>
 							<td>
-								<c:if test="${empty bean.pic}">
+								<c:if test="${empty bean.p_pic}">
 									<img src="<%=uploadedFolder%>room02.png" class="img-thumbnail"
 										width="600" height="600" alt="no image">
 								</c:if>						
 								
 								<c:if test="${applicationScope.debugMode == true}">
 									디버그 모드가 true이면 보입니다.<br>
-									${applicationScope.uploadedPath}/${bean.pic}
+									${applicationScope.uploadedPath}/${bean.p_pic}
 								</c:if>
 								
-								<c:if test="${not empty bean.pic}">
-									<img src="${applicationScope.uploadedPath}/${bean.pic}"
+								<c:if test="${not empty bean.p_pic}">
+									<img src="${applicationScope.uploadedPath}/${bean.p_pic}"
 										class="img-thumbnail" width="600" height="600"
-										alt="${bean.pic}">
+										alt="${bean.p_pic}">
 								</c:if>
 							</td>
 						</tr>
@@ -141,30 +140,40 @@ function change () {
 				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>">
 					<table class="table02 table-condensed ">
 						<tr class="table-light">
-							<td width="40%" align="center">좌석유형</td>
-							<td width="60%" align="left">${bean.ptype}</td>
+							<td width="40%" align="center">좌석 유형</td>
+							<td width="60%" align="left">${bean.p_type}</td>
 						</tr>
 				
 						<tr>
-							<td width="40%" align="center">상품명(번호)</td>
-							<td width="60%" align="left">${bean.item}(${bean.pnum})</td>
+							<td width="40%" align="center">좌석 번호</td>
+							<td width="60%" align="left">${bean.p_seat}</td>
 						</tr>
+						
 						<tr>
-							<td width="40%" align="center">카테고리</td>
-							<td width="60%" align="left">${bean.category}</td>
-						</tr>						
-						<tr>
-							<td width="40%" align="center">좌석번호</td>
-							<td width="60%" align="left">${bean.seatnum}</td>
+							<td width="40%" align="center">시작 시간</td>
+							<td width="60%" align="left">${bean.p_stime}</td>
 						</tr>
+						
+						<tr>
+							<td width="40%" align="center">종료 시간</td>
+							<td width="60%" align="left">${bean.p_etime}</td>
+						</tr>	
+						
+						<tr>
+							<td width="40%" align="center">이용 시간</td>
+							<td width="60%" align="left">${bean.p_hour}</td>
+						</tr>												
+						
 						<tr>
 							<td width="40%" align="center">시간</td>
 							<td width="60%" align="left">
-							<input type=hidden name="sell_price" value="${bean.price}">
+							<input type=hidden name="sell_price" value="${bean.p_price}">
 							
 							<input type="text" name="amount" value="1" size="3" onchange="change();">
-							<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();">
+							<input type="button" value=" + " onclick="add();">
+							<input type="button" value=" - " onclick="del();">
 						</tr>
+						
 						<tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">				
@@ -176,16 +185,32 @@ function change () {
 				</div>
 			</div>
 			<!-- end panel-body -->
-					<div class="col-sm-offset-5 col-sm-4">
-					<button class="btn btn-default" onclick="history.back();">
-						뒤로가기</button>
-					</div>				
+		<div class="col-sm-offset-5 col-sm-4">
+					<a href="<%=NoForm%>prList&${requestScope.parameters}" 
+					class="btn btn-default" role="button">목록보기</a>	
+					
+					<c:if test="${whologin==2 }">
+						<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}&${requestScope.parameters}"
+						class="btn btn-default" role="button">수정</a>
+						
+						<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}&${requestScope.parameters}" 
+						onclick="delForm();"
+						class="btn btn-default" role="button">삭제</a>		
+				</c:if>									
 		</div>
 	</div>
 	<script>
-		$(document).ready(function() {
-			$('[data-toggle="popover"]').popover();
-		});
+	$(document).ready(function() {
+		$('[data-toggle="popover"]').popover();
+	});	
+	
+	function delForm(){
+		if(confirm("정말 삭제하시겠습니까?")==true{
+			list_ok.submit();
+		} else {
+			list_ok.reset();
+		}
+	}
 	</script>
 </body>
 </html>

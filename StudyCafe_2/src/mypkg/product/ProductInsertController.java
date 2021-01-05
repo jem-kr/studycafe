@@ -20,40 +20,25 @@ public class ProductInsertController  extends SuperClass{
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true ; //기본 값으로 true
 		
-		if( bean.getItem().length() < 3 || bean.getItem().length() > 10 ){
-			request.setAttribute( super.PREFIX + "item", "상품 이름은 3자리 이상 10자리 이하");
+		if( bean.getP_type().length() < 1){
+			request.setAttribute( super.PREFIX + "p_type", "상품 이름은 최소 1글자 이상");
 			isCheck = false  ;
 		}
 		
-		if( bean.getSeatnum().length() < 1 || bean.getSeatnum().length() > 8 ){
-			request.setAttribute( super.PREFIX + "seatnum", "좌석번호는 1자리 이상 8자리 이하");
+		if( bean.getP_seat().length() < 1){
+			request.setAttribute( super.PREFIX + "p_seat", "좌석 번호는 최소 1글자 이상");
 			isCheck = false  ;
 		}
 		
-		if( bean.getPtype().length() < 1 || bean.getPtype().length() > 8 ){
-			request.setAttribute( super.PREFIX + "ptype", "좌석유형는 1자리 이상 8자리 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getPrice() < 1500 || bean.getPrice() > 10000 ){
-			request.setAttribute( super.PREFIX + "price", "가격은 최소 1500원 이상, 10000원 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getHours() < 1 || bean.getHours() > 24 ){
-			request.setAttribute( super.PREFIX + "hours", "시간은 최소 1시간 이상, 24시간 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getCategory().length() < 1 || bean.getCategory().length() > 10 ){
-			request.setAttribute( super.PREFIX + "category", "카테고리는 최소 1자리 이상 10자리 이하");
-			isCheck = false  ;
-		}
-		
-		if( bean.getPic() == null || bean.getPic() == "" ){
-			request.setAttribute( super.PREFIX + "pic", "이미지는 필수 입력 사항입니다.");
+		if( bean.getP_price() < 1500 || bean.getP_price() > 100000 ){
+			request.setAttribute( super.PREFIX + "p_price", "가격은 최소 1,500원 이상, 100,000원 이하");
 			isCheck = false  ;
 		}		
+
+		if( bean.getP_pic() == null || bean.getP_pic() == "" ){
+			request.setAttribute( super.PREFIX + "p_pic", "이미지는 필수 입력 사항입니다.");
+			isCheck = false  ;
+		}
 		
 		return isCheck ;
 		
@@ -73,23 +58,15 @@ public class ProductInsertController  extends SuperClass{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MultipartRequest multi = (MultipartRequest) request.getAttribute("multi");
 		
-		//상품번호 pnum은 시퀀스 처리.
 		bean = new Product();
-		System.out.println("[" + multi.getParameter("category") + "]");
-		if(multi.getParameter("hours") != null
-				&& multi.getParameter("hours").equals("") == false) {
-			bean.setHours(Integer.parseInt(multi.getParameter("hours")));
-		}
-		if(multi.getParameter("price") != null
-				&& multi.getParameter("price").equals("") == false) {
-			bean.setPrice(Integer.parseInt(multi.getParameter("price")));
-		}
-		
-		bean.setCategory(multi.getParameter("category"));
-		bean.setItem(multi.getParameter("item"));
-		bean.setPic(multi.getFilesystemName("pic"));
-		bean.setPtype(multi.getParameter("ptype"));
-		bean.setSeatnum(multi.getParameter("seatnum"));
+
+		bean.setP_type(multi.getParameter("p_type"));
+		bean.setP_seat(multi.getParameter("p_seat"));
+		if(multi.getParameter("p_price")!=null && multi.getParameter("p_price")!="") {
+		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
+		}		
+		bean.setP_pic(multi.getFilesystemName("p_pic"));
+
 		
 		String gotopage = "";
 		if(this.validate(request) == true) {
@@ -107,7 +84,7 @@ public class ProductInsertController  extends SuperClass{
 			super.doPost(request, response);
 			gotopage = "product/prInsert.jsp";
 			super.GotoPage(gotopage);
-			System.out.println("else이미지 파일 업로드");
+			System.out.println("else 이미지 파일 업로드");
 
 		}
 	}

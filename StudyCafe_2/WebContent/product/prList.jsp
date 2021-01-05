@@ -25,7 +25,7 @@
 		}
 
 		function del(){
-			if(confirm("정말 삭제하시겠습니까?"))
+			if(confirm("정말 삭제하시겠습니까?")==true)
 				list_ok.submit();
 		}
 </script>
@@ -176,46 +176,34 @@
 	<div class= "panel"> 	
 		<table class="table table-condensed" style="table-layout:fixed;">
 			<colgroup>
-    		<col style="width: 14%">
-    		<col style="width: 14%">
-    		<col style="width: 14%">
-    		<col style="width: 14%">
-       		<col style="width: 14%">
-    		<col style="width: 14%">
-    		<col style="width: 14%"> 		
+    		<col style="width: 100%">
 			</colgroup>
 
 		<c:forEach var="bean" items="${requestScope.lists}">				
 			<tr>
-				<td>${bean.pnum}</td>
-				<td>${bean.item}</td>
-				<td>${bean.category}</td>
-				<td>${bean.seatnum}</td>
-				<td>${bean.ptype}</td>
-				<td>${bean.hours}시간</td>
-				<td>${bean.price}원</td>
+				<td>${bean.p_type}</td>
 			</tr>
 			<tr height="350">
 				<td colspan="7">
 			<div class="pictures" style="position: relative; z-index: 1;">	
-					<c:if test="${empty bean.pic}">
-						<img src="<%=uploadedFolder%>${bean.pic}" class="img-thumbnail" alt="no image">
+					<c:if test="${empty bean.p_pic}">
+						<img src="<%=uploadedFolder%>${bean.p_pic}" class="img-thumbnail" alt="no image">
 					</c:if>						
-					
+
 					<c:if test="${applicationScope.debugMode == true}">
 						디버그 모드가 true이면 보입니다.<br>
-						${applicationScope.uploadedPath}/${bean.pic}
+						${applicationScope.uploadedPath}/${bean.p_pic}
 					</c:if>
 					
-					<c:if test="${not empty bean.pic}">
-						<img src="${applicationScope.uploadedPath}/${bean.pic}"
-							class="img-thumbnail" alt="${bean.pic}">
+					<c:if test="${not empty bean.p_pic}">
+						<img src="${applicationScope.uploadedPath}/${bean.p_pic}"
+							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
 			</div>
-			<div class="sbtn">	
+			<div class="sbtn">
 				<ul>
-					<li class="r_btn1"><a href="<%=NoForm%>prDetail&pnum=${bean.pnum}&${requestScope.parameters}" target="_self">상세보기</a></li>
-					
+					<li class="r_btn1"><a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}&${requestScope.parameters}" 
+					target="_self">상세보기</a></li>
 					<li class="r_btn1"><a href="<%=NoForm%>prFee" target="_self">이용안내</a></li>	
 				</ul>	
 			</div>
@@ -227,21 +215,6 @@
 					<li class="r_btn2" type="button" onclick="writeForm();">상품 등록</li>
 				</ul>
 			</form>
-			<div class="sbtn">	
-			<ul>
-				<li class="r_btn2">
-				<a href="<%=NoForm%>prUpdate&pnum=${bean.pnum}&${requestScope.parameters}">
-					수정
-				</a>			
-				</li>
-				<li class="r_btn2">
-				<a href="<%=NoForm%>prDelete&pnum=${bean.pnum}&${requestScope.parameters}"
-				onclick="del();">
-					삭제
-				</a>			
-				</li>
-			</ul>
-			</div>	
 			</c:if>					
 		</td>
 		</tr>			
