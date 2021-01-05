@@ -55,6 +55,9 @@ function delconfirm(){
 		padding-left: 20%;
 		color: black;
 	}
+	.attached{
+		text-align: center;
+	}
 </style>
 </head>
 <%
@@ -82,25 +85,30 @@ function delconfirm(){
 							<td colspan="2" class="tcontent">						
 								<div style="white-space: pre;"> ${bean.content } </div></td>
 						</tr>
-					<tr>
+					<tr >
 							<c:if test ="${applicationScope.debugMode == true }">
 									디버그 모드가 true이면 보입니다.<br>
 									${applicationScope.uploadedPath}/${bean.image}
 								</c:if>
 								<c:if test="${not empty bean.image}">
-								<td>
+								<td class="attached" colspan="2">
 									<img src="${contextPath}/upload/${bean.image}"
-										class="img-thumbnail" width="200" height="200"
+										class="img-thumbnail img-responsive" width="50%" height="50%"
 										alt="image">
 								</td>
 								</c:if>
 								<c:if test="${empty bean.image}">
-									<td>
+									<td colspan="2">
 									<input type="hidden">
 									</td>
 								</c:if>
 								<c:if test="${bean.image == ''}">
-									<td>
+									<td colspan="2">
+									<input type="hidden">
+									</td>
+								</c:if>
+								<c:if test="${bean.image == null}">
+									<td colspan="2">
 									<input type="hidden">
 									</td>
 								</c:if>

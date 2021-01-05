@@ -123,7 +123,7 @@
 		<!-- Navigation -->
 		<!-- 네비바 상단 고정 -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" >
-			<div class="container">
+			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header page-scroll">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
