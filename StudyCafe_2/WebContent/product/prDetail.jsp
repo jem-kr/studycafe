@@ -205,9 +205,13 @@ function change () {
 							<td width="40%" align="center">좌석 번호</td>
 							<td width="60%" align="left">
 							<select class="form-control" name="p_seat" id="p_seat">
+							
 							<option value="-" selected="selected">
 							----선택하세요----
-							<option>${bean.p_seat}</option>										
+							
+							<c:forEach var="glists" items="${requestScope.glists}">
+							<option value="${glists.p_seat }">${glists.p_seat}</option>
+							</c:forEach>
 							</select>
 								<span class="err form-control-static">${errp_seat}</span>
 							</td>
@@ -228,6 +232,7 @@ function change () {
 							<select class="form-control" name="p_stime" id="p_stime">
 							<option value="-" selected="selected">
 							----선택하세요----
+							
 							<option>${bean.p_stime}</option>
 							</select>
 								<span class="err form-control-static">${errp_stime}</span>

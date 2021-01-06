@@ -150,24 +150,15 @@ public class ProductDao extends SuperDao {
 
 
 	//페이징 처리와 필드 검색을 통한 상품 목록 구하기
-	public List<Product> SelectDataList(int beginRow, int endRow, String mode, String keyword) {
+	public List<Product> SelectDataList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark ";
-		sql += " from ";
-		sql += " ( ";
-		sql += " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark, ";
-		sql += " rank() over(order by p_seat desc) as ranking ";
 		sql += " from products ";
-		
-		if(mode.equalsIgnoreCase("all") == false) {
-			sql += " where " + mode + " like '" + keyword + "'";
-		}
-		
-		sql += " )  ";
-		sql += " where ranking between ? and ? ";
+				
+//		sql += " where p_seat in ( select max(p_seat) from products group by p_type) ";
 		
 		List<Product> lists = new ArrayList<Product>();
 		
@@ -175,8 +166,6 @@ public class ProductDao extends SuperDao {
 			conn = super.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, beginRow);
-			pstmt.setInt(2, endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -320,4 +309,68 @@ public class ProductDao extends SuperDao {
 		return bean  ;
 	}
 
+
+	public List<Product> SelectDataByType(String p_type) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark ";
+		sql += " from products where p_type = ? ";
+				
+//		sql += " where p_seat in ( select max(p_seat) from products group by p_type) ";
+		
+		List<Product> glists = new ArrayList<Product>();
+		
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, p_type);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Product bean = new Product();
+				
+				bean.setP_type(rs.getString("p_type"));
+				bean.setP_seat(rs.getString("p_seat"));
+				bean.setP_price(rs.getInt("p_price"));
+				bean.setP_date(rs.getString("p_date"));
+				bean.setP_stime(rs.getInt("p_stime"));
+				bean.setP_etime(rs.getInt("p_etime"));
+				bean.setP_hour(rs.getInt("p_hour"));
+				bean.setP_pic(rs.getString("p_pic"));
+				bean.setRemark(rs.getString("remark"));
+				
+				glists.add(bean);
+			}
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e;
+			int cnt = - err.getErrorCode();
+			e.printStackTrace();
+			
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if(rs != null){ rs.close(); }
+				if(pstmt != null){ pstmt.close(); }
+				if(conn != null){conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+		return glists;
+	}
+	
+
 }
+
+
+
+

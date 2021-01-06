@@ -180,6 +180,7 @@
 			</colgroup>
 
 		<c:forEach var="bean" items="${requestScope.lists}">				
+			<c:if test="${bean.p_seat eq 'A01' or bean.p_seat eq 'R01'}">
 			<tr>
 				<td>${bean.p_type}</td>
 			</tr>
@@ -202,7 +203,7 @@
 			</div>
 			<div class="sbtn">
 				<ul>
-					<li class="r_btn1"><a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}&${requestScope.parameters}" 
+					<li class="r_btn1"><a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" 
 					target="_self">상세보기</a></li>
 					<li class="r_btn1"><a href="<%=NoForm%>prFee" target="_self">이용안내</a></li>	
 				</ul>	
@@ -218,6 +219,7 @@
 			</c:if>					
 		</td>
 		</tr>			
+		</c:if>
 		</c:forEach>
 		</table>
 	</div>
