@@ -279,7 +279,7 @@ public class MemberDao extends SuperDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				//1건 발견
+				// 1건 발견
 				bean = new Member();
 
 				bean.setAgreement(rs.getString("agreement"));
@@ -321,6 +321,52 @@ public class MemberDao extends SuperDao {
 			}
 		}
 		return bean;
+	}
+
+	public int UpdatePassword(String id, String new_pw) {
+		// 비밀번호 재설정을 담당하는 메소드
+		int cnt = -1;
+
+		PreparedStatement pstmt = null;
+		String sql = " update members set password = ? ";
+		sql += " where id = ? ";
+
+		try {
+			super.conn = super.getConnection();
+			super.conn.setAutoCommit(false);
+			pstmt = super.conn.prepareStatement(sql);
+
+			pstmt.setString(1, new_pw);
+			pstmt.setString(2, id);
+
+			cnt = pstmt.executeUpdate();
+
+			super.conn.commit();
+
+		} catch (SQLException e) {
+			try {
+				SQLException err = (SQLException) e;
+				// getErrorCode() : 오라클 오류 상수가 리턴
+				// 예 : not null 이면 1400
+				cnt = -err.getErrorCode();
+				super.conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.CloseConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
 	}
 
 }

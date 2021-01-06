@@ -31,7 +31,7 @@
 	        var left = Math.ceil((window.screen.width - windowW)/2);
 	        var top = Math.ceil((window.screen.height - windowH)/2);
 	        
-			window.open(url,"popup","l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+			window.open(url,"popup","top="+top+", left="+left+", height="+windowH+", width="+windowW);
 
 
 		}

@@ -100,10 +100,10 @@ public class MemberPwsearchController extends SuperClass {
 			// 유효성 검사 통과
 			if (this.pwanswer.equals(bean.getPwanswer())) {
 				// 파라미터 입력값과 기존 가입 당시 입력했던 비밀번호 찾기 답변이 같을때 패스워드 찾기 성공
+				request.setAttribute("password_id", bean.getId());
 				request.setAttribute("password_find", bean.getPassword());
-				request.setAttribute("password_msg", "고객님의 정보와 일치하는 비밀번호입니다.");
 
-				this.gotopage = "member/mePwSearch.jsp";
+				this.gotopage = "member/mePwChange.jsp";
 				super.GotoPage(gotopage);
 			} else {
 				// 파라미터 입력값과 기존 가입 당시 입력했던 비밀번호 찾기 답변이 다를때 패스워드 찾기 실패

@@ -187,7 +187,7 @@
 				<td colspan="7">
 			<div class="pictures" style="position: relative; z-index: 1;">	
 					<c:if test="${empty bean.p_pic}">
-						<img src="<%=uploadedFolder%>${bean.p_pic}" class="img-thumbnail" alt="no image">
+						<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail" alt="no image">
 					</c:if>						
 
 					<c:if test="${applicationScope.debugMode == true}">
