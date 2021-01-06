@@ -11,7 +11,10 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">
+	
 	$(function() {
 	    $( "#testDatepicker" ).datepicker({
 	       dateFormat:  "yy/mm/dd", 
@@ -25,6 +28,29 @@
 	       
 	    });
 	});
+	
+	$(function() { 
+	    $("#p_stime").timepicker({
+	        timeFormat: 'HH:mm',
+	        interval: 60,
+	        minTime: '09',
+	        maxTime: '20',
+	        startTime: '09',
+	        dynamic: false,
+	        dropdown: true,
+	        scrollbar: true        
+	    }).on('changeTime', function(){
+	    		var from_time = $("input[name = 'p_stime']").val();
+	    		$('#p_etime').timepicker('option', 'minTime', from_time);
+	    		if ($('#p_etime').val() && $('#p_etime').val() < from_time) {
+	                $('#p_etime').timepicker('setTime', from_time);
+	              //etime을 먼저 선택한 경우 그리고 etime시간이 stime시간보다 작은경우 etime시간 변경
+	                      }  
+	                  });
+	               
+	       $('#p_etime').timepicker({timeFormat:'HH:mm',interval: 60, 'minTime':'10','maxTime':'21'});//etime 시간 기본 설정
+
+	 });
 </script>
 <meta charset="UTF-8">
 <title>BootStrap Sample</title>
@@ -229,12 +255,14 @@ function change () {
 						<tr>
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
-							<select class="form-control" name="p_stime" id="p_stime">
+							<input type="text" id="p_stime" name = "p_stime" class="time" value="">
+							<%-- <select class="form-control" name="p_stime" id="p_stime">
 							<option value="-" selected="selected">
 							----선택하세요----
-							
-							<option>${bean.p_stime}</option>
-							</select>
+							<c:forEach var="i" begin="09" end="21" step="1">
+							<option value="${i }">${i}</option>
+							</c:forEach>
+							</select> --%>
 								<span class="err form-control-static">${errp_stime}</span>
 							</td>
 						</tr>						
@@ -242,11 +270,13 @@ function change () {
 						<tr>
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
-							<select class="form-control" name="p_etime" id="p_etime">
-							<option value="-" selected="selected">
+							<input type="text" id="p_etime" name = "p_etime" class="time etime" value="">
+							<%--<select class="form-control" name="p_etime" id="p_etime">
+							<option value="-" selected="selected"> 
 							----선택하세요----
+							
 							<option>${bean.p_etime}</option>
-							</select>
+							</select> --%>
 								<span class="err form-control-static">${errp_etime}</span>
 							</td>
 						</tr>		
@@ -303,7 +333,7 @@ function change () {
 	});	
 	
 	function del(){
-		if(confirm("정말 삭제하시겠습니까?")==true)
+		if(confirm("정말 삭제하시겠습니까?")==true){
 			list_ok.submit();
 	}
 	</script>
