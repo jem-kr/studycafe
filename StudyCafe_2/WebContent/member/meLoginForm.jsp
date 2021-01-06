@@ -10,13 +10,16 @@
     <title>로그인</title>
     <style>
         .login{
-            width: 410px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content : center;
+		    flex-direction: column;
+		    align-items: center;
+		    padding-top: 100px;
+		    padding-bottom: 100px;
+		    font-size: 15px;
         }
         .login h2{
+        	width : 410px;
             font-size: 32px;
             color: #111111;
             border-bottom: 2px solid #111111;
@@ -25,6 +28,7 @@
             padding-bottom: 20px;
         }
         .login > ul{
+        	width  : 410px;
             padding: 33px 0px 0px 0px;
 
         }
