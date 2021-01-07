@@ -31,7 +31,7 @@
 	
 	$(function() { 
 	    $("#p_stime").timepicker({
-	        timeFormat: 'HH:mm',
+	        timeFormat: 'HH',
 	        interval: 60,
 	        minTime: '09',
 	        maxTime: '20',
@@ -39,18 +39,23 @@
 	        dynamic: false,
 	        dropdown: true,
 	        scrollbar: true        
-	    }).on('changeTime', function(){
-	    		var from_time = $("input[name = 'p_stime']").val();
-	    		$('#p_etime').timepicker('option', 'minTime', from_time);
-	    		if ($('#p_etime').val() && $('#p_etime').val() < from_time) {
-	                $('#p_etime').timepicker('setTime', from_time);
-	              //etime을 먼저 선택한 경우 그리고 etime시간이 stime시간보다 작은경우 etime시간 변경
-	                      }  
-	                  });
-	               
-	       $('#p_etime').timepicker({timeFormat:'HH:mm',interval: 60, 'minTime':'10','maxTime':'21'});//etime 시간 기본 설정
+	    });
+	});
+	$(function() { 
+	       $('#p_etime').timepicker({
+	    	   	timeFormat: 'HH',
+		        interval: 60,
+		        minTime: '10',
+		        maxTime: '21',
+		        startTime: '10',
+		        dynamic: false,
+		        dropdown: true,
+		        scrollbar: true  
+	       
+	       
+	       });//etime 시간 기본 설정
 
-	 });
+	});
 </script>
 <meta charset="UTF-8">
 <title>BootStrap Sample</title>
@@ -83,6 +88,7 @@ function del_hour () {
 }
 
 function change () {
+	
 	hm = document.form.amount;
 	sum = document.form.sum;
 
@@ -207,7 +213,7 @@ function change () {
 						<tr>
 							<td>
 								<c:if test="${empty bean.p_pic}">
-									<img src="<%=uploadedFolder%>room02.png" class="img-thumbnail"
+									<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail"
 										width="600" height="600" alt="no image">
 								</c:if>						
 								<c:if test="${applicationScope.debugMode == true}">
@@ -255,7 +261,7 @@ function change () {
 						<tr>
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_stime" name = "p_stime" class="time" value="">
+							<input type="text" id="p_stime" name = "p_stime" class="time" value="${bean.p_stime }">
 							<%-- <select class="form-control" name="p_stime" id="p_stime">
 							<option value="-" selected="selected">
 							----선택하세요----
@@ -270,7 +276,7 @@ function change () {
 						<tr>
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_etime" name = "p_etime" class="time etime" value="">
+							<input type="text" id="p_etime" name = "p_etime" class="time" value="${bean.p_etime }">
 							<%--<select class="form-control" name="p_etime" id="p_etime">
 							<option value="-" selected="selected"> 
 							----선택하세요----
@@ -310,14 +316,14 @@ function change () {
 			
 			<!-- end panel-body -->
 			<div class="col-sm-offset-5 col-sm-4">
-					<a href="<%=NoForm%>prList&${requestScope.parameters}" 
+					<a href="<%=NoForm%>prList&" 
 					class="btn btn-default" role="button">목록보기</a>	
 					
 					<c:if test="${whologin==2 }">
-						<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}&${requestScope.parameters}"
+						<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}"
 						class="btn btn-default" role="button">수정</a>
 						
-						<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}&${requestScope.parameters}" 
+						<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" 
 						onclick="del();"
 						class="btn btn-default" role="button">삭제</a>		
 					</c:if>									
