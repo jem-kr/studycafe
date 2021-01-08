@@ -17,7 +17,7 @@ mePwChange=mypkg.member.MemberPwChangeController
 ############3.product(상품)###################################
 prList=mypkg.product.ProductListController
 prDetail=mypkg.product.ProductDetailController
-#prPrice=mypkg.product.ProductPriceController
+prPrice=mypkg.product.ProductPriceController
 prInsert=mypkg.product.ProductInsertController
 prDelete=mypkg.product.ProductDeleteController
 prUpdate=mypkg.product.ProductUpdateController

@@ -229,16 +229,16 @@ function change () {
 									<img src="${uploadedPath}/${bean.p_pic}"
 										class="img-thumbnail" width="700" height="700"
 										alt="${bean.p_pic}">
-								</c:if>
-						
+								</c:if>		
 					</table>
 				</div>
 			</form>
 				
-				
-				<form name="form" method="get">
+				<form name="form" method="post" action=<%=YesForm%>">
+				<input type="hidden" value="reInsert" name="command">
 				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>" >
 					<table class="table02 table-condensed " style="table-layout:fixed">				
+						
 						<tr>
 							<td width="40%" align="center">좌석 번호</td>
 							<td width="60%" align="left">
@@ -253,6 +253,23 @@ function change () {
 							</select>
 								<span class="err form-control-static">${errp_seat}</span>
 							</td>
+						</tr>
+						
+						
+						<tr>
+						<c:if test="${bean.p_type == '다인실'}">
+							<td width="40%" align="center">인원</td>
+							<td width="60%" align="left">
+							<select class="form-control">
+							<option value="-" selected="selected">
+							------선택하세요------
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							</select>
+							</td>
+						</c:if>
 						</tr>
 						
 						<tr>
@@ -312,7 +329,7 @@ function change () {
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
 							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
-							<a href="<%=NoForm%>reInsert&" class="btn btn-warning" role="button">예약하기</a></td>
+							<button type="submit">예약하기</button>
 						<tr>
 					</table>
 				
