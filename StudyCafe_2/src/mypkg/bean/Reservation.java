@@ -9,7 +9,7 @@ public class Reservation {
 	 	private int re_hour;
 	 	private String re_type;
 	 	private String re_seat;
-	 	private int person;
+	 	private int re_person;
 	 	private String re_pday;
 	 	private int re_price;
 	 	private String remark;
@@ -61,11 +61,11 @@ public class Reservation {
 		public void setRe_seat(String re_seat) {
 			this.re_seat = re_seat;
 		}
-		public int getPerson() {
-			return person;
+		public int getRe_person() {
+			return re_person;
 		}
-		public void setPerson(int person) {
-			this.person = person;
+		public void setRe_person(int re_person) {
+			this.re_person = re_person;
 		}
 		public String getRe_pday() {
 			return re_pday;
@@ -89,7 +89,7 @@ public class Reservation {
 		public String toString() {
 			return "Reservation [re_no=" + re_no + ", re_id=" + re_id + ", re_date=" + re_date + ", re_stime="
 					+ re_stime + ", re_etime=" + re_etime + ", re_hour=" + re_hour + ", re_type=" + re_type
-					+ ", re_seat=" + re_seat + ", person=" + person + ", re_pday=" + re_pday + ", re_price=" + re_price
+					+ ", re_seat=" + re_seat + ", re_person=" + re_person + ", re_pday=" + re_pday + ", re_price=" + re_price
 					+ ", remark=" + remark + "]";
 		}
 	 	

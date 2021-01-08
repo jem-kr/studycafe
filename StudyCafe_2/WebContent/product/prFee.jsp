@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
  <%
-	int offset =3; //오프 셋 
+	int offset =2; //오프 셋 
 	int content = twelve - 2 * offset; //12 - 2 * 오프셋
 %>
 <!DOCTYPE html>
@@ -17,8 +17,8 @@
 <title>이용 안내</title>
 </head>
 <body>
-		
-		<div id="sub" style="table-layout:fixed; position:relative; vertical-align: middle; text-align: center; width:100%;">
+		<div class="container col col-sm-offset-<%=offset%> col-sm-<%=content%>">
+		<div id="sub" style="table-layout:fixed; position:relative; vertical-align: middle; text-align: center; width:100%;" >
 		<div class="article_title">
 			<h3>이용안내</h3>
 			<p>홀 내부를 보다 넓게 구성하고 특별제작 된 넓은 책상을 제공함으로써 이용자의 학습 공간이 여유롭습니다. <br>
@@ -144,6 +144,7 @@
 			 실시간 예약하기 
 			</a>
 			</div>
+		</div>
 		</div>
 		</div>
 	<script type="text/javascript">

@@ -234,8 +234,9 @@ function change () {
 				</div>
 			</form>
 				
-				<form name="form" method="post" action=<%=YesForm%>">
+				<form name="form" method="post" action="<%=YesForm%>">
 				<input type="hidden" value="reInsert" name="command">
+				<input type="hidden" value="${bean.p_type }" name="p_type">
 				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>" >
 					<table class="table02 table-condensed " style="table-layout:fixed">				
 						
@@ -260,10 +261,10 @@ function change () {
 						<c:if test="${bean.p_type == '다인실'}">
 							<td width="40%" align="center">인원</td>
 							<td width="60%" align="left">
-							<select class="form-control">
+							<select class="form-control" name="p_person">
 							<option value="-" selected="selected">
 							------선택하세요------
-							<option value="1" selected>1</option>
+							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
