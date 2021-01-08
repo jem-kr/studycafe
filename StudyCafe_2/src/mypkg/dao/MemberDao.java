@@ -1,8 +1,11 @@
 package mypkg.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import mypkg.bean.Member;
 
@@ -369,4 +372,250 @@ public class MemberDao extends SuperDao {
 		return cnt;
 	}
 
+	public List<Member> SelectAllData(int beginRow, int endRow) {
+		// 회원 전체 목록을 가져오는 메소드
+		List<Member> lists = new ArrayList<Member>();
+		Member bean = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, ranking ";
+		sql += " from ";
+		sql += " ( ";
+		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by id asc ) as ranking ";
+		sql += " from members ";
+		sql += " ) ";
+		sql += " where ranking between ? and ? ";
+		try {
+			pstmt = super.conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, beginRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new Member(); // 1건 발견
+
+				bean.setAgreement(rs.getString("agreement"));
+				bean.setBirth(rs.getString("birth"));
+				bean.setEmail01(rs.getString("email01"));
+				bean.setEmail02(rs.getString("email02"));
+				bean.setGender(rs.getString("gender"));
+				bean.setId(rs.getString("id"));
+				bean.setName(rs.getString("name"));
+				bean.setPassword(rs.getString("password"));
+				bean.setPhone(rs.getString("phone"));
+				bean.setPwanswer(rs.getString("pwanswer"));
+				bean.setPwquestion(rs.getString("pwquestion"));
+
+				String[] visit = rs.getString("visit").split(",");
+				bean.setVisit(visit);
+
+				bean.setRemark(rs.getString("remark"));
+
+				lists.add(bean);
+			}
+
+			if (lists != null) {
+				System.out.println("회원목록을 list 컬렉션에 담았습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.CloseConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return lists;
+	}
+
+	public List<Member> SelectAllDataASC(String sort, int beginRow, int endRow) {
+		// 회원목록에서 오름차순 정렬을 담당하는 메소드
+		List<Member> lists = new ArrayList<Member>();
+		Member bean = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, ranking ";
+		sql += " from ";
+		sql += " ( ";
+		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by " + sort + " asc ) as ranking ";
+		sql += " from members ";
+		sql += " ) ";
+		sql += " where ranking between ? and ? ";
+
+		try {
+			pstmt = super.conn.prepareStatement(sql);
+			pstmt.setInt(1, beginRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new Member(); // 1건 발견
+
+				bean.setAgreement(rs.getString("agreement"));
+				bean.setBirth(rs.getString("birth"));
+				bean.setEmail01(rs.getString("email01"));
+				bean.setEmail02(rs.getString("email02"));
+				bean.setGender(rs.getString("gender"));
+				bean.setId(rs.getString("id"));
+				bean.setName(rs.getString("name"));
+				bean.setPassword(rs.getString("password"));
+				bean.setPhone(rs.getString("phone"));
+				bean.setPwanswer(rs.getString("pwanswer"));
+				bean.setPwquestion(rs.getString("pwquestion"));
+
+				String[] visit = rs.getString("visit").split(",");
+				bean.setVisit(visit);
+
+				bean.setRemark(rs.getString("remark"));
+
+				lists.add(bean);
+			}
+
+			if (lists != null) {
+				System.out.println("회원목록 오름차순 정렬 성공");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.CloseConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return lists;
+	}
+
+	public List<Member> SelectAllDataDESC(String sort, int beginRow, int endRow) {
+		// 회원목록에서 내림차순 정렬을 담당하는 메소드
+		List<Member> lists = new ArrayList<Member>();
+		Member bean = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, ranking ";
+		sql += " from ";
+		sql += " ( ";
+		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by " + sort + " desc ) as ranking ";
+		sql += " from members ";
+		sql += " ) ";
+		sql += " where ranking between ? and ? ";
+
+		try {
+			pstmt = super.conn.prepareStatement(sql);
+			pstmt.setInt(1, beginRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new Member(); // 1건 발견
+
+				bean.setAgreement(rs.getString("agreement"));
+				bean.setBirth(rs.getString("birth"));
+				bean.setEmail01(rs.getString("email01"));
+				bean.setEmail02(rs.getString("email02"));
+				bean.setGender(rs.getString("gender"));
+				bean.setId(rs.getString("id"));
+				bean.setName(rs.getString("name"));
+				bean.setPassword(rs.getString("password"));
+				bean.setPhone(rs.getString("phone"));
+				bean.setPwanswer(rs.getString("pwanswer"));
+				bean.setPwquestion(rs.getString("pwquestion"));
+
+				String[] visit = rs.getString("visit").split(",");
+				bean.setVisit(visit);
+
+				bean.setRemark(rs.getString("remark"));
+
+				lists.add(bean);
+			}
+
+			if (lists != null) {
+				System.out.println("회원목록 내림차순 정렬 성공");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.CloseConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return lists;
+	}
+
+	public int SelectTotalCount() {
+		// 회원목록에서 페이징 처리 시 총 회원목록의 건수를 가져오는 메소드
+		int cnt = -1;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = " select count(*) as cnt from members ";
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+
+		} catch (SQLException e) {
+			SQLException err = (SQLException) e;
+			cnt = -err.getErrorCode();
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
 }

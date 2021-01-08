@@ -1,0 +1,119 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ include file="./../common/common.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>회원 목록</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
+	<link type="text/css" href="${contextPath}/css/meList.css" rel="stylesheet"/>
+	<script>
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();   
+		});
+		
+		function selectCheck() {
+			var selectCheck = $('option:selected').val();
+			//alert(selectCheck);
+			if (selectCheck == '-') {
+				alert('정렬기준을 선택하세요.');
+				return false;
+			}
+		}
+		
+		function ckboxCheck() {
+			var ckboxCheck = $('input:checked').val();
+			// alert(ckboxCheck);
+			// 체크를 안하면 undefined , 체크를 하면 check
+			if (ckboxCheck != 'check') {
+				alert('항목을 체크하세요.');
+				return false;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h2>회원 목록</h2>
+		<form action="<%=YesForm%>" method="post">
+		<input type="hidden" name="command" value="meSort">
+			<ul>
+				<li>
+					<select name="sort">
+						<option value="-">-- 정렬 기준 --</option>
+						<option value="id">아이디</option>
+						<option value="password">비밀번호</option>
+						<option value="pwquestion">비밀번호 찾기 질문</option>
+						<option value="pwanswer">비밀번호 찾기 답변</option>
+						<option value="name">회원이름</option>
+						<option value="birth">생년월일</option>
+						<option value="gender">성별</option>
+						<option value="phone">휴대폰번호</option>
+						<option value="email01">이메일주소</option>
+					</select>
+				</li>
+				<li>
+					<button type="submit" value="asc" name="asc" data-toggle="tooltip" data-placement="top" title="오름차순" onclick="return selectCheck();">
+						<i class="fas fa-sort-amount-up-alt"></i>
+					</button>
+				</li>
+				<li>
+					<button type="submit" value="desc" name="desc" data-toggle="tooltip" data-placement="top" title="내림차순" onclick="return selectCheck();">
+						<i class="fas fa-sort-amount-down-alt"></i>
+					</button>
+				</li>
+			</ul>
+		</form>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>선택</th>
+					<th>아이디</th>
+					<th>비밀번호</th>
+					<th>비밀번호 찾기 질문</th>
+					<th>비밀번호 찾기 답변</th>
+					<th>회원 이름</th>
+					<th>생년월일</th>
+					<th>성별</th>
+					<th>휴대폰 번호</th>
+					<th>이메일 주소</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${requestScope.lists}" var="bean">
+					<tr>
+						<td><input type="checkbox" id="sel" name="sel" value="ckeck"></td>
+						<td>${bean.id}</td>
+						<td>${bean.password}</td>
+						<td>${bean.pwquestion}</td>
+						<td>${bean.pwanswer}</td>
+						<td>${bean.name}</td>
+						<td>${bean.birth}</td>
+						<td>${bean.gender}</td>
+						<td>${bean.phone}</td>
+						<td>${bean.email01}@${bean.email02}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<ul>
+			<li>
+				<button type="submit" onclick="return ckboxCheck();">
+					 <i class="fas fa-trash-alt">&nbsp;회원 삭제</i>
+				</button>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="page" align="center">
+			${requestScope.pagingHtml}	
+	</div>	
+</body>
+</html>

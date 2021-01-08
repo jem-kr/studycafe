@@ -1,0 +1,71 @@
+@charset "EUC-KR";
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	padding-top: 100px;
+	border-radius: 4px;
+	font-size: 11px;
+}
+
+.container h2 {
+	font-size: 32px;
+	color: #111111;
+	border-bottom: 2px solid #111111;
+	text-align: center;
+	line-height: 100%;
+	padding-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.container .table {
+	margin-top: 0px;
+}
+
+.container thead {
+	background-color: #778899;
+}
+
+.container thead>tr {
+	border-radius: 10px;
+}
+
+.container ul {
+	display: flex;
+	margin: 10px 8px 5px 0px;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0;
+}
+
+.container li {
+	display: flex;
+	padding-left: 10px;
+}
+
+.container li i {
+	color: #111111;
+}
+
+select {
+	padding: 0px;
+	box-sizing: border-box;
+	height: 25px;
+	text-indent: 2px;
+}
+
+input[type=checkbox] {
+	margin: 1px 0 0;
+	line-height: inherit;
+}
+
+div.page ul{
+	display: flex;
+	justify-content: center;
+}
+
+

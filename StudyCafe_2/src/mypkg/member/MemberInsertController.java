@@ -16,7 +16,7 @@ public class MemberInsertController extends SuperClass {
 
 	String pwCheck = null;
 	String hp_second = null;
-	
+
 	String gotopage = ""; // 페이지 이동
 
 	@Override
@@ -48,18 +48,12 @@ public class MemberInsertController extends SuperClass {
 
 		// 생년월일
 		String _birth = null;
-		String _year = null;
-		_year = request.getParameter("year");
 
-		if (_year.length() >= 3) {
-			_year = _year.substring(2);
-		}
-		// System.out.println("year==>>" + _year);
-
-		_birth = (_year.concat(request.getParameter("month"))).concat(request.getParameter("day"));
+		_birth = (request.getParameter("year").concat(request.getParameter("month")))
+				.concat(request.getParameter("day"));
 		bean.setBirth(_birth);
 
-		// System.out.println("birth==>>" + _birth);
+		//System.out.println("birth==>>" + _birth);
 
 		// 휴대폰 번호
 		String hp_first = request.getParameter("hp_first");
@@ -83,11 +77,10 @@ public class MemberInsertController extends SuperClass {
 		// 방문목적
 
 		bean.setVisit(request.getParameterValues("visit"));
-		
 
 		// 개인정보 동의
 		bean.setAgreement(request.getParameter("agreement"));
-		//System.out.println("개인정보 동의 ===> " + bean.getAgreement());
+		// System.out.println("개인정보 동의 ===> " + bean.getAgreement());
 
 		// 비고
 		bean.setRemark("");
@@ -104,15 +97,15 @@ public class MemberInsertController extends SuperClass {
 		} else {
 			// 유효성 검사 통과
 			// System.out.println("회원 가입 유효성 검사 통과");
-			
+
 			MemberDao dao = new MemberDao();
-			
-			int cnt = -1; // 기본값 음수로 지정 
-			
+
+			int cnt = -1; // 기본값 음수로 지정
+
 			cnt = dao.MemberInsertData(bean);
-			
+
 			this.gotopage = "member/meLoginForm.jsp";
-			
+
 			super.doPost(request, response);
 			session.setAttribute("message", "회원가입을 성공했습니다. 더 많은 정보를 보려면 로그인을 해주세요.");
 			super.GotoPage(gotopage);
@@ -124,7 +117,7 @@ public class MemberInsertController extends SuperClass {
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true; // 기본값 true
 
-		// id : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자 
+		// id : 영문 대문자 or 소문자 or 숫자로 시작 하고 , 길이는 4~15글자
 		String regex = "^[a-zA-Z0-9]{4,15}$";
 		boolean id_result = Pattern.matches(regex, bean.getId());
 		if (id_result == false) {
@@ -238,18 +231,18 @@ public class MemberInsertController extends SuperClass {
 			request.setAttribute(super.PREFIX + "pwanswer", "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)");
 			isCheck = false;
 		}
-		
+
 		if (bean.getPwanswer().length() == 0) {
 			request.setAttribute(super.PREFIX + "pwanswer", "해당 질문에 대한 답변을 입력하세요.");
 			isCheck = false;
 		}
-		
+
 		// 개인 정보 동의
 		if (bean.getAgreement() == null) {
 			request.setAttribute(super.PREFIX + "agreement", "개인정보 수집 및 이용에 대한 동의를 체크 해주세요.");
 			isCheck = false;
 		}
-		
+
 		return isCheck;
 	}
 
