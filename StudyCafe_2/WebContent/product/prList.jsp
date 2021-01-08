@@ -8,8 +8,6 @@
 	int mywidth = twelve - 2*myoffset;
 	int formleft = 3;
 	int formright = twelve - formleft;
-	int mysearch = 2;
-
 %>
 <!DOCTYPE html>
 <html>
@@ -20,10 +18,7 @@
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
 	<script type="text/javascript">	
-		function writeForm(){
-			location.href='<%=NoForm%>prInsert';
-		}
-
+	
 		function del(){
 			if(confirm("정말 삭제하시겠습니까?")==true)
 				list_ok.submit();
@@ -62,12 +57,14 @@
 	}
 	
 	.table {
+	frame:void;
 	width: 100%;
  	padding: 0;
  	border-width: 0;
     webkit-box-shadow: none;
     box-shadow: none;
 	border-collapse: collapse;
+	padding-bottom:50px;
 	}
 	.table,tr,td,th{
 	border:1px solid white;
@@ -82,14 +79,6 @@
     border-collapse: collapse;	
 	}
 
-	.btn {
-	cursor:pointer;
-	background:#ffb400;
-	color:#fff;
-	cursor:pointer;
-	font-size:13px;
-	font-weight:400;	
-	}
 
 	.sbtn{
 	align:center;
@@ -129,7 +118,7 @@
 	}
 		
 	/* 버튼2 이용안내 */
-	.r_btn2{
+/*	.r_btn2{
 	height:60px;
 	width:150px;
 	font-family: "Raleway", Sans-serif;
@@ -158,7 +147,19 @@
 	.r_btn2:hover{
 	cursor:pointer;
 	background:#5a5a5a;
-	}	
+	}	*/	
+	
+	.button {
+	WIDTH: 85pt; 
+	HEIGHT: 40pt; 
+	font-size:1.8em
+	}
+	
+	.btn{
+	WIDTH: 85pt; 
+	HEIGHT: 40pt; 
+	font-size:1.8em
+	}
 	
 	</style>
 <script type="text/javascript">
@@ -173,22 +174,22 @@
 			<h3 align="center" >상품 목록</h3>
 			<p>상품 목록 페이지입니다.</p>
 		</div>
-	<div class= "panel"> 	
-		<table class="table table-condensed" style="table-layout:fixed;">
-			<colgroup>
-    		<col style="width: 100%">
-			</colgroup>
+		
+	<div class="panel">
+	
+		<table class="table table-condensed" style="table-layout:fixed; position:relative; width:100%;">
+			<colgroup><col style="width: 100%"></colgroup>
 
 		<c:forEach var="bean" items="${requestScope.lists}">				
 			<c:if test="${bean.p_seat eq 'A01' or bean.p_seat eq 'R01'}">
-			<tr>
-				<td>${bean.p_type}</td>
-			</tr>
-			<tr height="350">
-				<td colspan="7">
-			<div class="pictures" style="position: relative; z-index: 1;">	
+				<tr>
+					<td style="font-size:12pt">${bean.p_type}</td>
+				</tr>
+				<!-- 이미지 -->
+				<tr height="350">
+					<td colspan="7" style="padding-bottom:50px; position:relative; z-index: 1;">
 					<c:if test="${empty bean.p_pic}">
-						<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail" alt="no image">
+						<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail" alt="no image" >
 					</c:if>						
 
 					<c:if test="${applicationScope.debugMode == true}">
@@ -200,29 +201,27 @@
 						<img src="${applicationScope.uploadedPath}/${bean.p_pic}"
 							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
-			</div>
-			<div class="sbtn">
-				<ul>
-					<li class="r_btn1"><a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" 
-					target="_self">상세보기</a></li>
-					<li class="r_btn1"><a href="<%=NoForm%>prFee" target="_self">이용안내</a></li>	
-				</ul>	
-			</div>
-			<c:if test="${whologin == 2}">
-			<form class="sbtn" 
-			role="form" name="myform" action="<%=YesForm%>" method="get">
-				<input type="hidden" name="command" value="prList">
-				<ul>
-					<li class="r_btn2" type="button" onclick="writeForm();">상품 등록</li>
-				</ul>
-			</form>
-			</c:if>					
-		</td>
-		</tr>			
+				
+					
+					<div align="center" style="position:relative;vertical-align: middle; text-align: center; z-index: 2;">
+
+						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
+						<button type="button" class="btn btn-warning">상세보기</button>
+						</a>
+					
+						<a href="<%=NoForm%>prFee" target="_self">
+						<button type="button" class="btn btn-default">이용안내</button>
+						</a>
+					</div>
+				</tr>			
 		</c:if>
 		</c:forEach>
+			
+
 		</table>
-	</div>
+			<br><br><br>
+		
+			</div>
 	</div>
 </body>
 </html>

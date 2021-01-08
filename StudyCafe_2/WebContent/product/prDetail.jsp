@@ -98,6 +98,10 @@ function change () {
 	sum.value = parseInt(hm.value) * sell_price;
 }  
 
+function writeForm(){
+	location.href='<%=NoForm%>prInsert';
+}
+
 </script>
 <style type="text/css">
 
@@ -156,7 +160,7 @@ function change () {
 	int rightside = twelve - leftside; //판넬의 우측
 %>
 <body onload="init();">
-<script language="JavaScript">
+<script type="text/javascript">
 
 var sell_price;
 var amount;
@@ -203,43 +207,45 @@ function change () {
 			<p>상품 상세보기 페이지입니다.</p>
 		</div>	
 		<div class="panel">
+		
 			<div class="panel-body">
-			
-				<form name="form" method="get">
-			
+		
+			<form class="form-horizontal" role="form" action="<%=YesForm%>" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="command" value="prInsert">
 				<div class="col-sm-<%=leftside%> col-sm-<%=leftside%>">
-							
+				
 					<table class="table01" style="table-layout:fixed">
-						<tr>
-							<td>
 								<c:if test="${empty bean.p_pic}">
 									<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail"
-										width="600" height="600" alt="no image">
+										width="700" height="700" alt="no image">
 								</c:if>						
-								<c:if test="${applicationScope.debugMode == true}">
+								
+								<%--<c:if test="${applicationScope.debugMode == true}">
 									디버그 모드가 true이면 보입니다.<br>
 									${applicationScope.uploadedPath}/${bean.p_pic}
-								</c:if>
+								</c:if> --%>
 								
 								<c:if test="${not empty bean.p_pic}">
-									<img src="${applicationScope.uploadedPath}/${bean.p_pic}"
-										class="img-thumbnail" width="600" height="600"
+									<img src="${uploadedPath}/${bean.p_pic}"
+										class="img-thumbnail" width="700" height="700"
 										alt="${bean.p_pic}">
 								</c:if>
-							</td>
-						</tr>
+						
 					</table>
 				</div>
+			</form>
 				
-				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>">
-					<table class="table02 table-condensed ">				
+				
+				<form name="form" method="get">
+				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>" >
+					<table class="table02 table-condensed " style="table-layout:fixed">				
 						<tr>
 							<td width="40%" align="center">좌석 번호</td>
 							<td width="60%" align="left">
 							<select class="form-control" name="p_seat" id="p_seat">
 							
 							<option value="-" selected="selected">
-							----선택하세요----
+							------선택하세요------
 							
 							<c:forEach var="glists" items="${requestScope.glists}">
 							<option value="${glists.p_seat }">${glists.p_seat}</option>
@@ -261,7 +267,8 @@ function change () {
 						<tr>
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_stime" name = "p_stime" class="time" value="${bean.p_stime }">
+							<input type="text" id="p_stime" name = "p_stime" 
+							placeholder="시작 시간" class="time" value="${bean.p_stime }">
 							<%-- <select class="form-control" name="p_stime" id="p_stime">
 							<option value="-" selected="selected">
 							----선택하세요----
@@ -276,7 +283,8 @@ function change () {
 						<tr>
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_etime" name = "p_etime" class="time" value="${bean.p_etime }">
+							<input type="text" id="p_etime" name = "p_etime" 
+							placeholder="종료 시간" class="time" value="${bean.p_etime }">
 							<%--<select class="form-control" name="p_etime" id="p_etime">
 							<option value="-" selected="selected"> 
 							----선택하세요----
@@ -299,34 +307,28 @@ function change () {
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">				
 							<input type="text" name="sum" size="11" readonly>원
-							
-							<c:if test="${whologin!=0 }">
-							<button type="submit" onclick="location.href='reInsert.jsp' " 
-							class="btn btn-xs btn-default">예약하기</button>
-							</c:if>
 							</td>
 						</tr>
-						
-						
-				</table>
+						<tr>
+							<td colspan="2" align="center" style="padding-top:30px">
+							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
+							<a href="<%=NoForm%>reInsert&" class="btn btn-warning" role="button">예약하기</a></td>
+						<tr>
+					</table>
 				
 				</div>
-			</form>
+				</form>
 			</div>
 			
 			<!-- end panel-body -->
 			<div class="col-sm-offset-5 col-sm-4">
-					<a href="<%=NoForm%>prList&" 
-					class="btn btn-default" role="button">목록보기</a>	
-					
-					<c:if test="${whologin==2 }">
-						<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}"
-						class="btn btn-default" role="button">수정</a>
-						
-						<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" 
-						onclick="del();"
-						class="btn btn-default" role="button">삭제</a>		
-					</c:if>									
+
+			<c:if test="${whologin==2 }">
+				<a href="<%=NoForm%>prInsert&p_seat=${bean.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
+				<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}" class="btn btn-info" role="button">수정</a>
+				<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
+				<br><br><br>
+			</c:if>									
 		
 			</div>
 		

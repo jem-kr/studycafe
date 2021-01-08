@@ -165,7 +165,7 @@
 				<div align="center" class="col-sm-offset-3 col-sm-6">
 					<button class="btn btn-default" type="submit">수정하기</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
-					<button class="btn btn-default" type="reset">취소</button>
+					<button class="btn btn-default" type="reset" onclick="history.back()">뒤로가기</button>
 				</div>
 			</div>				
 			</form>													

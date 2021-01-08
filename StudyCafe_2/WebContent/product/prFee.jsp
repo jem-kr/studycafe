@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
-
+ <%
+	int offset =3; //오프 셋 
+	int content = twelve - 2 * offset; //12 - 2 * 오프셋
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,8 @@
 <title>이용 안내</title>
 </head>
 <body>
-		<div id="sub">
+		
+		<div id="sub" style="table-layout:fixed; position:relative; vertical-align: middle; text-align: center; width:100%;">
 		<div class="article_title">
 			<h3>이용안내</h3>
 			<p>홀 내부를 보다 넓게 구성하고 특별제작 된 넓은 책상을 제공함으로써 이용자의 학습 공간이 여유롭습니다. <br>
@@ -135,11 +139,8 @@
 				</ul>
 			</div>	
 			<div class="guideinfo" style="border-bottom:1px solid #eaeaea;overflow:hidden">
-			<!-----------------------
-			예약및결제 페이지 이동 경로 변경하기 
-			------------------------>
 			<div class="common_btn">
-			<a href="/booking/bkInsert.jsp" target="_self">
+			<a href="<%=NoForm%>reInsert&" target="_self">
 			 실시간 예약하기 
 			</a>
 			</div>
