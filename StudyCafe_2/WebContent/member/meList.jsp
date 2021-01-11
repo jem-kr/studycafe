@@ -13,27 +13,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
-	<link type="text/css" href="${contextPath}/css/meList.css" rel="stylesheet"/>
+	<link type="text/css" href="${contextPath}/css/meList.css" rel="stylesheet" />
 	<script>
-		$(document).ready(function(){
-		  $('[data-toggle="tooltip"]').tooltip();   
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
 		});
-		
+	
 		function selectCheck() {
 			var selectCheck = $('option:selected').val();
 			//alert(selectCheck);
 			if (selectCheck == '-') {
 				alert('정렬기준을 선택하세요.');
-				return false;
-			}
-		}
-		
-		function ckboxCheck() {
-			var ckboxCheck = $('input:checked').val();
-			// alert(ckboxCheck);
-			// 체크를 안하면 undefined , 체크를 하면 check
-			if (ckboxCheck != 'check') {
-				alert('항목을 체크하세요.');
 				return false;
 			}
 		}
@@ -43,10 +33,9 @@
 	<div class="container">
 		<h2>회원 목록</h2>
 		<form action="<%=YesForm%>" method="post">
-		<input type="hidden" name="command" value="meSort">
+			<input type="hidden" name="command" value="meSort">
 			<ul>
-				<li>
-					<select name="sort">
+				<li><select name="sort">
 						<option value="-">-- 정렬 기준 --</option>
 						<option value="id">아이디</option>
 						<option value="password">비밀번호</option>
@@ -57,15 +46,17 @@
 						<option value="gender">성별</option>
 						<option value="phone">휴대폰번호</option>
 						<option value="email01">이메일주소</option>
-					</select>
-				</li>
+				</select></li>
 				<li>
-					<button type="submit" value="asc" name="asc" data-toggle="tooltip" data-placement="top" title="오름차순" onclick="return selectCheck();">
+					<button type="submit" value="asc" name="asc" data-toggle="tooltip"
+						data-placement="top" title="오름차순" onclick="return selectCheck();">
 						<i class="fas fa-sort-amount-up-alt"></i>
 					</button>
 				</li>
 				<li>
-					<button type="submit" value="desc" name="desc" data-toggle="tooltip" data-placement="top" title="내림차순" onclick="return selectCheck();">
+					<button type="submit" value="desc" name="desc"
+						data-toggle="tooltip" data-placement="top" title="내림차순"
+						onclick="return selectCheck();">
 						<i class="fas fa-sort-amount-down-alt"></i>
 					</button>
 				</li>
@@ -74,7 +65,6 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>선택</th>
 					<th>아이디</th>
 					<th>비밀번호</th>
 					<th>비밀번호 찾기 질문</th>
@@ -89,7 +79,6 @@
 			<tbody>
 				<c:forEach items="${requestScope.lists}" var="bean">
 					<tr>
-						<td><input type="checkbox" id="sel" name="sel" value="ckeck"></td>
 						<td>${bean.id}</td>
 						<td>${bean.password}</td>
 						<td>${bean.pwquestion}</td>
@@ -103,17 +92,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<ul>
-			<li>
-				<button type="submit" onclick="return ckboxCheck();">
-					 <i class="fas fa-trash-alt">&nbsp;회원 삭제</i>
-				</button>
-			</li>
-		</ul>
-		
-	</div>
-	<div class="page" align="center">
-			${requestScope.pagingHtml}	
-	</div>	
+		<div class="page" align="center">${requestScope.pagingHtml}</div>
 </body>
 </html>

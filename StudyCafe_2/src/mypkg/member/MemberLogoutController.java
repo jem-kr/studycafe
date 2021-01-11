@@ -19,7 +19,7 @@ public class MemberLogoutController extends SuperClass {
 		//추후 개발 예정 
 		
 		
-		
+		//System.out.println("로그아웃을 진행합니다. loginfo에 담겨있는 로그인 정보는 삭제합니다.");
 		super.doGet(request, response);
 		
 		super.session.invalidate();

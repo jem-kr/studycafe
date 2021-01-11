@@ -13,6 +13,8 @@ public class MemberDao extends SuperDao {
 
 	public Member SelectDataId(String id) {
 		// 중복체크를 담당하는 메소드
+		// 회원 상세정보 보기를 담당하는 메소드
+		// 회원 정보 수정을 담당하는 메소드
 		// id 로 해당하는 data를 찾음
 		Member bean = null;
 
@@ -49,9 +51,9 @@ public class MemberDao extends SuperDao {
 			}
 
 			if (bean == null) {
-				System.out.println("id 발견 안됨");
+				System.out.println("회원 정보 발견 안됨");
 			} else {
-				System.out.println("id 발견");
+				System.out.println("회원 정보 발견");
 			}
 
 		} catch (SQLException e) {

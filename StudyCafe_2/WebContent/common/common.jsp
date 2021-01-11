@@ -188,8 +188,13 @@
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="member_info"
-							data-toggle="dropdown">회원정보</a>
+							data-toggle="dropdown">회원</a>
 							<ul class="dropdown-menu">
+								<li>
+									<c:if test="${whologin == 0}">
+										<a href="<%=NoForm%>meInsert">회원가입</a>
+									</c:if>	
+								</li>
 								<li>
 									<c:if test="${whologin == 0}">
 										<a href="<%=NoForm%>meLogin">로그인</a>
@@ -201,23 +206,23 @@
 									</c:if>		
 								</li>
 								<li>
-									<c:if test="${whologin == 0}">
-										<a href="<%=NoForm%>meInsert">회원가입</a>
-									</c:if>	
-								</li>
-								<li>
-									<c:if test="${whologin != 0}">
-										<a href="<%=NoForm%>meUpdate&id=${sessionScope.loginfo.id}">회원정보수정</a>
-									</c:if>	
-								</li>
-								<li>
-									<c:if test="${whologin != 0}">
-										<a href="<%=NoForm%>meDelete&id=${sessionScope.loginfo.id}">회원탈퇴</a>
-									</c:if>	
-								</li>
-								<li>
 									<c:if test="${whologin == 2}">
-										<a href="<%=NoForm%>meList">회원목록보기</a>
+										<a href="<%=NoForm%>meList">회원 목록</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">회원 상세 정보</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meUpdate&id=${sessionScope.loginfo.id}">회원 정보 수정</a>
+									</c:if>	
+								</li>
+								<li>
+									<c:if test="${whologin != 0}">
+										<a href="<%=NoForm%>meDelete&id=${sessionScope.loginfo.id}">회원 탈퇴</a>
 									</c:if>	
 								</li>
 							</ul>
@@ -265,7 +270,7 @@
 			     		</li>
 			     		<li>
 			     		   <c:if test="${whologin != 0}">
-			     		   		<a href="<%=NoForm%>meDetailView">
+			     		   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
 					     		   	<i class="fas fa-user commom"> 
 										${sessionScope.loginfo.name}님
 									</i>

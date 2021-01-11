@@ -1,0 +1,97 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.member {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-size: 13px;
+}
+
+.member h2 {
+	font-size: 32px;
+	color: #111111;
+	border-bottom: 2px solid #111111;
+	text-align: center;
+	line-height: 100%;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.member h3 {
+	width: 700px;
+	display: flex;
+	justify-content: center;
+	color: #6f6f6f;
+	font-size: 15px;
+	padding-bottom: 50px;
+	line-height: 100%;
+	border-bottom: 0.5px solid #d9d9d9;
+}
+
+.member>ul {
+	width: 700px;
+	margin: 0;
+	padding: 0px;
+}
+
+.member>ul li {
+	padding: 0px 0px 20px 0px;
+	margin: 0px;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	line-height: 30px;
+}
+
+.member>ul li input {
+	width: 500px;
+	padding: 0px;
+	box-sizing: border-box;
+	height: 40px;
+	text-align: center;
+	font-size: 14px;
+	border: 0px;
+	background-color: rgb(242, 242, 242, 0.5);
+}
+
+.member li label {
+	font-weight: bold;
+	text-align: center;
+}
+
+.member li.edit{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+
+.member a, .member button {
+	height: 40px;
+	background-color: #111111;
+	border-radius: 4px;
+	line-height: 40px;
+	width: 80px;
+	font-size: 14px;
+	color: #ffffff;
+	font-weight: bold;
+	margin: 35px 0px 0px 10px;
+	text-align: center;
+	border: #111111;
+}
+
+.member a:hover , .member button:hover{
+	background-color: #ffb400;
+}
+
+
+.member i:hover {
+	color: white;
+}
