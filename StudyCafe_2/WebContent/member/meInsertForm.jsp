@@ -197,7 +197,7 @@
                          <span>${requestScope.errpwanswer}</span>  
                     </li>
                     <li>
-                        <label for="pwanswer">
+                        <label for="visit">
                             방문 목적
                         </label>
                         <input type="checkbox" id="visit01" name="visit" value="좌석 예약">

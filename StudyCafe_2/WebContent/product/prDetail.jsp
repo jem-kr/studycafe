@@ -56,55 +56,67 @@
 	       });//etime 시간 기본 설정
 
 	});
-</script>
-<meta charset="UTF-8">
-<title>BootStrap Sample</title>
+	</script>
+	<meta charset="UTF-8">
+	<title>BootStrap Sample</title>
 
-<script type="text/javascript">
-var sell_price;
-var amount;
-
-function init () {
-	p_stime = document.form.p_stime.value;
-	p_etime = document.form.p_etime.value;
-	p_hour.value  = p_etime - p_stime;
-}
-
-function add () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	hm.value ++ ;
-	sum.value = parseInt(hm.value) * sell_price;
-}
-
-function del_hour () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	if (hm.value > 1) {
-		hm.value -- ;
+	<script type="text/javascript">
+	var sell_price;
+	var amount;
+	
+	function init () {
+		p_stime = document.form.p_stime.value;
+		p_etime = document.form.p_etime.value;
+		p_hour.value  = p_etime - p_stime;
+	}
+	
+	function add () {
+		hm = document.form.amount;
+		sum = document.form.sum;
+		hm.value ++ ;
 		sum.value = parseInt(hm.value) * sell_price;
 	}
-}
-
-function change () {
 	
-	hm = document.form.amount;
-	sum = document.form.sum;
-
-		if (hm.value < 0) {
-			hm.value = 0;
+	function del_hour () {
+		hm = document.form.amount;
+		sum = document.form.sum;
+		if (hm.value > 1) {
+			hm.value -- ;
+			sum.value = parseInt(hm.value) * sell_price;
 		}
-	sum.value = parseInt(hm.value) * sell_price;
+	}
 	
+	function change () {
+		
+		hm = document.form.amount;
+		sum = document.form.sum;
 	
+			if (hm.value < 0) {
+				hm.value = 0;
+			}
+		sum.value = parseInt(hm.value) * sell_price;
+		
+		
+		
+	}  
 	
-}  
-
-function writeForm(){
-	location.href='<%=NoForm%>prInsert';
-}
-
-</script>
+	function writeForm(){
+		location.href='<%=NoForm%>prInsert';
+	}
+	
+	function calculate() {
+		var p_stime = $('#p_stime').val();
+		var p_etime = $('#p_etime').val();
+		
+		if (p_etime != 0) {
+			var p_hour = p_etime - p_stime;
+			$('input#p_hour').val(p_hour);	
+		}else{
+			return false;
+		}
+	}
+	
+	</script>
 <style type="text/css">
 
 	.panel, table01, table02{
@@ -249,8 +261,8 @@ function writeForm(){
 						<tr>
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
-							<input type="number" id="p_stime" name = "p_stime" 
-							placeholder="시작 시간" class="form-control" value="${bean.p_stime}">
+								<input type="number" id="p_stime" name = "p_stime" 
+								placeholder="시작 시간" class="form-control" value="${bean.p_stime}">
 								<span class="err form-control-static">${errp_stime}</span>
 							</td>
 						</tr>						
@@ -258,16 +270,19 @@ function writeForm(){
 						<tr>
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
-							<input type="number" id="p_etime" name = "p_etime" 
-							placeholder="종료 시간" class="form-control" value="${bean.p_etime}">
+								<input type="number" id="p_etime" name = "p_etime" 
+								placeholder="종료 시간" class="form-control" value="${bean.p_etime}" onmouseout="calculate();">
 								<span class="err form-control-static">${errp_etime}</span>
 							</td>
-						</tr>		
+						</tr>	
+							
 
 						<!-- 이용시간 연산 -->
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
-							<td width="60%" align="left" id="p_hour" class="form-control">${bean.p_etime - bean.p_stime}
+							<td width="60%" align="left" id="p_hour">
+								<input type="number" id="p_hour" name = "p_hour" disabled="disabled"
+								placeholder="이용 시간" class="form-control">
 							</td>
 						</tr>
 						

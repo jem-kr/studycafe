@@ -118,8 +118,8 @@ public class ProductDao extends SuperDao {
 			pstmt.setInt(3, bean.getP_price());
 			pstmt.setString(4, bean.getP_date());
 			pstmt.setInt(5, bean.getP_stime());
-			pstmt.setInt(6, bean.getP_hour());
-			pstmt.setInt(7, bean.getP_price());
+			pstmt.setInt(6, bean.getP_etime());
+			pstmt.setInt(7, bean.getP_hour());
 			pstmt.setString(8, bean.getP_pic());
 			pstmt.setString(9, bean.getRemark());
 			

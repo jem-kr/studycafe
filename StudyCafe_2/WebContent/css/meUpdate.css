@@ -1,3 +1,4 @@
+@charset "EUC-KR";
 body {
 	margin: 0px;
 	padding: 0px;
@@ -96,5 +97,85 @@ body {
 	color: white;
 }
 
+.member input[type='radio']{
+	padding: 0px;
+	box-sizing: border-box;
+	height: 15px;
+	display: flex;
+	justify-content: flex-end;
+	width: 15px;
+	margin: 0px 30px 0px 30px;
+	
+}
+.member li#gender{
+	display: flex;
+	
+}
+
+.member input#gender{
+	width: 20px;
+}
+
+
+.member li#email input{
+	width: 240px;
+}
+
+.member li#email select{
+	width: 230px;
+	box-sizing: border-box;
+	height: 40px;
+	border: 0px;
+	background-color: rgb(242, 242, 242, 0.5);
+}
+
+.member li#pwquestion select{
+	width: 500px;
+	box-sizing: border-box;
+	height: 40px;
+	border: 0px;
+	background-color: rgb(242, 242, 242, 0.5);
+}
+
+.member select{
+	text-align-last: center;
+}
+
+.member input[type='checkbox']{
+	padding: 0px;
+	box-sizing: border-box;
+	width: 15px;
+	height: 15px;
+	display: flex;
+	justify-content: flex-end;
+	margin-left: 40px;
+	margin-top: 0px;
+}
+
+.member li#visit label{
+	text-align: start;
+}
+
+.member div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.member div label{
+	font-weight: normal;
+	display: flex;
+	justify-content: flex-end;
+	margin: 0px 0px 0px 15px;
+}
+
+.member span{
+	color: red;
+	font-weight: bold;
+	font-size: 14px;
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: 10px;
+}
 
 
