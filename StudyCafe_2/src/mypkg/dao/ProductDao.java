@@ -54,7 +54,7 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 
 		String sql = " update products set " ;
-		sql += " p_type= ?, p_seat= ?, p_price= ?, p_date= ?, p_stime= ?, p_etime= ?, p_hour=?, p_pic= ? , remark= ? " ;
+		sql += " p_type= ?, p_seat= ?, p_date= ?, p_stime= ?, p_etime= ?, p_hour=?, p_price= ?, p_pic= ? , remark= ? " ;
 		sql += " where p_seat= ? ";
 		
 		int cnt = -999999;
@@ -65,9 +65,9 @@ public class ProductDao extends SuperDao {
 			
 			pstmt.setString(1, bean.getP_type());
 			pstmt.setString(2, bean.getP_seat());
-			pstmt.setInt(3, bean.getP_price());
-			pstmt.setString(4, bean.getP_date());
-			pstmt.setInt(5, bean.getP_stime());
+			pstmt.setString(3, bean.getP_date());
+			pstmt.setInt(4, bean.getP_stime());
+			pstmt.setInt(5, bean.getP_etime());
 			pstmt.setInt(6, bean.getP_hour());
 			pstmt.setInt(7, bean.getP_price());
 			pstmt.setString(8, bean.getP_pic());
@@ -101,7 +101,7 @@ public class ProductDao extends SuperDao {
 	//해당 Bean객체를 사용해 상품 등록하기
 	public int InsertData(Product bean) {
 		System.out.println("상품을 등록합니다.");
-		String sql = " insert into products(p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark)";
+		String sql = " insert into products( p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark )";
 		sql += " values (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		Connection conn = null ;
@@ -115,11 +115,11 @@ public class ProductDao extends SuperDao {
 			
 			pstmt.setString(1, bean.getP_type());
 			pstmt.setString(2, bean.getP_seat());
-			pstmt.setInt(3, bean.getP_price());
-			pstmt.setString(4, bean.getP_date());
-			pstmt.setInt(5, bean.getP_stime());
-			pstmt.setInt(6, bean.getP_etime());
-			pstmt.setInt(7, bean.getP_hour());
+			pstmt.setString(3, bean.getP_date());
+			pstmt.setInt(4, bean.getP_stime());
+			pstmt.setInt(5, bean.getP_etime());
+			pstmt.setInt(6, bean.getP_hour());
+			pstmt.setInt(7, bean.getP_price());
 			pstmt.setString(8, bean.getP_pic());
 			pstmt.setString(9, bean.getRemark());
 			
@@ -155,7 +155,7 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark ";
+		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
 		sql += " from products ";
 				
 //		sql += " where p_seat in ( select max(p_seat) from products group by p_type) ";
@@ -174,11 +174,11 @@ public class ProductDao extends SuperDao {
 				
 				bean.setP_type(rs.getString("p_type"));
 				bean.setP_seat(rs.getString("p_seat"));
-				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_date(rs.getString("p_date"));
 				bean.setP_stime(rs.getInt("p_stime"));
 				bean.setP_etime(rs.getInt("p_etime"));
 				bean.setP_hour(rs.getInt("p_hour"));
+				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_pic(rs.getString("p_pic"));
 				bean.setRemark(rs.getString("remark"));
 				
@@ -278,11 +278,11 @@ public class ProductDao extends SuperDao {
 				
 				bean.setP_type(rs.getString("p_type"));
 				bean.setP_seat(rs.getString("p_seat"));
-				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_date(rs.getString("p_date"));
 				bean.setP_stime(rs.getInt("p_stime"));
 				bean.setP_etime(rs.getInt("p_etime"));
 				bean.setP_hour(rs.getInt("p_hour"));
+				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_pic(rs.getString("p_pic"));
 				bean.setRemark(rs.getString("remark"));
 	
@@ -315,7 +315,7 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select p_type, p_seat, p_price, p_date, p_stime, p_etime, p_hour, p_pic, remark ";
+		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
 		sql += " from products where p_type = ? ";
 				
 //		sql += " where p_seat in ( select max(p_seat) from products group by p_type) ";
@@ -334,11 +334,11 @@ public class ProductDao extends SuperDao {
 				
 				bean.setP_type(rs.getString("p_type"));
 				bean.setP_seat(rs.getString("p_seat"));
-				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_date(rs.getString("p_date"));
 				bean.setP_stime(rs.getInt("p_stime"));
 				bean.setP_etime(rs.getInt("p_etime"));
 				bean.setP_hour(rs.getInt("p_hour"));
+				bean.setP_price(rs.getInt("p_price"));
 				bean.setP_pic(rs.getString("p_pic"));
 				bean.setRemark(rs.getString("remark"));
 				
