@@ -1,6 +1,7 @@
 package mypkg.product;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -67,5 +68,31 @@ public class ProductDetailController extends SuperClass {
 		}
 		
 	}
+	
+	@Override
+	public boolean validate(HttpServletRequest request) {
+		boolean isCheck = true ;
+		SimpleDateFormat format1 = new SimpleDateFormat ("YYYY/MM/DD");
+		SimpleDateFormat format2 = new SimpleDateFormat ("HH");
+
+		//p_date는 오늘과 같거나 커야하고 시작시간은 지금 시간 보다 커야함
+		
+		//시작 시간
+		//오늘 날짜 & 현재 시간 이후
+		if( bean.getP_date() == "format1" && bean.getP_stime() < Integer.parseInt("format2") ){
+			request.setAttribute( super.PREFIX + "p_stime", "현재 시간 이후로 선택해 주세요.");
+			isCheck = false  ;
+		} 
+		
+		//종료 시간
+		//시작 시간 이후
+		if( bean.getP_etime() < bean.getP_stime() ){
+			request.setAttribute( super.PREFIX + "p_etime", "시작 시간 이후로 선택해 주세요.");
+			isCheck = false  ;
+		} 
+		
+		return isCheck ;
+	}
+	
 	
 }

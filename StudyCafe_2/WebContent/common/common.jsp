@@ -148,21 +148,21 @@
 						<li>
 							<li class="dropdown">
 							<a class="dropdown-toggle page-scroll" href="#product"
-							data-toggle="dropdown">시설안내</a>
+							data-toggle="dropdown">이용안내</a>
 							<ul class="dropdown-menu">
+								<li>
+									<a href="<%=NoForm%>prFee">이용 안내</a>
+								</li>
 								<li>
 									<a href="<%=NoForm%>prFac">시설 소개</a>
 								</li>
 								<li>
-									<a href="<%=NoForm%>prList">상품 목록</a>
+									<a href="<%=NoForm%>prList">좌석 목록</a>
 								</li>
 								<li>
 									<c:if test="${whologin == 2}">
 										<a href="<%=NoForm%>prPrice">상품 매출</a>
 									</c:if>	
-								</li>
-								<li>
-									<a href="<%=NoForm%>prFee">이용 안내</a>
 								</li>
 								<li>
 									<c:if test="${whologin == 2}">

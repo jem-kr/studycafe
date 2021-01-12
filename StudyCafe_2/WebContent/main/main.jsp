@@ -40,7 +40,6 @@
 			<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-						<!-- css에서 상단바 아래 공백 추가하기.. 근데 방법 몰라서 일단 br태그.. -->
 						<br><br><br><br><br>
 					<div class="section-title">
 						<h2>For Study</h2>
@@ -288,6 +287,9 @@
 					</div>
 				</div>
 				<br>
+				<!-- 
+				사용자가 문의하고자 하는 내용 전달 : QAsend.jsp
+				 -->
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<form name="sentMessage" id="contactForm" novalidate="" 
@@ -296,14 +298,16 @@
 								<div class="col-md-6">
 								
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Your Name *" id="name" required="" data-validation-required-message="Please enter your name.">
+										<input type="text" class="form-control" placeholder="Your Name *" 
+										id="name" required="" data-validation-required-message="Please enter your name.">
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
 								
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Your Email *" id="email" required="" data-validation-required-message="Please enter your email address.">
+										<input type="email" class="form-control" placeholder="Your Email *" 
+										id="email" required="" data-validation-required-message="Please enter your email address.">
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
@@ -312,7 +316,8 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea class="form-control" placeholder="Your Message *" id="message" required="" data-validation-required-message="Please enter a message."></textarea>
+										<textarea class="form-control" placeholder="Your Message *" 
+										id="message" required="" data-validation-required-message="Please enter a message."></textarea>
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>

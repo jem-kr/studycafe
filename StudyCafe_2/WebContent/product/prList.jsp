@@ -207,7 +207,7 @@
 
 						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
 						<button type="button" class="btn btn-warning">상세보기</button>
-						</a>
+						</a>						
 					
 						<a href="<%=NoForm%>prFee" target="_self">
 						<button type="button" class="btn btn-default">이용안내</button>

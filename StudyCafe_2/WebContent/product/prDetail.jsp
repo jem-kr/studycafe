@@ -25,7 +25,7 @@
 	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 	       minDate: 0, 
 	        maxDate: "+2w" 
-	       
+
 	    });
 	});
 	
@@ -65,10 +65,9 @@ var sell_price;
 var amount;
 
 function init () {
-	sell_price = document.form.sell_price.value;
-	amount = document.form.amount.value;
-	document.form.sum.value = sell_price;
-	change();
+	p_stime = document.form.p_stime.value;
+	p_etime = document.form.p_etime.value;
+	p_hour.value  = p_etime - p_stime;
 }
 
 function add () {
@@ -96,6 +95,9 @@ function change () {
 			hm.value = 0;
 		}
 	sum.value = parseInt(hm.value) * sell_price;
+	
+	
+	
 }  
 
 function writeForm(){
@@ -162,43 +164,6 @@ function writeForm(){
 <body onload="init();">
 <script type="text/javascript">
 
-var sell_price;
-var amount;
-
-function init () {
-    sell_price = document.form.sell_price.value;
-    amount = document.form.amount.value;
-    document.form.sum.value = sell_price;
-    change();
-}
-
-function add () {
-    hm = document.form.amount;
-    sum = document.form.sum;
-    hm.value ++ ;
-
-    sum.value = parseInt(hm.value) * sell_price;
-}
-
-function del_hour () {
-    hm = document.form.amount;
-    sum = document.form.sum;
-        if (hm.value > 1) {
-            hm.value -- ;
-            sum.value = parseInt(hm.value) * sell_price;
-        }
-}
-
-function change () {
-    hm = document.form.amount;
-    sum = document.form.sum;
-
-        if (hm.value < 0) {
-            hm.value = 0;
-        }
-    sum.value = parseInt(hm.value) * sell_price;
-} 
-
 </script>
 
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
@@ -236,7 +201,6 @@ function change () {
 				
 				<form name="form" method="post" action="<%=YesForm%>">
 				<input type="hidden" value="reInsert" name="command">
-				<input type="hidden" value="${bean.p_type }" name="p_type">
 				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>" >
 					<table class="table02 table-condensed " style="table-layout:fixed">				
 						
@@ -285,15 +249,8 @@ function change () {
 						<tr>
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_stime" name = "p_stime" 
-							placeholder="시작 시간" class="time" value="${bean.p_stime }">
-							<%-- <select class="form-control" name="p_stime" id="p_stime">
-							<option value="-" selected="selected">
-							----선택하세요----
-							<c:forEach var="i" begin="09" end="21" step="1">
-							<option value="${i }">${i}</option>
-							</c:forEach>
-							</select> --%>
+							<input type="number" id="p_stime" name = "p_stime" 
+							placeholder="시작 시간" class="form-control" value="${bean.p_stime}">
 								<span class="err form-control-static">${errp_stime}</span>
 							</td>
 						</tr>						
@@ -301,36 +258,30 @@ function change () {
 						<tr>
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
-							<input type="text" id="p_etime" name = "p_etime" 
-							placeholder="종료 시간" class="time" value="${bean.p_etime }">
-							<%--<select class="form-control" name="p_etime" id="p_etime">
-							<option value="-" selected="selected"> 
-							----선택하세요----
-							
-							<option>${bean.p_etime}</option>
-							</select> --%>
+							<input type="number" id="p_etime" name = "p_etime" 
+							placeholder="종료 시간" class="form-control" value="${bean.p_etime}">
 								<span class="err form-control-static">${errp_etime}</span>
 							</td>
 						</tr>		
-						
+
+						<!-- 이용시간 연산 -->
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
-							<td width="60%" align="left">
-							<input type=hidden name="sell_price" value="${bean.p_price}">
-							<input type="text" name="amount" value="1" size="3" onchange="change();">
-							<input type="button" value=" + " onclick="add();">
-							<input type="button" value=" - " onclick="del_hour();">
-						</tr>
-						<tr>
-							<td width="40%" align="center">가격</td>
-							<td width="60%" align="left">				
-							<input type="text" name="sum" size="11" readonly>원
+							<td width="60%" align="left" id="p_hour" class="form-control">${bean.p_etime - bean.p_stime}
 							</td>
 						</tr>
+						
+						<!-- 총 가격 연산 -->
+						<tr>
+							<td width="40%" align="center">가격</td>
+							<td width="60%" align="left">
+							<fmt:formatNumber value="${bean.p_price * bean.p_hour}" pattern="###,###"/> 원</td>
+						</tr>
+						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
 							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
-							<button type="submit">예약하기</button>
+							<button type="submit" class="btn btn-default">예약하기</button>
 						<tr>
 					</table>
 				
@@ -362,6 +313,15 @@ function change () {
 		if(confirm("정말 삭제하시겠습니까?")==true){
 			list_ok.submit();
 	}
+	
+	$(document).ready(function(){
+		    $('#p_hour').change(function(){
+		        var price = parseInt($(value).val()) * 1500
+		        $('#p_price).val( price );
+		    });
+		});
+	
+		
 	</script>
 </body>
 </html>
