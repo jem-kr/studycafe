@@ -64,42 +64,6 @@
 	var sell_price;
 	var amount;
 	
-	function init () {
-		p_stime = document.form.p_stime.value;
-		p_etime = document.form.p_etime.value;
-		p_hour.value  = p_etime - p_stime;
-	}
-	
-	function add () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-		hm.value ++ ;
-		sum.value = parseInt(hm.value) * sell_price;
-	}
-	
-	function del_hour () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * sell_price;
-		}
-	}
-	
-	function change () {
-		
-		hm = document.form.amount;
-		sum = document.form.sum;
-	
-			if (hm.value < 0) {
-				hm.value = 0;
-			}
-		sum.value = parseInt(hm.value) * sell_price;
-		
-		
-		
-	}  
-	
 	function writeForm(){
 		location.href='<%=NoForm%>prInsert';
 	}
@@ -115,6 +79,15 @@
 			return false;
 		}
 	}
+	
+	function totalcal() {
+		var p_price = $('#p_price').val();
+		var p_hour = $('#p_hour').val();
+		
+			var p_price = p_price * p_hour;
+			$('input#p_price').val(p_price);	
+		
+	}	
 	
 	</script>
 <style type="text/css">
@@ -203,7 +176,7 @@
 								</c:if> --%>
 								
 								<c:if test="${not empty bean.p_pic}">
-									<img src="${uploadedPath}/${bean.p_pic}"
+									<img src="${contextPath}/upload/${bean.p_pic}"
 										class="img-thumbnail" width="700" height="700"
 										alt="${bean.p_pic}">
 								</c:if>		
@@ -280,7 +253,7 @@
 						<!-- 이용시간 연산 -->
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
-							<td width="60%" align="left" id="p_hour">
+							<td width="60%" align="left">
 								<input type="number" id="p_hour" name = "p_hour" disabled="disabled"
 								placeholder="이용 시간" class="form-control">
 							</td>
@@ -289,8 +262,10 @@
 						<!-- 총 가격 연산 -->
 						<tr>
 							<td width="40%" align="center">가격</td>
-							<td width="60%" align="left">
-							<fmt:formatNumber value="${bean.p_price * bean.p_hour}" pattern="###,###"/> 원</td>
+							<td width="60%" align="left" id="p_price" disabled="disabled"
+							placeholder="가격" class="form-control">
+								${bean.p_price}
+							</td>
 						</tr>
 						
 						<tr>

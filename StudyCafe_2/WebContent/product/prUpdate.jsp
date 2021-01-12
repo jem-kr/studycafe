@@ -92,7 +92,7 @@
 						<span class="err form-control-static">${errp_type}</span>
 				</div>
 			</div>
-								
+
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_seat">좌석 번호</label>
 				<div class="col-sm-<%=formright%>">
@@ -161,13 +161,15 @@
 					<span class="err">${errp_pic}</span>								
 				</div>
 			</div>
-				<div class="form-group">
+			
+			<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
 					<button class="btn btn-default" type="submit">수정하기</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
 					<button class="btn btn-default" type="reset" onclick="history.back()">뒤로가기</button>
 				</div>
-			</div>				
+			</div>
+						
 			</form>													
 		</div>
 		</div>

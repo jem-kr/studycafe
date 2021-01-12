@@ -198,7 +198,7 @@
 					</c:if>
 					
 					<c:if test="${not empty bean.p_pic}">
-						<img src="${applicationScope.uploadedPath}/${bean.p_pic}"
+						<img src="${contextPath}/upload/${bean.p_pic}"
 							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
 				
