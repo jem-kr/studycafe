@@ -166,13 +166,13 @@
 </script>	
 	
 <meta charset="UTF-8">
-<title>상품 목록</title>
+<title>좌석 목록</title>
 </head>
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>"> 
 		<div class="title">
-			<h3 align="center" >상품 목록</h3>
-			<p>상품 목록 페이지입니다.</p>
+			<h3 align="center">좌석 목록</h3>
+			<p>좌석 목록 페이지입니다.</p>
 		</div>
 		
 	<div class="panel">

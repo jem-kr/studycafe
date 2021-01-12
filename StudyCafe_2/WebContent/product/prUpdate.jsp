@@ -154,7 +154,7 @@
 				</c:if>
 				<input name="p_pic" type="text" value="${bean.p_pic}">
 				
-				<label class="control-label col-sm-<%=formleft%>" for="pic">좌석 사진</label>
+				<label class="control-label col-sm-<%=formleft%>" for="p_pic">좌석 사진</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="file" class="form-control" name="p_pic"
 						id="p_pic" placeholder="좌석 사진을 첨부해 주세요.">
@@ -165,7 +165,7 @@
 			<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
 					<button class="btn btn-default" type="submit">수정하기</button>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
 					<button class="btn btn-default" type="reset" onclick="history.back()">뒤로가기</button>
 				</div>
 			</div>

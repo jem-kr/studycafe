@@ -61,33 +61,60 @@
 	<title>BootStrap Sample</title>
 
 	<script type="text/javascript">
-	var sell_price;
-	var amount;
-	
 	function writeForm(){
 		location.href='<%=NoForm%>prInsert';
 	}
 	
+	/* 
+		calculate() : 
+		이용 시간 계산 함수, fakep_hour로 수정함 
+	*/
 	function calculate() {
 		var p_stime = $('#p_stime').val();
 		var p_etime = $('#p_etime').val();
 		
 		if (p_etime != 0) {
-			var p_hour = p_etime - p_stime;
-			$('input#p_hour').val(p_hour);	
-		}else{
+			var fakep_hour = p_etime - p_stime;
+			$('input#fakep_hour').val(fakep_hour);	
+		} else {
 			return false;
 		}
 	}
 	
+	/* 
+		totalcal() : 
+		가격 계산 함수, fakep_hour & fakep_price
+		p_price 값인 1500, 3000이 아닌 0이라서 계속 0 출력됨.. 
+		th p_type 추가하여 if문.. 1500 or 3000 ... 
+	*/
 	function totalcal() {
-		var p_price = $('#p_price').val();
-		var p_hour = $('#p_hour').val();
+		var fakep_hour = $('#fakep_hour').val();
+		var p_price = $('#fakep_price').val();
+		var p_type = $('#p_type').val();
 		
-			var p_price = p_price * p_hour;
-			$('input#p_price').val(p_price);	
+		if(p_type == '1인석'){	
+		var p_price = 1500 * fakep_hour;
+		$('input#fakep_price').val(p_price);
+		} else if(p_type == '다인실'){
+			var p_price = 3000 * fakep_hour;
+			$('input#fakep_price').val(p_price);		
+		}
+	}
+
+	/*
+		현재날짜, 시간 비교
+	*/
+	function select_etime() {
+		var fakep_hour = $('#fakep_hour').val();
 		
-	}	
+		if (fakep_hour < 0){
+			alert("종료 시간을 다시 선택해 주세요.");
+			return false;
+		}
+		
+	}
+	
+		
 	
 	</script>
 <style type="text/css">
@@ -130,12 +157,6 @@
     border-bottom-style: none;
 	}
 	
-	.table02{
-/*	border-top-style: none;
-    border-left-style: none;
-    border-right-style: none;
-    border-bottom-style: none;*/
-	}
 
 	
 </style>
@@ -146,7 +167,7 @@
 	int leftside = 7; //판넬의 좌측
 	int rightside = twelve - leftside; //판넬의 우측
 %>
-<body onload="init();">
+<body>
 <script type="text/javascript">
 
 </script>
@@ -188,6 +209,16 @@
 				<input type="hidden" value="reInsert" name="command">
 				<div class="col-sm-<%=rightside%> col-sm-<%=rightside%>" >
 					<table class="table02 table-condensed " style="table-layout:fixed">				
+						
+						<tr>
+							<td width="40%" align="center">좌석 유형</td>
+							<td width="60%" align="left">
+						<input type="text" class="form-control" name="fakep_type" id="fakep_type"
+								placeholder="좌석 유형" value="${bean.p_type}" disabled="disabled">
+							<input type="hidden" name="p_type" id="p_type"
+								value="${bean.p_type}">	
+							
+						</td>
 						
 						<tr>
 							<td width="40%" align="center">좌석 번호</td>
@@ -244,27 +275,30 @@
 							<td width="40%" align="center">종료 시간</td>
 							<td width="60%" align="left">
 								<input type="number" id="p_etime" name = "p_etime" 
-								placeholder="종료 시간" class="form-control" value="${bean.p_etime}" onmouseout="calculate();">
+								placeholder="종료 시간" class="form-control" value="${bean.p_etime}"
+								onmouseout="calculate();">
 								<span class="err form-control-static">${errp_etime}</span>
 							</td>
 						</tr>	
 							
 
-						<!-- 이용시간 연산 -->
+						<!-- 이용 시간 계산 함수, fakep_hour로 수정함 -->						
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
-								<input type="number" id="p_hour" name = "p_hour" disabled="disabled"
+								<input type="hidden" id="p_hour" name="p_hour">					
+								<input type="number" id="fakep_hour" name = "fakep_hour" 
+								onclick="select_etime();" onmouseout="totalcal();"
 								placeholder="이용 시간" class="form-control">
 							</td>
-						</tr>
 						
 						<!-- 총 가격 연산 -->
 						<tr>
 							<td width="40%" align="center">가격</td>
-							<td width="60%" align="left" id="p_price" disabled="disabled"
+							<td width="60%" align="left">
+							<input type="hidden" id="p_price" name="p_price">
+							<input type="number" id="fakep_price" name = "fakep_price"
 							placeholder="가격" class="form-control">
-								${bean.p_price}
 							</td>
 						</tr>
 						
