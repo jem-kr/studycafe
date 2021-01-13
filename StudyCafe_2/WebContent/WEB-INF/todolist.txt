@@ -25,9 +25,9 @@ prFee=mypkg.product.ProductFeeController
 prFac=mypkg.product.ProductFacController
 ############4.reservation(결제 전 예약)##########################
 reInsert=mypkg.reservation.ReservationInsertController
-#reDelete=mypkg.reservation.ReservationDeleteController
+reDelete=mypkg.reservation.ReservationDeleteController
 ########5.order(결제내역)########################################
-#orList=mypkg.order.OrderListController
+orList=mypkg.order.OrderListController
 #orDelete=mypkg.order.OrderDeleteController
 #orUpdate=mypkg.order.OrderUpdateController
 ########6.notify(공지사항)######################################

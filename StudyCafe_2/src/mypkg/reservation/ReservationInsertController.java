@@ -22,7 +22,7 @@ public class ReservationInsertController extends SuperClass{
 		Member loginfo = (Member)super.session.getAttribute("loginfo") ;
 		bean.setRe_date(request.getParameter("p_date"));
 		bean.setRe_etime(Integer.parseInt(request.getParameter("p_etime")));
-		bean.setRe_hour(Integer.parseInt(request.getParameter("amount")));
+		bean.setRe_hour(Integer.parseInt(request.getParameter("p_hour")));
 		bean.setRe_id(loginfo.getId());
 		
 		int person =1;
@@ -31,7 +31,7 @@ public class ReservationInsertController extends SuperClass{
 		}else {
 			bean.setRe_person(person);
 		}
-		bean.setRe_price(Integer.parseInt(request.getParameter("sum")));
+		bean.setRe_price(Integer.parseInt(request.getParameter("p_price")));
 		bean.setRe_seat(request.getParameter("p_seat"));
 		bean.setRe_stime(Integer.parseInt(request.getParameter("p_stime")));
 		bean.setRe_type(request.getParameter("p_type"));

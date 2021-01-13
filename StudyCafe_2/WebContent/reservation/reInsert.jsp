@@ -84,11 +84,11 @@
 		</div>
 		<div class="row">
 				<div class="col-sm-12 text-right" >
-					<!-- <button  type="button" class="btn btn-primary" onclick="history.back();">
-						목록보기</button>  -->
-					<a href="" class="btn btn-primary" role="button">결제하기</a>	
+					<button  type="submit" class="btn btn-primary" >
+						결제하기</button>  
+					<!-- <a href="" class="btn btn-primary" role="button" onclick="">결제하기</a>	 -->
 						&nbsp;&nbsp;
-					<a href="" class="btn btn-primary" role="button">취소하기</a>		
+					<a href="<%=NoForm %>prDetail&p_seat=${bean.p_seat}" class="btn btn-primary" role="button">취소하기</a>		
 				</div>
 				</div>
 	</div>

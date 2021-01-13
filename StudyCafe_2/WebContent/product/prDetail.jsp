@@ -286,19 +286,19 @@
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
-								<input type="hidden" id="p_hour" name="p_hour">					
+								<input type="hidden" id="p_hour" name="p_hour" value="${bean.p_hour }">					
 								<input type="number" id="fakep_hour" name = "fakep_hour" 
 								onclick="select_etime();" onmouseout="totalcal();"
-								placeholder="이용 시간" class="form-control">
+								placeholder="이용 시간" class="form-control" value="${bean.p_hour }">
 							</td>
 						
 						<!-- 총 가격 연산 -->
 						<tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">
-							<input type="hidden" id="p_price" name="p_price">
+							<input type="hidden" id="p_price" name="p_price" value="${bean.p_price }">
 							<input type="number" id="fakep_price" name = "fakep_price"
-							placeholder="가격" class="form-control">
+							placeholder="가격" class="form-control" value="${bean.p_price }">
 							</td>
 						</tr>
 						
