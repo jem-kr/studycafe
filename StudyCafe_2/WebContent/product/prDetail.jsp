@@ -56,6 +56,11 @@
 	       });//etime 시간 기본 설정
 
 	});
+	
+
+	
+	
+	
 	</script>
 	<meta charset="UTF-8">
 	<title>BootStrap Sample</title>
@@ -89,24 +94,26 @@
 		th p_type 추가하여 if문.. 1500 or 3000 ... 
 	*/
 	function totalcal() {
-		var p_hour = $('#p_hour').val();
+		        /*  if($('#p_hour').val() > 0){ 
+		            document.getElementById("#p_price").innerHTML = $('#p_price').val() * $('#p_hour').val();
+		         } */
+		 var p_hour = $('#p_hour').val();
 		var p_price = $('#p_price').val();
-		var p_type = $('#p_type').val();
+
 		
-		/* if(p_type == '1인석'){	 */
+	/* 	 if(p_type == '1인석'){	*/ 
 			if(p_hour !=0){
-		var p_price = $('#p_price').val() * p_hour;
+	 	var p_price = $('#p_price').val() * p_hour;
 		$('input#fakep_price').val(p_price);
 		$('input#p_price').val(p_price);
-			return true;
+	 		return true;
 			}
-		/* }  */
-		
-		/*else if(p_type == '다인실'){
+		 /*} 
+		else if(p_type == '다인실'){
 			var p_price = 6000 * fakep_hour;
 			$('input#fakep_price').val(p_price);	
 			$('input#p_price').val(p_price);
-		} */
+		}  */ 
 	}
 
 	/*
@@ -237,7 +244,7 @@
 							------선택하세요------
 							
 							<c:forEach var="glists" items="${requestScope.glists}">
-							<option value="${glists.p_seat }">${glists.p_seat}</option>
+							<option value="${glists.p_seat}">${glists.p_seat}</option>
 							</c:forEach>
 							</select>
 								<span class="err form-control-static">${errp_seat}</span>
@@ -294,9 +301,9 @@
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
-								<input type="hidden" id="p_hour" name="p_hour" >					
+								<input type="hidden" id="p_hour" name="p_hour"  >					
 								<input type="number" id="fakep_hour" name = "fakep_hour" 
-								onclick="select_etime();" onmouseout ="totalcal();"
+								onclick="select_etime();" onmouseout="totalcal();"
 								placeholder="이용 시간" class="form-control" >
 							</td>
 						

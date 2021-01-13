@@ -23,13 +23,13 @@ public class ProductDetailController extends SuperClass {
 
 		ProductDao pdao = new ProductDao();
 
-		this.bean = pdao.SelectDataByPk(p_seat);
+		bean = pdao.SelectDataByPk(p_seat);
 
 		String gotopage = "";
 
 		super.doGet(request, response);
-		if (this.bean != null) {
-			request.setAttribute("bean", this.bean);
+		if (bean != null) {
+			request.setAttribute("bean", bean);
 			
 			String p_type = bean.getP_type();
 			
