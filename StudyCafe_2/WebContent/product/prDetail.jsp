@@ -13,146 +13,161 @@
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-	
 	<script type="text/javascript">
-		$(function() {
-		    $( "#testDatepicker" ).datepicker({
-		       dateFormat:  "yy/mm/dd", 
-		       changeMonth: true,
-		       dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-		        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
-		        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-		        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		       minDate: 0, 
-		        maxDate: "+2w" 
 	
-		    });
-		});
-		
-		$(function() { 
-		    $("#p_stime").timepicker({
-		        timeFormat: 'HH',
+	$(function() {
+	    $( "#testDatepicker" ).datepicker({
+	       dateFormat:  "yy/mm/dd", 
+	       changeMonth: true,
+	       dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+	        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	       minDate: 0, 
+	        maxDate: "+2w" 
+
+	    });
+	});
+	
+	$(function() { 
+	    $("#p_stime").timepicker({
+	        timeFormat: 'HH',
+	        interval: 60,
+	        minTime: '09',
+	        maxTime: '20',
+	        startTime: '09',
+	        dynamic: false,
+	        dropdown: true,
+	        scrollbar: true        
+	    });
+	});
+	$(function() { 
+	       $('#p_etime').timepicker({
+	    	   	timeFormat: 'HH',
 		        interval: 60,
-		        minTime: '09',
-		        maxTime: '20',
-		        startTime: '09',
+		        minTime: '10',
+		        maxTime: '21',
+		        startTime: '10',
 		        dynamic: false,
 		        dropdown: true,
-		        scrollbar: true        
-		    });
-		});
-		$(function() { 
-		       $('#p_etime').timepicker({
-		    	   	timeFormat: 'HH',
-			        interval: 60,
-			        minTime: '10',
-			        maxTime: '21',
-			        startTime: '10',
-			        dynamic: false,
-			        dropdown: true,
-			        scrollbar: true  
-		       
-		       
-		       });//etime 시간 기본 설정
-	
-		});
-	
-		function writeForm(){
-			location.href='<%=NoForm%>prInsert';
-		}
-		
-		/* 
-			calculate() : 
-			이용 시간 계산 함수, fakep_hour로 수정함 
-		*/
-		function calculate() {
-			var p_stime = $('#p_stime').val();
-			var p_etime = $('#p_etime').val();
-			
-			if (p_etime != 0) {
-				var fakep_hour = p_etime - p_stime;
-				$('input#fakep_hour').val(fakep_hour);	
-			} else {
-				return false;
-			}
-		}
-		
-		/* 
-			totalcal() : 
-			가격 계산 함수, fakep_hour & fakep_price
-			p_price 값인 1500, 3000이 아닌 0이라서 계속 0 출력됨.. 
-			th p_type 추가하여 if문.. 1500 or 3000 ... 
-		*/
-		function totalcal() {
-			var fakep_hour = $('#fakep_hour').val();
-			var p_price = $('#fakep_price').val();
-			var p_type = $('#p_type').val();
-			
-			if(p_type == '1인석'){	
-			var p_price = 1500 * fakep_hour;
-			$('input#fakep_price').val(p_price);
-			} else if(p_type == '다인실'){
-				var p_price = 3000 * fakep_hour;
-				$('input#fakep_price').val(p_price);		
-			}
-		}
-	
-		/*
-			현재날짜, 시간 비교
-		*/
-		function select_etime() {
-			var fakep_hour = $('#fakep_hour').val();
-			
-			if (fakep_hour < 0){
-				alert("종료 시간을 다시 선택해 주세요.");
-				return false;
-			}
-			
-		}
-		
-			
-		
+		        scrollbar: true  
+	       
+	       
+	       });//etime 시간 기본 설정
+
+	});
 	</script>
-	<style type="text/css">
+	<meta charset="UTF-8">
+	<title>BootStrap Sample</title>
+
+	<script type="text/javascript">
+	function writeForm(){
+		location.href='<%=NoForm%>prInsert';
+	}
 	
-		.panel, table01, table02{
-		table-layout:fixed;	
+	/* 
+		calculate() : 
+		이용 시간 계산 함수, fakep_hour로 수정함 
+	*/
+	function calculate() {
+		var p_stime = $('#p_stime').val();
+		var p_etime = $('#p_etime').val();
+		
+		if (p_etime != 0) {
+			var fakep_hour = p_etime - p_stime;
+			$('input#fakep_hour').val(fakep_hour);	
+			$('input#p_hour').val(fakep_hour);
+		} else {
+			return false;
+		}
+	}
+	
+	/* 
+		totalcal() : 
+		가격 계산 함수, fakep_hour & fakep_price
+		p_price 값인 1500, 3000이 아닌 0이라서 계속 0 출력됨.. 
+		th p_type 추가하여 if문.. 1500 or 3000 ... 
+	*/
+	function totalcal() {
+		var p_hour = $('#p_hour').val();
+		var p_price = $('#p_price').val();
+		var p_type = $('#p_type').val();
+		
+		/* if(p_type == '1인석'){	 */
+			if(p_hour !=0){
+		var p_price = $('#p_price').val() * p_hour;
+		$('input#fakep_price').val(p_price);
+		$('input#p_price').val(p_price);
+			return true;
+			}
+		/* }  */
+		
+		/*else if(p_type == '다인실'){
+			var p_price = 6000 * fakep_hour;
+			$('input#fakep_price').val(p_price);	
+			$('input#p_price').val(p_price);
+		} */
+	}
+
+	/*
+		현재날짜, 시간 비교
+	*/
+	function select_etime() {
+		var fakep_hour = $('#fakep_hour').val();
+		
+		if (fakep_hour < 0){
+			alert("종료 시간을 다시 선택해 주세요.");
+			return false;
 		}
 		
-		.panel,img-thumbnail {
-	    webkit-box-shadow: none;
-	    box-shadow: none;
-		}
+	}
+	
 		
-		.title h3{
-			padding-top:100px;
-			font-size: 32px;
-	        color: #111111;
-	        text-align: center;
-	        line-height: 100%;
-	        padding-bottom: 20px;
-		}
-		.title p{
-		font-size:16px;
-		color:#6f6f6f;
-		line-height:23px;
-		text-align:center;
-		margin:20px 0 40px 0;
-		}
-		.table01, table02, tr,td,th{
-		border-collapse: collapse;
-		}
-		.btn{
-		align:center;
-		}
-		
-		.table01{
-		border-top-style: none;
-	    border-left-style: none;
-	    border-right-style: none;
-	    border-bottom-style: none;
-		}
-	</style>
+	
+	</script>
+<style type="text/css">
+
+	.panel, table01, table02{
+	table-layout:fixed;	
+	}
+	
+	.panel,img-thumbnail {
+    webkit-box-shadow: none;
+    box-shadow: none;
+	}
+	
+	.title h3{
+		padding-top:100px;
+		font-size: 32px;
+        color: #111111;
+        text-align: center;
+        line-height: 100%;
+        padding-bottom: 20px;
+	}
+	.title p{
+	font-size:16px;
+	color:#6f6f6f;
+	line-height:23px;
+	text-align:center;
+	margin:20px 0 40px 0;
+	}
+	.table01, table02, tr,td,th{
+	border-collapse: collapse;
+	}
+	.btn{
+	align:center;
+	}
+	
+	.table01{
+	border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+	}
+	
+
+	
+</style>
 </head>
 <%
 	int myoffset = 1; //전체 외관의 옵셋
@@ -206,7 +221,7 @@
 						<tr>
 							<td width="40%" align="center">좌석 유형</td>
 							<td width="60%" align="left">
-							<input type="text" class="form-control" name="fakep_type" id="fakep_type"
+						<input type="text" class="form-control" name="fakep_type" id="fakep_type"
 								placeholder="좌석 유형" value="${bean.p_type}" disabled="disabled">
 							<input type="hidden" name="p_type" id="p_type"
 								value="${bean.p_type}">	
@@ -222,7 +237,7 @@
 							------선택하세요------
 							
 							<c:forEach var="glists" items="${requestScope.glists}">
-							<option value="${glists.p_seat}">${glists.p_seat}</option>
+							<option value="${glists.p_seat }">${glists.p_seat}</option>
 							</c:forEach>
 							</select>
 								<span class="err form-control-static">${errp_seat}</span>
@@ -243,7 +258,7 @@
 							<option value="4">4</option>
 							</select>
 							</td>
-						</c:if> 
+						</c:if>
 						</tr>
 						
 						<tr>
@@ -279,10 +294,10 @@
 						<tr>
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
-								<input type="hidden" id="p_hour" name="p_hour" value="${bean.p_hour }">					
+								<input type="hidden" id="p_hour" name="p_hour" >					
 								<input type="number" id="fakep_hour" name = "fakep_hour" 
-								onclick="select_etime();" onmouseout="totalcal();"
-								placeholder="이용 시간" class="form-control" value="${bean.p_hour }">
+								onclick="select_etime();" onmouseout ="totalcal();"
+								placeholder="이용 시간" class="form-control" >
 							</td>
 						
 						<!-- 총 가격 연산 -->
@@ -297,7 +312,7 @@
 						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
-							<a href="<%=NoForm%>prList" class="btn btn-default" role="button">목록보기</a>
+							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
 							<button type="submit" class="btn btn-default">예약하기</button>
 						<tr>
 					</table>
@@ -310,9 +325,9 @@
 			<div class="col-sm-offset-5 col-sm-4">
 
 			<c:if test="${whologin==2 }">
-				<a href="<%=NoForm%>prInsert&p_seat=${bean.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
-				<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}" class="btn btn-info" role="button">수정</a>
-				<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
+				<a href="<%=NoForm%>prInsert&p_seat=${glists.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
+				<a href="<%=NoForm%>prUpdate&p_seat=${glists.p_seat}" class="btn btn-info" role="button">수정</a>
+				<a href="<%=NoForm%>prDelete&p_seat=${glists.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
 				<br><br><br>
 			</c:if>									
 		
@@ -331,12 +346,6 @@
 			list_ok.submit();
 	}
 	
-	$(document).ready(function(){
-		    $('#p_hour').change(function(){
-		        var price = parseInt($(value).val()) * 1500
-		        $('#p_price).val( price );
-		    });
-		});
 	
 		
 	</script>

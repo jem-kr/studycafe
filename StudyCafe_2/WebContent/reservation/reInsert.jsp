@@ -88,7 +88,7 @@
 						결제하기</button>  
 					<!-- <a href="" class="btn btn-primary" role="button" onclick="">결제하기</a>	 -->
 						&nbsp;&nbsp;
-					<a href="<%=NoForm %>prDetail&p_seat=${bean.p_seat}" class="btn btn-primary" role="button">취소하기</a>		
+					<a href="<%=NoForm %>prList" class="btn btn-primary" role="button">취소하기</a>		
 				</div>
 				</div>
 	</div>
