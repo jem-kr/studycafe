@@ -220,11 +220,6 @@
 										<a href="<%=NoForm%>meUpdate&id=${sessionScope.loginfo.id}">회원 정보 수정</a>
 									</c:if>	
 								</li>
-								<li>
-									<c:if test="${whologin != 0}">
-										<a href="<%=NoForm%>meDelete&id=${sessionScope.loginfo.id}">회원 탈퇴</a>
-									</c:if>	
-								</li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -270,11 +265,30 @@
 			     		</li>
 			     		<li>
 			     		   <c:if test="${whologin != 0}">
-			     		   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
-					     		   	<i class="fas fa-user commom"> 
-										${sessionScope.loginfo.name}님
-									</i>
-								</a>
+			     		       <!-- 로그인을 했으면 -->
+				     		   <c:if test="${not empty sessionScope.loginfo && empty requestScope.bean && empty requestScope.update_bean}">
+				     		   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
+										<i class="fas fa-user commom">
+	           								${sessionScope.loginfo.name}님
+	           							</i>
+	            					</a>
+	            			   </c:if>
+	            			   <!-- 회원 정보 수정 전  -->
+	            			   <c:if test="${not empty sessionScope.loginfo && not empty requestScope.bean && empty requestScope.update_bean}">
+	            			   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
+										<i class="fas fa-user commom">
+	           								${requestScope.bean.name}님
+	           							</i>
+	            					</a>
+	            			   </c:if>
+	            			   <!-- 회원 정보 수정 후  -->
+	            			   <c:if test="${not empty sessionScope.loginfo && empty requestScope.bean && not empty requestScope.update_bean}">
+	            			   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
+										<i class="fas fa-user commom">
+	           								${requestScope.update_bean.name}님
+	           							</i>
+	            					</a>
+	            			   </c:if>
 							</c:if>
 						</li>
 						<li>		

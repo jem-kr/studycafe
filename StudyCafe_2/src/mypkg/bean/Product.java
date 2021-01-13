@@ -15,23 +15,15 @@ public class Product {
 	private String remark;
 
 
-	//생성자
-	public Product() { 
-		
+	public Product() {
+		// TODO Auto-generated constructor stub
 	}
 
-	//toString
-	@Override
-	public String toString() {
-		return "Product [p_type=" + p_type + ", p_seat=" + p_seat + ", p_price=" + p_price + ", p_date=" + p_date
-				+ ", p_stime=" + p_stime + ", p_etime=" + p_etime + ", p_hour=" + p_hour + ", p_pic=" + p_pic
-				+ ", remark=" + remark + "]";
-	}	
-	
 
 	public String getP_type() {
 		return p_type;
 	}
+
 
 	public void setP_type(String p_type) {
 		this.p_type = p_type;
@@ -118,7 +110,14 @@ public class Product {
 	}
 
 
-
+	@Override
+	public String toString() {
+		return "Product [p_type=" + p_type + ", p_seat=" + p_seat + ", p_price=" + p_price + ", p_date=" + p_date
+				+ ", p_stime=" + p_stime + ", p_etime=" + p_etime + ", p_hour=" + p_hour + ", p_pic=" + p_pic
+				+ ", remark=" + remark + "]";
+	}
+	
+	
 
 }
 

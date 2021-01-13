@@ -22,13 +22,24 @@
             <h2>회원 정보 수정</h2>
         </div>
         <ul>
-            <h3>${sessionScope.loginfo.name}님의 회원 정보를 수정합니다.</h3>
+           <c:if test="${not empty requestScope.bean.name}">
+            	<h3>${requestScope.bean.name}님의 상세 정보 입니다.</h3>
+            </c:if>
+            <c:if test="${empty requestScope.bean.name}">
+            	<h3>${requestScope.name}님의 상세 정보 입니다.</h3>
+            </c:if>
             <li>
                 <label for="name">
                     이름
                 </label>
-                <input type="text" id="name" name="name" value="${requestScope.bean.name}">
+                <c:if test="${not empty requestScope.bean.name}">
+                	<input type="text" id="name" name="name" value="${requestScope.bean.name}">
+                </c:if>
+                <c:if test="${empty requestScope.bean.name}">
+                	<input type="text" id="name" name="name" value="${requestScope.name}">
+                </c:if>
             </li>
+            
             <span>${requestScope.errname}</span>
             <li id="gender">
                 <label for="gender">
@@ -58,14 +69,24 @@
                 <label for="birth">
                     생년월일
                 </label>
-                <input type="text" id="birth" name="birth" value="${requestScope.bean.birth}">
+                <c:if test="${not empty requestScope.bean.birth}">
+                	<input type="text" id="birth" name="birth" value="${requestScope.bean.birth}">
+                </c:if>
+                <c:if test="${empty requestScope.bean.birth}">
+                	<input type="text" id="birth" name="birth" value="${requestScope.birth}">
+                </c:if>
             </li>
             <span>${requestScope.errbirth}</span>
             <li>
                 <label for="phone">
                     휴대폰 번호
                 </label>
-                <input type="text" id="phone" name="phone" value="${requestScope.bean.phone}">
+                <c:if test="${not empty requestScope.bean.birth}">
+                	<input type="text" id="phone" name="phone" value="${requestScope.bean.phone}">
+                </c:if>
+                <c:if test="${empty requestScope.bean.birth}">
+                	<input type="text" id="phone" name="phone" value="${requestScope.phone}">
+                </c:if>
             </li>
             <span>${requestScope.errphone}</span>
             <li id="email">
@@ -73,7 +94,12 @@
                     이메일 주소
                 </label>
                 <div>
-                    <input type="text" id="email01" name="email01" value="${requestScope.bean.email01}" title="이메일 앞 주소 입력" >
+                	<c:if test="${not empty requestScope.bean.email01}">
+                    	<input type="text" id="email01" name="email01" value="${requestScope.bean.email01}" title="이메일 앞 주소 입력" >
+                    </c:if>
+                    <c:if test="${empty requestScope.bean.email01}">
+                    	<input type="text" id="email01" name="email01" value="${requestScope.email01}" title="이메일 앞 주소 입력" >
+                    </c:if>
                     &nbsp;
                     @
                     &nbsp;
@@ -147,7 +173,12 @@
                 <label for="pwanswer">
                     비밀번호 찾기 > 답변
                 </label>
-                <input type="text" id="pwanswer" name="pwanswer" value="${requestScope.bean.pwanswer}">
+                <c:if test="${not empty requestScope.bean.pwanswer}">
+                	<input type="text" id="pwanswer" name="pwanswer" value="${requestScope.bean.pwanswer}">
+                </c:if>
+                 <c:if test="${empty requestScope.bean.pwanswer}">
+                	<input type="text" id="pwanswer" name="pwanswer" value="${requestScope.pwanswer}">
+                </c:if>
             </li>
              <span>${requestScope.errpwanswer}</span>
             <li id="visit">

@@ -14,7 +14,7 @@ import mypkg.dao.MemberDao;
 public class MemberUpdateController extends SuperClass {
 	Member bean = null;
 	String gotopage = "";
-	
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -22,7 +22,7 @@ public class MemberUpdateController extends SuperClass {
 		String id = request.getParameter("id");
 
 		MemberDao dao = new MemberDao();
-		Member bean = dao.SelectDataId(id);
+		this.bean = dao.SelectDataId(id);
 
 		request.setAttribute("bean", bean);
 
@@ -34,9 +34,9 @@ public class MemberUpdateController extends SuperClass {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		bean = new Member();
-
+		
+		Member loginfo = (Member)super.session.getAttribute("loginfo");
+		bean.setId(loginfo.getId());
 		bean.setBirth(request.getParameter("birth"));
 		bean.setEmail01(request.getParameter("email01"));
 		bean.setEmail02(request.getParameter("email02"));
@@ -48,9 +48,25 @@ public class MemberUpdateController extends SuperClass {
 		bean.setVisit(request.getParameterValues("visit"));
 
 		super.doPost(request, response);
+		
 		if (this.validate(request) == true) {
 			// 유효성 검사 통과
+			MemberDao dao = new MemberDao();
+			
+			int cnt = dao.UpdateAllData(bean);
 
+			if (cnt > -1) {
+				System.out.println("회원정보 업데이트 성공");
+			}else if (cnt == 0) {
+				System.out.println("0행 업데이트");
+			}else {
+				System.out.println("회원정보 업데이트 실패");
+			}
+
+			request.setAttribute("update_bean", bean);
+			session.setAttribute("message", "회원 정보 수정이 완료 되었습니다.");
+			this.gotopage = "member/meDetailView.jsp";
+			super.GotoPage(gotopage);
 		} else {
 			// 유효성 검사 통과 안됨
 			request.setAttribute("birth", bean.getBirth());
@@ -62,8 +78,7 @@ public class MemberUpdateController extends SuperClass {
 			request.setAttribute("pwanswer", bean.getPwanswer());
 			request.setAttribute("pwquestion", bean.getPwquestion());
 			request.setAttribute("visit", bean.getVisit());
-			
-			
+
 			this.gotopage = "member/meUpdate.jsp";
 			super.GotoPage(gotopage);
 		}
@@ -99,15 +114,17 @@ public class MemberUpdateController extends SuperClass {
 		regex = "^[0-9]{8}$";
 		boolean birth_result = Pattern.matches(regex, bean.getBirth());
 		if (birth_result == false) {
-			request.setAttribute(super.PREFIX+"birth", "생년월일 숫자 8자리를 입력하세요.(ex. 20210101)");
+			request.setAttribute(super.PREFIX + "birth", "생년월일 숫자 8자리를 입력하세요.(ex. 20210101)");
 			isCheck = false;
 		}
-		
-		if (bean.getBirth().startsWith("1") == false || bean.getBirth().startsWith("2") == false ) {
-			request.setAttribute(super.PREFIX+"phone", "올바른 생년월일 형식이 아닙니다.");
+
+		// 1920 ~ 2021년도
+		if (Integer.parseInt(bean.getBirth().substring(0, 4)) < 1920
+				|| Integer.parseInt(bean.getBirth().substring(0, 4)) > 2021) {
+			request.setAttribute(super.PREFIX + "birth", "1920년 ~ 2021년도 사이만 입력 가능합니다.");
 			isCheck = false;
 		}
-		
+
 		// 생년 월일 길이가 0일 때
 		if (bean.getBirth().length() == 0) {
 			request.setAttribute(super.PREFIX + "birth", "생년월일 숫자 8자리를 입력하세요.(ex. 20210101)");
@@ -121,9 +138,9 @@ public class MemberUpdateController extends SuperClass {
 			request.setAttribute(super.PREFIX + "phone", "휴대폰 번호 숫자 10 ~ 11자리를 입력하세요.");
 			isCheck = false;
 		}
-		
+
 		if (bean.getPhone().startsWith("0") == false) {
-			request.setAttribute(super.PREFIX+"phone", "올바른 휴대폰 번호 형식이 아닙니다.(- 하이픈 , 공백 사용 불가)");
+			request.setAttribute(super.PREFIX + "phone", "올바른 휴대폰 번호 형식이 아닙니다.(- 하이픈 , 공백 사용 불가)");
 			isCheck = false;
 		}
 
@@ -145,7 +162,6 @@ public class MemberUpdateController extends SuperClass {
 			request.setAttribute(super.PREFIX + "email01", "이메일 주소를 입력하세요.");
 			isCheck = false;
 		}
-
 
 		// 비밀번호 찾기 > 답변
 		regex = "^[a-zA-Z가-힣]*$";

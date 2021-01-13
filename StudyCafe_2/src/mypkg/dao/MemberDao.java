@@ -15,6 +15,7 @@ public class MemberDao extends SuperDao {
 		// 중복체크를 담당하는 메소드
 		// 회원 상세정보 보기를 담당하는 메소드
 		// 회원 정보 수정을 담당하는 메소드
+		// 회원 탈퇴를 담당하는 메소드
 		// id 로 해당하는 data를 찾음
 		Member bean = null;
 
@@ -390,10 +391,10 @@ public class MemberDao extends SuperDao {
 		sql += " where ranking between ? and ? ";
 		try {
 			pstmt = super.conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, beginRow);
 			pstmt.setInt(2, endRow);
-			
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -453,7 +454,8 @@ public class MemberDao extends SuperDao {
 		String sql = " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, ranking ";
 		sql += " from ";
 		sql += " ( ";
-		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by " + sort + " asc ) as ranking ";
+		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by "
+				+ sort + " asc ) as ranking ";
 		sql += " from members ";
 		sql += " ) ";
 		sql += " where ranking between ? and ? ";
@@ -462,7 +464,7 @@ public class MemberDao extends SuperDao {
 			pstmt = super.conn.prepareStatement(sql);
 			pstmt.setInt(1, beginRow);
 			pstmt.setInt(2, endRow);
-			
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -521,7 +523,8 @@ public class MemberDao extends SuperDao {
 		String sql = " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, ranking ";
 		sql += " from ";
 		sql += " ( ";
-		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by " + sort + " desc ) as ranking ";
+		sql += " select id, password, pwquestion, pwanswer, name, birth, gender, phone, email01, email02, visit, agreement, remark, rank() over( order by "
+				+ sort + " desc ) as ranking ";
 		sql += " from members ";
 		sql += " ) ";
 		sql += " where ranking between ? and ? ";
@@ -530,7 +533,7 @@ public class MemberDao extends SuperDao {
 			pstmt = super.conn.prepareStatement(sql);
 			pstmt.setInt(1, beginRow);
 			pstmt.setInt(2, endRow);
-			
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -582,7 +585,7 @@ public class MemberDao extends SuperDao {
 	public int SelectTotalCount() {
 		// 회원목록에서 페이징 처리 시 총 회원목록의 건수를 가져오는 메소드
 		int cnt = -1;
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -618,6 +621,129 @@ public class MemberDao extends SuperDao {
 				e2.printStackTrace();
 			}
 		}
+		return cnt;
+	}
+
+	public int UpdateAllData(Member bean) {
+		// 회원 정보 수정을 담당하는 메소드
+
+		PreparedStatement pstmt = null;
+
+		String sql = " update members set ";
+		sql += " name = ? ,";
+		sql += " gender = ? ,";
+		sql += " birth = ? ,";
+		sql += " phone = ? ,";
+		sql += " email01 = ? ,";
+		sql += " email02 = ? ,";
+		sql += " pwquestion = ? ,";
+		sql += " pwanswer = ? ,";
+		sql += " visit = ? ";
+		sql += " where id = ? ";
+
+		int cnt = -1;
+
+		try {
+			super.conn = super.getConnection();
+			pstmt = super.conn.prepareStatement(sql);
+			super.conn.setAutoCommit(false);
+
+			System.out.println("bean.getName ===>" + bean.getName());
+			pstmt.setString(1, bean.getName());
+			pstmt.setString(2, bean.getGender());
+			pstmt.setString(3, bean.getBirth());
+			pstmt.setString(4, bean.getPhone());
+			pstmt.setString(5, bean.getEmail01());
+			pstmt.setString(6, bean.getEmail02());
+			pstmt.setString(7, bean.getPwquestion());
+			pstmt.setString(8, bean.getPwanswer());
+			pstmt.setString(9, bean.getVisit());
+			pstmt.setString(10, bean.getId());
+
+			cnt = pstmt.executeUpdate();
+
+			super.conn.commit();
+
+		} catch (SQLException e) {
+			try {
+				SQLException err = (SQLException) e;
+				cnt = -err.getErrorCode();
+				super.conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				super.CloseConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return cnt;
+
+	}
+
+	public int DeleteDataById(String id) {
+		// 회원 정보 삭제를 담당하는 메소드
+		int cnt = -1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+
+		try {
+			conn = super.getConnection();
+			conn.setAutoCommit(false);
+			
+			// id 삭제 
+			sql = " delete from members where id = ? ";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			cnt = pstmt.executeUpdate();
+
+			// notices 테이블 remark 컬럼 업데이트 
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			
+			sql = " update notices set remark = ? where id = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, "회원 탈퇴 : sysdate ");
+			pstmt.setString(2, id);
+			
+			conn.commit();
+
+		} catch (Exception e) {
+			try {
+
+				conn.rollback();
+			} catch (SQLException e1) {
+				SQLException err = (SQLException) e;
+				cnt = -err.getErrorCode();
+				e1.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null) {
+						pstmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+		}
+
 		return cnt;
 	}
 }

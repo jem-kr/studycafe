@@ -269,7 +269,7 @@ public class ProductDao extends SuperDao {
 			conn = super.getConnection() ;
 			pstmt = conn.prepareStatement(sql) ;
 
-			pstmt.setString( 1, p_seat   ); 
+			pstmt.setString(1,p_seat); 
 						
 			rs = pstmt.executeQuery() ;
 			
