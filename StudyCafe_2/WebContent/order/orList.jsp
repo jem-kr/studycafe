@@ -58,15 +58,7 @@
 					</tr>
 					
 			</table>
-			
+			</div>
 		</div>
-		<div class="row">
-				<div class="col-sm-12 text-right" >
-					<a href="" class="btn btn-primary" role="button" onclick="">결제하기</a>	
-						&nbsp;&nbsp;
-					<a href="" class="btn btn-primary" role="button">취소하기</a>		
-				</div>
-				</div>
-	</div>
 </body>
 </html>

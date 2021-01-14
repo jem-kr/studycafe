@@ -46,9 +46,9 @@
 				
 					
 				<thead>
-				<tr>
+			<tr>
 					<td colspan="8" align="right">
-					<form class="form-inline" role="form" name="myform" action="<%=YesForm%>" method="post">
+					<form class="form-inline" role="form" name="myform" action="<%=YesForm%>" method="get">
 					<input type="hidden" name="command" value="orList">
 					</form>
 					</td>	
@@ -84,9 +84,9 @@
 		</div>
 		<div class="row">
 				<div class="col-sm-12 text-right" >
-					<button  type="submit" class="btn btn-primary" >
-						결제하기</button>  
-					<!-- <a href="" class="btn btn-primary" role="button" onclick="">결제하기</a>	 -->
+					<!-- <button  type="submit" class="btn btn-primary" >
+						결제하기</button --> 
+					 <a href="<%=NoForm %>orList" class="btn btn-primary" role="button">결제하기</a>	
 						&nbsp;&nbsp;
 					<a href="<%=NoForm %>prList" class="btn btn-primary" role="button">취소하기</a>		
 				</div>

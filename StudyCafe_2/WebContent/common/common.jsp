@@ -277,7 +277,7 @@
 	            			   <c:if test="${not empty sessionScope.loginfo && not empty requestScope.bean && empty requestScope.update_bean}">
 	            			   		<a href="<%=NoForm%>meDetailView&id=${sessionScope.loginfo.id}">
 										<i class="fas fa-user commom">
-	           								${requestScope.bean.name}님
+	           								${sessionScope.loginfo.name}님
 	           							</i>
 	            					</a>
 	            			   </c:if>
