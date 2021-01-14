@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypkg.bean.Member;
 import mypkg.bean.Order;
 import mypkg.bean.Reservation;
 import mypkg.common.SuperClass;
@@ -18,22 +19,22 @@ public class OrderListController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-				
+		Member mem = (Member) super.session.getAttribute("loginfo");
 		bean = new Order();	
 		ReservationDao rdao = new ReservationDao();
 		OrderDao odao = new OrderDao();
+		Reservation res = rdao.SelectDataById(mem.getId());
 		
 		
-		
-		bean.setOr_id(request.getParameter("re_id"));
-		bean.setOr_etime(Integer.parseInt(request.getParameter("re_etime")));
-		bean.setOr_date(request.getParameter("re_date"));
-		bean.setOr_hour(Integer.parseInt(request.getParameter("re_hour")));
-		bean.setOr_pday(request.getParameter("re_pday"));
-		bean.setOr_price(Integer.parseInt(request.getParameter("re_price")));
-		bean.setOr_rnum(Integer.parseInt(request.getParameter("re_no")));
-		bean.setOr_seat(request.getParameter("re_seat"));
-		bean.setOr_stime(Integer.parseInt(request.getParameter("re_stime")));
+		bean.setOr_id(res.getRe_id());
+		bean.setOr_etime(res.getRe_etime());
+		bean.setOr_date(res.getRe_date());
+		bean.setOr_hour(res.getRe_hour());
+		bean.setOr_pday(res.getRe_pday());
+		bean.setOr_price(res.getRe_price());
+		bean.setOr_rnum(res.getRe_no());
+		bean.setOr_seat(res.getRe_seat());
+		bean.setOr_stime(res.getRe_stime());
 
 		request.setAttribute("bean", bean);
 		

@@ -109,8 +109,8 @@ public class ReservationDao extends SuperDao{
 	
 	}
 
-	public int DeleteData(int re_no) {
-		String sql = " delete reservations where num = ? ";
+	public int DeleteData(String re_id) {
+		String sql = " delete reservations where re_id = ? ";
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;
@@ -121,7 +121,7 @@ public class ReservationDao extends SuperDao{
 			pstmt = conn.prepareStatement(sql) ;
 
 			// placeholder
-			pstmt.setInt(1, re_no);
+			pstmt.setString(1, re_id);
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
 

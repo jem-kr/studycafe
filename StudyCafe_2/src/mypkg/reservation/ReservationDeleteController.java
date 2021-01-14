@@ -12,11 +12,11 @@ import mypkg.dao.ReservationDao;
 public class ReservationDeleteController extends SuperClass{
 @Override
 public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	int re_no = Integer.parseInt(request.getParameter("re_no"));
+	String re_id = request.getParameter("re_id");
 	ReservationDao rdao = new ReservationDao();
 	
 	int cnt = -9999999;
-	cnt = rdao.DeleteData(re_no);
+	cnt = rdao.DeleteData(re_id);
 
 }
 	
