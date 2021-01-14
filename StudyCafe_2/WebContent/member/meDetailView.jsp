@@ -15,17 +15,55 @@
   	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
   	<script type="text/javascript">
   		function check_delete() {
-  			if(confirm("고객님의 모든 정보가 삭제됩니다. 정말 삭제하시겠습니까?")==true){
-  				location.href='<%=NoForm%>meDelete&id=${sessionScope.loginfo.id}';
-  			}else{
-  				return false;		
-  			}
+  			// 관리자 일때,
+			var id = $('input#id').val();
+			if (id == 'admin') { 
+				if(confirm("관리자 아이디입니다. 정말 삭제하시겠습니까?")==true){
+  					var password = prompt("본인 확인을 위해 비밀번호를 입력하세요.");
+  					if (password == $('input#password').val()) {
+  						alert("관리자의 모든 정보가 삭제되었습니다.");
+  						return true;
+					}else{
+						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
+	  			}else{
+	  				return false;		
+	  			}
+			}else{// 일반 회원일때,
+				if(confirm("고객님의 모든 정보가 삭제됩니다. 정말 삭제하시겠습니까?")==true){
+	  				var password = prompt("본인 확인을 위해 비밀번호를 입력하세요.");
+	  				if (password == $('input#password').val()) {
+	  					alert("고객님의 모든 정보가 삭제되었습니다.");
+		  				return true;
+					}else{
+						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
+	  			}else{
+	  				return false;		
+	  			}
+			}
 		}
   	</script>
 </head>
 <body>
     <section class="member">
     	<input type="hidden" name="command" value="meUpdate">
+    	<!-- 관리자인지 알기 위한 if 문장 -->
+    	<c:if test="${not empty requestScope.update_bean}">
+    		<input type="hidden" id="id" name="id" value="${requestScope.update_bean.id}">
+    	</c:if>
+    	<c:if test="${empty requestScope.update_bean}">
+    		<input type="hidden" id="id" name="id" value="${requestScope.bean.id}">
+    	</c:if>
+    	<!-- 비밀번호가 일치하는지 알기 위한 if 문장 -->
+    	<c:if test="${not empty requestScope.update_bean}">
+    		<input type="hidden" id="password" name="password" value="${requestScope.update_bean.password}">
+    	</c:if>
+    	<c:if test="${empty requestScope.update_bean}">
+    		<input type="hidden" id="password" name="password" value="${requestScope.bean.password}">
+    	</c:if>
         <div> 
             <h2>회원 상세 정보</h2>
         </div>

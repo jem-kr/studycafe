@@ -40,13 +40,15 @@ public class ReservationInsertController extends SuperClass{
 		String gotopage="";
 		request.setAttribute("bean", bean);
 		int cnt = -999999;
+		
+		// 예약 테이블 insert 처리 
 		cnt = rdao.InsertData(bean);
 		
 		bean = null;
 		
 		bean = rdao.SelectDataById(loginfo.getId());
 		gotopage="reservation/reInsert.jsp";
-				super.GotoPage(gotopage);
+		super.GotoPage(gotopage);
 	}
 	
 	@Override

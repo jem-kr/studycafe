@@ -55,7 +55,7 @@ public class MemberUpdateController extends SuperClass {
 			
 			int cnt = dao.UpdateAllData(bean);
 
-			if (cnt > -1) {
+			if (cnt > 0) {
 				System.out.println("회원정보 업데이트 성공");
 			}else if (cnt == 0) {
 				System.out.println("0행 업데이트");

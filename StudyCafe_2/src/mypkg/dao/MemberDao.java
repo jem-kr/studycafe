@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import mypkg.bean.Member;
@@ -691,16 +693,88 @@ public class MemberDao extends SuperDao {
 
 	public int DeleteDataById(String id) {
 		// 회원 정보 삭제를 담당하는 메소드
+
+		System.out.println("delete 메소드 호출");
 		int cnt = -1;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "";
+		Member bean = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		
+		String time = sdf.format(date);
+		
+		
 
 		try {
 			conn = super.getConnection();
 			conn.setAutoCommit(false);
-			
-			// id 삭제 
+
+			bean = this.SelectDataId(id);
+
+			// notices 테이블 remark 컬럼 수정
+			sql = " update notices set remark = ? where writer = ? ";
+			pstmt = conn.prepareStatement(sql);
+
+			String imsi = "ID : " + bean.getId() + " , 회원 탈퇴 일자 :  " + time ;
+
+			pstmt.setString(1, imsi);
+			pstmt.setString(2, id);
+
+			cnt = pstmt.executeUpdate();
+
+			if (cnt > 0) {
+				System.out.println("공지사항 테이블 비고 컬럼 수정");
+			}else {
+				System.out.println("공지사항 테이블 비고 컬럼 수정 안됨");
+			}
+
+			// reservations 테이블 remark 컬럼 수정
+			sql = " update reservations set remark = ? where re_id = ? ";
+
+			if (pstmt != null) {
+				pstmt.close();
+			}
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, imsi);
+			pstmt.setString(2, id);
+
+			cnt = pstmt.executeUpdate();
+
+			if (cnt > 0) {
+				System.out.println("예약 테이블 비고 컬럼 수정");
+			}else {
+				System.out.println("예약 테이블 비고 컬럼 수정 안됨");
+			}
+
+			// orders 테이블 remark 컬럼 수정
+			sql = " update orders set remark = ? where or_id = ? ";
+
+			if (pstmt != null) {
+				pstmt.close();
+			}
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, imsi);
+			pstmt.setString(2, id);
+
+			cnt = pstmt.executeUpdate();
+
+			if (cnt > 0) {
+				System.out.println("결제내역 테이블 비고 컬럼 수정");
+			}else {
+				System.out.println("결제내역 테이블 비고 컬럼 수정 안됨");
+			}
+
+			if (pstmt != null) {
+				pstmt.close();
+			}
+
+			// members 테이블 id 삭제
 			sql = " delete from members where id = ? ";
 			pstmt = conn.prepareStatement(sql);
 
@@ -708,42 +782,35 @@ public class MemberDao extends SuperDao {
 
 			cnt = pstmt.executeUpdate();
 
-			// notices 테이블 remark 컬럼 업데이트 
-			if (pstmt != null) {
-				pstmt.close();
-			}
-			
-			sql = " update notices set remark = ? where id = ? ";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, "회원 탈퇴 : sysdate ");
-			pstmt.setString(2, id);
-			
 			conn.commit();
 
-		} catch (Exception e) {
-			try {
+			if (cnt > 0) {
+				System.out.println("회원 테이블 삭제 성공");
+			} else {
+				System.out.println("회원 테이블 삭제 실패");
+			}
 
+		} catch (Exception e) {
+			SQLException err = (SQLException) e;
+			cnt = -err.getErrorCode();
+			e.printStackTrace();
+			try {
 				conn.rollback();
-			} catch (SQLException e1) {
-				SQLException err = (SQLException) e;
-				cnt = -err.getErrorCode();
-				e1.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null) {
-						pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (Exception e2) {
-					e2.printStackTrace();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
 				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
 		}
-
 		return cnt;
 	}
 }

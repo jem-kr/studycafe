@@ -22,14 +22,8 @@ public class MemberDeleteController extends SuperClass{
 		
 		cnt = dao.DeleteDataById(id);
 		
-		if (cnt > -1) {
-			System.out.println("회원 탈퇴 성공");
-		}else {
-			System.out.println("회원 탈퇴 실패");
-		}
-		
 		super.doGet(request, response);
-		super.session.setAttribute("message", "고객님의 모든 정보가 삭제되었습니다.");
+		
 		super.session.invalidate();
 		String gotopage = "main/main.jsp";
 		super.GotoPage(gotopage);

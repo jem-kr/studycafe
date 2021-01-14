@@ -14,46 +14,56 @@ import mypkg.dao.OrderDao;
 import mypkg.dao.ReservationDao;
 import mypkg.reservation.ReservationDeleteController;
 
-public class OrderListController extends SuperClass{
+public class OrderListController extends SuperClass {
 	Order bean = null;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
-		Member mem = (Member) super.session.getAttribute("loginfo");
-		bean = new Order();	
+
+		String id = request.getParameter("re_id");
+
 		ReservationDao rdao = new ReservationDao();
-		OrderDao odao = new OrderDao();
-		Reservation res = rdao.SelectDataById(mem.getId());
-		
-		
-		bean.setOr_id(res.getRe_id());
-		bean.setOr_etime(res.getRe_etime());
-		bean.setOr_date(res.getRe_date());
-		bean.setOr_hour(res.getRe_hour());
-		bean.setOr_pday(res.getRe_pday());
-		bean.setOr_price(res.getRe_price());
-		bean.setOr_rnum(res.getRe_no());
-		bean.setOr_seat(res.getRe_seat());
-		bean.setOr_stime(res.getRe_stime());
 
-		request.setAttribute("bean", bean);
-		
-		int cnt = -9999999;
-		cnt = odao.InsertData(bean);
-		
-		
+		Reservation re_bean = rdao.SelectDataById(id);
 
-		String gotopage="order/orList.jsp";
-		super.GotoPage(gotopage);
+		super.doGet(request, response);
 		
-		new ReservationDeleteController().doGet(request, response);
+		if (re_bean != null) {
+			// id에 해당하는 예약 내역이 발견
+			this.bean = new Order();
+
+			this.bean.setOr_id(re_bean.getRe_id());
+			this.bean.setOr_etime(re_bean.getRe_etime());
+			this.bean.setOr_date(re_bean.getRe_date());
+			this.bean.setOr_hour(re_bean.getRe_hour());
+			this.bean.setOr_pday(re_bean.getRe_pday());
+			this.bean.setOr_price(re_bean.getRe_price());
+			this.bean.setOr_rnum(re_bean.getRe_no());
+
+			// System.out.println("좌석번호 ===> " + re_bean.getRe_seat());
+
+			this.bean.setOr_seat(re_bean.getRe_seat());
+			this.bean.setOr_stime(re_bean.getRe_stime());
+
+			int cnt = -9999999;
+
+			OrderDao dao = new OrderDao();
+			cnt = dao.InsertData(bean);
+
+			if (cnt > 0) {
+				// orders 테이블에 insert 성공
+				request.setAttribute("bean", this.bean);
+				String gotopage = "order/orList.jsp";
+				super.GotoPage(gotopage);
+			}
+		}
+
 	}
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-		
-	
+
 	}
-	
 
 }
