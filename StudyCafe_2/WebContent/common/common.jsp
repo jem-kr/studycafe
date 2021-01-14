@@ -157,12 +157,7 @@
 									<a href="<%=NoForm%>prFac">시설 소개</a>
 								</li>
 								<li>
-									<a href="<%=NoForm%>prList">좌석 목록</a>
-								</li>
-								<li>
-									<c:if test="${whologin == 2}">
-										<a href="<%=NoForm%>prPrice">상품 매출</a>
-									</c:if>	
+									<a href="<%=NoForm%>prList">좌석 예약</a>
 								</li>
 								<li>
 									<c:if test="${whologin == 2}">
@@ -223,37 +218,35 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle page-scroll" href="#booking"
+							<a class="dropdown-toggle page-scroll" href="#reservations"
 							data-toggle="dropdown">예약하기</a>
 							<ul class="dropdown-menu">
 								<li>
 									<c:if test="${whologin == 1}">
-										<a href="<%=NoForm%>bkInsert">예약 하기</a>
+										<a href="<%=NoForm%>prList">좌석 예약</a>
 									</c:if>		
 								</li>
 								<li>
-									<c:if test="${whologin != 0}">
-										<a href="<%=NoForm%>bkList">예약내역 보기</a>
+									<c:if test="${whologin == 1}">
+										<a href="<%=NoForm%>orList&or_id=${sessionScope.loginfo.id}">예약 내역</a>
 									</c:if>		
 								</li>
 							</ul>
 						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle page-scroll" href="#cart" 
-							data-toggle="dropdown">장바구니</a>
-							<ul class="dropdown-menu">
-								<li>
-									<c:if test="${whologin == 1}">
-										<a href="<%=NoForm%>cartList">장바구니 목록</a>
-									</c:if>	
-								</li>
-								<li>
-									<c:if test="${whologin == 1}">
-										<a href="<%=NoForm%>bkList">구매 내역</a>
-									</c:if>	
-								</li>
-							</ul>
-						</li>
+						<c:if test="${whologin == 2}">
+							<li class="dropdown">
+								<a class="dropdown-toggle page-scroll" href="#admin"
+								data-toggle="dropdown">관리자</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="<%=NoForm%>prPrice">상품 매출</a>
+									</li>
+									<li>
+										<a href="<%=NoForm%>orList1">결제 내역</a>
+									</li>
+								</ul>
+							</li>
+						</c:if>
 						<li>
 							<c:if test="${whologin == 0}">
 								<a href="<%=NoForm%>meLogin">
