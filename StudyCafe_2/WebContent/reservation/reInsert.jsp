@@ -21,9 +21,10 @@
         line-height: 100%;
         padding-bottom: 20px;
 	}
-	.reservation h4{
-	}
 	.reservation h6{
+		color: red;
+	}
+	.check{
 		color: red;
 	}
 </style>
@@ -33,6 +34,25 @@
   	<script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function delconfirm(){
+	if(confirm("예약을 취소합니까?")==true){
+		location.href='<%=NoForm %>prList';
+		alert("예약이 취소되었습니다.")
+	}else{
+		return;		
+	}
+}
+
+function pay(){
+	if(confirm("예약하신 내역은 수정이 불가합니다.\n결제하시겠습니까?")==true){
+		location.href='<%=NoForm %>orList&re_id=${sessionScope.loginfo.id}';
+	}else{
+		return;		
+	}
+}
+
+</script>
 </head>
 <body>
 	<div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> reservation">
@@ -86,10 +106,18 @@
 				<div class="col-sm-12 text-right" >
 					<!-- <button  type="submit" class="btn btn-primary" >
 						결제하기</button --> 
-					 <a href="<%=NoForm %>orList&re_id=${sessionScope.loginfo.id}" class="btn btn-primary" role="button">결제하기</a>	
+<!-- 					<button class="btn btn-default btn-primary" type="button" onclick="pay();">결제하기</button>	
+ -->					<a class="btn btn-primary" role="button" onclick="pay()">결제하기</a>
 						&nbsp;&nbsp;
-					<a href="<%=NoForm %>prList" class="btn btn-primary" role="button">취소하기</a>		
+					<button class="btn btn-default btn-danger" type="button" onclick="delconfirm();">취소하기</button>		
 				</div>
+				</div>
+				<div align="center" class="check">
+				<hr>
+				<h5>● 예약하신 내용은 변경이 불가하오니 한번 더 확인해주세요.</h5>
+				<h5>● 만약 변경을 원하시면, 예약을 취소한 뒤 다시 예약해야합니다.</h5>
+				<h5>● 예약일 하루 전에는 취소가 불가능합니다.</h5>
+				
 				</div>
 	</div>
 </body>

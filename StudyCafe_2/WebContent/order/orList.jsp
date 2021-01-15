@@ -17,6 +17,16 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
+<script type="text/javascript">
+function delconfirm(){
+	if(confirm("예약을 취소합니까?")==true){
+		location.href='<%=NoForm %>prList';
+		alert("예약이 취소되었습니다.")
+	}else{
+		return;		
+	}
+}
+</script>
 <title>Insert title here</title>
 <style type="text/css">
 .order h2{
@@ -61,7 +71,7 @@
 						<td>${bean.or_hour }시간</td>
 						<td>${bean.or_price }원</td>
 						<td>
-							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}">예약 취소</a>
+							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}" onclick="delconfirm();">예약 취소</a>
 						</td>
 					</tr>
 					

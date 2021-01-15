@@ -54,6 +54,8 @@ public class OrderListController extends SuperClass {
 
 			if (cnt > 0) {
 				// orders 테이블에 insert 성공
+				bean = null;
+				bean = dao.SelectDataByID(id);
 				request.setAttribute("bean", this.bean);
 				String gotopage = "order/orList.jsp";
 				super.GotoPage(gotopage);

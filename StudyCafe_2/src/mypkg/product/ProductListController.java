@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypkg.bean.Member;
 import mypkg.bean.Product;
 import mypkg.common.SuperClass;
 import mypkg.dao.ProductDao;
@@ -24,9 +25,13 @@ public class ProductListController extends SuperClass{
 
 		
 		request.setAttribute("lists", lists);
-
-		new ReservationDeleteController().doGet(request, response);
+		
 		super.doGet(request, response);
+		
+		Member loginfo = (Member)super.session.getAttribute("loginfo");
+		if(loginfo!=null) {
+		new ReservationDeleteController().doGet(request, response);
+		}
 		String gotopage = "product/prList.jsp" ;
 		super.GotoPage(gotopage);
 

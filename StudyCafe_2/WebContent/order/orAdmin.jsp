@@ -23,6 +23,16 @@
 	padding-top: 80px;
 }
 </style>
+<script type="text/javascript">
+function delconfirm(){
+	if(confirm("예약을 취소합니까?")==true){
+		location.href='<%=NoForm %>orAdmin';
+		alert("예약이 취소되었습니다.")
+	}else{
+		return;		
+	}
+}
+</script>
 </head>
 <body>
 <c:if test="${not empty requestScope.lists }" >
@@ -61,7 +71,7 @@
 						<td>${bean.or_price }원</td>
 						<td>${bean.or_pday }</td>
 						<td>
-							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}">취소</a>
+							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}" onclick="delconfirm();">취소</a>
 						</td>
 					</tr>
 				</c:forEach>		
