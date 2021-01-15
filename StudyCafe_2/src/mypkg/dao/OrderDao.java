@@ -2,8 +2,12 @@ package mypkg.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import mypkg.bean.Member;
 import mypkg.bean.Order;
 
 public class OrderDao extends SuperDao{
@@ -82,5 +86,155 @@ public class OrderDao extends SuperDao{
 		}
 		return cnt;
 		}
+
+	public int DeleteDate(int or_no) {
+		String sql = " delete orders where or_no = ? ";
+		
+		Connection conn = null ;
+		PreparedStatement pstmt = null ;
+		int cnt = -999999 ;
+
+		try {
+			conn = super.getConnection() ;
+			pstmt = conn.prepareStatement(sql) ;
+
+			// placeholder
+			pstmt.setInt(1, or_no);
+			cnt = pstmt.executeUpdate() ; 
+			conn.commit(); 
+
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;			
+			cnt = - err.getErrorCode() ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if(pstmt != null){pstmt.close();}
+				if(conn != null){conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt ;
+	}
+
+	public Order SelectDataByID(String id) {
+		Order bean = null;
+
+		String sql = " select * from orders ";
+		sql += " where or_id = ? and or_no in ( select max(or_no) from orders group by or_id ) ";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = super.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			// placeholder
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new Order();
+				
+				bean.setOr_date(String.valueOf(rs.getDate("or_date")));
+				bean.setOr_etime(rs.getInt("or_etime"));
+				bean.setOr_hour(rs.getInt("or_hour"));
+				bean.setOr_id(rs.getString("or_id"));
+				bean.setOr_no(rs.getInt("or_no"));
+				bean.setOr_pday(String.valueOf(rs.getDate("or_pday")));
+				bean.setOr_price(rs.getInt("or_price"));
+				bean.setOr_rnum(rs.getInt("or_rnum"));
+				bean.setOr_seat(rs.getString("or_seat"));
+				bean.setOr_stime(rs.getInt("or_stime"));
+				bean.setRemark(rs.getString("remark"));
+			}
+
+			System.out.println("ok");
+		} catch (Exception e) {
+			SQLException err = (SQLException) e;
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return bean;
+	}
+
+	public List<Order> SelectAllOrder() {
+		Connection conn = null ;
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+
+		String sql = " select * from orders order by or_no desc"; 
+		
+		List<Order> lists = new ArrayList<Order>();
+
+		try {
+			conn = super.getConnection() ;
+			pstmt = conn.prepareStatement(sql) ;
+
+			// placeholder
+
+			rs = pstmt.executeQuery() ;			
+			while( rs.next() ){
+				Order bean = new Order();
+				bean.setOr_date(String.valueOf(rs.getDate("or_date")));
+				bean.setOr_etime(rs.getInt("or_etime"));
+				bean.setOr_hour(rs.getInt("or_hour"));
+				bean.setOr_id(rs.getString("or_id"));
+				bean.setOr_no(rs.getInt("or_no"));
+				bean.setOr_pday(String.valueOf(rs.getDate("or_pday")));
+				bean.setOr_price(rs.getInt("or_price"));
+				bean.setOr_rnum(rs.getInt("or_rnum"));
+				bean.setOr_seat(rs.getString("or_seat"));
+				bean.setOr_stime(rs.getInt("or_stime"));
+				bean.setRemark(rs.getString("remark"));
+				lists.add( bean ) ;
+			}
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if(rs != null){ rs.close(); }
+				if(pstmt != null){ pstmt.close(); }
+				if(conn != null){conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
+	}
 
 }

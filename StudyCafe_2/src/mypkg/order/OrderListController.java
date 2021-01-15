@@ -25,13 +25,12 @@ public class OrderListController extends SuperClass {
 		ReservationDao rdao = new ReservationDao();
 
 		Reservation re_bean = rdao.SelectDataById(id);
-
+		OrderDao dao = new OrderDao();
 		super.doGet(request, response);
 		
 		if (re_bean != null) {
 			// id에 해당하는 예약 내역이 발견
 			this.bean = new Order();
-
 			this.bean.setOr_id(re_bean.getRe_id());
 			this.bean.setOr_etime(re_bean.getRe_etime());
 			this.bean.setOr_date(re_bean.getRe_date());
@@ -47,8 +46,11 @@ public class OrderListController extends SuperClass {
 
 			int cnt = -9999999;
 
-			OrderDao dao = new OrderDao();
+			
 			cnt = dao.InsertData(bean);
+			
+			
+
 
 			if (cnt > 0) {
 				// orders 테이블에 insert 성공
@@ -56,6 +58,12 @@ public class OrderListController extends SuperClass {
 				String gotopage = "order/orList.jsp";
 				super.GotoPage(gotopage);
 			}
+		}else {
+			bean = null;
+			bean = dao.SelectDataByID(id);
+			request.setAttribute("bean", this.bean);
+			String gotopage = "order/orList.jsp";
+			super.GotoPage(gotopage);
 		}
 
 	}

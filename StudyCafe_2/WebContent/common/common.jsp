@@ -228,7 +228,7 @@
 								</li>
 								<li>
 									<c:if test="${whologin == 1}">
-										<a href="<%=NoForm%>orList&or_id=${sessionScope.loginfo.id}">예약 내역</a>
+										<a href="<%=NoForm%>orList&re_id=${sessionScope.loginfo.id}">예약 내역</a>
 									</c:if>		
 								</li>
 							</ul>
@@ -242,7 +242,7 @@
 										<a href="<%=NoForm%>prPrice">상품 매출</a>
 									</li>
 									<li>
-										<a href="<%=NoForm%>orList1">결제 내역</a>
+										<a href="<%=NoForm%>orAdmin">결제 내역</a>
 									</li>
 								</ul>
 							</li>

@@ -1,4 +1,4 @@
-package mypkg.product;
+package mypkg.order;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,31 +7,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mypkg.bean.Product;
+import mypkg.bean.Order;
 import mypkg.common.SuperClass;
-import mypkg.dao.ProductDao;
-import mypkg.reservation.ReservationDeleteController;
+import mypkg.dao.OrderDao;
 
-public class ProductListController extends SuperClass{
-	
+public class OrderAdminController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		OrderDao dao = new OrderDao();
 		
-		ProductDao dao = new ProductDao();
-		
-		
-		List<Product> lists = dao.SelectDataList();
-
-		
+		List<Order>lists = dao.SelectAllOrder();		
 		request.setAttribute("lists", lists);
-
-		new ReservationDeleteController().doGet(request, response);
-		super.doGet(request, response);
-		String gotopage = "product/prList.jsp" ;
-		super.GotoPage(gotopage);
-
 		
+		super.doGet(request, response);
+		String gotopage="order/orAdmin.jsp";
+		super.GotoPage(gotopage);
+		
+	
 	}
-	
-	
 }

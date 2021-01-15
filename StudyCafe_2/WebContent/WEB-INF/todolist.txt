@@ -28,8 +28,8 @@ reInsert=mypkg.reservation.ReservationInsertController
 reDelete=mypkg.reservation.ReservationDeleteController
 ########5.order(결제내역)########################################
 orList=mypkg.order.OrderListController
-#orDelete=mypkg.order.OrderDeleteController
-#orUpdate=mypkg.order.OrderUpdateController
+orDelete=mypkg.order.OrderDeleteController
+orAdmin=mypkg.order.OrderAdminController
 ########6.notify(공지사항)######################################
 noList=mypkg.notify.NotifyListController
 noInsert=mypkg.notify.NotifyInsertController

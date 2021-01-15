@@ -88,7 +88,7 @@
 						결제하기</button --> 
 					 <a href="<%=NoForm %>orList&re_id=${sessionScope.loginfo.id}" class="btn btn-primary" role="button">결제하기</a>	
 						&nbsp;&nbsp;
-					<a href="<%=NoForm %>reDelete&re_id=${sessionScope.loginfo.id}" class="btn btn-primary" role="button">취소하기</a>		
+					<a href="<%=NoForm %>prList" class="btn btn-primary" role="button">취소하기</a>		
 				</div>
 				</div>
 	</div>

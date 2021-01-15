@@ -25,10 +25,10 @@
 </style>
 </head>
 <body>
-<c:if test="${not empty requestScope.bean }" >
+<c:if test="${not empty requestScope.lists }" >
 <div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> order">
-			<h2 align="center"> ${sessionScope.loginfo.name }님의 최근 완료된 예약내역입니다.</h2>
-			<h6 align="center"></h6>
+			<h2 align="center"> 관리자메뉴입니다</h2>
+			<h6 align="center">전체 구매 내역을 조회합니다</h6>
 		<div class="panel panel-default"> 
 					<div>
 					</div>
@@ -36,43 +36,43 @@
 				
 					
 				<thead>
-				<tr>
-				<th colspan="8" align="center">
-					${bean.or_pday }결제한 결제내역입니다. 
-				</tr>
 				<tr class="tablehd">
-					<th width="10%">예약번호</th>
+					<th width="10%">#</th>
+					<th width="10%">예약자</th>
 					<th width="10%">선택좌석</th>
 					<th width="10%">선택일자</th>
 					<th width="10%">시작시간</th>
 					<th width="10%">종료시간</th>
-					<th width="10%">총 이용시간</th>
+					<th width="10%">이용시간</th>
 					<th width="10%">금액</th>
+					<th width="10%">결제일자</th>
 					<th width="10%">비고</th>
 				</tr>
 				</thead>
-				
+				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>${bean.or_no }</td>
+						<td>${bean.or_id }</td>
 						<td>${bean.or_seat }</td>
 						<td>${bean.or_date }</td>
 						<td>${bean.or_stime }시</td>
 						<td>${bean.or_etime }시</td>
 						<td>${bean.or_hour }시간</td>
 						<td>${bean.or_price }원</td>
+						<td>${bean.or_pday }</td>
 						<td>
-							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}">예약 취소</a>
+							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}">취소</a>
 						</td>
 					</tr>
-					
+				</c:forEach>		
 			</table>
 			</div>
 		</div>
 	</c:if>
-	<c:if test="${empty requestScope.bean }">
+	<c:if test="${empty requestScope.lists }">
 	<div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> order">
-			<h2 align="center"> ${sessionScope.loginfo.name }님의 최근 완료된 예약내역입니다.</h2>
-			<h6 align="center"></h6>
+			<h2 align="center"> 관리자메뉴입니다.</h2>
+			<h6 align="center">전체 구매 내역을 조회합니다. </h6>
 		<div class="panel panel-default"> 
 					<div>
 					</div>
@@ -86,7 +86,7 @@
 					<th width="10%">선택일자</th>
 					<th width="10%">시작시간</th>
 					<th width="10%">종료시간</th>
-					<th width="10%">총 이용시간</th>
+					<th width="10%">이용시간</th>
 					<th width="10%">금액</th>
 					<th width="10%">비고</th>
 				</tr>
