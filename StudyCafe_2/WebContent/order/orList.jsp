@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file ="./../common/common.jsp"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="today" class="java.util.Date"/>
 <%
 	int myoffset = 2;
 	int mywidth = twelve - 2*myoffset;
@@ -26,6 +28,9 @@ function delconfirm(){
 		return;		
 	}
 }
+
+
+
 </script>
 <title>Insert title here</title>
 <style type="text/css">
@@ -35,7 +40,7 @@ function delconfirm(){
 </style>
 </head>
 <body>
-<c:if test="${not empty requestScope.bean }" >
+<c:if test="${not empty requestScope.lists }" >
 <div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> order">
 			<h2 align="center"> ${sessionScope.loginfo.name }님의 최근 완료된 예약내역입니다.</h2>
 			<h6 align="center"></h6>
@@ -46,10 +51,6 @@ function delconfirm(){
 				
 					
 				<thead>
-				<tr>
-				<th colspan="8" align="center">
-					${bean.or_pday }결제한 결제내역입니다. 
-				</tr>
 				<tr class="tablehd">
 					<th width="10%">예약번호</th>
 					<th width="10%">선택좌석</th>
@@ -61,7 +62,7 @@ function delconfirm(){
 					<th width="10%">비고</th>
 				</tr>
 				</thead>
-				
+				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>${bean.or_no }</td>
 						<td>${bean.or_seat }</td>
@@ -70,16 +71,24 @@ function delconfirm(){
 						<td>${bean.or_etime }시</td>
 						<td>${bean.or_hour }시간</td>
 						<td>${bean.or_price }원</td>
+						<fmt:formatDate var="now" value="${today }" pattern="yyMMdd"/>
+						<fmt:parseDate var="ordate" value="${bean.or_date }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="or_date" value="${ordate }" pattern="yyMMdd"/>
+						<c:if test="${or_date>now}">
 						<td>
 							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}" onclick="delconfirm();">예약 취소</a>
 						</td>
+						</c:if>
+						<c:if test="${or_date<=now}">
+							<td></td>
+						</c:if>
 					</tr>
-					
+					</c:forEach>
 			</table>
 			</div>
 		</div>
 	</c:if>
-	<c:if test="${empty requestScope.bean }">
+	<c:if test="${empty requestScope.lists }">
 	<div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> order">
 			<h2 align="center"> ${sessionScope.loginfo.name }님의 최근 완료된 예약내역입니다.</h2>
 			<h6 align="center"></h6>

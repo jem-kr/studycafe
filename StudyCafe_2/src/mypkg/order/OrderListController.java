@@ -1,6 +1,7 @@
 package mypkg.order;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -54,16 +55,14 @@ public class OrderListController extends SuperClass {
 
 			if (cnt > 0) {
 				// orders 테이블에 insert 성공
-				bean = null;
-				bean = dao.SelectDataByID(id);
-				request.setAttribute("bean", this.bean);
+				List<Order>lists=dao.SelectDataByID(id);
+				request.setAttribute("lists", lists);
 				String gotopage = "order/orList.jsp";
 				super.GotoPage(gotopage);
 			}
 		}else {
-			bean = null;
-			bean = dao.SelectDataByID(id);
-			request.setAttribute("bean", this.bean);
+			List<Order>lists=dao.SelectDataByID(id);
+			request.setAttribute("lists", lists);
 			String gotopage = "order/orList.jsp";
 			super.GotoPage(gotopage);
 		}

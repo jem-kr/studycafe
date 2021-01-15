@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file ="./../common/common.jsp"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="today" class="java.util.Date"/>
 <%
 	int myoffset = 2;
 	int mywidth = twelve - 2*myoffset;
@@ -70,9 +72,17 @@ function delconfirm(){
 						<td>${bean.or_hour }시간</td>
 						<td>${bean.or_price }원</td>
 						<td>${bean.or_pday }</td>
+						<fmt:formatDate var="now" value="${today }" pattern="yyMMdd"/>
+						<fmt:parseDate var="ordate" value="${bean.or_date }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="or_date" value="${ordate }" pattern="yyMMdd"/>
+						<c:if test="${or_date>now}">
 						<td>
 							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}" onclick="delconfirm();">취소</a>
 						</td>
+						</c:if>
+						<c:if test="${or_date<=now}">
+						<td></td>
+						</c:if>
 					</tr>
 				</c:forEach>		
 			</table>

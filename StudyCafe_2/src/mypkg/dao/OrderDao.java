@@ -123,12 +123,12 @@ public class OrderDao extends SuperDao{
 		return cnt ;
 	}
 
-	public Order SelectDataByID(String id) {
-		Order bean = null;
+	public List<Order> SelectDataByID(String id) {
 
 		String sql = " select * from orders ";
-		sql += " where or_id = ? and or_no in ( select max(or_no) from orders group by or_id ) ";
+		sql += " where or_id = ? order by or_no desc ";
 
+		List<Order> lists = new ArrayList<Order>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -142,8 +142,7 @@ public class OrderDao extends SuperDao{
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				bean = new Order();
-				
+				Order bean = new Order();
 				bean.setOr_date(String.valueOf(rs.getDate("or_date")));
 				bean.setOr_etime(rs.getInt("or_etime"));
 				bean.setOr_hour(rs.getInt("or_hour"));
@@ -155,6 +154,7 @@ public class OrderDao extends SuperDao{
 				bean.setOr_seat(rs.getString("or_seat"));
 				bean.setOr_stime(rs.getInt("or_stime"));
 				bean.setRemark(rs.getString("remark"));
+				lists.add( bean ) ;
 			}
 
 			System.out.println("ok");
@@ -182,7 +182,7 @@ public class OrderDao extends SuperDao{
 			}
 		}
 
-		return bean;
+		return lists;
 	}
 
 	public List<Order> SelectAllOrder() {
