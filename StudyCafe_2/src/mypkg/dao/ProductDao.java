@@ -11,19 +11,36 @@ import mypkg.bean.Product;
 
 public class ProductDao extends SuperDao {
 	
-	public int DeleteData(String p_seat) {
-		String sql = " delete products where p_seat = ? ";
-		
+	public int DeleteData(String p_seat) {		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int cnt = -999999;
+		Product bean = null ;
 		
 		try {
 			conn = super.getConnection();
+									
+			String sql = " update orders set remark = ?  " ;
+			sql += " where or_seat = ?" ; 			
+			pstmt = conn.prepareStatement(sql) ;
+			
+			bean = this.SelectDataByPk(p_seat) ;
+
+			String imsi = "좌석 " + bean.getP_seat() + "이(가) 삭제되었습니다." ;			
+			
+			pstmt.setString(1, imsi); // 문자열
+			pstmt.setString(2, p_seat); // 좌석 번호
+			cnt = pstmt.executeUpdate() ; 
+			
+			// 해당 좌석을 삭제
+			sql = " delete from products " ;
+			sql += " where p_seat = ? " ;
+			
 			pstmt = conn.prepareStatement(sql);
 						
-			pstmt.setString(1, p_seat);
+			pstmt.setString(1, p_seat); // 좌석 번호
 			cnt = pstmt.executeUpdate();
+			
 			conn.commit();
 			
 		} catch (Exception e) {
@@ -95,8 +112,6 @@ public class ProductDao extends SuperDao {
 		}
 		return cnt ;
 	}
-	
-	
 	
 	//해당 Bean객체를 사용해 상품 등록하기
 	public int InsertData(Product bean) {
@@ -317,7 +332,6 @@ public class ProductDao extends SuperDao {
 		
 		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
 		sql += " from products where p_type = ? ";
-		
 				
 		
 		List<Product> glists = new ArrayList<Product>();

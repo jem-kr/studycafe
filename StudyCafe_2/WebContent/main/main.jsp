@@ -12,10 +12,12 @@
 		<meta name="author" content="">
 		<link rel="icon" href="favicon.ico">
 		<title>StudyCafe HTML</title>
-		<script type="text/javascript">
-		$(document).ready(function() {
+	<script type="text/javascript">
 	
-		});
+	function send_mail(){
+ 		   window.open("${contextPath }/main/test_mail.jsp", "", 
+    		"width=370, height=360, resizable=no, scrollbars=no, status=no");
+			}
 	</script>
 	
 		<style type="text/css">
@@ -288,36 +290,28 @@
 				</div>
 				<br>
 				<!-- 
-				사용자가 문의하고자 하는 내용 전달 : QAsend.jsp
+				사용자가 문의하고자 하는 내용 전달 : test_mail.jsp
 				 -->
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<form name="sentMessage" id="contactForm" novalidate="" 
-							action="QAsend.jsp" method="post">
-							<div class="row">
-								<div class="col-md-6">
-								
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Your Name *" 
-										id="name" required="" data-validation-required-message="Please enter your name.">
-										<p class="help-block text-danger"></p>
-									</div>
-								</div>
-								
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Your Email *" 
-										id="email" required="" data-validation-required-message="Please enter your email address.">
-										<p class="help-block text-danger"></p>
-									</div>
-								</div>
+						<form name="sentMessage" id="contactForm" novalidate="" method="post">
+						<input type="hidden" name="command" value="QAsend">
+						
+						<div class="row">
+							<div class="col-md-12">
+						
+							<div class="form-group">
+							<input type="text" class="form-control" id="email" name="email" value="" 
+							data-validation-required-message="Please enter your email." placeholder="Your email *">
 							</div>
+							</div>
+						</div>
 							
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<textarea class="form-control" placeholder="Your Message *" 
-										id="message" required="" data-validation-required-message="Please enter a message."></textarea>
+										id="message" name="e_msg" required="" data-validation-required-message="Please enter a message."></textarea>
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
@@ -327,7 +321,7 @@
 							<div class="row">
 								<div class="col-lg-12 text-center">
 									<div id="success"></div>
-									<button type="submit" class="btn">Send Message</button>
+									<button type="button" class="btn" onclick="send_mail()">Send Message</button>
 								</div>
 							</div>
 							

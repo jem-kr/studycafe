@@ -16,15 +16,6 @@ public class ProductDeleteController extends SuperClass{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String p_seat = request.getParameter("p_seat");
 
-		/*
-		 * FlowParameters parameters 
-			= new FlowParameters(
-					request.getParameter("pageNumber"),
-					request.getParameter("pageSize"), 
-					request.getParameter("mode"), 
-					request.getParameter("keyword") ) ;
-		System.out.println( parameters.toString() ); */
-		
 		ProductDao dao = new ProductDao();
 		
 		int cnt = -999999 ;

@@ -7,7 +7,6 @@ public class Price {
 	public Price() {
 	}
 	
-	
 	public String getId() {
 		return id;
 	}
@@ -22,6 +21,11 @@ public class Price {
 
 	public void setSumtotal(int sumtotal) {
 		this.sumtotal = sumtotal;
+	}
+
+	@Override
+	public String toString() {
+		return "Price [id=" + id + ", sumtotal=" + sumtotal + "]";
 	}	
 
 }

@@ -37,4 +37,4 @@ noDetailView=mypkg.notify.NotifyDetailViewController
 noDelete=mypkg.notify.NotifyDeleteController
 noUpdate=mypkg.notify.NotifyUpdateController
 ############7.QnA###########################################
-#QAsend=mypkg.qna.QnasendController
+QAsend=mypkg.qna.MailSend
