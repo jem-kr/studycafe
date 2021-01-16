@@ -67,14 +67,14 @@ public class MailSend extends SuperClass {
             
 //          Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
             msg.setRecipient(Message.RecipientType.TO, to); //받는 사람          
-            msg.setText(this.email + "/" + this.e_msg, "UTF-8"); //메일 내용
+            msg.setText("문의자 이메일 주소 : " + this.email + "\n 문의 내용" + this.e_msg, "UTF-8"); //메일 내용
             
-            System.out.println(this.email + "/" + this.e_msg);
+            System.out.println("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg);
             
             Transport.send(msg); // 메일을 최종적으로 보내는 클래스 : 메일을 보내는 부분
             
             
-            
+            //seeyoufriyay@gmail.com
           
 //			예외 처리
         } catch(AddressException ae) {            

@@ -17,7 +17,8 @@ public class MailAuth extends Authenticator{
     PasswordAuthentication pa;
 
     public MailAuth() {
-        String mail_id = "hellobit.sc";
+    	//보낸사람
+        String mail_id = "hellobit.sc@gmail.com";
         String mail_pw = "hellobit!";
         
         pa = new PasswordAuthentication(mail_id, mail_pw);
