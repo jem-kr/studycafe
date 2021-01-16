@@ -17,12 +17,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
-	<script type="text/javascript">	
-	
-		function del(){
-			if(confirm("정말 삭제하시겠습니까?")==true)
-				list_ok.submit();
-		}
+<script type="text/javascript">	
 </script>
 
 <style type="text/css">
@@ -201,9 +196,8 @@
 						<img src="${contextPath}/upload/${bean.p_pic}"
 							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
-				
 					
-					<div align="center" style="position:relative;vertical-align: middle; text-align: center; z-index: 2;">
+					<div align="center" style="vertical-align: middle;">
 
 						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
 						<button type="button" class="btn btn-warning">상세보기</button>

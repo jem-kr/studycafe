@@ -21,9 +21,11 @@
 
 	request.setCharacterEncoding("UTF-8");
 	String message = null;
+	 
 	if(request.getParameter("message") != null) {
 		message = request.getParameter("message");		
 	}
+	
 	if(message == null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -32,14 +34,18 @@
 		script.println("</script>");
 		script.close();
 		return;
-		
 	}
+
 	
 	String host = "http://localhost:8989/StudyCafe_2/studycafe?command=";
-	String from = "구글 이메일 계정";
-	//Email01, 02 처리 어떻게 할 건지..?
-	//String to = MemberDao.getEmail01(Id);
-	//String message = " ";
+	String from = "구글 이메일 계정"; 
+	String to = "hellobitcamp@gmail.com";
+	String subject = "스터디카페 문의 메일입니다.";
+	String content = "문의자 : " + Id +
+					"<br>내용 : " + message;
+		
+	Properties p = new Properties();
+	
 
 	
 %>

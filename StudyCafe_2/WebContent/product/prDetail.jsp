@@ -231,10 +231,9 @@
 						<input type="text" class="form-control" name="fakep_type" id="fakep_type"
 								placeholder="좌석 유형" value="${bean.p_type}" disabled="disabled">
 							<input type="hidden" name="p_type" id="p_type"
-								value="${bean.p_type}">	
-							
+								value="${bean.p_type}">			
 						</td>
-						
+
 						<tr>
 							<td width="40%" align="center">좌석 번호</td>
 							<td width="60%" align="left">
@@ -265,6 +264,8 @@
 							<option value="4">4</option>
 							</select>
 							</td>
+							<span class="err form-control-static">${errp_hour}</span>
+							
 						</c:if>
 						</tr>
 						
@@ -302,25 +303,30 @@
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
 								<input type="hidden" id="p_hour" name="p_hour"  >					
-								<input type="number" id="fakep_hour" name = "fakep_hour" 
-								onclick="select_etime();" onmouseout="totalcal();"
+								<input type="number" id="fakep_hour" name="fakep_hour" 
+								onclick="select_etime();" 
 								placeholder="이용 시간" class="form-control" >
+								<span class="err form-control-static">${errp_hour}</span>
 							</td>
 						
 						<!-- 총 가격 연산 -->
 						<tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">
-							<input type="hidden" id="p_price" name="p_price" value="${bean.p_price }">
-							<input type="number" id="fakep_price" name = "fakep_price"
-							placeholder="가격" class="form-control" value="${bean.p_price }">
+							<input type="hidden" id="p_price" name="p_price" value="${bean.p_price}">
+							<input type="number" id="fakep_price" name="fakep_price"
+							placeholder="가격" class="form-control" >
+							<span class="err form-control-static">${errp_price}</span>
 							</td>
+							
 						</tr>
 						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
 							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
 							<button type="submit" class="btn btn-default">예약하기</button>
+							<button type="button" class="btn btn-default" onclick="totalcal();">가격조회</button>
+							 
 						<tr>
 					</table>
 				
@@ -331,10 +337,10 @@
 			<!-- end panel-body -->
 			<div class="col-sm-offset-5 col-sm-4">
 
-			<c:if test="${whologin==2 }">
-				<a href="<%=NoForm%>prInsert&p_seat=${glists.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
-				<a href="<%=NoForm%>prUpdate&p_seat=${glists.p_seat}" class="btn btn-info" role="button">수정</a>
-				<a href="<%=NoForm%>prDelete&p_seat=${glists.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
+			<c:if test="${whologin==2}">
+				<a href="<%=NoForm%>prInsert&p_seat=${bean.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
+				<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}" class="btn btn-info" role="button">수정</a>
+				<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
 				<br><br><br>
 			</c:if>									
 		
@@ -349,12 +355,15 @@
 	});	
 	
 	function del(){
-		if(confirm("정말 삭제하시겠습니까?")==true){
-			list_ok.submit();
-	}
-	
-	
-		
+		var Del = confirm("삭제 하시겠습니까?")
+		 	if(Del == true)
+		 		{
+		 		alert("삭제 되었습니다.")
+		 			location.href="<%=NoForm%>prList"		 		
+		 		} else {
+		 			alert("취소 되었습니다.")
+		 		}
+	}		
 	</script>
 </body>
 </html>

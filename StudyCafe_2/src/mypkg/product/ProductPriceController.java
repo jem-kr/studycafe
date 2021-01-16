@@ -22,7 +22,7 @@ public class ProductPriceController extends SuperClass {
 		
 		request.setAttribute("lists", lists);
 		
-		String gotopage = "/prPrice.jsp";
+		String gotopage = "product/prPrice.jsp";
 		
 		super.GotoPage(gotopage);
 		

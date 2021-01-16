@@ -102,7 +102,7 @@ public class ProductDao extends SuperDao {
 	public int InsertData(Product bean) {
 		System.out.println("상품을 등록합니다.");
 		String sql = " insert into products( p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark )";
-		sql += " values (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		sql += " values (?, ?, to_date(?, 'yyyy/MM/dd'), ?, ?, ?, ?, ?, ?) ";
 		
 		Connection conn = null ;
 		PreparedStatement pstmt = null ;
@@ -269,7 +269,7 @@ public class ProductDao extends SuperDao {
 			conn = super.getConnection() ;
 			pstmt = conn.prepareStatement(sql) ;
 
-			pstmt.setString(1,p_seat); 
+			pstmt.setString(1, p_seat); 
 						
 			rs = pstmt.executeQuery() ;
 			

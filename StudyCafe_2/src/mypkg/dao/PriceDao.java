@@ -16,13 +16,12 @@ public class PriceDao extends SuperDao {
 		ResultSet rs = null ;
 		
 		List<Price> lists = new ArrayList<Price>();
-		
-		/*String sql = " select m.id, sum(p.price * od.p_price) as sumtotal " ;
-		sql += " from ((members m inner join orders o " ;
-		sql += " on m.id=o.mid) inner join orderdetails od " ;
-		sql += " on o.oid=od.oid) inner join products p " ;
-		sql += " on od.pnum=p.num  " ;
-		sql += " group by m.id " ;	*/
+
+		String sql = " select m.id, sum(o.or_price) as sumtotal ";
+		sql += " from members m inner join orders o ";
+		sql += " on m.id=o.or_id ";
+		sql += " group by m.id ";
+
 		
 		try {
 			conn = super.getConnection() ;
