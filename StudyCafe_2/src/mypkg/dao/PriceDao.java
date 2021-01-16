@@ -18,8 +18,8 @@ public class PriceDao extends SuperDao {
 		List<Price> lists = new ArrayList<Price>();
 
 		String sql = " select m.id, sum(o.or_price) as sumtotal ";
-		sql += " from members m inner join orders o ";
-		sql += " on m.id=o.or_id ";
+		sql += " from members m right outer join orders o ";
+		sql += " on m.id = o.or_id ";
 		sql += " group by m.id ";
 
 		

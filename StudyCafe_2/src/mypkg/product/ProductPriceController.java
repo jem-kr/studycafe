@@ -15,7 +15,7 @@ public class ProductPriceController extends SuperClass {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		super.doGet(request, response);
 		PriceDao dao = new PriceDao();
 		
 		List<Price> lists = dao.prPrice();

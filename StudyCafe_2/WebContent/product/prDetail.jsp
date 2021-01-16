@@ -15,6 +15,29 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">
 	
+	function del() {
+	      // 수정할 좌석 번호 입력
+	      if(confirm("삭제하시겠습니까?")==true){
+	           var _p_seat = prompt("삭제할 좌석 번호를 입력하세요."); 
+	           var p_seat = _p_seat.toUpperCase(); // 문자가 들어오면 무조건 대문자로 바꿔줌 
+	           //alert(p_seat);
+	          if ( p_seat.length == 3) { // 3 글자 수 일때만
+	             if (p_seat.charAt(0) == 'R' || p_seat.charAt(0) == 'A' ) { // 좌석번호가 A,R로 시작
+	                location.href='<%=NoForm%>prDelete&p_seat=' + p_seat;
+	                return true;
+	             }else{
+	                alert("올바르지 않은 좌석 번호입니다.");
+	                 return false;   
+	             }
+	         }else{
+	            alert("올바르지 않은 좌석 번호입니다.");
+	             return false;   
+	           }
+	        }else{
+	          return false;
+	        }
+	   }
+	
 	$(function() {
 	    $( "#testDatepicker" ).datepicker({
 	       dateFormat:  "yy/mm/dd", 
@@ -129,7 +152,28 @@
 		
 	}
 	
-		
+	function check_seatnum() {
+	      // 수정할 좌석 번호 입력
+	      if(confirm("수정하시겠습니까?")==true){
+	           var _p_seat = prompt("수정할 좌석 번호를 입력하세요."); 
+	           var p_seat = _p_seat.toUpperCase(); // 문자가 들어오면 무조건 대문자로 바꿔줌 
+	           //alert(p_seat);
+	          if ( p_seat.length == 3) { // 3 글자 수 일때만
+	             if (p_seat.charAt(0) == 'R' || p_seat.charAt(0) == 'A' ) { // 좌석번호가 A,R로 시작
+	                location.href='<%=NoForm%>prUpdate&p_seat=' + p_seat;
+	                return true;
+	             }else{
+	                alert("올바르지 않은 좌석 번호입니다.");
+	                 return false;   
+	             }
+	         }else{
+	            alert("올바르지 않은 좌석 번호입니다.");
+	             return false;   
+	           }
+	        }else{
+	          return false;
+	        }
+	   }	
 	
 	</script>
 <style type="text/css">
@@ -183,9 +227,6 @@
 	int rightside = twelve - leftside; //판넬의 우측
 %>
 <body>
-<script type="text/javascript">
-
-</script>
 
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="title">
@@ -239,7 +280,7 @@
 							<td width="60%" align="left">
 							<select class="form-control" name="p_seat" id="p_seat">
 							
-							<option value="-" selected="selected">
+							<option value="-">
 							------선택하세요------
 							
 							<c:forEach var="glists" items="${requestScope.glists}">
@@ -252,19 +293,24 @@
 						
 						
 						<tr>
+						<c:if test="${bean.p_type == '1인석' }">
+							<input type="hidden" name="p_person" value="1"/>
+							</c:if>
 						<c:if test="${bean.p_type == '다인실'}">
 							<td width="40%" align="center">인원</td>
 							<td width="60%" align="left">
 							<select class="form-control" name="p_person">
-							<option value="-" selected="selected">
+							<option value="0" selected="selected">
 							------선택하세요------
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
 							</select>
+							
+							<span class="err form-control-static">${errp_person}</span>
 							</td>
-							<span class="err form-control-static">${errp_hour}</span>
+							
 							
 						</c:if>
 						</tr>
@@ -310,7 +356,7 @@
 							</td>
 						
 						<!-- 총 가격 연산 -->
-						<tr>
+						<%-- <tr>
 							<td width="40%" align="center">가격</td>
 							<td width="60%" align="left">
 							<input type="hidden" id="p_price" name="p_price" value="${bean.p_price}">
@@ -319,51 +365,43 @@
 							<span class="err form-control-static">${errp_price}</span>
 							</td>
 							
-						</tr>
+						</tr> --%>
 						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
 							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
+							<c:if test="${whologin ==1 }">
 							<button type="submit" class="btn btn-default">예약하기</button>
-							<button type="button" class="btn btn-default" onclick="totalcal();">가격조회</button>
-							 
+							</c:if>
+							<hr>
+							<c:if test="${whologin ==0 }">
+							<h6> 예약하시려면 로그인 해주세요.</h6>
+							</c:if>
+							</td>
 						<tr>
 					</table>
 				
 				</div>
 				</form>
+				<h6>
+				1인석은 1시간에 1500원, 다인실은 1시간에 6000원 입니다. 
+				</h6>
 			</div>
 			
 			<!-- end panel-body -->
 			<div class="col-sm-offset-5 col-sm-4">
 
-			<c:if test="${whologin==2}">
-				<a href="<%=NoForm%>prInsert&p_seat=${bean.p_seat}" onclick="writeForm();" class="btn btn-info" role="button">등록</a>				
-				<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}" class="btn btn-info" role="button">수정</a>
-				<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" onclick="del();" class="btn btn-info" role="button">삭제</a>
-				<br><br><br>
-			</c:if>									
-		
+			<c:if test="${whologin == 2 }">
+            <a href="<%=NoForm%>prInsert" class="btn btn-info" role="button">등록</a>   
+            <button onclick="return check_seatnum();" class="btn btn-info" role="button">수정</button>
+            <a href="<%=NoForm%>prList" onclick="del();" class="btn btn-info" role="button">삭제</a>
+            <br><br><br>
+         </c:if>   
 			</div>
 		
 		</div>
 		
 	</div>
-	<script>
-	$(document).ready(function() {
-		$('[data-toggle="popover"]').popover();
-	});	
 	
-	function del(){
-		var Del = confirm("삭제 하시겠습니까?")
-		 	if(Del == true)
-		 		{
-		 		alert("삭제 되었습니다.")
-		 			location.href="<%=NoForm%>prList"		 		
-		 		} else {
-		 			alert("취소 되었습니다.")
-		 		}
-	}		
-	</script>
 </body>
 </html>

@@ -72,7 +72,10 @@
 				</thead>
 				<c:forEach var="bean" items="${requestScope.lists}">
 					<tr>
+						<c:if test="${not empty bean.id }">
 						<td>${bean.id}</td>						
+						</c:if>
+						<c:if test="${empty bean.id  }"><td>탈퇴회원</td></c:if>
 						<td>
 							<fmt:formatNumber value="${bean.sumtotal}" pattern="###,###" />							
 						</td>				
