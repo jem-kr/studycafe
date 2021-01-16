@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypkg.common.MainController;
 import mypkg.common.SuperClass;
  
 public class MailSend extends SuperClass {
@@ -24,13 +25,18 @@ public class MailSend extends SuperClass {
 	String e_msg = "";
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	email = request.getParameter("email");
-    	e_msg = request.getParameter("e_msg");
+    	this.email = request.getParameter("email");
+    	this.e_msg = request.getParameter("e_msg");
     	
+    	this.Mailsend();
+    	
+    	String gotopage = "main/main.jsp";
     	super.doPost(request, response);
+    	super.GotoPage(gotopage);
+    	
     }
     
-    public void MailSend() {
+    public void Mailsend() {
         Properties prop = System.getProperties();
         prop.put("mail.smtp.starttls.enable", "true"); // 로그인시 TLS를 사용할 것인지 설정
         prop.put("mail.smtp.host", "smtp.gmail.com"); // 이메일 발송을 처리해줄 SMTP서버
@@ -47,10 +53,11 @@ public class MailSend extends SuperClass {
     
         try {
             msg.setSentDate(new Date()); //보내는 날짜 지정
-            
+           
 //          Message 클래스의 setFrom() 메소드를 사용하여 발송자를 지정함. 발송자의 메일, 발송자 명
 //          InternetAddress 클래스는 이메일 주소 나타낼 때 사용하는 클래스
-            msg.setFrom(new InternetAddress (email, "VISITOR"));
+            System.out.println("이메일 파라미터 확인 ==> " + email);
+            msg.setFrom(new InternetAddress (email, "박현지"));
             
 //          수신자 메일 생성 : 관리자 admin의 메일...
             InternetAddress to = new InternetAddress("hellobit.sc@gmail.com");         
@@ -60,6 +67,9 @@ public class MailSend extends SuperClass {
             msg.setText(e_msg, "UTF-8"); //메일 내용
             
             Transport.send(msg); // 메일을 최종적으로 보내는 클래스 : 메일을 보내는 부분
+            
+            
+            
           
 //			예외 처리
         } catch(AddressException ae) {            

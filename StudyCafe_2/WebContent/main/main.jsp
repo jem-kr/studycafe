@@ -17,6 +17,8 @@
 	function send_mail(){
  		   window.open("${contextPath }/main/test_mail.jsp", "", 
     		"width=370, height=360, resizable=no, scrollbars=no, status=no");
+ 		   
+ 		  
 			}
 	</script>
 	
@@ -294,7 +296,7 @@
 				 -->
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<form name="sentMessage" id="contactForm" novalidate="" method="post">
+						<form name="sentMessage" action="<%=YesForm%>" id="contactForm" novalidate="" method="post">
 						<input type="hidden" name="command" value="QAsend">
 						
 						<div class="row">
@@ -321,7 +323,7 @@
 							<div class="row">
 								<div class="col-lg-12 text-center">
 									<div id="success"></div>
-									<button type="button" class="btn" onclick="send_mail()">Send Message</button>
+									<button type="submit" class="btn" >Send Message</button>
 								</div>
 							</div>
 							

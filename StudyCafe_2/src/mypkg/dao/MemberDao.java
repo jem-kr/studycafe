@@ -704,6 +704,7 @@ public class MemberDao extends SuperDao {
 		Date date = new Date();
 		
 		String time = sdf.format(date);
+		int _time = Integer.parseInt(time);
 		
 		
 
