@@ -317,6 +317,7 @@ public class ProductDao extends SuperDao {
 		
 		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
 		sql += " from products where p_type = ? ";
+		
 				
 		
 		List<Product> glists = new ArrayList<Product>();

@@ -237,4 +237,49 @@ public class OrderDao extends SuperDao{
 		return lists ;
 	}
 
+	public int checkduplicate(String p_seat, String p_date, int p_stime, int p_etime) {
+		String sql = " select count(*) cnt from orders where or_seat = ? and or_date = ? and or_stime < ? and or_etime > ?" ;
+	
+		Connection conn =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null ;
+		int cnt =-999999;
+		try {
+			
+			// 결제 내역 테이블 insert 처리 
+			conn = super.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, p_seat);
+			pstmt.setString(2, p_date);
+			pstmt.setInt(3, p_etime);
+			pstmt.setInt(4, p_stime);
+			
+			rs = pstmt.executeQuery() ;
+			
+			if (rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+		} catch (Exception e) {
+			SQLException err = (SQLException) e;
+			cnt = -err.getErrorCode();
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(pstmt!=null) {pstmt.close();}
+				if(conn!=null) {conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+				}
+		}
+		return cnt;
+	}
+
 }

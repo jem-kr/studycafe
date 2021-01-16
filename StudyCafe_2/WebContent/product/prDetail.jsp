@@ -80,7 +80,6 @@
 
 	});
 	
-
 	
 	
 	
@@ -328,7 +327,7 @@
 							<td width="40%" align="center">시작 시간</td>
 							<td width="60%" align="left">
 								<input type="number" id="p_stime" name = "p_stime" 
-								placeholder="시작 시간" class="form-control" value="${bean.p_stime}">
+								placeholder="시작 시간" class="form-control timeset" value="${bean.p_stime}">
 								<span class="err form-control-static">${errp_stime}</span>
 							</td>
 						</tr>						

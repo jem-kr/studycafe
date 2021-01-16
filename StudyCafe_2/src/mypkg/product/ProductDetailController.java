@@ -20,6 +20,7 @@ public class ProductDetailController extends SuperClass {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String p_seat = request.getParameter("p_seat");
 
 		ProductDao pdao = new ProductDao();

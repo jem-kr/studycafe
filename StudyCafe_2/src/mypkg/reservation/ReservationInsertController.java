@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mypkg.bean.Member;
+import mypkg.bean.Order;
 import mypkg.bean.Product;
 import mypkg.bean.Reservation;
 import mypkg.common.SuperClass;
+import mypkg.dao.OrderDao;
 import mypkg.dao.ProductDao;
 import mypkg.dao.ReservationDao;
 import mypkg.product.ProductDetailController;
@@ -22,6 +24,7 @@ public class ReservationInsertController extends SuperClass{
 	Reservation bean = null;
 	Product pbean = null;
 	ProductDao pdao = null;
+	OrderDao odao = null;
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,6 +65,11 @@ public class ReservationInsertController extends SuperClass{
 			
 		} else {
 			super.doPost(request, response);
+			odao = new OrderDao();
+			int check = -999999;
+			check = odao.checkduplicate(pbean.getP_seat(), pbean.getP_date(), pbean.getP_stime(), pbean.getP_etime());
+			if(check == 0 ) {
+			
 			bean = new Reservation();
 			ReservationDao rdao = new ReservationDao();
 			Member loginfo = (Member)super.session.getAttribute("loginfo") ;
@@ -95,7 +103,12 @@ public class ReservationInsertController extends SuperClass{
 			bean = rdao.SelectDataById(loginfo.getId());
 			gotopage="reservation/reInsert.jsp";
 			super.GotoPage(gotopage);
-			
+			}
+			else {
+				session.setAttribute("message", "예약이 불가한 시간입니다.");
+				String gotopage = "product/prDetail.jsp";
+				super.GotoPage(gotopage);
+			}
 		}
 	}
 	
@@ -124,7 +137,6 @@ public class ReservationInsertController extends SuperClass{
 			request.setAttribute( super.PREFIX + "p_person", "이용인원을 선택해주세요.");
 			isCheck = false  ;
 		}
-		
 		// p_date는 오늘과 같거나 커야하고 시작시간은 지금 시간 보다 커야함
 		// 시작 시간
 		// 오늘 날짜 & 현재 시간 이후
