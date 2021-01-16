@@ -23,6 +23,8 @@ import mypkg.common.SuperClass;
 public class MailSend extends SuperClass {
 	String email = "";
 	String e_msg = "";
+	
+	
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	this.email = request.getParameter("email");
@@ -36,7 +38,7 @@ public class MailSend extends SuperClass {
     	
     }
     
-    public void Mailsend() {
+    public void Mailsend() throws UnsupportedEncodingException {
         Properties prop = System.getProperties();
         prop.put("mail.smtp.starttls.enable", "true"); // 로그인시 TLS를 사용할 것인지 설정
         prop.put("mail.smtp.host", "smtp.gmail.com"); // 이메일 발송을 처리해줄 SMTP서버
@@ -57,14 +59,17 @@ public class MailSend extends SuperClass {
 //          Message 클래스의 setFrom() 메소드를 사용하여 발송자를 지정함. 발송자의 메일, 발송자 명
 //          InternetAddress 클래스는 이메일 주소 나타낼 때 사용하는 클래스
             System.out.println("이메일 파라미터 확인 ==> " + email);
-            msg.setFrom(new InternetAddress (email, "박현지"));
+            
+            msg.setFrom(new InternetAddress (email));
             
 //          수신자 메일 생성 : 관리자 admin의 메일...
             InternetAddress to = new InternetAddress("hellobit.sc@gmail.com");         
             
 //          Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
             msg.setRecipient(Message.RecipientType.TO, to); //받는 사람          
-            msg.setText(e_msg, "UTF-8"); //메일 내용
+            msg.setText(this.email + "/" + this.e_msg, "UTF-8"); //메일 내용
+            
+            System.out.println(this.email + "/" + this.e_msg);
             
             Transport.send(msg); // 메일을 최종적으로 보내는 클래스 : 메일을 보내는 부분
             
@@ -78,10 +83,6 @@ public class MailSend extends SuperClass {
 //        	MessagingException : 메일 계정인증 관련 예외 처리
         	System.out.println("MessagingException : " + me.getMessage());
         	
-        } catch(UnsupportedEncodingException e) {
-//        	UnsupportedEncodingException : 지원되지 않는 인코딩을 사용할 경우 예외 처리            
-        	System.out.println("UnsupportedEncodingException : " + e.getMessage());			
-       
         }
                 
     }
