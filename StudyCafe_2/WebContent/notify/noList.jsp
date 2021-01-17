@@ -18,7 +18,6 @@
 <script type="text/javascript">
 function gotoBack(){
 	location.href='<%=NoForm%>NoList&${requestScope.parameters}';
-	//alert('${requestScope.parameter}') ;
 }
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -57,13 +56,10 @@ function gotoBack(){
 	function search(){
 		if( $('#mode').val() == 'all' ){
 			alert('검색 목록을 선택해주세요') ;
-			//$('#mode').focus();
 		}else{
 		}
 	}
 	function searchAll(){
-		//$('#mode').val('-');
-		//$('#keyword').val('');
 		location.href='<%=NoForm%>noList';
 	}
 </script>
@@ -74,11 +70,6 @@ function gotoBack(){
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> notice"> 
 		<h2 align="center" class=>공지사항 목록</h2>
 		<div class= "panel panel-default"> 
-			<!-- <div class="panel-heading">
-				<form class="form-inline" role="form">
-					
-				</form>
-			</div> -->
 			<table class="table table-dark table-hover ">
 				
 				<thead>
@@ -113,19 +104,12 @@ function gotoBack(){
 					<th width="10%">조회수</th>
 					<th width="15%">작성일자</th>
 					<th width="5%">수정</th>
-					<!-- 
-					<th width="5%">삭제</th> -->
-					<!-- <th width="5%">답글</th -->
-					<!-- <th width="5%">비고</th> -->
 				</tr>
 				</thead>
 				
 				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>
-						<%-- <c:forEach var="cnt" begin="1" end="${bean.depth }">
-							<span class="badge re">└></span>
-						</c:forEach> --%>
 						<a href="<%=NoForm%>noDetailView&num=${bean.num}&${requestScope.parameters }">
 							<c:if test="${bean.fix==0 }">${bean.title }</c:if>
 							<c:if test="${bean.fix==1 }"><div class="important">${bean.title }</div></c:if>
@@ -135,35 +119,12 @@ function gotoBack(){
 						<td>${bean.writer }</td>
 						<td>${bean.readhit }</td>
 						<td>${bean.regdate }</td>
-						<%-- <td>
-							<c:if test="${sessionScope.loginfo.id == bean.writer }">
-								<a href="<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}">
-								수정
-								</a>
-							</c:if>
-							<c:if test="${sessionScope.loginfo.id != bean.writer }">
-								수정
-							</c:if>
-						</td>
-						<td>
-							<c:if test="${sessionScope.loginfo.id == bean.writer}">
-								<a href="<%=NoForm%>noDelete&num=${bean.num}&${requestScope.parameters}">
-									삭제
-								</a>
-							</c:if>
-							<c:if test="${sessionScope.loginfo.id != bean.writer}">
-								삭제
-							</c:if>
-						</td> --%>
 						<td>
 							<c:if test="${sessionScope.loginfo.id == 'admin' }">
 								<a href = "<%=NoForm%>noUpdate&num=${bean.num}&${requestScope.parameters}">수정</a>
 							</c:if>
 							
 						</td>
-						<%-- <td>
-							${bean.remark }
-						</td> --%>
 					</tr>
 				</c:forEach>
 			</table>

@@ -121,8 +121,6 @@ function delconfirm(){
 				</div>
 				<div class="row">
 				<div class="col-sm-12 text-center" >
-					<!-- <button  type="button" class="btn btn-primary" onclick="history.back();">
-						목록보기</button>  -->
 					<a href="<%=NoForm%>noList&${requestScope.parameters}" class="btn btn-primary" role="button">목록보기</a>	
 						
 						&nbsp;&nbsp;

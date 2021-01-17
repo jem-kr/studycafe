@@ -36,9 +36,8 @@ public class NotifyDetailViewController extends SuperClass {
 				ndao.UpdateReadhit(num);
 			}else if(!bean.getWriter().equals(login.getId())) {
 				ndao.UpdateReadhit(num);
-			}else if(!bean.getWriter().equals(login.getName())) {
-				ndao.UpdateReadhit(num);
 			}
+				
 			request.setAttribute("bean", bean);
 			request.setAttribute("parameters", parameters.toString());
 			
