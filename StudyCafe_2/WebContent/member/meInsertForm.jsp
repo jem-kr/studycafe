@@ -207,6 +207,7 @@
                         <input type="checkbox" id="visit03" name="visit" value="이용요금 확인">
                         <label for="visit03">이용요금 확인</label>
                     </li>
+                    <span>${requestScope.errvisit}</span>
                 </ul>
             </div>
 

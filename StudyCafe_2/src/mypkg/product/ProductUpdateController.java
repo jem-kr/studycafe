@@ -71,6 +71,8 @@ public class ProductUpdateController extends SuperClass {
 			ProductDao pdao = new ProductDao();			
 			int cnt = -999999 ; 			
 			cnt = pdao.UpdateData(bean) ;
+			
+			System.out.println(cnt);
 			new ProductListController().doGet(request, response);
 		}
 	}

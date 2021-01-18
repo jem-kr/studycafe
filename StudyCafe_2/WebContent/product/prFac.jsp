@@ -10,21 +10,21 @@
 		<title>시설 소개</title>
 		<style type="text/css">
 				.containerbox {
-					width: 1000px;
-					left: 50%;
-					top: 50%;
-					position: absolute;
-					transform: translate(-50%, -50%);
 					display: flex;
-					justify-content: center;
-					flex-direction: column;
-					padding-top: 800px;
+				    flex-direction: column;
+				    justify-content: center;
+				    align-items: center;
+				    padding-top: 100px;
+				    padding-bottom: 100px;
+				    font-size: 15px;
+				    
 				}
 				
 				.containerbox h2 {
 					display: flex;
 					justify-content: center;
-					font-size: 35px;
+					width: 100%;
+					font-size: 32px;
 					font-weight: 400;
 					padding-bottom: 30px;
 				}
@@ -33,12 +33,14 @@
 					border-radius: 0px;
 					color: #111111;
 					font-size: 15px;
+					
 				}
 				
 				.containerbox ul>li>a {
 					background-color: white;
 					font-size: 15px;
 					color: #111111;
+					
 				}
 				
 				.containerbox ul>li>a:hover {
@@ -61,9 +63,10 @@
 				}
 				
 				.containerbox ul {
-					width: 100%;
+					width: 1000px;
 					padding: 0px;
 					border-bottom: 1px solid #ffb400;
+					
 				}
 				
 				.containerbox p {
@@ -104,6 +107,7 @@
 				table {
 					width: 1000px;
 					display: flex;
+					justify-content: center;
 				}
 				
 				tr {
@@ -228,18 +232,18 @@
 					<div class="col-md-6">
 						<div class="pic1">
 							<figure>
-								<img src="${contextPath}/images/개인석1.png" alt="img01" width="500" height="400" class="img-responsive" />
+								<img src="${contextPath}/images/개인석1.jpeg" alt="img01" width="500" height="400" class="img-responsive" />
 							</figure>
 							<div class="comment">
-									<p>스터디존<br><b class="comment">백색소음이 흐르며 집중력을 높이는 환경에서<br> 공부할 수 있는 공간</b></p>
+									<p>테이블<br><b class="comment">1m 너비의 넓고 쾌적한 책상</b></p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="pic2">
+						<div class="pic4">
 							<figure>
-								<img src="${contextPath}/images/demo/main03.jpg" alt="img02" width="500" height="400" class="img-responsive" />
-									<p>메타라운지<br><b class="comment">잔잔한 음악소리와 함께 개방적인 환경에서<br> 공부할 수 있는 공간</b></p>
+								<img src="${contextPath}/images/개인석4.png" alt="img02" width="500" height="400" class="img-responsive" />
+									<p>의자 소음 차단<br><b class="comment">의자 소음 방지 커버로 학습에만 집중 가능</b></p>
 							</figure>
 						</div>
 					</div>
@@ -249,16 +253,16 @@
 					<div class="col-md-6">
 						<div class="pic3">
 							<figure>
-								<img src="${contextPath}/images/demo/main04.jpg" alt="img03" width="500" height="400" class="img-responsive" />
-									<p>소굴방 타입 1<br><b class="comment">목과 허리를 인체공항적인 각도로 받쳐주는<br> 편안한 좌식 공간</b></p>
+								<img src="${contextPath}/images/개인석2.jpg" alt="img03" width="500" height="400" class="img-responsive" />
+									<p>개인 전용 콘센트<br><b class="comment">개인 좌석별 전용 콘센트</b></p>
 							</figure>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="pic4">
 							<figure>
-								<img src="${contextPath}/images/개인석2.png" alt="img04" width="500" height="400" class="img-responsive" />
-									<p>소굴방 타입 2<br><b class="comment">목과 허리를 인체공항적인 각도로 받쳐주는<br> 편안한 좌식 공간</b></p>
+								<img src="${contextPath}/images/개인석3.jpg" alt="img04" width="500" height="400" class="img-responsive" />
+									<p>눈이 편안한 조명<br><b class="comment">조도 변경과 타이머 기능</b></p>
 							</figure>
 						</div>
 					</div>

@@ -76,7 +76,9 @@ public class MemberInsertController extends SuperClass {
 
 		// 방문목적
 
+		
 		bean.setVisit(request.getParameterValues("visit"));
+		
 
 		// 개인정보 동의
 		bean.setAgreement(request.getParameter("agreement"));
@@ -234,6 +236,12 @@ public class MemberInsertController extends SuperClass {
 
 		if (bean.getPwanswer().length() == 0) {
 			request.setAttribute(super.PREFIX + "pwanswer", "해당 질문에 대한 답변을 입력하세요.");
+			isCheck = false;
+		}
+		
+		// 방문 목적 
+		if (bean.getVisit().length() == 0) {
+			request.setAttribute(super.PREFIX + "visit", "방문 목적을 1개 이상 체크 해주세요.");
 			isCheck = false;
 		}
 
