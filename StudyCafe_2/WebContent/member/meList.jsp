@@ -38,14 +38,14 @@
 				<li><select name="sort">
 						<option value="-">-- 정렬 기준 --</option>
 						<option value="id">아이디</option>
-						<option value="password">비밀번호</option>
-						<option value="pwquestion">비밀번호 찾기 질문</option>
-						<option value="pwanswer">비밀번호 찾기 답변</option>
 						<option value="name">회원이름</option>
 						<option value="birth">생년월일</option>
 						<option value="gender">성별</option>
 						<option value="phone">휴대폰번호</option>
 						<option value="email01">이메일주소</option>
+						<option value="visit">방문목적</option>
+						<option value="agreement">개인정보동의</option>
+						
 				</select></li>
 				<li>
 					<button type="submit" value="asc" name="asc" data-toggle="tooltip"
@@ -66,28 +66,26 @@
 			<thead>
 				<tr>
 					<th>아이디</th>
-					<th>비밀번호</th>
-					<th>비밀번호 찾기 질문</th>
-					<th>비밀번호 찾기 답변</th>
 					<th>회원 이름</th>
 					<th>생년월일</th>
 					<th>성별</th>
 					<th>휴대폰 번호</th>
 					<th>이메일 주소</th>
+					<th>방문목적</th>
+					<th>개인정보동의</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${requestScope.lists}" var="bean">
 					<tr>
 						<td>${bean.id}</td>
-						<td>${bean.password}</td>
-						<td>${bean.pwquestion}</td>
-						<td>${bean.pwanswer}</td>
 						<td>${bean.name}</td>
 						<td>${bean.birth}</td>
 						<td>${bean.gender}</td>
 						<td>${bean.phone}</td>
 						<td>${bean.email01}@${bean.email02}</td>
+						<td>${bean.visit}</td>
+						<td>${bean.agreement}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

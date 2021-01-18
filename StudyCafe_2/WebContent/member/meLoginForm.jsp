@@ -132,10 +132,10 @@
 	            	<input id="password" name="password" value="${requestScope.password}" type="password" placeholder="비밀번호" title="비밀번호 입력">
 	            	<span>${requestScope.errpassword}</span>
 	            </li>
-	            <li>
+	           <!--  <li>
 	                <input type="checkbox" id="id_save">
 	                <label for="id_save">아이디저장</label>
-	            </li>
+	            </li> -->
 	            <li>
 	            	<span>${requestScope.err_message}</span>
 	            	<button type="submit">로그인</button>

@@ -31,7 +31,7 @@
 <body>
     <form name="pw_search" class="pw_search" method="POST" action="<%=YesForm%>">
         <input type="hidden" name="command" value="mePwSearch"> 
-        <input type="text" id="isCheck" name="isCheck" value="false">
+        <input type="hidden" id="isCheck" name="isCheck" value="false">
         <h2>비밀번호 찾기</h2>
         <ul>
             <li>
