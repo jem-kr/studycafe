@@ -75,75 +75,6 @@
 	}
 
 
-	.sbtn{
-	align:center;
-	list-style:none;
-	position:relative;
-	z-index:2;
-	
-	}	
-	/* 버튼1 상세보기 */
-	.r_btn1{
-	height:60px;
-	width:150px;	
-	font-family: "Raleway", Sans-serif;	
-	clear:both;
-	background:#ffb400;
-	color:#000;
-	font-size:23px;
-	text-align:center;
-	border-radius:6px;
-	padding:12px 14px 8px 14px;
-	margin:0 0 5px 0px
-	}
-	.r_btn1 a:link { 
-	color: black; 
-	text-decoration: none;
-	}
- 	.r_btn1 a:visited { 
- 	color: black; 
- 	text-decoration: none;
- 	}
-	.r_btn1 a:hover {
-	text-decoration: none;
-	}
-	.r_btn1:hover {
-	cursor:pointer;
-	background:#ff9600; 	
-	}
-		
-	/* 버튼2 이용안내 */
-/*	.r_btn2{
-	height:60px;
-	width:150px;
-	font-family: "Raleway", Sans-serif;
-	background:#696969;
-	color:#fff;
-	font-size:23px;
-	text-align:center;
-	border-radius:6px;
-	padding:12px 14px 8px 14px;
-	margin:0 0 5px 0px
-	}
-	.r_btn2 a:link{
-	color: white; 
-	text-decoration: none;
-	}
-	.r_btn2 a:visited{
-	color: white; 
-	text-decoration: none;
-	}
-	.r_btn2 a:hover{
-	color:black;
-	text-decoration:none;
-	cursor:pointer;
-	background:#5a5a5a;
-	}
-	.r_btn2:hover{
-	cursor:pointer;
-	background:#5a5a5a;
-	}	*/	
-	
 	.button {
 	WIDTH: 85pt; 
 	HEIGHT: 40pt; 
@@ -153,7 +84,12 @@
 	.btn{
 	WIDTH: 85pt; 
 	HEIGHT: 40pt; 
-	font-size:1.8em
+	font-size:1.8em;
+	float: center;
+	position: relative;
+/*	z-index: 2;
+	left: -15px;  
+	top: -480px;	*/
 	}
 	
 	</style>
@@ -196,26 +132,20 @@
 						<img src="${contextPath}/upload/${bean.p_pic}"
 							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
-					
-					<div align="center" style="vertical-align: middle;">
-
 						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
 						<button type="button" class="btn btn-warning">상세보기</button>
 						</a>						
-					
 						<a href="<%=NoForm%>prFee" target="_self">
 						<button type="button" class="btn btn-default">이용안내</button>
 						</a>
-					</div>
 				</tr>			
 		</c:if>
 		</c:forEach>
 			
 
 		</table>
-			<br><br><br>
-		
-			</div>
+		<br><br><br>
+		</div>
 	</div>
 </body>
 </html>

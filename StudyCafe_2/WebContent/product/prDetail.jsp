@@ -14,30 +14,7 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">
-	
-	function del() {
-	      // 수정할 좌석 번호 입력
-	      if(confirm("삭제하시겠습니까?")==true){
-	           var _p_seat = prompt("삭제할 좌석 번호를 입력하세요."); 
-	           var p_seat = _p_seat.toUpperCase(); // 문자가 들어오면 무조건 대문자로 바꿔줌 
-	           //alert(p_seat);
-	          if ( p_seat.length == 3) { // 3 글자 수 일때만
-	             if (p_seat.charAt(0) == 'R' || p_seat.charAt(0) == 'A' ) { // 좌석번호가 A,R로 시작
-	                location.href='<%=NoForm%>prDelete&p_seat=' + p_seat;
-	                return true;
-	             }else{
-	                alert("올바르지 않은 좌석 번호입니다.");
-	                 return false;   
-	             }
-	         }else{
-	            alert("올바르지 않은 좌석 번호입니다.");
-	             return false;   
-	           }
-	        }else{
-	          return false;
-	        }
-	   }
-	
+		
 	$(function() {
 	    $( "#testDatepicker" ).datepicker({
 	       dateFormat:  "yy/mm/dd", 
@@ -172,6 +149,29 @@
 	        }else{
 	          return false;
 	        }
+	   }
+	
+	function del() {
+	      // 삭제할 좌석 번호 입력
+	      if(confirm("삭제하시겠습니까?")==true){
+	           var _p_seat = prompt("삭제할 좌석 번호를 입력하세요."); 
+	           var p_seat = _p_seat.toUpperCase(); // 문자가 들어오면 무조건 대문자로 바꿔줌 
+	           //alert(p_seat);
+	          if ( p_seat.length == 3) { // 3 글자 수 일때만
+	             if (p_seat.charAt(0) == 'R' || p_seat.charAt(0) == 'A' ) { // 좌석번호가 A,R로 시작
+	                location.href='<%=NoForm%>prDelete&p_seat=' + p_seat;
+	                return true;
+	             }else{
+	                alert("올바르지 않은 좌석 번호입니다.");
+	                 return false;   
+	             }
+	         }else{
+	            alert("올바르지 않은 좌석 번호입니다.");
+	             return false;   
+	           }
+	        }else{
+	          return false;
+	        }
 	   }	
 	
 	</script>
@@ -229,8 +229,8 @@
 
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="title">
-			<h3 align="center">상품 상세보기</h3>
-			<p>상품 상세보기 페이지입니다.</p>
+			<h3 align="center">좌석 상세보기</h3>
+			<p>좌석 상세보기 페이지입니다.</p>
 		</div>	
 		<div class="panel">
 		

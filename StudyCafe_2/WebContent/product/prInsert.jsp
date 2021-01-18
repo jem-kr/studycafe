@@ -73,8 +73,8 @@
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="article_title">
-			<h3>상품 등록</h3>
-			<p>관리자 상품 등록 페이지입니다.</p>
+			<h3>좌석 등록</h3>
+			<p>관리자 좌석 등록 페이지입니다.</p>
 		</div>
 	<div class="panel panel-default">
 
@@ -105,7 +105,7 @@
 				<label class="control-label col-sm-<%=formleft%>" for="p_price">가격</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="number" class="form-control" name="p_price" id="p_price" 
-					placeholder="가격을 입력해 주세요.(ex. 1500, 3000)" value="${bean.p_price}">
+					placeholder="가격을 입력해 주세요.(ex. 1500, 6000)" value="${bean.p_price}">
 						<span class="err form-control-static">${errp_price}</span>
 				</div>
 			</div>	
@@ -114,7 +114,7 @@
 				<label class="control-label col-sm-<%=formleft%>" for="p_date">날짜</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="text" id="testDatepicker" class="form-control" name="p_date" 
-					placeholder="날짜" value="${bean.p_date}">
+					placeholder="날짜를 선택해 주세요." value="${bean.p_date}">
 						<span class="err form-control-static">${errp_date}</span>
 				</div>
 			</div>				
@@ -165,13 +165,6 @@
 		</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$('[data-toggle="popover"]').popover();
-		});
-		
-		
-		
-	</script>	
+	
 </body>
 </html>
