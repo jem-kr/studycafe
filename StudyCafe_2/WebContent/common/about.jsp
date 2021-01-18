@@ -21,10 +21,12 @@
 	.aboutimg{
 		max-height: 100%;
 		margin: 0px auto;
+		padding-bottom: 50px;
 
 	}
 	.content{
 	text-align: center;
+	padding-bottom:80px;
 	}
 </style>
 <head>
@@ -38,7 +40,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
 		<link href="${contextPath }/css/style.css" rel="stylesheet">
-<meta charset="UTF-8">
+		<meta charset="UTF-8">
 <title>그... 스터디카페를 소개합니다.</title>
 </head>
 <body id="page-top">

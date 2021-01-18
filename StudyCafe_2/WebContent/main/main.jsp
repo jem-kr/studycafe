@@ -30,6 +30,11 @@
       .blacktext{
          color: white;
       }
+      .map{
+      text-align: center;
+      max-height: 100%;
+		margin: 0px auto;
+      }
       
    </style>
       
@@ -280,6 +285,39 @@
          </div>
       </section>
       <br><hr>
+      <section>
+      <div class ="map">
+			<h4>오시는 길</h4>
+		<div id="staticMap" class="map img-responsive" style="width:50%;height:350px;"></div> 
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4f3aafed6e3a0f3623ac84933962f0e3"></script>
+<script>    
+// 이미지 지도에 표시할 마커입니다
+// 이미지 지도에 표시할 마커를 아래와 같이 배열로 넣어주면 여러개의 마커를 표시할 수 있습니다 
+var markers = [
+    {
+        position: new kakao.maps.LatLng(37.552671523857214, 126.93780474055818)
+    },
+    {
+        position: new kakao.maps.LatLng(37.552671523857214, 126.93780474055818), 
+        text: '그...스터디카페' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+    }
+];
+
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(37.552671523857214, 126.93780474055818), // 이미지 지도의 중심좌표
+        level: 4, // 이미지 지도의 확대 레벨
+        marker: markers // 이미지 지도에 표시할 마커 
+    };    
+
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+</script>
+      </div>
+      </section>
+      <br><hr>
+      
+      
       <section id="contact">
          <div class="container">
             <div class="row">
