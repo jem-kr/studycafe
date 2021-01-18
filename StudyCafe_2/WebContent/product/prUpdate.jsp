@@ -96,7 +96,8 @@
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_seat">좌석 번호</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="text" class="form-control" name="p_seat" id="p_seat" 
+				<input type="text" class="form-control" name="fakep_seat" id="fakep_seat" value=${bean.p_seat } disabled="disabled">
+					<input type="hidden" class="form-control" name="p_seat" id="p_seat" 
 					placeholder="좌석 번호를 입력해 주세요.(ex. A01, R01)" value="${bean.p_seat}">
 						<span class="err form-control-static">${errp_seat}</span>
 				</div>
@@ -112,7 +113,7 @@
 			</div>		
 
 			<div class="form-group">
-				<label class="control-label col-sm-<%=formleft%>" for="p_price">시작 시간</label>
+				<label class="control-label col-sm-<%=formleft%>" for="p_stime">시작 시간</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="number" class="form-control" name="p_stime" id="p_stime" 
 					placeholder="시작 시간을 입력해 주세요." value="${bean.p_stime}">
@@ -134,7 +135,7 @@
 				<div class="col-sm-<%=formright%>">
 					<input type="number" class="form-control" name="p_hour" id="p_hour" 
 					placeholder="이용 시간을 입력해 주세요." value="${bean.p_hour}">
-						<span class="err form-control-static">${errpp_hour}</span>
+						<span class="err form-control-static">${errp_hour}</span>
 				</div>
 			</div>							
 						

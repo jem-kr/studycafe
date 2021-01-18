@@ -39,20 +39,17 @@
 	margin-bottom : 3px; 
 	}
 
-	.article_title{
-	padding-top: 80px;
-	}
 	.panel-heading {
 	text-align: center;
 	}
 	.article_title{
 	font-family: "Raleway", Sans-serif;
 	}
-	.article_title h3{
-	font-size:35px;
+	.article_title h2{
+	font-size:32px;
 	font-weight:400;
 	text-align:center;
-	padding:0 0 20px 0
+	padding-top:100px;
 	}
 	
 	.article_title p{
@@ -73,7 +70,7 @@
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="article_title">
-			<h3>좌석 등록</h3>
+			<h2>좌석 등록</h2>
 			<p>관리자 좌석 등록 페이지입니다.</p>
 		</div>
 	<div class="panel panel-default">
@@ -113,7 +110,9 @@
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_date">날짜</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="text" id="testDatepicker" class="form-control" name="p_date" 
+				<input type="text" class="form-control" name="fakep_date" id="fakep_date"
+								placeholder="날짜를 선택해 주세요." value="${bean.p_date}" disabled="disabled">
+					<input type="hidden" id="testDatepicker" class="form-control" name="p_date" 
 					placeholder="날짜를 선택해 주세요." value="${bean.p_date}">
 						<span class="err form-control-static">${errp_date}</span>
 				</div>
@@ -122,7 +121,9 @@
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_stime">시작 시간</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="number" class="form-control" name="p_stime" id="p_stime" 
+				<input type="text" class="form-control" name="fakep_stime" id="fakep_stime"
+								placeholder="시작 시간을 입력해 주세요." value="${bean.p_stime}" disabled="disabled">
+					<input type="hidden" class="form-control" name="p_stime" id="p_stime" 
 					placeholder="시작 시간을 입력해 주세요." value="${bean.p_stime}">
 						<span class="err form-control-static">${errp_stime}</span>
 				</div>
@@ -131,7 +132,9 @@
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_etime">종료 시간</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="number" class="form-control" name="p_etime" id="p_etime" 
+				<input type="text" class="form-control" name="fakep_etime" id="fakep_etime"
+								placeholder="종료 시간을 입력해 주세요." value="${bean.p_etime}" disabled="disabled">
+					<input type="hidden" class="form-control" name="p_etime" id="p_etime" 
 					placeholder="종료 시간을 입력해 주세요." value="${bean.p_etime}">
 						<span class="err form-control-static">${errp_etime}</span>
 				</div>
@@ -140,7 +143,9 @@
 			<div class="form-group">
 				<label class="control-label col-sm-<%=formleft%>" for="p_hour">이용 시간</label>
 				<div class="col-sm-<%=formright%>">
-					<input type="number" class="form-control" name="p_hour" id="p_hour" 
+				<input type="text" class="form-control" name="fakep_hour" id="fakep_hour"
+								placeholder="이용 시간을 입력해 주세요." value="${bean.p_hour}" disabled="disabled">
+					<input type="hidden" class="form-control" name="p_hour" id="p_hour" 
 					placeholder="이용 시간을 입력해 주세요." value="${bean.p_hour}">
 						<span class="err form-control-static">${errp_hour}</span>
 				</div>
@@ -156,9 +161,13 @@
 			</div>
 			<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
-					<button class="btn btn-default" type="submit">등록하기</button>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="btn btn-default" type="reset">취소</button>
+					<br>
+					<button class="btn btn-warning" type="submit">등록하기</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn btn-warning" type="reset">초기화</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="<%=NoForm %>prList" class="btn btn-primary">목록으로</a>
+					<br>
 				</div>
 			</div>	
 			</form>													

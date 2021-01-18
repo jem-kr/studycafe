@@ -30,17 +30,19 @@ $(function() {
         monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
     	minDate: 0, 
-        maxDate: "+2w" 
+        maxDate: 0
     	
     });
 });
 </script>
 <style type="text/css">
 	.panel{
-		padding-top: 80px;
+		
 	}
-	.panel h4{
+	.panel h2{
+	padding-top: 100px;
 		text-align: center;
+		font:32px;
 	}
 </style>
 <meta charset="UTF-8">
@@ -48,9 +50,9 @@ $(function() {
 </head>
 <body>
 		<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
-		<div class="panel panel-default panel-warning">
+		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>공지사항 등록</h4>
+				<h2>공지사항 등록</h2>
 			</div>
 			<div class="panel-body">
 				<form class="form-horizontal" role="form" action="<%=YesForm%>" method="post" enctype="multipart/form-data">

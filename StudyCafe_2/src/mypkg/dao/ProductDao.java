@@ -31,7 +31,7 @@ public class ProductDao extends SuperDao {
 			pstmt.setString(1, imsi); // 문자열
 			pstmt.setString(2, p_seat); // 좌석 번호
 			cnt = pstmt.executeUpdate() ; 
-			
+			pstmt.close();
 			// 해당 좌석을 삭제
 			sql = " delete from products " ;
 			sql += " where p_seat = ? " ;
@@ -71,8 +71,8 @@ public class ProductDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 
 		String sql = " update products set " ;
-		sql += " p_type= ?, p_seat= ?, p_date= ?, p_stime= ?, p_etime= ?, p_hour=?, p_price= ?, p_pic= ? , remark= ? " ;
-		sql += " where p_seat= ? ";
+		sql += " p_type = ?, p_date= ?, p_stime = ?, p_etime = ?, p_hour = ?, p_price = ?, p_pic = ? , remark = ? " ;
+		sql += " where p_seat = ? ";
 		
 		int cnt = -999999;
 		try {
@@ -81,15 +81,14 @@ public class ProductDao extends SuperDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bean.getP_type());
-			pstmt.setString(2, bean.getP_seat());
-			pstmt.setString(3, bean.getP_date());
-			pstmt.setInt(4, bean.getP_stime());
-			pstmt.setInt(5, bean.getP_etime());
-			pstmt.setInt(6, bean.getP_hour());
-			pstmt.setInt(7, bean.getP_price());
-			pstmt.setString(8, bean.getP_pic());
-			pstmt.setString(9, bean.getRemark());
-			pstmt.setString(10, bean.getP_seat());
+			pstmt.setString(2, bean.getP_date());
+			pstmt.setInt(3, bean.getP_stime());
+			pstmt.setInt(4, bean.getP_etime());
+			pstmt.setInt(5, bean.getP_hour());
+			pstmt.setInt(6, bean.getP_price());
+			pstmt.setString(7, bean.getP_pic());
+			pstmt.setString(8, bean.getRemark());
+			pstmt.setString(9, bean.getP_seat());
 			
 			cnt = pstmt.executeUpdate() ; 
 			conn.commit(); 
@@ -171,9 +170,8 @@ public class ProductDao extends SuperDao {
 		ResultSet rs = null;
 		
 		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
-		sql += " from products ";
+		sql += " from products order by p_type asc";
 				
-//		sql += " where p_seat in ( select max(p_seat) from products group by p_type) ";
 		
 		List<Product> lists = new ArrayList<Product>();
 		
@@ -331,7 +329,7 @@ public class ProductDao extends SuperDao {
 		ResultSet rs = null;
 		
 		String sql = " select p_type, p_seat, p_date, p_stime, p_etime, p_hour, p_price, p_pic, remark ";
-		sql += " from products where p_type = ? ";
+		sql += " from products where p_type = ? order by p_seat asc";
 				
 		
 		List<Product> glists = new ArrayList<Product>();

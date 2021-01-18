@@ -22,7 +22,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 .order h2{
-	padding-top: 80px;
+	padding-top: 100px;
+	font:32px;
 }
 </style>
 <script type="text/javascript">

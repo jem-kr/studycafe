@@ -35,7 +35,7 @@
 	table-layout:fixed;
 	}
 	
-	.title h3{
+	.title h2{
 	padding-top:100px;
 	font-size: 32px;
     color: #111111;
@@ -68,8 +68,8 @@
 	}
 	
 	.table td img{
-	max-width:100%;
-	max-height:100%;
+	max-width:55%;
+	max-height:50%;
 	border:1px solid white;
     border-collapse: collapse;	
 	}
@@ -87,9 +87,6 @@
 	font-size:1.8em;
 	float: center;
 	position: relative;
-/*	z-index: 2;
-	left: -15px;  
-	top: -480px;	*/
 	}
 	
 	</style>
@@ -102,8 +99,8 @@
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>"> 
 		<div class="title">
-			<h3 align="center">좌석 목록</h3>
-			<p>좌석 목록 페이지입니다.</p>
+			<h2 align="center">좌석 목록</h2>
+			<p>원하시는 좌석 유형을 선택해주세요</p>
 		</div>
 		
 	<div class="panel">
@@ -114,7 +111,7 @@
 		<c:forEach var="bean" items="${requestScope.lists}">				
 			<c:if test="${bean.p_seat eq 'A01' or bean.p_seat eq 'R01'}">
 				<tr>
-					<td style="font-size:12pt">${bean.p_type}</td>
+					<td style="font-size:16pt">${bean.p_type}</td>
 				</tr>
 				<!-- 이미지 -->
 				<tr height="350">
@@ -132,12 +129,15 @@
 						<img src="${contextPath}/upload/${bean.p_pic}"
 							class="img-thumbnail" alt="${bean.p_pic}">
 					</c:if>
+					<div>
 						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
 						<button type="button" class="btn btn-warning">상세보기</button>
-						</a>						
+						</a>
+						&nbsp;&nbsp;						
 						<a href="<%=NoForm%>prFee" target="_self">
 						<button type="button" class="btn btn-default">이용안내</button>
 						</a>
+					</div>		
 				</tr>			
 		</c:if>
 		</c:forEach>

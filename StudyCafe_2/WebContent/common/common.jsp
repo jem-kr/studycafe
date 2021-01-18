@@ -50,13 +50,6 @@
 		= myurl.substring(0, idx) + contextPath + uploadPath ;	
 	String realPath = application.getRealPath( uploadPath ) ;
 %>
-<%
-	/* out.print( "YesForm : " + YesForm + "<br>") ;
-	out.print( "NoForm : " + NoForm + "<br>") ;
-	out.print( "myurl : " + myurl + "<br>") ;
-	out.print( "uploadedFolder : " + uploadedFolder + "<br>") ;
-	out.print( "realPath : " + realPath + "<br>") ; */
-%>
 <%!
 	String MakeCommand(String ... args){
 		if( args.length == 0 ){

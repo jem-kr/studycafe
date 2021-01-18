@@ -85,7 +85,7 @@ img{
 #sub{clear:both;}
 
 .article_title{margin:100px 0 0 0}
-.article_title h3{font-size:35px;font-weight:400;text-align:center;padding:0 0 20px 0}
+.article_title h3{font-size:32px;font-weight:400;text-align:center;padding:0 0 20px 0}
 .article_title p{font-size:16px;color:#6f6f6f;line-height:23px;text-align:center;margin:20px 0 40px 0;}
 
 
@@ -93,8 +93,8 @@ img{
 .guideinfo{clear:both;width:1200px;margin:0 auto;border-bottom:1px solid #eaeaea;}
 .guideinfo h4{float:left;color:#ffb400;font-size:22px;width:190px;padding:40px 30px }
 .guideinfo h5{float:left;font-size:17px;margin:20px 0 10px 0}
-.guideinfo ul{float:left;padding:30px 0 30px 30px;border-left:1px solid #eaeaea;}
-.guideinfo li{clear:both;font-size:15px;line-height:28px;color:#6f6f6f;margin:10px 0}
+.guideinfo ul{float:left;padding:30px 0 30px 30px;border-left:1px solid #eaeaea; text-align:center;}
+.guideinfo li{clear:both;font-size:15px;line-height:28px;color:#6f6f6f;margin:10px 0; text-align:center;}
 .guideinfo b{color:#333;font-size:17px;}
 .guideinfo li.part1{float:right;margin:0 0 10px 0}
 .guideinfo li.part2{float:right;margin:0 0 10px 0}

@@ -35,7 +35,10 @@ function delconfirm(){
 <title>Insert title here</title>
 <style type="text/css">
 .order h2{
-	padding-top: 80px;
+	padding-top:100px;
+}
+.order h6{
+	padding-bottom: 60px;
 }
 </style>
 </head>
@@ -85,7 +88,9 @@ function delconfirm(){
 					</tr>
 					</c:forEach>
 			</table>
+				
 			</div>
+			<p align="right"><a href="<%=NoForm %>main" class="btn btn-warning" >메인으로</a></p>
 		</div>
 	</c:if>
 	<c:if test="${empty requestScope.lists }">
@@ -119,6 +124,7 @@ function delconfirm(){
 					
 			</table>
 			</div>
+			<p align="right"><a href="<%=NoForm %>main" class="btn btn-warning" >메인으로</a></p>
 		</div>
 	</c:if>
 </body>

@@ -86,47 +86,19 @@
 		}
 	}
 	
-	/* 
-		totalcal() : 
-		가격 계산 함수, fakep_hour & fakep_price
-		p_price 값인 1500, 3000이 아닌 0이라서 계속 0 출력됨.. 
-		th p_type 추가하여 if문.. 1500 or 3000 ... 
-	*/
 	function totalcal() {
-		        /*  if($('#p_hour').val() > 0){ 
-		            document.getElementById("#p_price").innerHTML = $('#p_price').val() * $('#p_hour').val();
-		         } */
 		 var p_hour = $('#p_hour').val();
 		var p_price = $('#p_price').val();
 
 		
-	/* 	 if(p_type == '1인석'){	*/ 
 			if(p_hour !=0){
 	 	var p_price = $('#p_price').val() * p_hour;
 		$('input#fakep_price').val(p_price);
 		$('input#p_price').val(p_price);
 	 		return true;
 			}
-		 /*} 
-		else if(p_type == '다인실'){
-			var p_price = 6000 * fakep_hour;
-			$('input#fakep_price').val(p_price);	
-			$('input#p_price').val(p_price);
-		}  */ 
 	}
 
-	/*
-		현재날짜, 시간 비교
-	*/
-	function select_etime() {
-		var fakep_hour = $('#fakep_hour').val();
-		
-		if (fakep_hour < 0){
-			alert("종료 시간을 다시 선택해 주세요.");
-			return false;
-		}
-		
-	}
 	
 	function check_seatnum() {
 	      // 수정할 좌석 번호 입력
@@ -230,7 +202,7 @@
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="title">
 			<h3 align="center">좌석 상세보기</h3>
-			<p>좌석 상세보기 페이지입니다.</p>
+			<p>원하시는 좌석과 날짜, 시간을 선택해주세요</p>
 		</div>	
 		<div class="panel">
 		
@@ -242,18 +214,20 @@
 				
 					<table class="table01" style="table-layout:fixed">
 								<c:if test="${empty bean.p_pic}">
+									<c:if test ="${bean.p_type=='1인석' }">
 									<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail"
-										width="700" height="700" alt="no image">
+										width="700" height="600" alt="no image">
+									</c:if>
+									<c:if test ="${bean.p_type=='다인실' }">
+									<img src="<%=uploadedFolder%>/room03.png" class="img-thumbnail"
+										width="700" height="600" alt="no image">
+									</c:if>
 								</c:if>						
 								
-								<%--<c:if test="${applicationScope.debugMode == true}">
-									디버그 모드가 true이면 보입니다.<br>
-									${applicationScope.uploadedPath}/${bean.p_pic}
-								</c:if> --%>
 								
 								<c:if test="${not empty bean.p_pic}">
 									<img src="${contextPath}/upload/${bean.p_pic}"
-										class="img-thumbnail" width="700" height="700"
+										class="img-thumbnail" width="700" height="600"
 										alt="${bean.p_pic}">
 								</c:if>		
 					</table>
@@ -348,33 +322,23 @@
 							<td width="40%" align="center">이용 시간</td>
 							<td width="60%" align="left">
 								<input type="hidden" id="p_hour" name="p_hour"  >					
-								<input type="number" id="fakep_hour" name="fakep_hour" 
-								onclick="select_etime();" 
-								placeholder="이용 시간" class="form-control" >
+								<input type="number" id="fakep_hour" name="fakep_hour"  
+								placeholder="이용 시간" class="form-control" disabled="disabled">
 								<span class="err form-control-static">${errp_hour}</span>
 							</td>
 						
 						<!-- 총 가격 연산 -->
-						<%-- <tr>
-							<td width="40%" align="center">가격</td>
-							<td width="60%" align="left">
-							<input type="hidden" id="p_price" name="p_price" value="${bean.p_price}">
-							<input type="number" id="fakep_price" name="fakep_price"
-							placeholder="가격" class="form-control" >
-							<span class="err form-control-static">${errp_price}</span>
-							</td>
-							
-						</tr> --%>
 						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
-							<a href="<%=NoForm%>prList&" class="btn btn-default" role="button">목록보기</a>
+							<a href="<%=NoForm%>prList&" class="btn btn-warning" role="button">목록보기</a>
 							<c:if test="${whologin ==1 }">
-							<button type="submit" class="btn btn-default">예약하기</button>
+							&nbsp;&nbsp;
+							<button type="submit" class="btn btn-primary">예약하기</button>
 							</c:if>
 							<hr>
 							<c:if test="${whologin ==0 }">
-							<h6> 예약하시려면 로그인 해주세요.</h6>
+							<span style="font-size: 12pt;"> 예약하시려면 <span style="color:red;">로그인</span> 해주세요.</span><br>
 							</c:if>
 							</td>
 						<tr>
@@ -382,18 +346,20 @@
 				
 				</div>
 				</form>
-				<h6>
+				<span style="font-size: 12pt;">
 				1인석은 1시간에 1500원, 다인실은 1시간에 6000원 입니다. 
-				</h6>
+				</span>
 			</div>
 			
 			<!-- end panel-body -->
+			<hr>
 			<div class="col-sm-offset-5 col-sm-4">
 
 			<c:if test="${whologin == 2 }">
-            <a href="<%=NoForm%>prInsert" class="btn btn-info" role="button">등록</a>   
-            <button onclick="return check_seatnum();" class="btn btn-info" role="button">수정</button>
-            <a href="<%=NoForm%>prList" onclick="del();" class="btn btn-info" role="button">삭제</a>
+               
+            <button onclick="return check_seatnum();" class="btn btn-warning" role="button">상품수정</button>
+            &nbsp;&nbsp;
+            <a href="<%=NoForm%>prList" onclick="del();" class="btn btn-danger" role="button">상품삭제</a>
             <br><br><br>
          </c:if>   
 			</div>

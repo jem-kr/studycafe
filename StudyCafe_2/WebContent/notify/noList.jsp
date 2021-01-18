@@ -25,11 +25,6 @@ function gotoBack(){
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 <style type="text/css">
-	.panel{
-	}
-	.re{
-		font-size:10px;
-	}
 	.tablehd th{
 		text-align:center;
 	}
