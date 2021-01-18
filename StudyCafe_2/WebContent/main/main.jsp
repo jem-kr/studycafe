@@ -64,7 +64,6 @@
 								class="img-responsive" />
 							<figcaption>
 								<h2>1인석</h2>
-								<a href="#" data-toggle="modal" data-target="#Modal-1">더보기</a>
 							</figcaption>
 						</figure>
 					</div>
@@ -79,7 +78,6 @@
 								class="img-responsive" />
 							<figcaption>
 								<h2>다인실</h2>
-								<a href="#" data-toggle="modal" data-target="#Modal-2">더보기</a>
 							</figcaption>
 						</figure>
 					</div>
