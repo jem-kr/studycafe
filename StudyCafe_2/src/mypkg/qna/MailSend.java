@@ -66,15 +66,13 @@ public class MailSend extends SuperClass {
             InternetAddress to = new InternetAddress("hellobit.sc@gmail.com");         
             
 //          Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
-            msg.setRecipient(Message.RecipientType.TO, to); //받는 사람          
+            msg.setRecipient(Message.RecipientType.TO, to); //받는 사람'
+            msg.setSubject("[QnA]그...스터디카페 문의글입니다.", "UTF-8");
             msg.setText("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg, "UTF-8"); //메일 내용
             
             System.out.println("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg);
             
             Transport.send(msg); // 메일을 최종적으로 보내는 클래스 : 메일을 보내는 부분
-            
-            
-            //seeyoufriyay@gmail.com
           
 //			예외 처리
         } catch(AddressException ae) {            

@@ -17,8 +17,6 @@
    function send_mail(){
           window.open("${contextPath }/main/test_mail.jsp", "", 
           "width=370, height=360, resizable=no, scrollbars=no, status=no");
-          
-         
          }
    </script>
    
@@ -361,7 +359,7 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
                      <div class="row">
                         <div class="col-lg-12 text-center">
                            <div id="success"></div>
-                           <button type="submit" class="btn" >Send Message</button>
+                           <button type="submit" class="btn btn-warning">Send Message</button>
                         </div>
                      </div>
                      
