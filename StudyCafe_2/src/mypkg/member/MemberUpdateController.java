@@ -34,8 +34,8 @@ public class MemberUpdateController extends SuperClass {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		Member loginfo = (Member)super.session.getAttribute("loginfo");
+
+		Member loginfo = (Member) super.session.getAttribute("loginfo");
 		bean.setId(loginfo.getId());
 		bean.setBirth(request.getParameter("birth"));
 		bean.setEmail01(request.getParameter("email01"));
@@ -48,18 +48,18 @@ public class MemberUpdateController extends SuperClass {
 		bean.setVisit(request.getParameterValues("visit"));
 
 		super.doPost(request, response);
-		
+
 		if (this.validate(request) == true) {
 			// 유효성 검사 통과
 			MemberDao dao = new MemberDao();
-			
+
 			int cnt = dao.UpdateAllData(bean);
 
 			if (cnt > 0) {
 				System.out.println("회원정보 업데이트 성공");
-			}else if (cnt == 0) {
+			} else if (cnt == 0) {
 				System.out.println("0행 업데이트");
-			}else {
+			} else {
 				System.out.println("회원정보 업데이트 실패");
 			}
 
@@ -173,6 +173,12 @@ public class MemberUpdateController extends SuperClass {
 
 		if (bean.getPwanswer().length() == 0) {
 			request.setAttribute(super.PREFIX + "pwanswer", "해당 질문에 대한 답변을 입력하세요.");
+			isCheck = false;
+		}
+
+		// 방문 목적
+		if (bean.getVisit().length() == 0) {
+			request.setAttribute(super.PREFIX + "visit", "방문 목적을 1개 이상 체크 해주세요.");
 			isCheck = false;
 		}
 

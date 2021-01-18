@@ -212,6 +212,7 @@
                     </c:if>
                 </div>
             </li>
+            <span>${requestScope.errvisit}</span>
             <li class="edit">
                 <button type="submit">
                    	<i class="far fa-check-circle">&nbsp;완료</i>
