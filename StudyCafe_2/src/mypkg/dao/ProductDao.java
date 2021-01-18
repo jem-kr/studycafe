@@ -15,7 +15,6 @@ public class ProductDao extends SuperDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int cnt = -999999;
-		Product bean = null ;
 		
 		try {
 			conn = super.getConnection();
@@ -24,7 +23,7 @@ public class ProductDao extends SuperDao {
 			sql += " where or_seat = ?" ; 			
 			pstmt = conn.prepareStatement(sql) ;
 			
-			bean = this.SelectDataByPk(p_seat) ;
+			Product bean = this.SelectDataByPk(p_seat) ;
 
 			String imsi = "좌석 " + bean.getP_seat() + "이(가) 삭제되었습니다." ;			
 			

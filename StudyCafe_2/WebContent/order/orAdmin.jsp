@@ -66,7 +66,12 @@ function delconfirm(){
 					<tr>
 						<td>${bean.or_no }</td>
 						<td>${bean.or_id }</td>
+						<c:if test="${bean.or_seat == null }">
+						<td>삭제상품</td>
+						</c:if>
+						<c:if test="${bean.or_seat != null }">
 						<td>${bean.or_seat }</td>
+						</c:if>
 						<td>${bean.or_date }</td>
 						<td>${bean.or_stime }시</td>
 						<td>${bean.or_etime }시</td>

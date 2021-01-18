@@ -359,7 +359,7 @@
                
             <button onclick="return check_seatnum();" class="btn btn-warning" role="button">상품수정</button>
             &nbsp;&nbsp;
-            <a href="<%=NoForm%>prList" onclick="del();" class="btn btn-danger" role="button">상품삭제</a>
+            <button onclick="return del();" class="btn btn-danger" role="button">상품삭제</button>
             <br><br><br>
          </c:if>   
 			</div>

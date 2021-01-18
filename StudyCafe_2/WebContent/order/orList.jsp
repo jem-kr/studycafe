@@ -68,7 +68,12 @@ function delconfirm(){
 				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>${bean.or_no }</td>
+						<c:if test="${bean.or_seat == null }">
+						<td>관리자에 문의하세요</td>
+						</c:if>
+						<c:if test="${bean.or_seat != null }">
 						<td>${bean.or_seat }</td>
+						</c:if>
 						<td>${bean.or_date }</td>
 						<td>${bean.or_stime }시</td>
 						<td>${bean.or_etime }시</td>
