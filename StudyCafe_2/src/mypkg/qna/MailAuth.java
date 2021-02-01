@@ -19,7 +19,7 @@ public class MailAuth extends Authenticator{
     public MailAuth() {
     	//보낸사람
         String mail_id = "hellobit.sc@gmail.com";
-        String mail_pw = "hellobit!";
+        String mail_pw = "hellobit123!";
         
         pa = new PasswordAuthentication(mail_id, mail_pw);
     }

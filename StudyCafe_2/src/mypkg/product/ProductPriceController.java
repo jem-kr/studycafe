@@ -19,8 +19,10 @@ public class ProductPriceController extends SuperClass {
 		PriceDao dao = new PriceDao();
 		
 		List<Price> lists = dao.prPrice();
-		
+		List<Price> lists1 = dao.prPrice1();
+
 		request.setAttribute("lists", lists);
+		request.setAttribute("lists1", lists1);
 		
 		String gotopage = "product/prPrice.jsp";
 		

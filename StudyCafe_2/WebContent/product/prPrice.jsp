@@ -19,6 +19,10 @@
 <title>회원별 매출 </title>
  	
 <style type="text/css">
+	.container{
+	font-family: "Raleway", Sans-serif;
+	}
+
 	.form-group{ 
 	margin-bottom : 3px; 
 	}
@@ -30,7 +34,6 @@
 	text-align: center;
 	}
 	.article_title{
-	font-family: "Raleway", Sans-serif;
 	}
 	.article_title h3{
 	font-size:35px;
@@ -40,7 +43,6 @@
 	}
 	
 	.article_title p{
-	font-family: "Raleway", Sans-serif;
 	font-size:16px;
 	color:#6f6f6f;
 	line-height:23px;
@@ -50,19 +52,22 @@
 
 	.panel, table{
 	table-layout:fixed;	
+	}
+	.panel-body p{
+	font-weight:bold;
+	text-align:center;
 	}	
 	
 </style>
 </head>
 <body>
-
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="article_title">
-			<h3>회원별 매출 현황</h3>
-			<p>회원별 매출 현황 페이지입니다.</p>
+			<h3>매출 현황</h3>
 		</div>
 	<div class="panel panel-default">
 		<div class="panel-body">
+		<p>회원별 매출 현황</p>
 		<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -78,6 +83,28 @@
 						<c:if test="${empty bean.id  }"><td>탈퇴회원</td></c:if>
 						<td>
 							<fmt:formatNumber value="${bean.sumtotal}" pattern="###,###" />							
+						</td>				
+					</tr>
+				</c:forEach>
+		</table>
+		<br><br>
+		<p>월별 매출 현황</p>
+		<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>월별</th>
+						<th>누적건수</th>
+						<th>총매출</th>
+					</tr>
+				</thead>
+				<c:forEach var="bean" items="${requestScope.lists1}">
+					<tr>
+						<td>${bean.or_date}</td>						
+						<c:if test="${not empty bean.cnt}">
+						<td>${bean.cnt}</td>						
+						</c:if>
+						<td>
+							<fmt:formatNumber value="${bean.month_total}" pattern="###,###" />							
 						</td>				
 					</tr>
 				</c:forEach>

@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
@@ -89,10 +89,8 @@
 	position: relative;
 	}
 	
-	</style>
-<script type="text/javascript">
-</script>	
-	
+</style>
+
 <meta charset="UTF-8">
 <title>좌석 목록</title>
 </head>
@@ -133,7 +131,7 @@
 						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
 						<button type="button" class="btn btn-warning">상세보기</button>
 						</a>
-						&nbsp;&nbsp;						
+						&nbsp;	
 						<a href="<%=NoForm%>prFee" target="_self">
 						<button type="button" class="btn btn-default">이용안내</button>
 						</a>
@@ -141,8 +139,6 @@
 				</tr>			
 		</c:if>
 		</c:forEach>
-			
-
 		</table>
 		<br><br><br>
 		</div>

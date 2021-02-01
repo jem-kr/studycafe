@@ -81,8 +81,7 @@ public class MailSend extends SuperClass {
 //        	MessagingException : 메일 계정인증 관련 예외 처리
         	System.out.println("MessagingException : " + me.getMessage());
         	
-        }
-                
+        }      
     }
 }
 

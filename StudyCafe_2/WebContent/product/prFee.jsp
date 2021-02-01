@@ -101,7 +101,7 @@
 				<ul>
 					<li><b>온라인 일반회원 (무료)</b></li>
 					<c:if test="${whologin==0 }">
-					<li>- 홈페이지에서 간편 회원가입 <a href="<%=NoForm %>meInsert" target="_blank"> [회원가입 바로가기]</a> </li>
+					<li>- 홈페이지에서 간편 회원가입 <a href="<%=NoForm %>meInsert" target="_self"> [회원가입 바로가기]</a> </li>
 					</c:if>
 				<table width="100%" cellpadding="0" cellspacing="0">
 						<colgroup>

@@ -13,8 +13,9 @@
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-	<script type="text/javascript">
-		
+<script type="text/javascript">
+	
+	//DatePicker 날짜 선택
 	$(function() {
 	    $( "#testDatepicker" ).datepicker({
 	       dateFormat:  "yy/mm/dd", 
@@ -25,10 +26,10 @@
 	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 	       minDate: 0, 
 	        maxDate: "+2w" 
-
 	    });
 	});
-	
+
+	//TimePicker 시간 선택
 	$(function() { 
 	    $("#p_stime").timepicker({
 	        timeFormat: 'HH',
@@ -41,6 +42,8 @@
 	        scrollbar: true        
 	    });
 	});
+	
+	//TimePicker 시간 선택 / etime 시간 기본 설정
 	$(function() { 
 	       $('#p_etime').timepicker({
 	    	   	timeFormat: 'HH',
@@ -51,29 +54,13 @@
 		        dynamic: false,
 		        dropdown: true,
 		        scrollbar: true  
-	       
-	       
-	       });//etime 시간 기본 설정
-
+	       });
 	});
 	
-	
-	
-	
-	</script>
-	<meta charset="UTF-8">
-	<title>BootStrap Sample</title>
-
-	<script type="text/javascript">
-	function writeForm(){
-		location.href='<%=NoForm%>prInsert';
-	}
-	
-	/* 
-		calculate() : 
-		이용 시간 계산 함수, fakep_hour로 수정함 
-	*/
-	function calculate() {
+ 
+		//calculate() : 
+		//이용 시간 계산 함수, fakep_hour로 수정함 
+		function calculate() {
 		var p_stime = $('#p_stime').val();
 		var p_etime = $('#p_etime').val();
 		
@@ -87,16 +74,16 @@
 	}
 	
 	function totalcal() {
-		 var p_hour = $('#p_hour').val();
+		var p_hour = $('#p_hour').val();
 		var p_price = $('#p_price').val();
 
 		
-			if(p_hour !=0){
+		if(p_hour !=0){
 	 	var p_price = $('#p_price').val() * p_hour;
 		$('input#fakep_price').val(p_price);
 		$('input#p_price').val(p_price);
 	 		return true;
-			}
+		}
 	}
 
 	
@@ -145,8 +132,9 @@
 	          return false;
 	        }
 	   }	
-	
-	</script>
+		
+</script>
+
 <style type="text/css">
 
 	.panel, table01, table02{
@@ -186,10 +174,13 @@
     border-right-style: none;
     border-bottom-style: none;
 	}
+</style>	
 	
+	
+	<meta charset="UTF-8">
+	<title>BootStrap Sample</title>
 
-	
-</style>
+
 </head>
 <%
 	int myoffset = 1; //전체 외관의 옵셋
@@ -245,7 +236,7 @@
 						<input type="text" class="form-control" name="fakep_type" id="fakep_type"
 								placeholder="좌석 유형" value="${bean.p_type}" disabled="disabled">
 							<input type="hidden" name="p_type" id="p_type"
-								value="${bean.p_type}">			
+								value="${bean.p_type}">	
 						</td>
 
 						<tr>
@@ -328,7 +319,6 @@
 							</td>
 						
 						<!-- 총 가격 연산 -->
-						
 						<tr>
 							<td colspan="2" align="center" style="padding-top:30px">
 							<a href="<%=NoForm%>prList&" class="btn btn-warning" role="button">목록보기</a>
@@ -361,7 +351,7 @@
             &nbsp;&nbsp;
             <button onclick="return del();" class="btn btn-danger" role="button">상품삭제</button>
             <br><br><br>
-         </c:if>   
+      	   </c:if>   
 			</div>
 		
 		</div>
