@@ -32,6 +32,42 @@
         maxDate: "+2w"     
     	});
 	});
+	
+	
+	var idCheck = 0;
+	//아이디 체크하여 가입버튼 비활성화, 중복확인.
+    function checkP_seat() {
+        var inputed = $('.p_seat').val();
+        $.ajax({
+            data : {
+                id : inputed
+            },
+            url : "checkId.jy",
+            success : function(data) {
+                if(inputed=="" && data=='0') {
+                    $(".subbtn").prop("disabled", true);
+                    $(".subbtn").css("background-color", "#aaaaaa");
+                    $("#checkaa").css("background-color", "#FFCECE");
+                    idCheck = 0;
+                } else if (data == '0') {
+                    $("#checkaa").css("background-color", "#B0F6AC");
+                    idCheck = 1;
+                    if(idCheck==1 && pwdCheck == 1) {
+                        $(".subbtn").prop("disabled", false);
+                        $(".subbtn").css("background-color", "#4CAF50");
+                        signupCheck();
+                    } 
+                } else if (data == '1') {
+                    $(".subbtn").prop("disabled", true);
+                    $(".subbtn").css("background-color", "#aaaaaa");
+                    $("#checkaa").css("background-color", "#FFCECE");
+                    idCheck = 0;
+                } 
+            }
+        });
+    }
+	
+	
 </script> 	
   	
 <style type="text/css">
@@ -94,7 +130,7 @@
 				<label class="control-label col-sm-<%=formleft%>" for="p_seat">좌석 번호</label>
 				<div class="col-sm-<%=formright%>">
 					<input type="text" class="form-control" name="p_seat" id="p_seat" 
-					placeholder="좌석 번호를 입력해 주세요.(ex. A01, R01)" value="${bean.p_seat}">
+					oninput="checkP_seat()" placeholder="좌석 번호를 입력해 주세요.(ex. A01, R01)" value="${bean.p_seat}">
 						<span class="err form-control-static">${errp_seat}</span>
 				</div>
 			</div>	
@@ -163,7 +199,7 @@
 			<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
 					<br>
-					<button class="btn btn-warning" type="submit">등록하기</button>
+					<button class="subbtn btn-warning" type="submit">등록하기</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="btn btn-warning" type="reset">초기화</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
