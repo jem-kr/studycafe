@@ -15,6 +15,7 @@ meIdSearch=mypkg.member.MemberIdSearchController
 mePwSearch=mypkg.member.MemberPwsearchController
 mePwChange=mypkg.member.MemberPwChangeController
 ############3.product(상품)###################################
+adminSeat=mypkg.product.AdminSeatController
 prList=mypkg.product.ProductListController
 prDetail=mypkg.product.ProductDetailController
 prPrice=mypkg.product.ProductPriceController

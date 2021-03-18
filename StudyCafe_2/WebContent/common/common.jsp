@@ -152,11 +152,15 @@
 								<li>
 									<a href="<%=NoForm%>prList">좌석 예약</a>
 								</li>
+							<c:if test="${whologin == 2}">
 								<li>
-									<c:if test="${whologin == 2}">
-										<a href="<%=NoForm%>prInsert">상품 등록</a>
-									</c:if>	
+									<a href="<%=NoForm%>prInsert">상품 등록</a>
 								</li>
+								
+								<li>
+									<a href="<%=NoForm%>adminSeat">좌석 관리</a>
+								</li>
+							</c:if>	
 							</ul>
 						</li>
 						<li>

@@ -12,13 +12,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <script src="https://kit.fontawesome.com/0bccbc6608.js" crossorigin="anonymous"></script>
 	<link type="text/css" href="${contextPath }/css/pricelist.css" rel="stylesheet" />
-<script type="text/javascript">	
-</script>
+
 
 <style type="text/css">
 
@@ -88,64 +87,61 @@
 	float: center;
 	position: relative;
 	}
+</style>
+<script type="text/javascript">	
+
 	
-	</style>
-<script type="text/javascript">
-</script>	
-	
+</script>
 <meta charset="UTF-8">
 <title>좌석 목록</title>
 </head>
 <body>
-	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>"> 
+<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>"> 
 		<div class="title">
 			<h2 align="center">좌석 목록</h2>
 			<p>원하시는 좌석 유형을 선택해주세요</p>
 		</div>
-		
 	<div class="panel">
-	
-		<table class="table table-condensed" style="table-layout:fixed; position:relative; width:100%;">
-			<colgroup><col style="width: 100%"></colgroup>
-
-		<c:forEach var="bean" items="${requestScope.lists}">				
-			<c:if test="${bean.p_seat eq 'A01' or bean.p_seat eq 'R01'}">
+	<table class="table table-condensed table-hover">
+			<thead>
 				<tr>
-					<td style="font-size:16pt">${bean.p_type}</td>
+					<th>좌석타입</th>
+					<th>좌석번호</th>
+					<th>이용가격</th>
+					<th>수정</th>
+					<th>삭제</th>					
 				</tr>
-				<!-- 이미지 -->
-				<tr height="350">
-					<td colspan="7" style="padding-bottom:50px; position:relative; z-index: 1;">
-					<c:if test="${empty bean.p_pic}">
-						<img src="<%=uploadedFolder%>/room02.png" class="img-thumbnail" alt="no image" >
-					</c:if>						
-
-					<c:if test="${applicationScope.debugMode == true}">
-						디버그 모드가 true이면 보입니다.<br>
-						${applicationScope.uploadedPath}/${bean.p_pic}
-					</c:if>
-					
-					<c:if test="${not empty bean.p_pic}">
-						<img src="${contextPath}/upload/${bean.p_pic}"
-							class="img-thumbnail" alt="${bean.p_pic}">
-					</c:if>
-					<div>
-						<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
-						<button type="button" class="btn btn-warning">상세보기</button>
-						</a>
-						&nbsp;	
-						<a href="<%=NoForm%>prFee" target="_self">
-						<button type="button" class="btn btn-default">이용안내</button>
-						</a>
-					</div>		
-				</tr>			
-		</c:if>
-		</c:forEach>
+			</thead>
+			<tr>
+							
+		<c:forEach var="bean" items="${requestScope.lists}">		
+		<tr>
+			<td>${bean.p_type}</td>
 			
-
-		</table>
-		<br><br><br>
-		</div>
+			<td>
+				<a href="<%=NoForm%>prDetail&p_seat=${bean.p_seat}" target="_self">
+				${bean.p_seat}
+				</a>
+			</td>
+			
+			<td>${bean.p_price}</td>
+			
+			<td>
+				<a href="<%=NoForm%>prUpdate&p_seat=${bean.p_seat}" target="_self">
+					수정
+				</a>	
+			</td>
+			
+			<td>
+				<a href="<%=NoForm%>prDelete&p_seat=${bean.p_seat}" target="_self">
+					삭제
+				</a>	
+			</td>
+		</tr>	
+		</c:forEach>
+	</table>
+	<br><br><br>
+	</div>
 	</div>
 </body>
 </html>
