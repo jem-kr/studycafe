@@ -98,8 +98,8 @@
 <body>
 <div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>"> 
 		<div class="title">
-			<h2 align="center">좌석 목록</h2>
-			<p>원하시는 좌석 유형을 선택해주세요</p>
+			<h2 align="center">좌석 관리</h2>
+			<p>관리자용 좌석 수정 및 삭제 가능 페이지입니다.</p>
 		</div>
 	<div class="panel">
 	<table class="table table-condensed table-hover">
