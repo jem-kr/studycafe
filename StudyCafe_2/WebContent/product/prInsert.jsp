@@ -199,7 +199,7 @@
 			<div class="form-group">
 				<div align="center" class="col-sm-offset-3 col-sm-6">
 					<br>
-					<button class="subbtn btn-warning" type="submit">등록하기</button>
+					<button class="btn btn-warning" type="submit">등록하기</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="btn btn-warning" type="reset">초기화</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;

@@ -182,13 +182,19 @@
 						</tr>
 						<!-- 좌석 번호(p_seat) -->
 						<tr>
-						<td width="40%" align="center">좌석 번호</td>
-						<td width="60%" align="left">
-						<input type="text" class="form-control" name="fakep_seat" id="fakep_seat"
-								placeholder="좌석 번호" value="${bean.p_seat}" disabled="disabled">
-							<input type="hidden" name="p_seat" id="p_seat"
-								value="${bean.p_seat}">	
-						</td>
+							<td width="40%" align="center">좌석 번호</td>
+							<td width="60%" align="left">
+							<select class="form-control" name="p_seat" id="p_seat">
+
+							<option value="-">
+							------선택하세요------
+
+							<c:forEach var="glists" items="${requestScope.glists}">
+							<option value="${glists.p_seat}">${glists.p_seat}</option>
+							</c:forEach>
+							</select>
+								<span class="err form-control-static">${errp_seat}</span>
+							</td>
 						</tr>
 						<!-- 좌석인원(p_person) -->
 						<tr>
