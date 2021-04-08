@@ -21,13 +21,13 @@
 <meta charset="UTF-8">
 <script type="text/javascript">
 function delconfirm(){
-	if(confirm("예약을 취소합니까?")==true){
+	if(confirm("예약을 취소합니까?")){
 		location.href='<%=NoForm %>prList';
 		alert("예약이 취소되었습니다.")
 	}else{
-		return;		
+		return false;		
 	}
-}
+};
 
 
 
@@ -84,7 +84,7 @@ function delconfirm(){
 						<fmt:formatDate var="or_date" value="${ordate }" pattern="yyMMdd"/>
 						<c:if test="${or_date>now}">
 						<td>
-							<a href="<%=NoForm %>orDelete&or_no=${bean.or_no}" onclick="delconfirm();">예약 취소</a>
+							<a onclick="delconfirm();">예약 취소</a>
 						</td>
 						</c:if>
 						<c:if test="${or_date<=now}">
