@@ -71,8 +71,8 @@ public class ProductUpdateController extends SuperClass {
 			ProductDao pdao = new ProductDao();			
 			int cnt = -999999 ; 			
 			cnt = pdao.UpdateData(bean) ;
-			
 			System.out.println(cnt);
+			session.setAttribute("message", "좌석 정보가 수정되었습니다!");
 			new ProductListController().doGet(request, response);
 		}
 	}

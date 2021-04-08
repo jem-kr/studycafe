@@ -17,13 +17,11 @@ public class ProductListController extends SuperClass{
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 상품 목록
 		ProductDao dao = new ProductDao();
-		
 		
 		List<Product> lists = dao.SelectDataList();
 
-		
 		request.setAttribute("lists", lists);
 		
 		super.doGet(request, response);

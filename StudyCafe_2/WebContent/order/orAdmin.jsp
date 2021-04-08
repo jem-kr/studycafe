@@ -40,7 +40,7 @@ function delconfirm(){
 <body>
 <c:if test="${not empty requestScope.lists }" >
 <div class = "container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%> order">
-			<h2 align="center"> 관리자메뉴입니다</h2>
+			<h2 align="center"> 관리자 메뉴입니다</h2>
 			<h6 align="center">전체 구매 내역을 조회합니다</h6>
 		<div class="panel panel-default"> 
 					<div>

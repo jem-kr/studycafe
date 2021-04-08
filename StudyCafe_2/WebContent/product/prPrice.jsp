@@ -63,8 +63,10 @@
 <body>
 	<div class="container col-sm-offset-<%=myoffset%> col-sm-<%=mywidth%>">
 		<div class="article_title">
-			<h3>매출 현황</h3>
+			<h2 align="center"> 관리자 메뉴 </h2>
+			<h5 align="center">회원별 / 월별 매출 현황을 조회합니다.</h5>
 		</div>
+		<br><br>
 	<div class="panel panel-default">
 		<div class="panel-body">
 		<p>회원별 매출 현황</p>

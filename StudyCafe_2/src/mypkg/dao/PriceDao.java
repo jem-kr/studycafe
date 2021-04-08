@@ -16,7 +16,10 @@ public class PriceDao extends SuperDao {
 		ResultSet rs = null ;
 		
 		List<Price> lists = new ArrayList<Price>();
-
+		
+		// 회원별 매출 현황에 대한 쿼리입니다.
+		// 1. 매출이력이 있는 회원 아이디
+		// 2. 해당 회원의 누적 금액 sumtotal
 		String sql = " select m.id, sum(o.or_price) as sumtotal ";
 		sql += " from members m right outer join orders o ";
 		sql += " on m.id = o.or_id ";
@@ -56,7 +59,11 @@ public class PriceDao extends SuperDao {
 		ResultSet rs = null ;
 		
 		List<Price> lists1 = new ArrayList<Price>();
-
+		
+		// 월별 매출 현황에 대한 쿼리입니다.
+		// 1. 매출이력이 있는 월 or_date
+		// 2. 해당 월에 누적된 건수 count
+		// 3. 해당 월에 누적된 매출 총금액 month_total
 		String sql = " select to_char(or_date, 'YYYY/MM') as or_date, count(or_id) as cnt, sum(or_price) as month_total ";
 		sql += " from orders where or_date >= '21/01/01' and or_date < '22/01/31' ";
 		sql += " group by to_char(or_date, 'YYYY/MM') ";

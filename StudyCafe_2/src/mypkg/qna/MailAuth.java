@@ -4,8 +4,8 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 // 인증 부분과 보내기 부분으로 나누어 구현
-// 인증 부분은 QnasendController
-// 보내기 부분은 
+// 인증 부분은 Auth
+// 보내기 부분은 Send
 
 // Authenticator : SMTP서버에 연결해 사용자 인증 하는 역할
 // Authenticator를 사용하기 위해선 

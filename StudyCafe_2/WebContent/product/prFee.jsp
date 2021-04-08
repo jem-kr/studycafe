@@ -34,8 +34,8 @@
 		<div class="guideinfo" style="border-top:1px solid #767676;">
 			<h4>운영시간</h4>
 			<ul >
-				<li><b>365일 무인 운영(09시~21시)</b></li>
-				<li>- 웰컴 본인확인 시스템<br>- 원격제어 솔루션 & CCTV관제 시스템</li>
+				<li><b>무인 운영(09시~21시)</b></li>
+				<li>- 웰컴 본인확인 시스템<br>　　　　　- 원격제어 솔루션 & CCTV관제 시스템</li>
 			</ul>
 		</div>
 			

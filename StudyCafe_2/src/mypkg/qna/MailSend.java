@@ -34,6 +34,7 @@ public class MailSend extends SuperClass {
     	
     	String gotopage = "main/main.jsp";
     	super.doPost(request, response);
+    	session.setAttribute("message", "문의 메일이 전송되었습니다!");
     	super.GotoPage(gotopage);
     	
     }
@@ -66,9 +67,10 @@ public class MailSend extends SuperClass {
             InternetAddress to = new InternetAddress("hellobit.sc@gmail.com");         
             
 //          Message 클래스의 setRecipient() 메소드를 사용하여 수신자를 설정
-            msg.setRecipient(Message.RecipientType.TO, to); //받는 사람'
+//          메인 페이지의 QnA 뷰의 value에 입력된 값을 메일 내용으로 작성합니다.
+            msg.setRecipient(Message.RecipientType.TO, to); //받는 사람
             msg.setSubject("[QnA]그...스터디카페 문의글입니다.", "UTF-8");
-            msg.setText("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg, "UTF-8"); //메일 내용
+            msg.setText("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg, "UTF-8"); // 메일 내용
             
             System.out.println("문의자 이메일 주소 : " + this.email + "\n문의 내용 : " + this.e_msg);
             

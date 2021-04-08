@@ -12,13 +12,13 @@ import mypkg.bean.Product;
 import mypkg.common.SuperClass;
 import mypkg.dao.ProductDao;
 
-
 public class ProductInsertController  extends SuperClass{
 	private Product bean = null;
 	
 	@Override
 	public boolean validate(HttpServletRequest request) {
-		boolean isCheck = true ; //기본 값으로 true
+		// 관리자가 좌석 등록 시 유효성검사
+		boolean isCheck = true ;
 		
 		if( bean.getP_type().length() < 1){
 			request.setAttribute( super.PREFIX + "p_type", "상품 이름은 최소 1글자 이상");
@@ -56,18 +56,25 @@ public class ProductInsertController  extends SuperClass{
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 파일 업로드
 		MultipartRequest multi = (MultipartRequest) request.getAttribute("multi");
 		
+		// 상품 bean
 		bean = new Product();
 
+		// 좌석 유형
 		bean.setP_type(multi.getParameter("p_type"));
 		
+		// 좌석 이름
 		bean.setP_seat(multi.getParameter("p_seat"));
 		
+		// 좌석 이용가격
 		if(multi.getParameter("p_price")!=null && multi.getParameter("p_price").equals("")==false) {
 		bean.setP_price(Integer.parseInt(multi.getParameter("p_price")));
 		}		
 		
+		// 상품 예약날짜 및 시간은 실제 좌석 등록 시 관리자에게 필요하지 않지만,
+		// 테스트 등 필요한 경우를 고려하여 추가해 놓았습니다. (p_date, p_stime, p_etime, p_hour)
 		bean.setP_date(multi.getParameter("p_date"));
 		
 		if(multi.getParameter("p_stime")!=null && multi.getParameter("p_stime").equals("")==false) {
@@ -82,8 +89,8 @@ public class ProductInsertController  extends SuperClass{
 		bean.setP_hour(Integer.parseInt(multi.getParameter("p_hour")));
 		}		
 		
+		// 좌석 이미지
 		bean.setP_pic(multi.getFilesystemName("p_pic"));
-
 		
 		String gotopage = "";
 		if(this.validate(request) == true) {
@@ -91,11 +98,13 @@ public class ProductInsertController  extends SuperClass{
 			
 			int cnt = -99999;
 			
-			//Bean객체를 이용해 해당 게시물 추가됨
+			// Bean객체를 이용해 해당 게시물 추가됩니다.
 			cnt = pdao.InsertData(bean);
-			//목록보기로 리다이렉션
+			
+			// 좌석 목록 보기로 리다이렉션됩니다.
 			new ProductListController().doGet(request, response);
 			System.out.println("이미지 파일 업로드");
+			
 		} else {
 			request.setAttribute("bean", bean);
 			super.doPost(request, response);
