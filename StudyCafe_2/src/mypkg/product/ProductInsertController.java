@@ -17,7 +17,7 @@ public class ProductInsertController  extends SuperClass{
 	
 	@Override
 	public boolean validate(HttpServletRequest request) {
-		// 관리자가 좌석 등록 시 유효성검사
+		// 관리자 좌석 등록 시 유효성검사
 		boolean isCheck = true ;
 		
 		if( bean.getP_type().length() < 1){
